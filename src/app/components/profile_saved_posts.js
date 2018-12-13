@@ -7,7 +7,7 @@ import Footer from './footer';
 import Social_Icons_Post from './social_icons_post';
 import Ticket from './ticket';
 
-class Posts_Saved extends Component {
+class Profile_Saved_Posts extends Component {
 
   constructor(props) {
     super(props);
@@ -32,4 +32,4 @@ class Posts_Saved extends Component {
   }
 }
 
-export default Posts_Saved;
+export default Profile_Saved_Posts;
