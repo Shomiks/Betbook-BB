@@ -21,6 +21,9 @@ class Add_Ticket extends Component {
             <div class="ticket-list flex-center">
                 <p>Tiketi</p>
             </div>
+
+            <div class="remove-ticket flex-center justify-end">
+            </div>
         </div>
       </div>
     );

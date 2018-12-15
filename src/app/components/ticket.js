@@ -15,7 +15,6 @@ class Ticket extends Component {
   render() {
     return (
       <div className="test">
-      <Header></Header>
         <div class="saved-posts">
             <div class="ticket">
                 <div class="ticket-grid">
@@ -61,7 +60,6 @@ class Ticket extends Component {
                 </div>
             </div>
         </div>
-        <Footer></Footer>
       </div>
     );
   }

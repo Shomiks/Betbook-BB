@@ -140,6 +140,10 @@ textarea {
   box-shadow: none;
 }
 
+.box-shadow {
+  box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.05);
+}
+
 @media (min-width: 320px) and (max-width: 480px) {
 
   // Social - New Post Ticket CSS 
@@ -691,9 +695,13 @@ textarea {
     height: 50px;
     width: 100%;
     grid-template-rows: 1fr;
-    grid-template-columns: 12.5% 87.5%;
+    grid-template-columns: 12.5% 50% 37.5%;
     // box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
     border: 0.5px solid rgba(155, 155, 155, .2);
+
+    .remove-ticket {
+      padding-right: 10px;
+    }
   }
 
   .ticket-list p {
@@ -717,7 +725,8 @@ textarea {
 
   .status-post {
     grid-column: 1 / -1;
-    padding: 0 5px;
+    padding: 0 5px 10px 5px ;
+    border-bottom: 0.5px solid rgba(155, 155, 155, .2);
   }
 
   .post {
