@@ -145,6 +145,18 @@ class Ticket_Done extends Component {
         <p class="table-texts">Total corners</p>
     </div>
 </div>
+<div class="bet-slip">
+            <div class="bet-slip-grid">
+                <div class="bet-slip-grid--1">
+                    <p class="bet-text justify-center flex-center">Bet Slip</p>
+                    <span class="ticket-num flex-center">7</span>
+                </div>
+                <div class="bet-slip-grid--2 flex-center justify-end">
+                    <p class="odds-text">Multiple Odds</p>
+                    <p class="odds-num">43.5</p>
+                </div>
+            </div>
+        </div>
 <Footer></Footer>
       </div>
     );

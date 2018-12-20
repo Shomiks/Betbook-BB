@@ -17,12 +17,14 @@ import Profile_Following from './components/profile_following.js';
 import My_Tickets_Active from './components/my_tickets_active.js';
 import Profile_Tickets from './components/profile_tickets.js';
 import Profile_Posts from './components/profile_posts.js';
+import Game_Selected from './components/game_selected.js';
+import Bet_Slip from './components/bet_slip.js';
 
 class App extends React.Component {
     render() {
         return (
             <div className="home">
-                <Profile_Posts></Profile_Posts>
+            <Profile_Following></Profile_Following>
             </div>
         );
     }
@@ -40,5 +42,6 @@ class App extends React.Component {
 // <Profile_Following></Profile_Following> DONE
 // <My_Tickets_Active></My_Tickets_Active> DONE
 // <Profile_Tickets></Profile_Tickets> DONE
+// <Game_Selected></Game_Selected> DONE
 
 render(<App/>, document.getElementById('app'));
