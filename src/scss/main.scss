@@ -6,149 +6,139 @@
   box-sizing: border-box;
 }
 
-// body {
-//   background: #ececec;
-// }
 
-// .home {
-//   display: block;
-//   width: 520px;
-//   height: auto;
-//   margin: 50px auto;
-//   background: #fff;
-//   border-radius: 5px;
-//   padding: 15px 50px;
-// }
-
-
-.flex-center {
-  align-self: center;
-}
-
-.justify-end {
-  justify-self: end;
-}
-
-.justify-center {
-  justify-self: center;
-}
-
-#red {
-  background-color: #EC3B51;
-}
-
-.color-gray {
-  background-color: #FAFAFA;
-}
-
-.margin-top {
-  margin-top: 50px;
-}
-
-.margin-bottom {
-  margin-bottom: 50px;
-}
-
-.margin-bottom-big {
-  margin-bottom: 70px;
-}
-
-.margin-top-minus {
-  margin-top: -15px;
-}
-
-.btn {
-
-  &,
-  &:link,
-  &:visited {
-    text-decoration: none;
-    // color: inherit;
-    font-size: 14px;
-    font-weight: 500;
-  }
-
-  &:active,
-  &:focus {
-    outline: none;
-  }
-}
-
-.btn-default {
-  color: #0A0A0A;
-}
-
-.btn-blue {
-  color: #1E8FE1;
-}
-
-.btn-selected {
-  color: #FBA031;
-}
-
-.btn-gray {
-  color: #9B9B9B;
-}
-
-.btn-white {
-  color: #fff;
-}
-
-.btn-borders1,
-.btn-borders2 {
-  padding: 3px 17px;
-  border: 1px solid #0A0A0A;
-}
-
-.btn-borders2 {
-  background-color: #0A0A0A;
-  color: #fff;
-}
-
-.chevron {
-  font-size: 20px;
-}
-
-.calendar {
-  font-size: 20px;
-}
-
-.star {
-  font-size: 25px;
-}
-
-.notification {
-  position: absolute;
-  color: #fff;
-  background-color: #FBA031;
-  border-radius: 50%;
-  width: 19px;
-  height: 19px;
-  padding-left: 7px;
-  font-size: 10px;
-  padding-top: 3px;
-  bottom: 9px;
-  right: 62px;
-}
-
-textarea::placeholder {
-  color: #9B9B9B;
-
-}
-
-textarea {
-  font-family: 'SF UI Display Light';
-}
-
-.no-shadow {
-  box-shadow: none;
-}
-
-.box-shadow {
-  box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.05);
-}
 
 @media (min-width: 320px) and (max-width: 480px) {
+
+  .flex-center {
+    align-self: center;
+  }
+
+  .justify-end {
+    justify-self: end;
+  }
+
+  .justify-center {
+    justify-self: center;
+  }
+
+  #red {
+    background-color: #EC3B51;
+  }
+
+  .color-gray {
+    background-color: #FAFAFA;
+  }
+
+  .margin-top {
+    margin-top: 50px;
+  }
+
+  .margin-bottom {
+    margin-bottom: 50px;
+  }
+
+  .margin-bottom-big {
+    margin-bottom: 70px;
+  }
+
+  .margin-top-minus {
+    margin-top: -15px;
+  }
+
+  .btn {
+
+    &,
+    &:link,
+    &:visited {
+      text-decoration: none;
+      // color: inherit;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    &:active,
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .btn-default {
+    color: #0A0A0A;
+  }
+
+  .btn-blue {
+    color: #1E8FE1;
+  }
+
+  .btn-selected {
+    color: #FBA031;
+  }
+
+  .btn-gray {
+    color: #9B9B9B;
+  }
+
+  .btn-white {
+    color: #fff;
+  }
+
+  .btn-borders1,
+  .btn-borders2 {
+    padding: 3px 17px;
+    border: 1px solid #0A0A0A;
+  }
+
+  .btn-borders2 {
+    background-color: #0A0A0A;
+    color: #fff;
+  }
+
+  .chevron {
+    font-size: 20px;
+  }
+
+  .calendar {
+    font-size: 20px;
+  }
+
+  .star {
+    font-size: 25px;
+  }
+
+  .notification {
+    position: absolute;
+    color: #fff;
+    background-color: #FBA031;
+    border-radius: 50%;
+    width: 19px;
+    height: 19px;
+    padding-left: 7px;
+    font-size: 10px;
+    padding-top: 3px;
+    bottom: 9px;
+    right: 62px;
+  }
+
+  textarea::placeholder {
+    color: #9B9B9B;
+
+  }
+
+  textarea {
+    font-family: 'SF UI Display Light';
+  }
+
+  .no-shadow {
+    box-shadow: none;
+  }
+
+  .box-shadow {
+    box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.05);
+  }
+
+
+
 
   // Social - New Post Ticket CSS 
   .header {
@@ -629,10 +619,10 @@ textarea {
 
   .comment-profile {
     display: grid;
-    height: 70px;
+    height: 60px;
     width: 100%;
     grid-template-rows: 1fr;
-    grid-template-columns: 15% 65% 20%;
+    grid-template-columns: 60px 217px;
     // align-self: flex-end;
   }
 
@@ -685,7 +675,7 @@ textarea {
     height: 100%;
     width: 100%;
     overflow: auto;
-    padding-left: 5px;
+    padding-left: 10px;
     font-size: 16px;
     outline: none;
     // color: #9B9B9B;
@@ -732,7 +722,7 @@ textarea {
 
   .status-post {
     grid-column: 1 / -1;
-    padding: 0 5px 10px 5px ;
+    padding: 0 5px 10px 10px ;
     border-bottom: 0.5px solid rgba(155, 155, 155, .2);
   }
 
@@ -836,7 +826,7 @@ textarea {
     height: 75px;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 3fr 1fr;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+    // box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
 
     &--1 {
       padding-left: 10px;
@@ -867,7 +857,7 @@ textarea {
     height: 100%;
     width: 100%;
     grid-template-rows: 1fr;
-    grid-template-columns: 10% 15% 55% 20%;
+    grid-template-columns: 30px auto 60px;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
   }
 
@@ -879,11 +869,14 @@ textarea {
   .precent {
     font-size: 24px;
     font-weight: bold;
+    grid-column: 3 / 4;
+    grid-row: 1/2;
+    padding-right: 15px;
   }
 
   .individual-profile {
     display: grid;
-    height: 200px;
+    height: 240px;
     width: 100%;
     grid-template-columns: 12% 76% 12%;
     grid-template-rows: 1fr;
@@ -902,7 +895,8 @@ textarea {
       .img-round {
         width: 102px;
         height: 102px;
-        margin-top: 20px;
+        margin-top: 30px;
+        margin-bottom: 25px;
       }
 
       .img {
@@ -915,7 +909,7 @@ textarea {
       .profile-person {
         font-size: 20px;
         line-height: 29px;
-        padding-top: 10px;
+        padding-top: 15px;
       }
 
       .member-since {
@@ -954,7 +948,7 @@ textarea {
       display: grid;
       height: 100%;
       grid-template-rows: 1fr;
-      grid-template-columns: 18% 62% 20%;
+      grid-template-columns: 280px auto;
     }
   }
 
@@ -1295,14 +1289,22 @@ textarea {
            top: 50%;
            left: 50%;
            transform: translate(-50%, -50%);
-         }
-       }
-     }
+          }
+        }
+    }
 
      .close {
        color: #fff;
        font-size: 25px;
        padding-right: 15px;
-     }
+      }
+
+      .individual-profile {
+
+        .comment-profile {
+          grid-template-columns: 1fr;
+          grid-template-rows: 3fr 1fr 1fr;
+        }
+      }
 
 }
