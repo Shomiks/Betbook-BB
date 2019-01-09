@@ -16,7 +16,7 @@ class TicketPost extends Component {
   render() {
     return (
       <div className="test">
-        <UserInfo />
+        <UserInfo userName={this.props.userName} secondaryText={this.props.secondaryText}/>
         <Ticket />
         <div className="margin-bottom"><SocialIcons /></div>
       </div>

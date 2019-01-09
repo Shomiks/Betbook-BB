@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import HeaderText from './../../components/common/headerText/headerText.component.js';
+import HeaderIcons from './../../components/common/headerIcons/headerIcons.component.js';
 import CommentsOnPost from './../../components/containers/commentsOnPost/commentsOnPost.component.js';
 import WriteComment from './../../components/common/writeComment/writeComment.component.js';
 
@@ -16,8 +16,12 @@ class SocialTimeline extends Component {
   render() {
     return (
       <div className="test">
-        <HeaderText />
-        <div className='margin-top'><CommentsOnPost /></div>
+        <HeaderIcons title="Comments" />
+        <div className='margin-top'><CommentsOnPost userName="Aleksandar Aleksovski" secondaryText="20 min ago" comment="Lorem Ipsum" /></div>
+
+        <CommentsOnPost userName="Pero Perovski" secondaryText="19 min ago" comment="Lorem Ipsum" />
+
+        <CommentsOnPost userName="Mite Mitev" secondaryText="19 min ago" comment="Lorem Ipsum" />
         <WriteComment />
       </div>
     );

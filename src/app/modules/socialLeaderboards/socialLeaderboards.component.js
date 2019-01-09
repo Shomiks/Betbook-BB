@@ -17,9 +17,16 @@ class SocialLeaderboards extends Component {
   render() {
     return (
       <div className="test">
-        <HeaderIcons />
-        <LeaderboardsButtons />
-        <div className="margin-bottom"><LeaderboardsList /></div>
+        <HeaderIcons title="Leaderboards"/>
+        <LeaderboardsButtons btnLeft="Tickets" btnRight="Singles"/>
+        <LeaderboardsList listPlace="1" userName="Marko Markovski" secondaryText="points/success rate/koef???" percent="89"/>
+        <LeaderboardsList listPlace="2" userName="Marko Markovski" secondaryText="points/success rate/koef???" percent="87"/>
+        <LeaderboardsList listPlace="3" userName="Marko Markovski" secondaryText="points/success rate/koef???" percent="83"/>
+        <LeaderboardsList listPlace="4" userName="Marko Markovski" secondaryText="points/success rate/koef???" percent="79"/>
+        <LeaderboardsList listPlace="5" userName="Marko Markovski" secondaryText="points/success rate/koef???" percent="77"/>
+        <LeaderboardsList listPlace="6" userName="Marko Markovski" secondaryText="points/success rate/koef???" percent="72"/>
+        <LeaderboardsList listPlace="7" userName="Marko Markovski" secondaryText="points/success rate/koef???" percent="70"/>
+        <div className="margin-bottom"><LeaderboardsList listPlace="8" userName="Marko Markovski" secondaryText="points/success rate/koef???" percent="65"/></div>
         <Footer />
       </div>
     );

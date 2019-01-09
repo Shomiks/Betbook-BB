@@ -16,8 +16,9 @@ class ProfilePosts extends Component {
   render() {
     return (
       <div className="test">
-        <UserProfile />
-        <TextPost />
+        <UserProfile userName="Me Myself and I" secondaryText="member since November 2018" />
+        <TextPost userName="Me Myself and I" secondaryText="20 min ago" comment="Lorem Ipsum" />
+        <TextPost userName="Me Myself and I" secondaryText="22.10.2018" comment="Lorem Ipsum" />
         <Footer />
       </div>
     );

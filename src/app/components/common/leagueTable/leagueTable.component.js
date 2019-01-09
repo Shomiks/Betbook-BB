@@ -7,45 +7,37 @@ class LeagueTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        homeTeam: 'Burnley',
-        guestTeam: 'Bournemouth',
-        homeTeamWin: 2.39,
-        draw: 3.50,
-        guestTeamWin: 3.10
+       
     }
   }
 
 
   render() {
-            const table = [];
-      _.times(8, (i) => {
-          table.push(
-    <div class="individual-league" key={i}>
+
+    return (
+      <div className="test">
+        <div class="individual-league" >
         <div class="individual-league-grid">
             <div class="league-teams flex-center">
-                <p class="league-teams--team">{this.state.homeTeam}</p>
-                <p class="league-teams--team">{this.state.guestTeam}</p>
-                <p class="league-teams--date">13.05.2018 20:45</p>
+                <p class="league-teams--team">{this.props.homeTeam}</p>
+                <p class="league-teams--team">{this.props.guestTeam}</p>
+                <p class="league-teams--date">{this.props.date}</p>
             </div>
 
             <div class="individual-league-grid--1">
                 <span class="gray-num">19</span>
             </div>
             <div class="individual-league-grid--2">
-                <p class="tip-num">{this.state.homeTeamWin}</p>
+                <p class="tip-num">{this.props.homeTeamWin}</p>
             </div>
             <div class="individual-league-grid--2">
-                <p class="tip-num">{this.state.draw}</p>
+                <p class="tip-num">{this.props.draw}</p>
             </div>
             <div class="individual-league-grid--2">
-                <p class="tip-num">{this.state.guestTeamWin}</p>
+                <p class="tip-num">{this.props.guestTeamWin}</p>
             </div>
         </div>
-    </div>)
-      })
-    return (
-      <div className="test">
-        {table}
+    </div>
       </div>
     );
   }

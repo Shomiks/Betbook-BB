@@ -6,8 +6,7 @@ class LeaderboardsButtons extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      btnTickets: "Tickets",
-      btnSingles: 'Singles'
+
     }
   }
 
@@ -19,10 +18,10 @@ class LeaderboardsButtons extends Component {
             <div class="leaderboards-grid--1"></div>
             <div class="leaderboards-grid--2 flex-center">
                 <div class="button1 flex-center">
-                        <a href="#" class="btn btn-default btn-borders1">{this.state.btnTickets}</a>
+                        <a href="#" class="btn btn-default btn-borders1">{this.props.btnLeft}</a>
                 </div>
                 <div class="button2 flex-center">
-                    <a href="#" class="btn btn-default btn-borders2">{this.state.btnSingles}</a> 
+                    <a href="#" class="btn btn-default btn-borders2">{this.props.btnRight}</a> 
                 </div>
             </div>
             <div class="leaderboards-grid--3"></div>

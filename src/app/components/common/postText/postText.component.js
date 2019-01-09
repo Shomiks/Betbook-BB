@@ -14,9 +14,7 @@ class PostText extends Component {
     return (
         <div className="test">
             <div class="status-post">
-                <p class="post">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur consequatur sequi
-                impedit. Non sequi magni officia similique eos et, delectus consequuntur assumenda maiores aperiam
-                minima iure, sit quasi nesciunt excepturi.</p>
+                <p class="post">{this.props.comment}</p>
             </div>
         </div>
     );

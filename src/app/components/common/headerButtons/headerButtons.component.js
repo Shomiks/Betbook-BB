@@ -19,10 +19,10 @@ class HeaderButtons extends Component {
             <div class="header-grid-history--2 flex-center">
                 <div class="button1 flex-center">
                     <span class="notification">1</span>
-                    <a href="#" class="btn btn-default btn-borders1">Active</a>
+                    <a href="#" class="btn btn-default btn-borders1">{this.props.btnLeft}</a>
                 </div>
                 <div class="button2 flex-center">
-                   <a href="#" class="btn btn-default btn-borders2">History</a> 
+                   <a href="#" class="btn btn-default btn-borders2">{this.props.btnRight}</a> 
                 </div>
             </div>
             <div class="header-grid-history--3">

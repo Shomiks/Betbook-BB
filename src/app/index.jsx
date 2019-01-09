@@ -16,13 +16,14 @@ import ProfileFollowing from './modules/profileFollowing/profileFollowing.compon
 import ProfilePosts from './modules/profilePosts/profilePosts.component';
 import ProfileTickets from './modules/profileTickets/profileTickets.component';
 import MyTickets from './modules/myTickets/myTickets.component';
+import OfferSport from './modules/offerSport/offerSport.component';
 
 
 class App extends React.Component {
     render() {
         return (
             <div className="home">
-                <OfferLevel />
+                <OfferLeague />
             </div>
         );
     }

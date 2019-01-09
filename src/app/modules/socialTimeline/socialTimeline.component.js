@@ -17,7 +17,7 @@ class SocialTimeline extends Component {
   render() {
     return (
       <div className="test">
-        <HeaderButtons />
+        <HeaderButtons btnLeft="Me" btnRight="Global"/>
         <div className='margin-top'><TextPost /></div>
         <TicketPost />
         <Footer />

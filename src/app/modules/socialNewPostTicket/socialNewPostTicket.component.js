@@ -15,7 +15,7 @@ class SocialNewPostTicket extends Component {
   render() {
     return (
       <div className="test">
-        <HeaderText />
+        <HeaderText textLeft="CANCEL" title="Select Ticket" textRight="DONE"/>
         <div className='margin-top box-shadow'><Ticket /></div>
       </div>
     );

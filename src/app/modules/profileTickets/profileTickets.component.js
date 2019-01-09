@@ -16,8 +16,8 @@ class ProfileTickets extends Component {
   render() {
     return (
       <div className="test">
-        <UserProfile />
-        <TicketPost />
+        <UserProfile userName="Me Myself and I" secondaryText="member since November 2018" />
+        <TicketPost userName="Me Myself and I" secondaryText="20 min ago"/>
         <Footer />
       </div>
     );

@@ -21,8 +21,8 @@ class UserInfo extends Component {
                     </div>
 
                     <div class="profile-name flex-center">
-                        <p class="profile-person">Me, myself and I</p>
-                        <p class="time-ago"> 20 minutes ago</p>
+                        <p class="profile-person">{this.props.userName}</p>
+                        <p class="time-ago">{this.props.secondaryText}</p>
                     </div>
                 </div>
             </div>

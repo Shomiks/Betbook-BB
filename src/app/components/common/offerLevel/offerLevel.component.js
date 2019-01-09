@@ -21,22 +21,7 @@ class OfferLevel extends Component {
   }
 
   render() {
-    const leagues = [];
-    _.times(8, (i) => {
-        leagues.push(<div class="league" key={i}>
-                <div class="league--1 flex-center justify-center">
-                    <i class="fa fa-star star"></i>
-                </div>
-                <div class="league--2 flex-center">
-                    {this.state.leagues.map((league) => {
-                        return <p class="league-name" key={league}>{league}</p>
-                    })}
-                </div>
-                <div class="league--3 flex-center justify-center">
-                    <a href="#" class="btn btn-default"><i class="fa fa-chevron-right chevron"></i></a>
-                </div>
-            </div>)
-    })
+    
     return (
       <div className="test">
         <div class="offer">

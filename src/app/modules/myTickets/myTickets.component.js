@@ -16,7 +16,7 @@ class MyTickets extends Component {
   render() {
     return (
       <div className="test">
-        <HeaderButtons />
+        <HeaderButtons btnLeft="Active" btnRight="History"/>
         <div className="margin-top"><Ticket /></div>
         <Footer />
       </div>

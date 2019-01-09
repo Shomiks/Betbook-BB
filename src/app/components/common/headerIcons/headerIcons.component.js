@@ -6,7 +6,7 @@ class HeaderIcons extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      headerTitle: 'Title'
+
     }
   }
 
@@ -20,7 +20,7 @@ class HeaderIcons extends Component {
                   <a href="#" class="btn btn-default"><i class="fa fa-chevron-left chevron"></i></a>
                 </div>
                 <div class="header-grid--2 flex-center">
-                  <h1 class="title">{this.state.headerTitle}</h1>
+                  <h1 class="title">{this.props.title}</h1>
                 </div>
                 <div class="header-grid--3">
                   <a href="#" class="btn btn-default"><i class="fa fa-chevron-left chevron"></i></a>

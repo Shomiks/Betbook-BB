@@ -16,7 +16,7 @@ class SocialNewPost extends Component {
   render() {
     return (
       <div className="test">
-        <HeaderText />
+        <HeaderText textLeft="CANCEL" title="New Post" textRight="SHARE"/>
         <div className="margin-top"><AddNewPost /></div>
       </div>
     );

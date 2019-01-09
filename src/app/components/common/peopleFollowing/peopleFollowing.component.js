@@ -13,18 +13,14 @@ class PeopleFollowing extends Component {
 
 
   render() {
-      const people = [];
-      _.times(5, (i) => {
-          people.push(<div class="profile-following-grid box-shadow" key={i}>
-                <UserInfo />
-
-                <a href="#" class="btn btn-default justify-center flex-center"><i class="fa fa-star star"></i></a>        
-            </div>)
-      })
     return (
       <div className="test">
         <div class="profile-following" >
-            {people}
+            <div class="profile-following-grid box-shadow" >
+                <UserInfo userName={this.props.userName} secondaryText={this.props.secondaryText}/>
+
+                <a href="#" class="btn btn-default justify-center flex-center"><i class="fa fa-star star"></i></a>        
+            </div>
         </div>
       </div>
     );

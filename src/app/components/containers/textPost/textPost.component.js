@@ -16,8 +16,8 @@ class TextPost extends Component {
   render() {
     return (
       <div className="test">
-        <UserInfo />
-        <PostText />
+        <UserInfo userName={this.props.userName} secondaryText={this.props.secondaryText}/>
+        <PostText comment={this.props.comment} />
         <SocialIcons />
       </div>
     );
