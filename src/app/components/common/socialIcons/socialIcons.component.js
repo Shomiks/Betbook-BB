@@ -16,15 +16,15 @@ class SocialIcons extends Component {
         <div class="social-actions">
             <div class="social-actions--1 flex-center justify-center">
                 <a href="#" class="btn btn-default"><i class="fa fa-comment star"></i></a>
-                <span>2</span>
+                <span>{this.props.comments}</span>
             </div>
             <div class="social-actions--1 flex-center justify-center">
                 <a href="#" class="btn btn-default"><i class="fa fa-heart star"></i></a>
-                <span>2</span>
+                <span>{this.props.likes}</span>
             </div>
             <div class="social-actions--1 flex-center justify-center">
                 <a href="#" class="btn btn-default"><i class="fa fa-bookmark star"></i></a>
-                <span>2</span>
+                <span>{this.props.bookmarks}</span>
             </div>
             <div class="social-actions--1 flex-center justify-end">
                 <a href="#" class="btn btn-default"><i class="fa fa-share star"></i></a>

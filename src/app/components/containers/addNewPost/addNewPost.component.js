@@ -16,7 +16,7 @@ class CommentsOnPost extends Component {
   render() {
     return (
       <div className="test">
-        <UserInfo />
+        <UserInfo userName={this.props.userData.userName}/>
         <TypePost />
         <AddTicketToPost />
       </div>

@@ -18,7 +18,7 @@ class UserProfile extends Component {
             <a href="#" class="btn btn-default justify-end"><i class="fa fa-bookmark star"></i></a>
 
             <div class="individual-profile--details justify-center">
-              <UserInfo userName={this.props.userName} secondaryText={this.props.secondaryText}/>
+            <UserInfo userName={this.props.userData.userName} secondaryText={this.props.userData.secondaryText}/>
             </div>
 
             <a href="#" class="btn btn-default"><i class="fa fa-cog star"></i></a>

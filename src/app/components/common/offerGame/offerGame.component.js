@@ -7,14 +7,6 @@ class OfferGame extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        homeTeam: 'Burnley',
-        homeTeamPlace: 13,
-        stadium: 'Selhurst Park',
-        guestTeam: 'Bournemouth',
-        guestTeamPlace: 18,
-        homeTeamWin: 2.39,
-        draw: 3.50,
-        guestTeamWin: 3.10
     }
   }
 
@@ -24,21 +16,21 @@ class OfferGame extends Component {
       <div className="test">
         <div class="play margin-top">
             <div class="play-grid">
-                <div class="play-grid--1 justify-center">
+                <div class="play-grid--1">
                     <img src="burnley.png" class="team-img"></img>
-                    <p class="team-name">{this.state.homeTeam}</p>
-                    <p class="team-place">{this.state.homeTeamPlace}th place</p>
+                    <p class="team-name">burnley</p>
+                    <p class="team-place">13th place</p>
                     <p class="team-table">Table</p>
                 </div>
-                <div class="play-grid--2 justify-center">
+                <div class="play-grid--2">
                     <p class="vs">vs.</p>
                     <p class="play-date">13.05.2018</p>
-                    <p class="play-stadium">{this.state.stadium}</p>
+                    <p class="play-stadium"></p>
                 </div>
-                <div class="play-grid--3">
+                <div class="play-grid--1">
                     <img src="burnley.png" class="team-img"></img>
-                    <p class="team-name">{this.state.guestTeam}</p>
-                    <p class="team-place">{this.state.guestTeamPlace}th place</p>
+                    <p class="team-name">Bournemouth</p>
+                    <p class="team-place">13thplace</p>
                     <p class="team-table">Lineups</p>
                 </div>
             </div>
@@ -54,7 +46,7 @@ class OfferGame extends Component {
                             <p class="tip">1</p>
                         </div>
                         <div class="tip-num-grid flex-center">
-                            <p class="tip-num">{this.state.homeTeamWin}</p>
+                            <p class="tip-num"></p>
                         </div>
                     </div>
                     <div class="coefficient-grid--1">
@@ -62,7 +54,7 @@ class OfferGame extends Component {
                             <p class="tip">X</p>
                         </div>
                         <div class="tip-num-grid flex-center">
-                            <p class="tip-num">{this.state.draw}</p>
+                            <p class="tip-num"></p>
                         </div>
                     </div>
                     <div class="coefficient-grid--1">
@@ -70,7 +62,7 @@ class OfferGame extends Component {
                             <p class="tip">2</p>
                         </div>
                         <div class="tip-num-grid flex-center">
-                            <p class="tip-num">{this.state.guestTeamWin}</p>
+                            <p class="tip-num"></p>
                         </div>
                     </div>
                 </div>

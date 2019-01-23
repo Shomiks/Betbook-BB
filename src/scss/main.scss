@@ -477,7 +477,7 @@
     }
 
     .tip-num {
-      padding-left: 10px;
+      padding-left: 18px;
       color: #47B1E4;
       font-size: 12px;
     }
@@ -515,6 +515,7 @@
       grid-template-rows: 1fr;
       grid-template-columns: repeat(3, 1fr);
       box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+      background-color: #fafafa;
 
       &--1 {
         grid-row: 1/2;
@@ -1305,6 +1306,10 @@
           grid-template-columns: 1fr;
           grid-template-rows: 3fr 1fr 1fr;
         }
+      }
+
+      .gray {
+        background-color: #fafafa;
       }
 
 }

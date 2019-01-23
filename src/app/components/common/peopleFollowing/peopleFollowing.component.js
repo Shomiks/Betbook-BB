@@ -13,14 +13,16 @@ class PeopleFollowing extends Component {
 
 
   render() {
+    const people = this.props.people.map(item => {
+      return <div class="profile-following-grid box-shadow" key={item.id}>
+        <UserInfo userName={item.userName} secondaryText={item.secondaryText}/>
+        <a href="#" class="btn btn-default justify-center flex-center"><i class="fa fa-star star"></i></a>        
+      </div>
+    })
     return (
       <div className="test">
         <div class="profile-following" >
-            <div class="profile-following-grid box-shadow" >
-                <UserInfo userName={this.props.userName} secondaryText={this.props.secondaryText}/>
-
-                <a href="#" class="btn btn-default justify-center flex-center"><i class="fa fa-star star"></i></a>        
-            </div>
+          {people}
         </div>
       </div>
     );

@@ -14,10 +14,15 @@ class CommentsOnPost extends Component {
 
 
   render() {
+    console.log(this.props.commentData)
+    const comments = this.props.commentData.map(item => {
+      return ([<UserInfo key={item.userData.id} userName={item.userData.userName} secondaryText={item.comment.secondaryText}/>,
+      <PostText key={item.comment.id} textPost={item.comment.textPost} />])
+    })
     return (
       <div className="test">
-        <UserInfo userName={this.props.userName} secondaryText={this.props.secondaryText}/>
-        <PostText comment={this.props.comment}/>
+        <div className='margin-top'>{comments}</div>
+        
       </div>
     );
   }

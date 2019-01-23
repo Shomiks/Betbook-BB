@@ -18,10 +18,10 @@ class LeaderboardsButtons extends Component {
             <div class="leaderboards-grid--1"></div>
             <div class="leaderboards-grid--2 flex-center">
                 <div class="button1 flex-center">
-                        <a href="#" class="btn btn-default btn-borders1">{this.props.btnLeft}</a>
+                        <a href="#" class="btn btn-default btn-borders1">{this.props.btnData.btnLeft}</a>
                 </div>
                 <div class="button2 flex-center">
-                    <a href="#" class="btn btn-default btn-borders2">{this.props.btnRight}</a> 
+                    <a href="#" class="btn btn-default btn-borders2">{this.props.btnData.btnRight}</a> 
                 </div>
             </div>
             <div class="leaderboards-grid--3"></div>

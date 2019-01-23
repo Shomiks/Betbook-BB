@@ -15,18 +15,18 @@ class LeaderboardsList extends Component {
 
 
   render() {
-
+    const list = this.props.list.map(item => {
+      return <div class="leaderboards-list-grid" key={item.id}>
+            <p class="list-place flex-center justify-end">{item.place}.</p>
+            <UserInfo userName={item.userName} secondaryText={item.secondaryText} />
+            <p class="precent flex-center justify-end">{item.percent}%</p>
+          </div>
+    })
 
     return (
       <div className="test">
         <div class="leaderboards-list">
-          <div class="leaderboards-list-grid">
-            <p class="list-place flex-center justify-end">{this.props.listPlace}.</p>
-
-            <UserInfo userName={this.props.userName} secondaryText={this.props.secondaryText} />
-
-            <p class="precent flex-center justify-end">{this.props.percent}%</p>
-          </div>
+          {list}
         </div>
       </div>
     );

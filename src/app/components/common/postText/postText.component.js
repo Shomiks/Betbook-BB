@@ -14,7 +14,7 @@ class PostText extends Component {
     return (
         <div className="test">
             <div class="status-post">
-                <p class="post">{this.props.comment}</p>
+                <p class="post">{this.props.textPost}</p>
             </div>
         </div>
     );

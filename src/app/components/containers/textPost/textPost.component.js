@@ -14,11 +14,19 @@ class TextPost extends Component {
 
 
   render() {
+    console.log(this.props.userData);
+
+    const data = this.props.userData.map(item => {
+      return ([
+        <UserInfo userName={item.personData.userName} secondaryText={item.statusPost.postSecondaryText}/>,
+        <PostText textPost={item.statusPost.textPost} />,
+        <SocialIcons comments={item.statusIcons.comments} likes={item.statusIcons.likes} bookmarks={item.statusIcons.bookmarks}/>
+      ])
+    })
+    
     return (
       <div className="test">
-        <UserInfo userName={this.props.userName} secondaryText={this.props.secondaryText}/>
-        <PostText comment={this.props.comment} />
-        <SocialIcons />
+        {data}
       </div>
     );
   }
