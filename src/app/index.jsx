@@ -21,7 +21,7 @@ import OfferSport from './modules/offerSport/offerSport.component';
 
 class App extends React.Component {
     constructor(props) {
-        window.addEventListener("hashchange", ()=>{
+        window.addEventListener("hashchange", () => {
             this.forceUpdate();
         }, false);
         super();
@@ -39,17 +39,132 @@ class App extends React.Component {
                         <OfferGameDone />
                     </div>
                 );
+            case 'socialtimeline':
+                return(
+                    <div className="home">
+                        <SocialTimeline />
+                    </div>
+                );
+            case 'socialcommentonpost' :
+                return(
+                    <div className="home">
+                        <SocialCommentOnPost />
+                    </div>
+                );
+            case 'socialnewpost' :
+                return(
+                    <div className="home">
+                        <SocialNewPost />
+                    </div>
+                );
+            case 'socialnewpostticket' :
+                return(
+                    <div className="home">
+                        <SocialNewPostTicket />
+                    </div>
+                );
+            case 'socialleaderboards' :
+                return(
+                    <div className="home">
+                        <SocialLeaderboards />
+                    </div>
+                );
+            case 'betslip' : 
+                return (
+                   <div className="home">
+                        <BetSlip />
+                    </div> 
+                );
+            case 'offerleague' :
+                return (
+                    <div className="home">
+                        <OfferLeague />
+                    </div>
+                );
+            case 'offerlevel':
+                return (
+                    <div className="home">
+                        <OfferLevel />
+                    </div>
+                );
+            case 'profilefollowing' :
+                return(
+                    <div className="home">
+                        <ProfileFollowing />
+                    </div>
+                );
+            case 'profileposts':
+                return (
+                    <div className="home">
+                        <ProfilePosts />
+                    </div>
+                );
+            case 'profiletickets':
+                return (
+                    <div className="home">
+                        <ProfileTickets />
+                    </div>
+                );
+            case 'mytickets':
+                return (
+                    <div className="home">
+                        <MyTickets />
+                    </div>
+                );
+            case 'offersport':
+                return (
+                    <div className="home">
+                        <OfferSport />
+                    </div>
+                );
             default:
                 return (
                     <ul>
                         <li>
                             <a href='#offergamedone'>OfferGameDone</a>
                         </li>
+                        <li>
+                            <a href='#socialtimeline'>SocialTimeLine</a>
+                        </li>
+                        <li>
+                            <a href='#socialcommentonpost'>SocialCommentOnPost</a>
+                        </li>
+                        <li>
+                            <a href='#socialnewpost'>SocialNewPost</a>
+                        </li>
+                        <li>
+                            <a href='#socialnewpostticket'>SocialNewPostTicket</a>
+                        </li>
+                        <li>
+                            <a href='#socialleaderboards'>SocialLeaderboards</a>
+                        </li>
+                        <li>
+                            <a href='#betslip'>BetSlip</a>
+                        </li>
+                        <li>
+                            <a href='#offerleague'>OfferLeague</a>
+                        </li>
+                        <li>
+                            <a href='#offerlevel'>OfferLevel</a>
+                        </li>
+                        <li>
+                            <a href='#profilefollowing'>ProfileFollowing</a>
+                        </li>
+                        <li>
+                            <a href='#profileposts'>ProfilePosts</a>
+                        </li>
+                        <li>
+                            <a href='#profiletickets'>ProfileTickets</a>
+                        </li>
+                        <li>
+                            <a href='#mytickets'>MyTickets</a>
+                        </li>
+                        <li>
+                            <a href='#offersport'>OfferSport</a>
+                        </li>
                     </ul>
                 );
         }
-
-
     }
 }
 
