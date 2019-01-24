@@ -20,12 +20,36 @@ import OfferSport from './modules/offerSport/offerSport.component';
 
 
 class App extends React.Component {
+    constructor(props) {
+        window.addEventListener("hashchange", ()=>{
+            this.forceUpdate();
+        }, false);
+        super();
+    }
+
     render() {
-        return (
-            <div className="home">
-                <OfferGameDone />
-            </div>
-        );
+
+        const hash = window.location.hash.replace('#','').toLocaleLowerCase();
+
+
+        switch(hash){
+            case 'offergamedone':
+                return (
+                    <div className="home">
+                        <OfferGameDone />
+                    </div>
+                );
+            default:
+                return (
+                    <ul>
+                        <li>
+                            <a href='#offergamedone'>OfferGameDone</a>
+                        </li>
+                    </ul>
+                );
+        }
+
+
     }
 }
 
