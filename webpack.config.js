@@ -14,7 +14,8 @@ var config = {
   watch: true,
   output: {
     path: BUILD_DIR,
-    filename: "client.min.js"
+    filename: "client.min.js",
+    publicPath: '/'
   },
 
   module : {
@@ -52,6 +53,7 @@ var config = {
   devServer: {
     host: 'localhost', // Defaults to `localhost`
     port: 3000, // Defaults to 8080,
+    historyApiFallback: true,
     proxy: {
       '^/api/*': {
         target: 'http://localhost:3000/',

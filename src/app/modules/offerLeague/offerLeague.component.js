@@ -11,23 +11,24 @@ class OfferLeague extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: DataProvider.getMatches1()
+      data: DataProvider.getMatches1(),
+      header: DataProvider.leagueHeader()
     }
-
-    console.log(this.state);
   }
 
 
   render() {
-    const table = [];
-
-    this.state.data.forEach(item => {
-      table.push( <LeagueTable key = {"leaguetable_" + item.id} data={item} / >)
+    const table = this.state.data.map(item => {
+      return <LeagueTable key = {"leaguetable_" + item.id} data={item} />
     });
+    
+    const header = this.state.header.map(item => {
+      return <HeaderIcons key={'headericons_' + item.id} headerData={item} />
+    })
 
     return (
       <div className="test">
-        <HeaderIcons title="Premier League" />
+        {header}
         <div className='margin-top margin-bottom'>
         {table}
         </div>

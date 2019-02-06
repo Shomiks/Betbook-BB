@@ -223,6 +223,8 @@ class Following {
 
 class OfferLevel1 {
     sports = null;
+    headerIcons = null;
+    id = null; 
 
     constructor(config) {
         const keys = Object.keys(config);
@@ -247,6 +249,8 @@ class Sport {
 
 class OfferLevel2 {
     countries = null;
+    headerIcons = null;
+    id = null;
 
     constructor(config) {
         const keys = Object.keys(config);
@@ -271,6 +275,8 @@ class Country {
 
 class OfferLevel3 {
     leagues = null;
+    headerIcons = null;
+    id = null;
 
     constructor(config) {
         const keys = Object.keys(config);
@@ -298,6 +304,7 @@ class MatchDetails {
     matchDate = null;
     homeTeam = null;
     guestTeam = null;
+    id = null;
 
     constructor(config) {
         const keys = Object.keys(config);
@@ -398,6 +405,59 @@ class AlternativeGoalsTips {
     }
 }
 
+class OnlineTicket {
+    onlineMatches = null;
+    userBalance = null;
+    ticketInfo = null;
+
+    constructor(config) {
+        const keys = Object.keys(config);
+        keys.forEach(key => {
+            this[key] = config[key]
+        });
+    }
+}
+
+class OnlineMatch {
+    id = null;
+    winnerTeam = null;
+    fullTimeResult = null;
+    match = null;
+    coefficient = null;
+
+    constructor(config) {
+        const keys = Object.keys(config);
+        keys.forEach(key => {
+            this[key] = config[key]
+        });
+    }
+}
+
+class UserBalance {
+    id = null;
+    balance = null;
+
+    constructor(config) {
+        const keys = Object.keys(config);
+        keys.forEach(key => {
+            this[key] = config[key]
+        });
+    }
+}
+
+class TicketInfo {
+    id = null;
+    folds = null;
+    coefficientSum = null;
+
+    constructor(config) {
+        const keys = Object.keys(config);
+        keys.forEach(key => {
+            this[key] = config[key]
+        });
+    }
+}
+
 export {
     MatchInfo,
     HeaderButtons,
@@ -428,5 +488,9 @@ export {
     Tips,
     FullTimeTips,
     GoalsTips,
-    AlternativeGoalsTips
+    AlternativeGoalsTips,
+    OnlineTicket,
+    OnlineMatch,
+    UserBalance,
+    TicketInfo
 };

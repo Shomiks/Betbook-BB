@@ -28,7 +28,11 @@ import {
     Tips,
     FullTimeTips,
     GoalsTips,
-    AlternativeGoalsTips
+    AlternativeGoalsTips,
+    OnlineTicket,
+    OnlineMatch,
+    UserBalance,
+    TicketInfo
 } from "./entities"
 import uuid from 'uuid';
 
@@ -52,6 +56,18 @@ class DataProvider {
         })
 
         return table;
+    }
+
+    static leagueHeader(){
+        const header = [];
+        header.push(
+            new HeaderIconsData({
+                id: uuid.v4(),
+                title: 'Premier League'
+            })
+        )
+
+        return header;
     }
 
     static getHeaderButtonsTimeline(){
@@ -422,6 +438,7 @@ class DataProvider {
         const sports = [];
         sports.push(
             new OfferLevel1({
+                id: uuid.v4(),
                 headerIcons: new HeaderIconsData({
                     id: uuid.v4(),
                     title: 'Bet Offer'
@@ -454,6 +471,7 @@ class DataProvider {
         const countries = [];
         countries.push(
             new OfferLevel2({
+                id: 'football',
                 headerIcons: new HeaderIconsData({
                     id: uuid.v4(),
                     title: 'Football'
@@ -515,6 +533,7 @@ class DataProvider {
         const countryLeagues = [];
         countryLeagues.push(
             new OfferLevel3({
+                id: 'england',
                 headerIcons: new HeaderIconsData({
                     id: uuid.v4(),
                     title: 'England'
@@ -571,6 +590,7 @@ class DataProvider {
         const matches = [];
         matches.push(
             new MatchDetails({
+                id: uuid.v4(),
                 headerIcons: new HeaderIconsData({
                     id: uuid.v4(),
                     iconLeft: '',
@@ -635,6 +655,61 @@ class DataProvider {
         return matchTips;
     }
     
+    static getOnlineTicket(){
+        const tikcetInfo = [];
+        tikcetInfo.push(
+            new OnlineTicket({
+                onlineMatches: [
+                    new OnlineMatch({
+                        id: uuid.v4(),
+                        winnerTeam: 'Crystal Palace',
+                        fullTimeResult: 'Fulltime Result',
+                        match: 'Crystal Palace vs West Brom',
+                        coefficient: 3.50
+                    }),
+                    new OnlineMatch({
+                        id: uuid.v4(),
+                        winnerTeam: 'Crystal Palace',
+                        fullTimeResult: 'Fulltime Result',
+                        match: 'Crystal Palace vs West Brom',
+                        coefficient: 3.50
+                    }),
+                    new OnlineMatch({
+                        id: uuid.v4(),
+                        winnerTeam: 'Crystal Palace',
+                        fullTimeResult: 'Fulltime Result',
+                        match: 'Crystal Palace vs West Brom',
+                        coefficient: 3.50
+                    }),
+                    new OnlineMatch({
+                        id: uuid.v4(),
+                        winnerTeam: 'Crystal Palace',
+                        fullTimeResult: 'Fulltime Result',
+                        match: 'Crystal Palace vs West Brom',
+                        coefficient: 3.50
+                    }),
+                    new OnlineMatch({
+                        id: uuid.v4(),
+                        winnerTeam: 'Crystal Palace',
+                        fullTimeResult: 'Fulltime Result',
+                        match: 'Crystal Palace vs West Brom',
+                        coefficient: 3.50
+                    }),
+                ],
+                userBalance: new UserBalance({
+                    id: uuid.v4(),
+                    balance: 2863
+                }),
+                ticketInfo: new TicketInfo({
+                    id: uuid.v4(),
+                    folds: 7,
+                    coefficientSum: 34.76
+                })
+            })
+        )
+
+        return tikcetInfo;
+    }
 }
 
 export {
