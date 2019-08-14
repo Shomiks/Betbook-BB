@@ -99,8 +99,8 @@ class Match_Details extends React.Component {
             }
         };
     }
-    renderGameTip = (label, game, tip) => {
-        let className = 'bid-1-field';
+    renderGameTip = (label, game, tip, bidfield) => {
+        let className = bidfield;
         if (this.state.results && this.state.results[game + '_' + tip]) {
             className += ' green';
         }
@@ -160,9 +160,9 @@ class Match_Details extends React.Component {
                             </div>
                         </div>
                         <div className='col-3-bid-field'>
-                            {this.renderGameTip('1', 'game1', '1')}
-                            {this.renderGameTip('X', 'game1', 'x')}
-                            {this.renderGameTip('2', 'game1', '2')}
+                            {this.renderGameTip('1', 'game1', '1', 'bid-1-field')}
+                            {this.renderGameTip('X', 'game1', 'x', 'bid-2-field')}
+                            {this.renderGameTip('2', 'game1', '2', 'bid-1-field')}
                         </div>
                     </div>
                     <div className='match-goals-field'>
@@ -170,18 +170,17 @@ class Match_Details extends React.Component {
                             <div className='ft_text_position'><span className='text12'>Match Goals</span>
                             </div>
                         </div>
-                        <div className='col-3-bid-field'
-                             style={{borderBottom: '0.5px solid #cfcfcf'}}>
+                        <div className='col-3-bid-field'>
 
-                            {this.renderGameTip('0-1', 'game2', '1')}
-                            {this.renderGameTip('0-2', 'game2', '2')}
-                            {this.renderGameTip('0-3', 'game2', '3')}
+                            {this.renderGameTip('0-1', 'game2', '1', 'bid-1-field')}
+                            {this.renderGameTip('0-2', 'game2', '2', 'bid-2-field')}
+                            {this.renderGameTip('0-3', 'game2', '3', 'bid-1-field')}
                         </div>
                         <div className='col-4-bid-field'>
-                            {this.renderGameTip('2+HT', 'game2', '2ht')}
-                            {this.renderGameTip('2+FT', 'game2', '2ft')}
-                            {this.renderGameTip('3+FT', 'game2', '3ft')}
-                            {this.renderGameTip('4+FT', 'game2', '4ft')}
+                            {this.renderGameTip('2+HT', 'game2', '2ht', 'bid-1-field')}
+                            {this.renderGameTip('2+FT', 'game2', '2ft', 'bid-2-field')}
+                            {this.renderGameTip('3+FT', 'game2', '3ft', 'bid-3-field')}
+                            {this.renderGameTip('4+FT', 'game2', '4ft', 'bid-1-field')}
                         </div>
                     </div>
                     <div className='both-teams-goals-field'>
@@ -190,8 +189,8 @@ class Match_Details extends React.Component {
                             </div>
                         </div>
                         <div className='col-2-bid-field'>
-                            {this.renderGameTip('GG', 'game3', 'gg')}
-                            {this.renderGameTip('GG3+', 'game3', 'gg3p')}
+                            {this.renderGameTip('GG', 'game3', 'gg', 'bid-2-field')}
+                            {this.renderGameTip('GG3+', 'game3', 'gg3p', 'bid-2-field')}
                         </div>
                     </div>
                     <div className='ht-ft-result-field'>
@@ -200,19 +199,19 @@ class Match_Details extends React.Component {
                             </div>
                         </div>
                         <div className='col-3-bid-field'>
-                            {this.renderGameTip('1-1', 'game4', '11')}
-                            {this.renderGameTip('1-X', 'game4', '1x')}
-                            {this.renderGameTip('1-2', 'game4', '12')}
+                            {this.renderGameTip('1-1', 'game4', '11', 'bid-1-field')}
+                            {this.renderGameTip('1-X', 'game4', '1x', 'bid-2-field')}
+                            {this.renderGameTip('1-2', 'game4', '12', 'bid-1-field')}
                         </div>
                         <div className='col-3-bid-field'>
-                            {this.renderGameTip('X-1', 'game4', 'x1')}
-                            {this.renderGameTip('X-X', 'game4', 'xx')}
-                            {this.renderGameTip('X-2', 'game4', 'x2')}
+                            {this.renderGameTip('X-1', 'game4', 'x1', 'bid-1-field')}
+                            {this.renderGameTip('X-X', 'game4', 'xx', 'bid-2-field')}
+                            {this.renderGameTip('X-2', 'game4', 'x2', 'bid-1-field')}
                         </div>
                         <div className='col-3-bid-field'>
-                            {this.renderGameTip('2-1', 'game4', '21')}
-                            {this.renderGameTip('2-X', 'game4', '2x')}
-                            {this.renderGameTip('2-2', 'game4', '22')}
+                            {this.renderGameTip('2-1', 'game4', '21', 'bid-1-field')}
+                            {this.renderGameTip('2-X', 'game4', '2x', 'bid-2-field')}
+                            {this.renderGameTip('2-2', 'game4', '22', 'bid-1-field')}
                         </div>
                     </div>
                 </div>
