@@ -99,12 +99,6 @@ class Week_games_Listing extends React.Component {
         }
     }
 
-    componentDidMount() {
-        fetch()
-            .then(results => {
-                return results.json();
-            })
-    }
 
     render() {
 

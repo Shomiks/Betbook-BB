@@ -10,6 +10,7 @@ import Header from './js/components/header';
 import Footer from './js/components/footer';
 import MatchShort from "./js/components/match_short";
 import Week_games_Listing from "./js/tickets/Week_games_Listing";
+import Home_screen from "./js/tickets/home_screen";
 
 
 
@@ -51,7 +52,7 @@ class App extends React.Component {
     }
     else if(this.state.hash == '#3'){
       headerProps.title='Listing';
-      stepComponent = <Ticket_Listing/>;
+      stepComponent = <Home_screen/>;
     }
     else if(this.state.hash == '#4'){
       headerProps.title='Home vs. Away';
