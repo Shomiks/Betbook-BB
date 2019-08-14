@@ -11,6 +11,7 @@ import Footer from './js/components/footer';
 import MatchShort from "./js/components/match_short";
 import Week_games_Listing from "./js/tickets/Week_games_Listing";
 import Home_screen from "./js/tickets/home_screen";
+import Profile_Tickets from "./js/tickets/Profile_Tickets";
 
 
 
@@ -62,6 +63,11 @@ class App extends React.Component {
       headerProps.title='Competition';
       headerProps.competition= true;
       stepComponent = <Week_games_Listing/>;
+    }
+    else if(this.state.hash == '#6'){
+      return <div className='App'>
+        <Profile_Tickets/>
+      </div>;
     }
 
     return (
