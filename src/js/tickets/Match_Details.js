@@ -143,6 +143,7 @@ class Match_Details extends React.Component {
                     </div>
                     <div className='place-field'><span className='text10'>1st place</span></div>
                 </div>
+                <div className='md_league-week-details'><span className='text12'>Srbija, Prva Liga, kolo : 3</span></div>
                 <div className='md_date-time-vs-field'>
                     <div className={this.state.results == null ? 'vs-datetime-field' : 'hidden'}><span
                         className='text18'>VS</span>
@@ -188,7 +189,7 @@ class Match_Details extends React.Component {
                         <div className='ft_text_position'><span className='text12'>Match Goals</span>
                         </div>
                     </div>
-                    <div className='col-3-bid-field'>
+                    <div className='col-3-bid-field' style={{borderBottom: '0.5px solid #cfcfcf'}}>
 
                         {this.renderGameTip('0-1', 'game2', '1', 'bid-1-field')}
                         {this.renderGameTip('0-2', 'game2', '2', 'bid-2-field')}
@@ -216,17 +217,17 @@ class Match_Details extends React.Component {
                         <div className='ft_text_position'><span className='text12'>Half / Full Time Result</span>
                         </div>
                     </div>
-                    <div className='col-3-bid-field'>
+                    <div className='col-3-bid-field' style={{borderBottom: '1px solid #cfcfcf'}}>
                         {this.renderGameTip('1-1', 'game4', '11', 'bid-1-field')}
                         {this.renderGameTip('1-X', 'game4', '1x', 'bid-2-field')}
                         {this.renderGameTip('1-2', 'game4', '12', 'bid-1-field')}
                     </div>
-                    <div className='col-3-bid-field'>
+                    <div className='col-3-bid-field' style={{borderBottom: '1px solid #cfcfcf'}}>
                         {this.renderGameTip('X-1', 'game4', 'x1', 'bid-1-field')}
                         {this.renderGameTip('X-X', 'game4', 'xx', 'bid-2-field')}
                         {this.renderGameTip('X-2', 'game4', 'x2', 'bid-1-field')}
                     </div>
-                    <div className='col-3-bid-field'>
+                    <div className='col-3-bid-field' style={{borderBottom: '1px solid #cfcfcf'}}>
                         {this.renderGameTip('2-1', 'game4', '21', 'bid-1-field')}
                         {this.renderGameTip('2-X', 'game4', '2x', 'bid-2-field')}
                         {this.renderGameTip('2-2', 'game4', '22', 'bid-1-field')}

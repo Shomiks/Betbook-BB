@@ -1,0 +1,64 @@
+.betbook_screen {
+  height: 100%;
+  width: 100%;
+  background-color: #FFFFFF;
+  position: relative;
+  text-align: center;
+  display: block;
+
+  .main-content {
+    position: relative;
+    padding-top: 50px;
+    overflow: scroll;
+    margin-bottom: 4px;
+    padding-bottom: 50px;
+
+    .hs_league-week-header {
+      position: relative;
+      display: block;
+      height: 100%;
+      width: 100%;
+      border-top: 0.5px solid #BBC2CA;
+      border-bottom: 0.5px solid #BBC2CA;
+      background-color: #b9c1c7;
+      .text17 {
+        line-height: 2;
+      }
+
+      .hs_league-tittle {
+        position: relative;
+        display: inline-block;
+        height: 35px;
+
+
+      }
+
+      .hs_chevron {
+        position: absolute;
+        right: 0;
+        margin-right: 5%;
+        display: inline-block;
+        margin-top: 2px;
+      }
+    }
+
+    .active-bids-field {
+      position: relative;
+      display: block;
+      width: 100%;
+    }
+
+    .previous-bids-field {
+      position: relative;
+      display: block;
+      width: 100%;
+    }
+
+    .bids-title-field {
+      height: 30px;
+      width: 100%;
+      padding-top: 10px;
+      background-color: #FFF;
+    }
+  }
+}
