@@ -49,24 +49,25 @@ class Match_Details extends React.Component {
                 game1_x: 1.5,
                 game1_1: 1.5,
                 id_competition: 3,
-                id_week: 7
+                id_week: 7,
+                upcoming:true
             },
             results: {
                 id: 5,
                 match_id: 1,
                 game1_1: false,
                 game1_x: false,
-                game1_2: false,
+                game1_2: true,
                 game2_1: false,
                 game2_2: false,
                 game2_3: false,
-                game2_2ht: false,
-                game2_2ft: false,
-                game2_3ft: false,
-                game2_4ft: false,
-                game3_gg: false,
-                game3_gg3p: false,
-                game4_22: false,
+                game2_2ht: true,
+                game2_2ft: true,
+                game2_3ft: true,
+                game2_4ft: true,
+                game3_gg: true,
+                game3_gg3p: true,
+                game4_22: true,
                 game4_2x: false,
                 game4_21: false,
                 game4_x2: false,
@@ -79,14 +80,14 @@ class Match_Details extends React.Component {
                 goals_away_ht: 0,
                 goals_home_ft: 2,
                 goals_away_ft: 3,
-                finished: true,
-                current_min: 90,
+                finished: false,
+                current_min: 90
             },
             ticket: {
                 id: 16,
                 user_id: 2,
                 match_id: 1,
-                game1_tip: "2",
+                game1_tip: "x",
                 game2_tip: "2",
                 game3_tip: "gg",
                 game4_tip: "22",
@@ -104,16 +105,23 @@ class Match_Details extends React.Component {
     renderGameTip = (label, game, tip, bidfield) => {
         let className = bidfield;
         if (this.state.results && this.state.results[game + '_' + tip]) {
-            className += ' green';
+            className += ' won';
         }
         if (this.state.ticket && this.state.ticket[game + '_tip'] == tip) {
             className += ' bided';
         }
+        if(this.state.ticket[game + '_tip'] == tip && this.state.results.finished == true){
+            if(className.includes('won')){
+                className += ' green'
+            }
+           else className += ' red'
+        }
+
         return <div className={className}>
             <div className='col-3_game-field'><span
-                className='text12'>{label}</span></div>
+                className={this.state.ticket[game + '_tip'] == tip ? 'text12-white' : 'text12'}>{label}</span></div>
             <div className='col-3_bid-field'><span
-                className='text12'>{this.state.match[game + '_' + tip]}</span></div>
+                className={this.state.ticket[game + '_tip'] == tip ? 'text12-white' : 'text12'}>{this.state.match[game + '_' + tip]}</span></div>
         </div>
     }
 
@@ -142,12 +150,12 @@ class Match_Details extends React.Component {
                     <div className={this.state.results != null ?
                         'vs-datetime-field-result' :
                         'hidden'}>
-                        <span className='text25'>{this.state.results != null ? this.state.results.goals_home_ft : ""} : {this.state.results != null ? this.state.results.goals_away_ft : ""}</span>
-                        <div><span className='text12'>({this.state.results != null ? this.state.results.goals_home_ht : ""} : {this.state.results != null ? this.state.results.goals_away_ht : ""})</span></div>
+                        <span className='text25'>{this.state.match.upcoming == false ? this.state.results.goals_home_ft : ""} : {this.state.match.upcoming == false ? this.state.results.goals_away_ft : ""}</span>
+                        <div><span className='text12'>({this.state.match.upcoming == false ? this.state.results.goals_home_ht : ""} : {this.state.match.upcoming == false ? this.state.results.goals_away_ht : ""})</span></div>
                     </div>
                     <div
-                        className={(this.state.results != null && this.state.results.finished == false) ? 'minuteLive' : 'hidden'}><span
-                        className={(this.state.results != null && this.state.results.finished == false) ? 'text18' : 'hidden'}>'{}<br/><span
+                        className={(this.state.match.upcoming == false && this.state.results.finished == false) ? 'minuteLive' : 'hidden'}><span
+                        className={(this.state.match.upcoming == false && this.state.results.finished == false) ? 'text18' : 'hidden'}>'{this.state.results.current_min}<br/><span
                         className='text18-red-field'>* LIVE *</span></span></div>
                     <div className='time-date-field'><span
                         className={(this.state.results.finished == true) ? 'text10' : 'hidden'}>{this.state.match.dateTime}</span>

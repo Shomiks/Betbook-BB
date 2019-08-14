@@ -7,7 +7,7 @@ class MatchShort extends React.Component {
         super(props);
 
         this.state = {
-            game:2
+            game:2,
         }
     }
     render() {
