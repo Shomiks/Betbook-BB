@@ -1,0 +1,35 @@
+.betbook_screen {
+  height: 100%;
+  width: 100%;
+  background-color: #FFFFFF;
+  position: relative;
+  text-align: center;
+  display: block;
+
+  .main-content {
+    position: relative;
+    padding-top: 50px;
+    overflow: scroll;
+    margin-bottom: 4px;
+    padding-bottom: 50px;
+
+    .match-field {
+      position: relative;
+      display: block;
+      box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.2);
+      background-color: #FFF;
+      height: 60px;
+      width: 100%;
+
+      .teams-field{
+        position: relative;
+        width: 40%;
+        height: 100%;
+      }
+
+      .week-field {
+
+      }
+    }
+  }
+}

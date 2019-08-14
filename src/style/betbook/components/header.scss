@@ -1,0 +1,72 @@
+.text14 {
+  color: #0A0A0A;
+  font-family: "SF Display";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 60px;
+}
+
+.rectangle_header {
+  height: 50px;
+  width: 100%;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+  position: fixed;
+  text-align: center;
+  top: 0;
+  z-index: 1;
+
+  .chevron_header {
+    background-size: cover;
+    background-image: url("../assets/images/arrow_left.PNG");
+    width: 25px;
+    height: 34px;
+    position: absolute;
+    display: block;
+    left: 0;
+    margin-left: 13px;
+    top: 10px;
+    cursor: pointer;
+
+    .chevron_text {
+      height: 21px;
+      width: 12px;
+      color: #0A0A0A;
+      font-family: "SF Display";
+      font-size: 21px;
+      font-weight: 500;
+    }
+  }
+
+  .sport {
+    position: relative;
+    display: block;
+    vertical-align: middle;
+    text-align: center;
+    padding-top: 20px;
+
+
+    .text_align {
+      position: relative;
+      display: block;
+      vertical-align: middle;
+    }
+
+  }
+
+  .calendar {
+    position: absolute;
+    display: block;
+    vertical-align: middle;
+    right: 0;
+    margin-right: 19.06px;
+    top: 0;
+    margin-top: 10px;
+  }
+
+
+}
+
+.hide{
+  display: none;
+}

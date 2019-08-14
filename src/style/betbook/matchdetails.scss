@@ -1,0 +1,137 @@
+.betbook_screen {
+  height: 100%;
+  width: 100%;
+  background-color: #FFFFFF;
+  position: relative;
+  text-align: center;
+  display: block;
+
+
+  .match-details-field {
+    height: 180px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+
+    .md_home-team-field {
+      height: 95px;
+      width: 100px;
+      position: relative;
+      display: inline-block;
+      background-color: #FFF;
+      margin-top: 15px;
+    }
+
+    .md_date-time-vs-field {
+      height: 100%;
+      width: 60px;
+      position: relative;
+      display: inline-block;
+
+      .vs-datetime-field-result {
+        margin-top: 35px;
+        position: relative;
+      }
+
+      .minuteLive {
+        margin-top: 25px;
+        position: relative;
+        display: block;
+        left: 50%;
+        margin-left: -60px;
+
+      }
+
+      .text18-red-field {
+        color: red;
+      }
+
+      .vs-datetime-field {
+        margin-top: 35px;
+
+        .vs-datetime-field-result {
+          margin-top: 35px;
+          visibility: visible;
+
+
+          &_result {
+            .vs-datetime-field-result {
+              visibility: hidden;
+            }
+          }
+        }
+      }
+
+      .time-date-field {
+        position: absolute;
+        bottom: 10px;
+        margin-bottom: 20px;
+        left: 50%;
+        margin-left: -25px;
+      }
+
+      .location-field {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        margin-left: -25px;
+
+      }
+    }
+
+    .md_away-team-field {
+      height: 95px;
+      width: 100px;
+      position: relative;
+      display: inline-block;
+      background-color: #FFF;
+      margin-top: 15px;
+    }
+
+
+    .place-field {
+      margin-top: 4px;
+    }
+  }
+
+  .scrolable-bids-field {
+
+    overflow: scroll;
+    margin-bottom: 50px;
+
+
+    .full-time-result-field {
+      width: 100%;
+      background-color: #FFF;
+    }
+
+    .match-goals-field {
+      width: 100%;
+
+    }
+
+    .both-teams-goals-field {
+      width: 100%;
+
+    }
+
+    .ht-ft-result-field {
+      width: 100%;
+    }
+  }
+
+  .green {
+    background-color: #7ED321;
+  }
+
+  .red {
+    background-color: #EC3B51;
+  }
+}
+
+
+.hidden {
+  display: none;
+}
+

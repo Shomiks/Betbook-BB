@@ -1,0 +1,400 @@
+@font-face {
+  font-family: "SF Display";
+  font-weight: 900;
+  src: url("https://sf.abarba.me/SF-UI-Display-Black.otf");
+}
+
+@font-face {
+  font-family: "SF Display";
+  font-weight: 700;
+  src: url("https://sf.abarba.me/SF-UI-Display-Bold.otf");
+}
+
+@font-face {
+  font-family: "SF Display";
+  font-weight: 800;
+  src: url("https://sf.abarba.me/SF-UI-Display-Heavy.otf");
+}
+
+@font-face {
+  font-family: "SF Display";
+  font-weight: 200;
+  src: url("https://sf.abarba.me/SF-UI-Display-Light.otf");
+}
+
+@font-face {
+  font-family: "SF Display";
+  font-weight: 500;
+  src: url("https://sf.abarba.me/SF-UI-Display-Medium.otf");
+}
+
+@font-face {
+  font-family: "SF Display";
+  font-weight: 400;
+  src: url("https://sf.abarba.me/SF-UI-Display-Regular.otf");
+}
+
+@font-face {
+  font-family: "SF Display";
+  font-weight: 600;
+  src: url("https://sf.abarba.me/SF-UI-Display-Semibold.otf");
+}
+
+@font-face {
+  font-family: "SF Display";
+  font-weight: 300;
+  src: url("https://sf.abarba.me/SF-UI-Display-Thin.otf");
+}
+
+@font-face {
+  font-family: "SF Display";
+  font-weight: 100;
+  src: url("https://sf.abarba.me/SF-UI-Display-Ultralight.otf");
+}
+
+html, body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+
+#root {
+  padding: 0;
+  margin: 0;
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+
+}
+
+
+.App {
+  padding: 0;
+  margin: 0;
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+}
+
+.text10 {
+  color: #0A0A0A;
+  font-family: "SF Display";
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.text12 {
+  color: #0A0A0A;
+  font-family: "SF Display";
+  font-size: 12px;
+  font-weight: 500;
+}
+.text12-white {
+  color: #FAFAFA;
+  font-family: "SF Display";
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.text14 {
+  color: #0A0A0A;
+  font-family: "SF Display";
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.text17 {
+  color: #0A0A0A;
+  font-family: "SF Display";
+  font-size: 17px;
+  font-weight: 500;
+
+}
+
+.text18 {
+  color: #0A0A0A;
+  font-family: "SF Display";
+  font-size: 18px;
+  font-weight: 500;
+
+}
+
+.text25 {
+  color: #0A0A0A;
+  font-family: "SF Display";
+  font-size: 25px;
+  font-weight: 500;
+
+}
+
+.main-titlle-field {
+  height: 20px;
+  width: 100%;
+  background-color: #FAFAFA;
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  border-bottom: 0.5px solid #cfcfcf;
+  border-top: 0.5px solid #cfcfcf;
+
+  .ft_text_position {
+    position: absolute;
+    left: 0;
+    margin-left: 4%;
+  }
+}
+
+.bid-1-field-finished {
+  height: 52px;
+  width: 33.3%;
+  background-color: darkgrey;
+  position: relative;
+  display: inline-block;
+  margin-top: 1px;
+  cursor: pointer;
+}
+
+.col-3-bid-field {
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  .text12-grey {
+    color: #FFF;
+  }
+
+  .bid-1-field {
+    height: 52px;
+    width: 33.3%;
+    background-color: #FAFAFA;
+    position: relative;
+    display: inline-block;
+    margin-top: 1px;
+    cursor: pointer;
+  }
+
+
+  .bid-2-field {
+    height: 52px;
+    width: 33.3%;
+    background-color: #FAFAFA;
+    position: relative;
+    display: inline-block;
+    margin-top: 1px;
+    border-left: 0.5px solid #cfcfcf;
+    border-right: 0.5px solid #cfcfcf;
+    cursor: pointer;
+  }
+
+  .bided {
+    background-color: #2F8FBD;
+  }
+
+  .col-3_game-field {
+    position: absolute;
+    left: 0;
+    margin-left: 11%;
+    display: inline-block;
+    margin-top: 15px;
+
+
+    .text12 {
+      color: #9B9B9B;
+    }
+
+    .text12-grey {
+      color: #CFD1D4;
+    }
+
+    .text12-white {
+      color: #FAFAFA;
+      font-weight: 400;
+    }
+
+  }
+
+  .col-3_bid-field {
+    position: relative;
+    display: inline-block;
+    margin-top: 15px;
+
+
+    .text12 {
+      color: #47B1E4;
+    }
+
+    .text12-white {
+      color: #FAFAFA;
+      font-weight: 400;
+    }
+
+
+  }
+}
+
+.col-4-bid-field {
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  .bid-1-field {
+    height: 52px;
+    width: 25%;
+    background-color: #FAFAFA;
+    position: relative;
+    display: inline-block;
+    margin-top: 1px;
+    cursor: pointer;
+
+  }
+
+  .bid-2-field {
+    height: 52px;
+    width: 25%;
+    background-color: #FAFAFA;
+    position: relative;
+    display: inline-block;
+    margin-top: 1px;
+    border-left: 0.5px solid #cfcfcf;
+    border-right: 0.5px solid #cfcfcf;
+    cursor: pointer;
+  }
+
+  .bid-3-field {
+    height: 52px;
+    width: 25%;
+    background-color: #FAFAFA;
+    position: relative;
+    display: inline-block;
+    margin-top: 1px;
+    border-right: 0.5px solid #cfcfcf;
+    cursor: pointer;
+
+  }
+
+  .col-4_game-field {
+    position: absolute;
+    left: 0;
+    margin-left: 11%;
+    display: inline-block;
+    margin-top: 15px;
+
+    .text12 {
+      color: #9B9B9B;
+    }
+
+    .text12-white {
+      color: #FAFAFA;
+      font-weight: 400;
+    }
+
+  }
+
+  .col-4_bid-field {
+    position: relative;
+    display: inline-block;
+    margin-top: 15px;
+    margin-left: 30px;
+
+    .text12 {
+      color: #47B1E4;
+    }
+
+    .text12-white {
+      color: #FAFAFA;
+      font-weight: 400;
+    }
+  }
+}
+
+.col-2-bid-field {
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  .bid-1-field {
+    height: 52px;
+    width: 50%;
+    background-color: #FAFAFA;
+    position: relative;
+    display: inline-block;
+    margin-top: 1px;
+    cursor: pointer;
+  }
+
+
+  .bid-2-field {
+    height: 52px;
+    width: 50%;
+    background-color: #FAFAFA;
+    position: relative;
+    display: inline-block;
+    margin-top: 1px;
+    border-left: 0.5px solid #cfcfcf;
+    cursor: pointer;
+  }
+
+  .bided {
+    background-color: #2F8FBD;
+  }
+
+  .col-2_game-field {
+    position: absolute;
+    left: 0;
+    margin-left: 11%;
+    display: inline-block;
+    margin-top: 15px;
+
+    .text12 {
+      color: #9B9B9B;
+    }
+
+    .text12-grey {
+      color: #CFD1D4;
+    }
+
+    .text12-white {
+      color: #FAFAFA;
+      font-weight: 400;
+    }
+  }
+
+  .col-2_bid-field {
+    position: relative;
+    display: inline-block;
+    margin-top: 15px;
+    margin-left: 30px;
+
+    .text12 {
+      color: #47B1E4;
+    }
+
+    .text12-white {
+      color: #FAFAFA;
+    }
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  #root {
+    .App {
+      .containerImage {
+        display: none;
+      }
+
+      .containerContent {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.hidden{
+  background-color: #9B9B9B;
+}
