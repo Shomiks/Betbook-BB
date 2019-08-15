@@ -61,7 +61,7 @@ class Match_Details extends React.Component {
                     </div>
                     <div className='place-field'><span className='text10'>1st place</span></div>
                 </div>
-                <div className='md_league-week-details'><span className='text12'>Srbija, Prva Liga, kolo : 3</span></div>
+                <div className='md_league-week-details'><span className='text12'>{this.state.competition.name + ' ' + this.state.week.name}</span></div>
                 <div className='md_date-time-vs-field'>
                     <div className={this.state.results == null ? 'vs-datetime-field' : 'hidden'}><span
                         className='text18'>VS</span>
