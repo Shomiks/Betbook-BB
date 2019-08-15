@@ -87,6 +87,17 @@
       }
     }
 
+    .ms_bid-left-white {
+      position: relative;
+      display: inline-block;
+      width: 24%;
+      background-color: #f7f7f8;
+
+      .text12 {
+        color: black;
+      }
+    }
+
     .ms_bid-left-red {
       position: relative;
       display: inline-block;
@@ -118,6 +129,17 @@
 
       .text12 {
         color: #FFF;
+      }
+    }
+
+    .ms_bid-central-white {
+      position: relative;
+      display: inline-block;
+      width: 24%;
+      background-color: #f7f7f8;
+
+      .text12 {
+        color: black;
       }
     }
 
@@ -154,6 +176,17 @@
 
       .text12 {
         color: #FFF;
+      }
+    }
+
+    .ms_bid-right-white {
+      position: relative;
+      display: inline-block;
+      width: 24%;
+      background-color: #f7f7f8;
+
+      .text12 {
+        color: black;
       }
     }
 

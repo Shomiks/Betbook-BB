@@ -1,14 +1,11 @@
 import React from 'react';
 import Login from './js/user/Login'
 import Match_Details from './js/tickets/Match_Details'
-import Competition_Listing from './js/tickets/Competition_Listing'
-import Ticket_Listing from './js/tickets/Ticket_Listing'
 import Home_Listing from './js/tickets/Home_Listing'
 
 import './style/app.scss'
 import Header from './js/components/header';
 import Footer from './js/components/footer';
-import MatchShort from "./js/components/match_short";
 import Week_games_Listing from "./js/tickets/Week_games_Listing";
 import Home_screen from "./js/tickets/home_screen";
 import Profile_Tickets from "./js/tickets/Profile_Tickets";
@@ -21,7 +18,8 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      hash: window.location.hash
+      hash: window.location.hash,
+      competition:null
     }
 
     window.addEventListener("hashchange", this.onHashChange);

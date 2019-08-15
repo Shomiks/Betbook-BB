@@ -10,95 +10,10 @@ class Match_Details extends React.Component {
         super(props);
 
         this.state = {
-            competition: {
-                id: 3,
-                name: 'Prva Srpska Liga',
-            },
-            week: {
-                id: 5,
-                name: 'Kolo 3'
-            },
-            match: {
-                id: 1,
-                code: 1234,
-                dateTime: "2019-08-13 15:00",
-                playground: "Rajko Mitic",
-                club_home: "Crvena Zvezda",
-                home_logo: "https://ls.sportradar.com/ls/crest/big/5149.png",
-                club_away: "Partizan",
-                away_logo: "https://premierleague-static-files.s3.amazonaws.com/premierleague/badges/t216.png",
-                game4_22: 1.5,
-                game4_2x: 1.5,
-                game4_21: 1.5,
-                game4_x2: 1.5,
-                game4_xx: 1.5,
-                game4_x1: 1.5,
-                game4_12: 1.5,
-                game4_1x: 1.5,
-                game4_11: 1.5,
-                game3_gg3p: 1.5,
-                game3_gg: 1.5,
-                game2_4ft: 1.5,
-                game2_3ft: 1.5,
-                game2_2ft: 1.5,
-                game2_2ht: 1.5,
-                game2_3: 1.5,
-                game2_2: 1.5,
-                game2_1: 1.5,
-                game1_2: 1.5,
-                game1_x: 1.5,
-                game1_1: 1.5,
-                id_competition: 3,
-                id_week: 7,
-                upcoming:true
-            },
-            results: {
-                id: 5,
-                match_id: 1,
-                game1_1: false,
-                game1_x: false,
-                game1_2: true,
-                game2_1: false,
-                game2_2: false,
-                game2_3: false,
-                game2_2ht: true,
-                game2_2ft: true,
-                game2_3ft: true,
-                game2_4ft: true,
-                game3_gg: true,
-                game3_gg3p: true,
-                game4_22: true,
-                game4_2x: false,
-                game4_21: false,
-                game4_x2: false,
-                game4_xx: false,
-                game4_x1: false,
-                game4_12: false,
-                game4_1x: false,
-                game4_11: false,
-                goals_home_ht: 2,
-                goals_away_ht: 0,
-                goals_home_ft: 2,
-                goals_away_ft: 3,
-                finished: false,
-                current_min: 90
-            },
-            ticket: {
-                id: 16,
-                user_id: 2,
-                match_id: 1,
-                game1_tip: "x",
-                game2_tip: "2",
-                game3_tip: "gg",
-                game4_tip: "22",
-                game1_odd: 1.5,
-                game2_odd: 0,
-                game3_odd: 1.5,
-                game4_odd: 0,
-                final_score: 3,
-                bid_score: 6
-            }
-        };
+            ...props.match
+        }
+
+        console.log(this.state);
     }
 
 
@@ -107,23 +22,26 @@ class Match_Details extends React.Component {
         if (this.state.results && this.state.results[game + '_' + tip]) {
             className += ' won';
         }
-        if (this.state.ticket && this.state.ticket[game + '_tip'] == tip) {
-            className += ' bided';
-        }
-        if(this.state.ticket[game + '_tip'] == tip && this.state.results.finished == true){
-            if(className.includes('won')){
-                className += ' green'
+        if (this.state.ticket) {
+            if (this.state.ticket[game + '_tip'] == tip) {
+                className += ' bided';
             }
-           else className += ' red'
-        }
 
+            if (this.state.ticket[game + '_tip'] == tip && this.state.results != null) {
+                if (this.state.results.finished) {
+                    if (className.includes('won')) {
+                        className += ' green'
+                    } else className += ' red'
+                }
+            }
+        }
         return <div className={className}>
             <div className='col-3_game-field'><span
-                className={this.state.ticket[game + '_tip'] == tip ? 'text12-white' : 'text12'}>{label}</span></div>
+                className={this.state.ticket ? (this.state.ticket[game + '_tip'] == tip ? 'text12-white' : 'text12') : 'text12'}>{label}</span></div>
             <div className='col-3_bid-field'><span
-                className={this.state.ticket[game + '_tip'] == tip ? 'text12-white' : 'text12'}>{this.state.match[game + '_' + tip]}</span></div>
+                className={this.state.ticket ? (this.state.ticket[game + '_tip'] == tip ? 'text12-white' : 'text12') : 'text12'}>{this.state.match[game + '_' + tip]}</span></div>
         </div>
-    }
+    };
 
 
     renderStateCompopnent = () => {
@@ -155,11 +73,11 @@ class Match_Details extends React.Component {
                         <div><span className='text12'>({this.state.match.upcoming == false ? this.state.results.goals_home_ht : ""} : {this.state.match.upcoming == false ? this.state.results.goals_away_ht : ""})</span></div>
                     </div>
                     <div
-                        className={(this.state.match.upcoming == false && this.state.results.finished == false) ? 'minuteLive' : 'hidden'}><span
-                        className={(this.state.match.upcoming == false && this.state.results.finished == false) ? 'text18' : 'hidden'}>'{this.state.results.current_min}<br/><span
+                        className={(this.state.match.upcoming == false) ? 'minuteLive' : 'hidden'}><span
+                        className={(this.state.match.upcoming == false && this.state.results.finished == false) ? 'text18' : 'hidden'}>'{this.state.results ? this.state.results.current_min : ''}<br/><span
                         className='text18-red-field'>* LIVE *</span></span></div>
                     <div className='time-date-field'><span
-                        className={(this.state.results.finished == true) ? 'text10' : 'hidden'}>{this.state.match.dateTime}</span>
+                        className={this.state.results == null ? 'text10' : 'hidden'}>{this.state.match.dateTime}</span>
                     </div>
                     <div className='location-field'><span className='text10'>{this.state.match.playground}</span>
                     </div>
@@ -234,12 +152,12 @@ class Match_Details extends React.Component {
                     </div>
                 </div>
             </div>
-            <div className='bet-slip-field-blue'>
-                <div className='bet-text-field'><span className='text14'>BIDS</span></div>
-                <div className='white-circle'>
-                    <div className='number-played-games-field'/>
-                </div>
-            </div>
+            {/*<div className='bet-slip-field-blue'>*/}
+            {/*    <div className='bet-text-field'><span className='text14'>BIDS</span></div>*/}
+            {/*    <div className='white-circle'>*/}
+            {/*        <div className={'number-played-games-field'}/>*/}
+            {/*    </div>*/}
+            {/*</div>*/}
         </div>
 
     }
