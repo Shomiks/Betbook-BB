@@ -1,0 +1,67 @@
+.betbook_screen {
+  height: 100%;
+  width: 100%;
+  background-color: #FFFFFF;
+  position: relative;
+  text-align: center;
+  display: block;
+
+  .lb_header {
+    padding-top: 50px;
+    position: relative;
+    height: 80px;
+    width: 100%;
+
+    .lb_tickets-singles-field {
+      position: relative;
+      display: block;
+      border-radius: 4px;
+      border: 1px solid #0A0A0A;
+      height: 28px;
+      width: 182px;
+      margin: 0 auto;
+      margin-top: 25px;
+
+      .lb_box-left {
+        position: relative;
+        display: inline-block;
+        height: 28px;
+        width: 90px;
+        border-right: 1px solid #0A0A0A;
+
+
+        .lb_tickets-field {
+          position: relative;
+          display: inline-block;
+
+        }
+      }
+
+      .lb_box-right {
+        position: relative;
+        display: inline-block;
+        height: 28px;
+        width: 90px;
+
+        .lb_singles-field {
+          position: relative;
+          display: inline-block;
+        }
+      }
+    }
+
+
+    .text14-tickets {
+      color: #0A0A0A;
+      font-family: "SF Display";
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+}
+
+
+.hidden {
+  display: none;
+}
+
