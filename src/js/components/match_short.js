@@ -13,9 +13,6 @@ class MatchShort extends React.Component {
 
     handleGameState = () => {
 
-        let state = null;
-
-        // console.log(this.state.match.upcoming);
         if (this.state.match.upcoming)
             return <div className='ms-left-field'>
                 <div className='ms_date-field'><span
@@ -125,7 +122,7 @@ class MatchShort extends React.Component {
 
 
     render() {
-        return <div>{this.handleGameState()}{this.handleBidField()}</div>
+        return <div >{this.handleGameState()}{this.handleBidField()}</div>
           }
 }
 

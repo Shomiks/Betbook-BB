@@ -5,11 +5,11 @@ import Header from './header';
 
 function CompetitionItem(props) {
   return <div className='rectangle_layout'>
-    <div className='noun_ball_image'> <img src='./assets/images/ball.png'></img> </div>
+    <div className='noun_ball_image'> <img src='./assets/images/ball.png'/> </div>
     <div className='competition'><span
         className='text14'>{props.competitionname}</span>
     </div>
-    <div className='chevron'><img src='./assets/images/arrow_right.png'></img></div>
+    <div className='chevron'><img src='./assets/images/arrow_right.png'/></div>
   </div>;
 }
 

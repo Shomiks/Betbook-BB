@@ -16,10 +16,10 @@ class Week extends React.Component {
 
     return (
         <div>
-          <div className='match-field'><MatchShort game={2}/></div>
-          <div className='match-field'><MatchShort game={2}/></div>
-          <div className='match-field'><MatchShort game={4}/></div>
-          <div className='match-field'><MatchShort game={6}/></div>
+          <div className='match-field'><MatchShort /></div>
+          <div className='match-field'><MatchShort /></div>
+          <div className='match-field'><MatchShort /></div>
+          <div className='match-field'><MatchShort /></div>
         </div>
     )
   }

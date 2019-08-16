@@ -12,26 +12,33 @@ class Week_games_Listing extends React.Component {
         super(props);
 
         this.state = {
-            data: data,
+            ...props.data,
             currentMatch: null
         }
     }
 
     handleMatchClick = (currentMatch)=> {
-        // console.log(currentMatch);
-        this.setState({currentMatch});
+
+        this.setState({currentMatch:currentMatch});
     }
 
+
     render() {
+
+        // let dataKeys = Object.keys(this.state);
+        // dataKeys.splice(-1,1)
+        // console.log(dataKeys)
+
         if(this.state.currentMatch){
             return <Match_Details match={this.state.currentMatch} />
         }
 
         return (
             <div className='betbook_screen'>
-                <div className='main-content'>
+                <div className='main-content padding-none'>
+
                     {
-                        this.state.data.map((match,i)=> <div onClick={()=>{this.handleMatchClick(match)}} className='match-field'><MatchShort match={match} game={i} /></div>)
+                        this.state['0'].data.map((match,i)=> <div onClick={()=>{this.handleMatchClick(match)}} className='match-field'><MatchShort match={match} key={match.match.id+'_'}  /></div>)
                     }
                 </div>
             </div>

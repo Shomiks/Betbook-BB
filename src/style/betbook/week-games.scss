@@ -13,6 +13,7 @@
     margin-bottom: 4px;
     padding-bottom: 50px;
 
+
     .match-field {
       position: relative;
       display: block;
@@ -29,6 +30,14 @@
 
       .week-field {
 
+      }
+    }
+    .game-week{
+      .text14 {
+        color: #0A0A0A;
+        font-family: "SF Display";
+        font-size: 14px;
+        font-weight: 500;
       }
     }
   }

@@ -60,7 +60,6 @@ html, body {
   overflow: hidden;
 }
 
-
 #root {
   padding: 0;
   margin: 0;
@@ -69,9 +68,7 @@ html, body {
   height: 100%;
   width: 100%;
   overflow: hidden;
-
 }
-
 
 .App {
   padding: 0;
@@ -131,7 +128,6 @@ html, body {
   font-family: "SF Display";
   font-size: 25px;
   font-weight: 500;
-
 }
 
 .main-titlle-field {
@@ -151,13 +147,10 @@ html, body {
   }
 }
 
-
 .col-3-bid-field {
   position: relative;
   display: flex;
   justify-content: center;
-
-
 
   .text12-grey {
     color: #FFF;
@@ -191,9 +184,10 @@ html, body {
   .col-3_game-field {
     position: absolute;
     left: 0;
-    margin-left: 11%;
+    margin-left: 10%;
     display: inline-block;
     margin-top: 15px;
+
 
     .text12 {
       color: #9B9B9B;
@@ -214,6 +208,7 @@ html, body {
     position: relative;
     display: inline-block;
     margin-top: 15px;
+    left:15px;
 
 
 
@@ -267,39 +262,6 @@ html, body {
 
   }
 
-  .col-4_game-field {
-    position: absolute;
-    left: 0;
-    margin-left: 11%;
-    display: inline-block;
-    margin-top: 15px;
-
-    .text12 {
-      color: #9B9B9B;
-    }
-
-    .text12-white {
-      color: #FAFAFA;
-      font-weight: 400;
-    }
-
-  }
-
-  .col-4_bid-field {
-    position: relative;
-    display: inline-block;
-    margin-top: 15px;
-    margin-left: 30px;
-
-    .text12 {
-      color: #47B1E4;
-    }
-
-    .text12-white {
-      color: #FAFAFA;
-      font-weight: 400;
-    }
-  }
   .bided {
     background-color: #2F8FBD;
   }
@@ -307,7 +269,7 @@ html, body {
   .col-3_game-field {
     position: absolute;
     left: 0;
-    margin-left: 11%;
+    margin-left: 7%;
     display: inline-block;
     margin-top: 15px;
 
@@ -330,8 +292,7 @@ html, body {
     position: relative;
     display: inline-block;
     margin-top: 15px;
-
-
+    left:15px;
 
     .text12 {
       color: #47B1E4;
@@ -341,8 +302,6 @@ html, body {
       color: #FAFAFA;
       font-weight: 400;
     }
-
-
   }
 }
 
@@ -417,7 +376,7 @@ html, body {
   .col-3_game-field {
     position: absolute;
     left: 0;
-    margin-left: 11%;
+    margin-left: 15%;
     display: inline-block;
     margin-top: 15px;
 
@@ -440,8 +399,7 @@ html, body {
     position: relative;
     display: inline-block;
     margin-top: 15px;
-
-
+    left:20px;
 
     .text12 {
       color: #47B1E4;
@@ -451,8 +409,6 @@ html, body {
       color: #FAFAFA;
       font-weight: 400;
     }
-
-
   }
 }
 
@@ -462,7 +418,6 @@ html, body {
       .containerImage {
         display: none;
       }
-
       .containerContent {
         width: 100%;
       }

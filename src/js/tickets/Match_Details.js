@@ -12,8 +12,6 @@ class Match_Details extends React.Component {
         this.state = {
             ...props.match
         }
-
-        console.log(this.state);
     }
 
 
@@ -159,7 +157,6 @@ class Match_Details extends React.Component {
             {/*    </div>*/}
             {/*</div>*/}
         </div>
-
     }
 
     render() {

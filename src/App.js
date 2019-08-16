@@ -9,6 +9,7 @@ import Footer from './js/components/footer';
 import Week_games_Listing from "./js/tickets/Week_games_Listing";
 import Home_screen from "./js/tickets/home_screen";
 import Profile_Tickets from "./js/tickets/Profile_Tickets";
+import Competition_Listing from "./js/tickets/Competition_Listing";
 
 
 
@@ -33,7 +34,7 @@ class App extends React.Component {
   render(){
 
     let stepComponent = null;
-    console.log(window.location.hash)
+    console.log(window.location.hash);
 
     const headerProps= {
       title: '',
@@ -47,7 +48,7 @@ class App extends React.Component {
     }
     else if(this.state.hash == '#2'){
       headerProps.title = 'Home';
-      stepComponent = <Home_Listing/>;
+      stepComponent = <Competition_Listing/>;
     }
     else if(this.state.hash == '#3'){
       headerProps.title='Listing';
@@ -58,7 +59,7 @@ class App extends React.Component {
       stepComponent = <Match_Details />;
     }
     else if(this.state.hash == '#5'){
-      headerProps.title='Competition';
+      headerProps.title='Prva Srpska Liga';
       headerProps.competition= true;
       stepComponent = <Week_games_Listing/>;
     }
