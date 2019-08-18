@@ -10,6 +10,7 @@ import Week_games_Listing from "./js/tickets/Week_games_Listing";
 import Home_screen from "./js/tickets/home_screen";
 import Profile_Tickets from "./js/tickets/Profile_Tickets";
 import Competition_Listing from "./js/tickets/Competition_Listing";
+import Week from "./js/components/week";
 
 
 
@@ -47,11 +48,11 @@ class App extends React.Component {
       </div>;
     }
     else if(this.state.hash == '#2'){
-      headerProps.title = 'Home';
+      headerProps.title = 'Competitions';
       stepComponent = <Competition_Listing/>;
     }
     else if(this.state.hash == '#3'){
-      headerProps.title='Listing';
+      headerProps.title='Home';
       stepComponent = <Home_screen/>;
     }
     else if(this.state.hash == '#4'){
@@ -59,14 +60,14 @@ class App extends React.Component {
       stepComponent = <Match_Details />;
     }
     else if(this.state.hash == '#5'){
-      headerProps.title='Prva Srpska Liga';
+      headerProps.title='Competition name';
       headerProps.competition= true;
-      stepComponent = <Week_games_Listing/>;
+      stepComponent = <Week/>;
     }
     else if(this.state.hash == '#6'){
       return <div className='App'>
         <Profile_Tickets/>
-      </div>;
+      </div>
     }
 
     return (

@@ -5,6 +5,7 @@ import MatchShort from '../components/match_short';
 import Match_Details from "./Match_Details";
 
 import data from '../data'
+import Header from "../components/header";
 
 class Week_games_Listing extends React.Component {
 
@@ -12,38 +13,35 @@ class Week_games_Listing extends React.Component {
         super(props);
 
         this.state = {
-            ...props.data,
             currentMatch: null
         }
     }
 
     handleMatchClick = (currentMatch)=> {
-
         this.setState({currentMatch:currentMatch});
     }
 
-
     render() {
-
-        // let dataKeys = Object.keys(this.state);
-        // dataKeys.splice(-1,1)
-        // console.log(dataKeys)
 
         if(this.state.currentMatch){
             return <Match_Details match={this.state.currentMatch} />
         }
 
-        return (
-            <div className='betbook_screen'>
-                <div className='main-content padding-none'>
+            return (
+                <div className='betbook_screen'>
+                    <Header title={this.props.data.name}/>
 
-                    {
-                        this.state['0'].data.map((match,i)=> <div onClick={()=>{this.handleMatchClick(match)}} className='match-field'><MatchShort match={match} key={match.match.id+'_'}  /></div>)
-                    }
+                    <div className='main-content'>
+                        <div className='game-week'><span className='text14'>{'Matchday ' + this.props.data.currentWeek}</span>
+                            {
+                                this.props.data.data.map((match,i)=> <div onClick={()=>{this.handleMatchClick(match)}} className='match-field'><MatchShort match={match} key={match.match.id+'_'}  /></div>)
+                            }
+                        </div>
+                    </div>
                 </div>
-            </div>
-        );
-    }
+            );
+        }
+
 }
 
 export default Week_games_Listing;

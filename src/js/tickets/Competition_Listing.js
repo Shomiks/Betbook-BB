@@ -18,32 +18,31 @@ class Competition_Listing extends React.Component {
 
     this.state = {
       data:dataCompetitions,
-      currentCompetition: null
+      currentCompetition: null,
+      currentData:null
     };
   }
 
-  handleCompetitionClick = (competition) => {
-      // console.log(competition)
-    this.setState({currentCompetition:competition});
+  handleCompetitionClick = (currentData) => {
+    this.setState({currentData:currentData});
   }
 
   render() {
-      // console.log(this.state)
-    if(this.state.currentCompetition){
-        // console.log(this.state.data)
-      return <Week_games_Listing data={this.state.data} />
+
+      if(this.state.currentData !== null){
+      return <Week_games_Listing data={this.state.currentData} />
     }
 
     return (
         <div className='betbook_screen'>
-          <Header competition={true} title='Competitions'/>
+            <Header competition={true} title='Competitions'/>
           <div className='main-content'>
-            {this.state.data.map((country) => <div key={country.country.id + '_'}>
-              <div className='competition-title-field'><span className='text18'>{country.country.name}</span></div>
+            {this.state.data.map((data,i) => <div key={data.country.id + '_'}>
+              <div className='competition-title-field'><span className='text18'>{data.country.name}</span></div>
               <Listing>
                 {
-                  country.competition.map((competition) => <ListingItem competition={competition} onClick={(competition) => {this.handleCompetitionClick(competition)}} key={competition.id + '_'}>
-                    <CompetitionItem competitionname={competition.name} key={competition.id + '_'}/>
+                  data.country.competitions.map((competition,j) => <ListingItem competition={competition} onClick={() => {this.handleCompetitionClick(this.state.data[i].competition[j])}} key={competition + j}>
+                    <CompetitionItem competitionname={competition} />
                   </ListingItem>)
                 }
               </Listing>

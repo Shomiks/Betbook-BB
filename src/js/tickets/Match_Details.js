@@ -14,7 +14,6 @@ class Match_Details extends React.Component {
         }
     }
 
-
     renderGameTip = (label, game, tip, bidfield) => {
         let className = bidfield;
         if (this.state.results && this.state.results[game + '_' + tip]) {
@@ -53,6 +52,7 @@ class Match_Details extends React.Component {
         else classState += ' upcoming';
 
         return <div className={classState}>
+            <Header title={this.state.competition.name}/>
             <div className='match-details-field'>
                 <div className='md_home-team-field'><img src={this.state.match.home_logo}/>
                     <div className='home-text-field'><span className='text18'>{this.state.match.club_home}</span>

@@ -49,7 +49,7 @@ class MatchShort extends React.Component {
                     className='text12-red'>* Live *</span></div>
             </div>
         }
-    }
+    };
 
     handleBidField = () => {
         let game1 ='';
@@ -119,7 +119,6 @@ class MatchShort extends React.Component {
             </div>
 
     };
-
 
     render() {
         return <div >{this.handleGameState()}{this.handleBidField()}</div>
