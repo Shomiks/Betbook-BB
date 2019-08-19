@@ -6,9 +6,7 @@ import Listing from '../components/listing';
 import ListingItem from '../components/listingitem';
 import CompetitionItem from '../components/competitionitem';
 import Footer from '../components/footer';
-import dataCompetitions from '../dataCompetitions'
-import Match_Details from "./Match_Details";
-import Home_screen from "./home_screen";
+import dataCompetitions from '../dataCompetitions';
 import Week_games_Listing from "./Week_games_Listing";
 
 class Competition_Listing extends React.Component {

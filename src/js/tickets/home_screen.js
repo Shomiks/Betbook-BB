@@ -32,8 +32,6 @@ class Home_screen extends React.Component {
 
   render(){
 
-    console.log(this.state.data)
-
     if(this.state.currentData !== null){
       return <Week data={this.state.currentData} />
     }
@@ -46,7 +44,7 @@ class Home_screen extends React.Component {
                {this.state.data.map((gameweek) => <div className='hs_league-week-header'>
                 <div className='hs_league-tittle' onClick={() => {this.handleWeekClick(this.state.data)}}><span className='text17'>{gameweek.name + " matchday " + gameweek.currentWeek}</span></div>
                 <div className='hs_chevron'><img src='./assets/images/arrow_right.png'/></div>
-                 <Week data={this.state.data} onChangeData={this.changeData} />
+                 {/*<Week data={this.state.data} onChangeData={this.changeData} />*/}
               </div>)}
             </div>
 
