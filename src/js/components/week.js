@@ -3,14 +3,24 @@ import MatchShort from './match_short';
 import Match_Details from "../tickets/Match_Details";
 import Header from "./header";
 import '../../style/week.scss'
+import '../../style/betbook/components/match_short.scss'
+import Week_games_Listing from "../tickets/Week_games_Listing";
+// import {Link,Router, Route, BrowserRouter, HashRouter} from "react-router-dom";
+// import {HashRouter, Route} from "react-router-dom";
+import Listing from "./listing";
+import {Route, HashRouter, Switch, Redirect} from "react-router-dom";
+import Login from "../user/Login";
+import Competition_Listing from "../tickets/Competition_Listing";
 
-class Week extends React.Component {
+class Weeks extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            currentMatch: null
+            currentMatch: null,
+            currentData:props.data[0],
+            weekData:null
         }
     }
 
@@ -18,25 +28,44 @@ class Week extends React.Component {
         this.setState({currentMatch:currentMatch});
     }
 
+    handleWeekClick = (weekData) => {
+        this.setState({weekData: weekData})
+    }
+
+
     render() {
+
+       return <HashRouter>
+            <Switch>
+                <Redirect exact path ="/" component = {Login}/>
+            </Switch>
+        </HashRouter>
 
         if(this.state.currentMatch){
             return <Match_Details match={this.state.currentMatch} />
         }
+        if(this.state.weekData){
+        }
 
-        console.log(this.props.data[0])
-        return (
-
-                    <div className='game-week'>
-                        {
-                            this.props.data[0].data.map((match) => <div onClick={()=>{this.handleMatchClick(match)}} className='match-field'><MatchShort match={match} key={match.match.id+'_'}  /></div>)
-                        }
-                    </div>
-
-        );
+        // return (
+        //             <div className='game-week'>
+        //                 <div className='hs_league-week-header'>
+        //                     <div className='hs_league-tittle' onClick={() =>{
+        //                         this.handleWeekClick()
+        //                     }
+        //                     }><span className='text17'>{this.state.currentData.data[0].competition.name + " matchday " + this.state.currentData.data[0].competition.id}</span>
+        //                     </div>
+        //                     <div className='hs_chevron'><img src='./assets/images/arrow_right.png'/></div>
+        //                 </div>
+        //                 {
+        //                     this.state.currentData.data.map((match) => <div onClick={()=>{this.handleMatchClick(match)}} className='match-field'><MatchShort match={match} key={match.match.id+'_'}  /></div>)
+        //                 }
+        //             </div>
+        //
+        // );
     }
 
 }
 
 
-export default Week;
+export default Weeks;

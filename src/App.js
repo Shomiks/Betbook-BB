@@ -11,6 +11,7 @@ import Home_screen from "./js/tickets/home_screen";
 import Profile_Tickets from "./js/tickets/Profile_Tickets";
 import Competition_Listing from "./js/tickets/Competition_Listing";
 import Week from "./js/components/week";
+import {Route,HashRouter,Switch} from "react-router-dom";
 
 
 
@@ -55,9 +56,9 @@ class App extends React.Component {
       headerProps.title='Home';
       stepComponent = <Home_screen/>;
     }
-    else if(this.state.hash == '#4'){
+    else if(this.state.hash == '#/3'){
       headerProps.title='Home vs. Away';
-      stepComponent = <Match_Details />;
+      stepComponent = <Week_games_Listing />;
     }
     else if(this.state.hash == '#5'){
       headerProps.title='Competition name';
@@ -72,11 +73,12 @@ class App extends React.Component {
 
     return (
         <div className='App'>
-          <Header title={headerProps.title} competition={headerProps.competition} />
-          <div className='main_content'>
-            {stepComponent}
-          </div>
-          <Footer/>
+         {/* <HashRouter>*/}
+         {/* <Switch>*/}
+         {/*<Route exact path ="/" component = {Login}/>*/}
+         {/*<Route exact path ="/2" component={Competition_Listing}/>*/}
+         {/* </Switch>*/}
+         {/* </HashRouter>*/}
         </div>
     );
   }

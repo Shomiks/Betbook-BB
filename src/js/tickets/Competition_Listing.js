@@ -27,7 +27,7 @@ class Competition_Listing extends React.Component {
 
   render() {
 
-      if(this.state.currentData !== null){
+      if(this.state.currentData){
       return <Week_games_Listing data={this.state.currentData} />
     }
 

@@ -13,13 +13,14 @@ class Week_games_Listing extends React.Component {
         super(props);
 
         this.state = {
-            currentMatch: null
+            currentMatch: null,
         }
     }
 
     handleMatchClick = (currentMatch)=> {
         this.setState({currentMatch:currentMatch});
     }
+
 
     render() {
 
@@ -30,7 +31,6 @@ class Week_games_Listing extends React.Component {
             return (
                 <div className='betbook_screen'>
                     <Header title={this.props.data.name}/>
-
                     <div className='main-content'>
                         <div className='game-week'><span className='text14'>{'Matchday ' + this.props.data.currentWeek}</span>
                             {
