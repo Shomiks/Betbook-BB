@@ -7,7 +7,7 @@ import '../../style/betbook/components/match_short.scss'
 import Week_games_Listing from "../tickets/Week_games_Listing";
 
 import Listing from "./listing";
-import {Route, HashRouter, Switch, Redirect} from "react-router-dom";
+import {Route, HashRouter, Switch, Redirect, Link} from "react-router-dom";
 import Login from "../user/Login";
 import Competition_Listing from "../tickets/Competition_Listing";
 
@@ -27,6 +27,13 @@ class Weeks extends React.Component {
 
     handleWeekClick = (weekData) => {
         this.setState({weekData: weekData})
+    }
+
+    renderGames = () => {
+        return <div>
+            {this.state.currentData.data.map((match, i) => <Link to={`/match/${match.match.id}`}> <MatchShort match={match}/>
+            </Link>)}
+        </div>
     }
 
 
@@ -49,9 +56,9 @@ class Weeks extends React.Component {
                             </div>
                             <div className='hs_chevron'><img src='./assets/images/arrow_right.png'/></div>
                         </div>
-                        {
-                            this.state.currentData.data.map((match) => <div onClick={()=>{this.handleMatchClick(match)}} className='match-field'><MatchShort match={match} key={match.match.id+'_'}  /></div>)
-                        }
+                        <div>
+                            {this.renderGames()}
+                        </div>
                     </div>
 
         );
