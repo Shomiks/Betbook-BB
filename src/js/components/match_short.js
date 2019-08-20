@@ -77,7 +77,6 @@ class MatchShort extends React.Component {
                     }
                 }
             }
-
         }
 
         return <div className='ms-central-field'>

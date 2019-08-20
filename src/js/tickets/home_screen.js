@@ -5,24 +5,8 @@ import Weeks from '../../../src/js/components/week.js'
 import Header from '../components/header';
 import Week_games_Listing from "./Week_games_Listing";
 
-import data from '../data'
-import hsData from "../hsData";
-import dataCompetitions from "../dataCompetitions";
-
-import {
-    BrowserRouter as Router,
-    Route,
-    Link, HashRouter
-} from 'react-router-dom';
-import MatchShort from "../components/match_short";
-
-const Nav = () => (
-    <Link to={{
-        hash: '3',
-        state: {fromHome: true}
-    }}/>
-)
-
+import data from '../data/data'
+import hsData from "../data/hsData";
 
 class Home_screen extends React.Component {
 

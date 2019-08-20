@@ -1,19 +1,17 @@
 import React from 'react';
 import Login from './js/user/Login'
-import Match_Details from './js/tickets/Match_Details'
-import Home_Listing from './js/tickets/Home_Listing'
 
 import './style/app.scss'
 import Header from './js/components/header';
-import Footer from './js/components/footer';
 import Week_games_Listing from "./js/tickets/Week_games_Listing";
 import Home_screen from "./js/tickets/home_screen";
 import Profile_Tickets from "./js/tickets/Profile_Tickets";
 import Competition_Listing from "./js/tickets/Competition_Listing";
-import Week from "./js/components/week";
-import {Route,HashRouter,Switch} from "react-router-dom";
-
-
+import Weeks from "./js/components/week";
+import {Route,HashRouter} from "react-router-dom";
+import APIHelper from "./js/data/apihelper";
+import Match_Details from "./js/tickets/Match_Details";
+import Footer from "./js/components/footer";
 
 class App extends React.Component {
 
@@ -25,6 +23,11 @@ class App extends React.Component {
       competition:null
     }
 
+    this.sharedObject = {
+      apiHelper: new APIHelper(),
+      headerInstance: null
+    };
+
     window.addEventListener("hashchange", this.onHashChange);
   }
 
@@ -34,14 +37,8 @@ class App extends React.Component {
   }
 
   render(){
-
     let stepComponent = null;
-    console.log(window.location.hash);
 
-    const headerProps= {
-      title: '',
-      competition: false
-    }
 
     if(this.state.hash == '#1'){
       return <div className='App'>
@@ -49,21 +46,16 @@ class App extends React.Component {
       </div>;
     }
     else if(this.state.hash == '#2'){
-      headerProps.title = 'Competitions';
       stepComponent = <Competition_Listing/>;
     }
     else if(this.state.hash == '#3'){
-      headerProps.title='Home';
       stepComponent = <Home_screen/>;
     }
     else if(this.state.hash == '#/3'){
-      headerProps.title='Home vs. Away';
       stepComponent = <Week_games_Listing />;
     }
     else if(this.state.hash == '#5'){
-      headerProps.title='Competition name';
-      headerProps.competition= true;
-      stepComponent = <Week/>;
+      stepComponent = <Weeks/>;
     }
     else if(this.state.hash == '#6'){
       return <div className='App'>
@@ -73,13 +65,19 @@ class App extends React.Component {
 
     return (
         <div className='App'>
-         {/* <HashRouter>*/}
-         {/* <Switch>*/}
-         {/*<Route exact path ="/" component = {Login}/>*/}
-         {/*<Route exact path ="/2" component={Competition_Listing}/>*/}
-         {/* </Switch>*/}
-         {/* </HashRouter>*/}
+          <Header ref={(instance) => {
+            this.sharedObject.headerInstance = instance}} />
+        <HashRouter>
+            <Route path="/competitions" render={(props) => (<Competition_Listing key={'competition_current'} sharedObj={this.sharedObject} {...props}/>)} />
+            <Route path="/competitions/:countryid" render={(props) => (<Competition_Listing key={'competition_' + props.match.params.countryid} sharedObj={this.sharedObject} {...props}/>)} />
+            <Route path="/home" render={(props) => (<Home_screen sharedObj={this.sharedObject} {...props}/>)} />
+            <Route path="/competition/:competitionid" render={(props) => (<Week_games_Listing sharedObj={this.sharedObject} {...props}/>)} />
+            <Route path="/competition/:competitionid/:weekid" render={(props) => (<Week_games_Listing sharedObj={this.sharedObject} {...props}/>)} />
+          <Route path="/match/:matchid" render={(props) => (<Match_Details sharedObj={this.sharedObject} {...props}/>)} />
+        </HashRouter>
+          <Footer/>
         </div>
+
     );
   }
 }
