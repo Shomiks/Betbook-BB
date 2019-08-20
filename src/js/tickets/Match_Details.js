@@ -1,8 +1,6 @@
 import React from 'react';
 import '../../../src/style/betbook/matchdetails.scss';
 import '../../../src/style/app.scss';
-import Header from '../components/header';
-import Footer from '../components/footer';
 
 class Match_Details extends React.Component {
 
@@ -17,7 +15,6 @@ class Match_Details extends React.Component {
     }
 
     componentDidMount() {
-        console.log('test');
         this.sharedObj.apiHelper.match.getByID(1, this.handleMatchLoaded);
     }
 

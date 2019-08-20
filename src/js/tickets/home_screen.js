@@ -3,10 +3,10 @@ import '../../style/betbook/home_screen.scss'
 import '../../../src/style/app.scss'
 import Weeks from '../../../src/js/components/week.js'
 import Header from '../components/header';
-import Week_games_Listing from "./Week_games_Listing";
 
 import data from '../data/data'
 import hsData from "../data/hsData";
+import {Link} from "react-router-dom";
 
 class Home_screen extends React.Component {
 
@@ -17,54 +17,34 @@ class Home_screen extends React.Component {
             previousData: hsData,
             data: hsData,
             currentData: null
-        }
+        };
+        this.sharedObj = props.sharedObj;
     }
 
-    changeData = (data) => {
-        this.setState({data})
+    componentDidMount() {
+        console.log('testttt');
+        this.sharedObj.apiHelper.home(this.handleHomeLoaded);
     }
 
-    handleWeekClick = (currentData) => {
-        this.setState({currentData: currentData})
+    handleHomeLoaded = (data) => {
+        this.setState({data, loaded: true});
     }
 
     render() {
-
-        if (this.state.currentData) {
-
-            return <Week_games_Listing data={this.state.currentData[0]}/>
-        }
-
-        if (this.state.data) return (
-
-            <div className='betbook_screen'>
-                <Header title='Home screen'/>
-                <div className='main-content'>
-                    <div className='active-bids-field'><span className='text14'>Active bids</span>
-                        {this.state.data.map((gameweek) => <div className='week-games'>
-                                <Weeks data={this.state.data} onChangeData={this.changeData}/>
-                                <div>
-                                    <div className='hs_league-week-header'>
-                                        <div className='hs_league-tittle' onClick={() => {
-                                            this.handleWeekClick(this.state.data)
-                                        }}><span
-                                            className='text17'>{gameweek.name + " matchday " + (gameweek.currentWeek)}</span>
-                                        </div>
-                                        <div className='hs_chevron'><img src='./assets/images/arrow_right.png'/></div>
-                                    </div>
+            return (
+                <div className='betbook_screen'>
+                    <Header title='Home screen'/>
+                    <div className='main-content'>
+                        <div className='active-bids-field'><span className='text14'>Active bids</span>
+                            {this.state.data.map(() => <div className='week-games'>
+                                    <Weeks data={this.state.data}/>
                                 </div>
-                            </div>
-                        )}
+                            )}
+                        </div>
                     </div>
                 </div>
-            </div>
-        )
-
-        return <div className='betbook_screen'>
-            <Header title='Home screen'/>
-        </div>
-
-    }
+            )
+        }
 }
 
 export default Home_screen;

@@ -50,7 +50,7 @@ class APIHelper {
     match={
         getByID:(id,callBack) => {
             setTimeout(() => {
-                callBack(data[id]);
+                callBack(data[2]);
             }, timeoutInterval);
         }
     }
@@ -61,6 +61,11 @@ class APIHelper {
         }, timeoutInterval);
     }
 
+    week = (callBack) => {
+        setTimeout(() => {
+            callBack(hsData);
+        }, timeoutInterval);
+    }
 }
 
 export default APIHelper

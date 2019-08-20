@@ -71,9 +71,10 @@ class App extends React.Component {
             <Route path="/competitions" render={(props) => (<Competition_Listing key={'competition_current'} sharedObj={this.sharedObject} {...props}/>)} />
             <Route path="/competitions/:countryid" render={(props) => (<Competition_Listing key={'competition_' + props.match.params.countryid} sharedObj={this.sharedObject} {...props}/>)} />
             <Route path="/home" render={(props) => (<Home_screen sharedObj={this.sharedObject} {...props}/>)} />
-            <Route path="/competition/:competitionid" render={(props) => (<Week_games_Listing sharedObj={this.sharedObject} {...props}/>)} />
-            <Route path="/competition/:competitionid/:weekid" render={(props) => (<Week_games_Listing sharedObj={this.sharedObject} {...props}/>)} />
-          <Route path="/match/:matchid" render={(props) => (<Match_Details sharedObj={this.sharedObject} {...props}/>)} />
+            {/*<Route path="/coa" render={(props) => (<Weeks sharedObj={this.sharedObject} {...props}/>)} />*/}
+            <Route path="/competition/:competitions" render={(props) => (<Week_games_Listing sharedObj={this.sharedObject} {...props}/>)} />
+            <Route path="/competition/:competitions/:weekid" render={(props) => (<Week_games_Listing sharedObj={this.sharedObject} {...props}/>)} />
+            <Route path="/match/:matchid" render={(props) => (<Match_Details sharedObj={this.sharedObject} {...props}/>)} />
         </HashRouter>
           <Footer/>
         </div>

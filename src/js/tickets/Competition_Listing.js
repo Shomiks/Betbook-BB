@@ -13,12 +13,8 @@ class Competition_Listing extends React.Component {
     constructor(props) {
         super(props);
 
-        console.log(props);
-
         this.state = {
-            data: [],
-            currentCompetition: null,
-            currentData: null
+            data: []
         };
         this.sharedObj = props.sharedObj;
     }
@@ -33,7 +29,6 @@ class Competition_Listing extends React.Component {
     }
 
     render() {
-
         return (
             <div className='betbook_screen'>
                 <div className='main-content'>
@@ -51,7 +46,7 @@ class Competition_Listing extends React.Component {
                         </Listing>
                     </div>)}
                 </div>
-                <Footer title='Competition'/>
+                <Footer/>
             </div>
         );
     }
