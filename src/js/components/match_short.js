@@ -77,7 +77,6 @@ class MatchShort extends React.Component {
                     }
                 }
             }
-
         }
 
         return <div className='ms-central-field'>
@@ -98,7 +97,7 @@ class MatchShort extends React.Component {
                         </div>
                         <div className={'ms_bid-central'+game2}>
                             <div className='ms_game-field'><span
-                                className={game2 == '-white' ? 'text10' : 'text12-white'}>{game2 =='-white' ? 'Goals Bid' : this.state.ticket.game2_tip}</span></div>
+                                className={game2 == '-white' ? 'text10' : 'text12-white'}>{game2 =='-white' ? 'Goals Bid' : this.state.ticket.game2_tip.toLocaleUpperCase()}</span></div>
                             <div className='ms_bided-field'><span
                                 className='text12'>{game2 == '-white' ? '' : this.state.ticket.game2_odd}</span></div>
                         </div>
@@ -110,7 +109,7 @@ class MatchShort extends React.Component {
                         </div>
                         <div className={'ms_bid-right'+game4}>
                             <div className='ms_game-field'><span
-                                className={game4 == '-white' ? 'text10' : 'text12-white'}>{game4 =='-white' ? 'HT/FT Bid' : this.state.ticket.game4_tip.toLocaleUpperCase()}</span></div>
+                                className={game4 == '-white' ? 'text10' : 'text12-white'}>{game4 =='-white' ? 'HT/FT Bid' : (this.state.ticket.game4_tip.split("")[0] + "/" + this.state.ticket.game4_tip.split("")[1]).toLocaleUpperCase()}</span></div>
                             <div className='ms_bided-field'><span
                                 className='text12'>{game4 == '-white' ? '' : this.state.ticket.game4_odd}</span></div>
                         </div>
