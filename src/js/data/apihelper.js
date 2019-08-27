@@ -1,12 +1,13 @@
 import data from './data';
+import React from 'react'
 import dataCompetitions from "./dataCompetitions";
 import hsData from "./hsData";
 
 const timeoutInterval = 0;
 
-class APIHelper {
-    constructor() {
-
+class APIHelper extends React.Component {
+    constructor(props) {
+        super(props);
     }
 
     login = (username, password, callBack) => {
@@ -47,8 +48,13 @@ class APIHelper {
         }
     }
 
-    match={
-        getByID:(id,callBack) => {
+    match = {
+        getByID: (id, callBack) => {
+            setTimeout(() => {
+                callBack(data[2]);
+            }, timeoutInterval);
+        },
+        getAll: (callBack) => {
             setTimeout(() => {
                 callBack(data[2]);
             }, timeoutInterval);

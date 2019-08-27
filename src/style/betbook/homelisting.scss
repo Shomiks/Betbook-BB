@@ -19,10 +19,25 @@
       overflow: scroll;
     }
 
-    .competition-title-field {
-      height: 30px;
+    .country-title-field {
+      height: 40px;
       width: 100%;
       padding-top: 10px;
+      text-align: center;
+      vertical-align: middle;
+
+
+      .text18 {
+        text-align: center;
+        vertical-align: middle;
+      }
+
+      .flag {
+        position: relative;
+        height: 20px;
+        width: 30px;
+        margin: auto;
+      }
     }
   }
 
@@ -51,34 +66,49 @@
         left: 0;
       }
 
-      .competition {
-        height: 24px;
-        width: 217px;
-        position: relative;
-        display: inline-block;
-        vertical-align: middle;
-        margin-left: 16px;
-        margin-top: 19px;
-      }
 
-      .chevron {
-        height: 25px;
-        width: 24px;
-        position: absolute;
-        display: block;
-        right: 0;
-        top: 0;
-        margin-top: 18px;
-        margin-right: 26px;
-        color: #0A0A0A;
-        font-family: "SF Display";
-        font-size: 21px;
-        font-weight: 500;
-        cursor: pointer;
-      }
     }
   }
 
+  .chevron {
+    height: 25px;
+    width: 24px;
+    position: absolute;
+    display: block;
+    right: 0;
+    top: 0;
+    margin-top: 18px;
+    margin-right: 26px;
+    color: #0A0A0A;
+    font-family: "SF Display";
+    font-size: 21px;
+    font-weight: 500;
+    cursor: pointer;
+  }
 
 
+  .competition {
+    height: 24px;
+    width: 217px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 16px;
+    margin-top: 19px;
+
+    .text18 {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .flag {
+      position: relative;
+      height: 20px;
+      width: 30px;
+      margin: auto;
+    }
+  }
 }
+
+
+

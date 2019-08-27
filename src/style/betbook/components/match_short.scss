@@ -39,6 +39,7 @@
   height: 60px;
   width: 79%;
 
+
   .text14 {
     line-height: 30px;
   }
@@ -47,12 +48,36 @@
     position: relative;
     display: inline-block;
     margin-right: 5px;
+
+    .text18 {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .logo {
+      position: relative;
+      height: 15px;
+      width: 20px;
+      margin: auto;
+    }
   }
 
   .ms_awayField {
     position: relative;
     display: inline-block;
     margin-left: 5px;
+
+    .text18 {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .logo {
+      position: relative;
+      height: 15px;
+      width: 20px;
+      margin: auto;
+    }
   }
 
   .ms_resultField {

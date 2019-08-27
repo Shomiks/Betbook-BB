@@ -12,6 +12,7 @@ import {Route,HashRouter} from "react-router-dom";
 import APIHelper from "./js/data/apihelper";
 import Match_Details from "./js/tickets/Match_Details";
 import Footer from "./js/components/footer";
+import LeaderBoards from "./js/tickets/LeaderBoards";
 
 class App extends React.Component {
 
@@ -20,26 +21,36 @@ class App extends React.Component {
 
     this.state = {
       hash: window.location.hash,
-      competition:null
-    }
-
-    this.sharedObject = {
-      apiHelper: new APIHelper(),
-      headerInstance: null
+      loaded:false
     };
+
+    this.sharedObject = {};
 
     window.addEventListener("hashchange", this.onHashChange);
   }
+  componentDidMount() {
+    this.fetchData(`http://localhost/index.php/api/fixture/213`)
+  }
 
+  fetchData(inputMatch){
+    fetch(inputMatch)
+        .then(res => res.json())
+        .then(res =>{
+          this.sharedObject = {
+            apiHelper: new APIHelper(res),
+            headerInstance: null
+          };
+          this.setState({data: res, loaded: true})
+        })
+  }
 
   onHashChange = () => {
     this.setState({hash: window.location.hash})
   }
 
   render(){
+    console.log(this.sharedObject)
     let stepComponent = null;
-
-
     if(this.state.hash == '#1'){
       return <div className='App'>
         <Login/>
@@ -63,24 +74,33 @@ class App extends React.Component {
       </div>
     }
 
-    return (
-        <div className='App'>
-          <Header ref={(instance) => {
-            this.sharedObject.headerInstance = instance}} />
-        <HashRouter>
-            <Route path="/competitions" render={(props) => (<Competition_Listing key={'competition_current'} sharedObj={this.sharedObject} {...props}/>)} />
-            <Route path="/competitions/:countryid" render={(props) => (<Competition_Listing key={'competition_' + props.match.params.countryid} sharedObj={this.sharedObject} {...props}/>)} />
-            <Route path="/home" render={(props) => (<Home_screen sharedObj={this.sharedObject} {...props}/>)} />
-            {/*<Route path="/coa" render={(props) => (<Weeks sharedObj={this.sharedObject} {...props}/>)} />*/}
-            <Route path="/competition/:competitions" render={(props) => (<Week_games_Listing sharedObj={this.sharedObject} {...props}/>)} />
-            <Route path="/competition/:competitions/:weekid" render={(props) => (<Week_games_Listing sharedObj={this.sharedObject} {...props}/>)} />
-            <Route path="/match/:matchid" render={(props) => (<Match_Details sharedObj={this.sharedObject} {...props}/>)} />
-        </HashRouter>
-          <Footer/>
-        </div>
+       if(this.state.loaded){
 
-    );
-  }
+         return (
+             <div className='App'>
+
+               {window.location.hash!='#/login' ? <Header ref={(instance) => {
+                 this.sharedObject.headerInstance = instance}}  /> : <div></div>}
+
+               <HashRouter>
+                 <Route path="/login" render={(props) => (<Login sharedObj={this.sharedObject} {...props}/>)} />
+                 <Route path="/home" render={(props) => (<Home_screen sharedObj={this.sharedObject} {...props}/>)} />
+                 <Route path="/leagues" render={(props) => (<Competition_Listing key={'competition_current'} sharedObj={this.sharedObject} {...props}/>)} />
+                 <Route path="/leagues/:countryid" render={(props) => (<Competition_Listing key={'competition_' + props.match.params.countryid} sharedObj={this.sharedObject} {...props}/>)} />
+                 <Route path="/league/:leagueid/round/:roundid" render={(props) => (<Week_games_Listing sharedObj={this.sharedObject} {...props}/>)} />
+                 <Route path="/round/:roundid/league/:leagueid" render={(props) => (<Week_games_Listing sharedObj={this.sharedObject} {...props}/>)} />
+                 <Route path="/fixture/:fixtureid" render={(props) => (<Match_Details sharedObj={this.sharedObject} {...props}/>)} />
+                 <Route path="/leaderboards" render={(props) => (<LeaderBoards sharedObj={this.sharedObject} {...props}/>)} />
+               </HashRouter>
+               <Footer/>
+             </div>
+
+         );
+       }else{
+         return(<div>Loading...</div>);
+       }
+       }
+
 }
 
 export default App;

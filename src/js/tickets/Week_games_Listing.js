@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../../src/style/betbook/week-games.scss';
 import MatchShort from '../components/match_short';
 import {Link} from "react-router-dom";
 
@@ -9,35 +8,53 @@ class Week_games_Listing extends React.Component {
         super(props);
 
         this.state = {
-            data: [],
+            data: {},
             loaded: false
         };
         this.sharedObj = props.sharedObj;
+        this.hashLeague  = window.location.hash.split('/',3).pop();
+        this.hashRound  = window.location.hash.split('/',5).pop();
     }
 
     componentDidMount() {
-        this.sharedObj.apiHelper.competitions.getByID(1, this.handleCompetitionLoaded);
+        this.fetchData();
     }
 
-    handleCompetitionLoaded = (data) => {
-        this.setState({data, loaded: true});
+    fetchData() {
+        this.fetchLeague(`http://localhost/index.php/api/league/` + this.hashLeague);
+    }
+
+    fetchLeague(input) {
+        fetch(input)
+            .then(res => res.json())
+            .then(res => {
+                this.fetchCompetitionRound(`http://localhost/index.php/api/fixture/?round=` + this.hashRound,res);
+            })
+    }
+
+    fetchCompetitionRound(input,league) {
+        fetch(input)
+            .then(res => res.json())
+            .then(res => {
+                league.data = Object.values(res);
+                this.setState({data:league});
+                this.setState({loaded:true})
+            })
     }
 
     renderGames = () => {
+        console.log(this.state.data)
+        this.sharedObj.headerInstance.setTitle(this.state.data.Competition);
         return <div>
-            <div className='game-week'><span className='text14'>{'Matchday ' + this.state.data.currentWeek}</span></div>`
-            {this.state.data.data.map((match, i) => <Link to={`/match/${match.match.id}`}> <MatchShort match={match}/>
-            </Link>)}
+            <div className='game-week'><span className='text14'>{'Matchday ' + this.hashRound}</span></div>
+            {this.state.data.data.map((fixture) => <Link to={`/fixture/${fixture.id}`}> <MatchShort match={fixture}/></Link>)}
         </div>
     }
 
     render() {
 
+        console.log(this.hashRound)
         console.log(this.state.data)
-        if (this.state.loaded) {
-            this.sharedObj.headerInstance.setTitle(this.state.data.name);
-        }
-
         return (
             <div className='betbook_screen'>
                 <div className='main-content'>

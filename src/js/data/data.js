@@ -3,6 +3,7 @@ export default [
         competition: {
             id: 3,
             name: 'Prva Srpska Liga',
+            week:3
         },
         week: {
             id: 5,
@@ -49,6 +50,7 @@ export default [
         competition: {
             id: 3,
             name: 'Prva Srpska Liga',
+            week:3
         },
         week: {
             id: 5,
@@ -95,7 +97,7 @@ export default [
             match_id: 1,
             game1_tip: "2",
             game2_tip: "2",
-            game3_tip: "gg",
+            game3_tip: "gg3p",
             game4_tip: "22",
             game1_odd: 1.5,
             game2_odd: 1.5,
@@ -109,6 +111,7 @@ export default [
         competition: {
             id: 3,
             name: 'Prva Srpska Liga',
+            week:3
         },
         week: {
             id: 5,
@@ -185,6 +188,7 @@ export default [
         competition: {
             id: 3,
             name: 'Prva Srpska Liga',
+            week:3
         },
         week: {
             id: 5,
@@ -275,6 +279,7 @@ export default [
         competition: {
             id: 3,
             name: 'Prva Srpska Liga',
+            week:3
         },
         week: {
             id: 5,
@@ -351,6 +356,7 @@ export default [
         competition: {
             id: 3,
             name: 'Prva Srpska Liga',
+            week:3
         },
         week: {
             id: 5,
@@ -441,6 +447,7 @@ export default [
         competition: {
             id: 3,
                 name: 'Prva Srpska Liga',
+            week:3
         },
         week: {
             id: 5,

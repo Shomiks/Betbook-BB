@@ -1,47 +1,76 @@
 import React from 'react';
 import '../../../src/style/betbook/competitionlisting.scss';
 import '../../../src/style/app.scss';
-import Header from '../components/header';
 import Listing from '../components/listing';
 import ListingItem from '../components/listingitem';
 import CompetitionItem from '../components/competitionitem';
 import Footer from '../components/footer';
-import {BrowserRouter as Router, Link, Route} from "react-router-dom";
+import {Link} from "react-router-dom";
 
 class Competition_Listing extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
-            data: []
+            realData: [],
+            loaded: false,
         };
+
         this.sharedObj = props.sharedObj;
     }
 
     componentDidMount() {
-        this.sharedObj.apiHelper.competitions.getAll(this.handleCompetitionsLoaded);
-        this.sharedObj.headerInstance.setTitle('Competitions');
+        this.sharedObj.apiHelper.competitions.getAll(this.handleLeaguesLoaded);
+        this.sharedObj.headerInstance.setTitle('Leagues');
+        this.fetchData()
     }
 
-    handleCompetitionsLoaded = (data) => {
+    fetchData(){
+        this.fetchCountries(`http://localhost/index.php/api/country`)
+    }
+
+    fetchCountries(input) {
+        fetch(input)
+            .then(res => res.json())
+            .then(res => {
+                let countries = Object.values(res);
+                countries.slice(0,3).map((country) => {
+                    this.fetchLeagues(`http://localhost/index.php/api/league/?country_id=`+country.id,country)
+                })
+            })
+    }
+
+    fetchLeagues (input,country){
+        fetch(input)
+            .then(res => res.json())
+            .then(res => {
+                let leagues = Object.values(res);
+                this.setState({realData:[...this.state.realData,{country,leagues}]});
+                this.setState({loaded:true})
+            })
+    }
+
+    handleLeaguesLoaded = (data) => {
         this.setState({data});
     }
 
     render() {
-        return (
+        console.log(this.state.realData[0])
+        if (this.state.loaded) return (
             <div className='betbook_screen'>
                 <div className='main-content'>
-                    {this.state.data.map((data, i) => <div key={data.country.id + '_'}>
-                        <div className='competition-title-field'><span className='text18'>{data.country.name}</span>
+                    {this.state.realData.map((data) => <div key={data.country.id + '_'}>
+                        <div className='country-title-field'><span className='text18'>{data.country.name}</span>
+                            <img className='flag' src={data.country.flag}/>
                         </div>
                         <Listing>
                             {
-                                data.country.competitions.map((competition, j) =><Link to = {`/competition/${this.state.data[i].competition[j].id}`}>
-                                        <ListingItem  competition={competition} >
-                                            <CompetitionItem competitionname={competition}/>
-                                        </ListingItem>
-                                    </Link>)
+                                data.leagues.map((league) => <Link
+                                    to={`/league/${league.id}/round/${league.current_round}`}>
+                                    <ListingItem >
+                                        <CompetitionItem league={league}/>
+                                    </ListingItem>
+                                </Link>)
                             }
                         </Listing>
                     </div>)}
@@ -49,6 +78,7 @@ class Competition_Listing extends React.Component {
                 <Footer/>
             </div>
         );
+        else return <div>Loading ...</div>
     }
 }
 

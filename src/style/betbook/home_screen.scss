@@ -11,6 +11,29 @@
     overflow: scroll;
     margin-bottom: 4px;
 
+    .favourite-league {
+      height: 200px;
+      width: 100%;
+      display: flex;
+
+
+      .last-week {
+        width: 33%
+      }
+
+      .current-week {
+        width: 33%
+      }
+
+      .logo {
+        width: 33%;
+
+        .league-logo {
+          height: 100px;
+          width: 75px;
+        }
+      }
+    }
 
     .hs_league-week-header {
       position: relative;
