@@ -1,8 +1,8 @@
-.countries-container{
+.leagues-container{
 
   margin-top:50px;
 
-.country-field {
+.league-field {
   height: 100px;
   width: 100%;
   text-align: center;
@@ -14,10 +14,9 @@
     vertical-align: middle;
   }
 
-  .flag-container {
-    .flag {
-      width: 50px;
-      border-radius: 50%;
+  .logo-container {
+    .logo {
+      width: 70px   ;
       position: relative;
     }
   }

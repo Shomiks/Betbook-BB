@@ -35,26 +35,63 @@ class APIHelper extends React.Component {
         }
     }
 
-    competitions = {
+    countries = {
         getAll: (callBack) => {
-            setTimeout(() => {
-                callBack(dataCompetitions);
-            }, timeoutInterval);
-        },
-        getByID: (id, callBack) => {
-            setTimeout(() => {
-                callBack(dataCompetitions[0].competition[id]);
-            }, timeoutInterval);
+            fetch(`http://192.168.8.113/index.php/api/country`)
+                .then(res => res.json())
+                .then(res => {
+                    let countries = Object.values(res);
+                    callBack(countries)
+                })
         }
     }
 
-    match = {
-        getByID: (id, callBack) => {
-            setTimeout(() => {
-                callBack(data[2]);
-            }, timeoutInterval);
+    leagues = {
+        getAll: (country_id, callBack) => {
+            fetch(`http://192.168.8.113/index.php/api/league/?country_id=` + country_id)
+                .then(res => res.json())
+                .then(res => {
+                    let leagues = Object.values(res);
+                    console.log('lige')
+                    console.log(leagues)
+                    callBack(leagues)
+                })
         },
-        getAll: (callBack) => {
+        getByID: (league_id, callBack) => {
+            fetch(`http://192.168.8.113/index.php/api/round/?league_id=` + league_id)
+                .then(res => res.json())
+                .then(res => {
+                    let league = Object.values(res)
+                    console.log('mecevi')
+                    console.log(league)
+                    callBack(league)
+                })
+        }
+    }
+
+    rounds = {
+        getCurrentByLeagueID: (league_id,callBack) => {
+            fetch(`http://192.168.8.113/index.php/api/rounds/?league_id=` + league_id)
+                .then(res => res.json())
+                .then(res => {
+                    let rounds = Object.values(res);
+                    console.log('runde')
+                    console.log(rounds)
+                    callBack(rounds)
+                })
+        },
+        getByID: (round_id,callBack) => {
+            fetch(`http://192.168.8.113/index.php/api/rounds/?id=` + round_id)
+                .then(res => res.json())
+                .then(res => {
+                    let data = Object.values(res);
+                    callBack(data)
+                })
+        }
+    }
+
+    fixture = {
+        getByID: (id, callBack) => {
             setTimeout(() => {
                 callBack(data[2]);
             }, timeoutInterval);
@@ -62,16 +99,9 @@ class APIHelper extends React.Component {
     }
 
     home = (callBack) => {
-        setTimeout(() => {
-            callBack(hsData);
-        }, timeoutInterval);
+
     }
 
-    week = (callBack) => {
-        setTimeout(() => {
-            callBack(hsData);
-        }, timeoutInterval);
-    }
 }
 
 export default APIHelper
