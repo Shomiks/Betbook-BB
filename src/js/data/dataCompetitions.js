@@ -7,6 +7,7 @@ export default [
                 competition: {
                     id: 3,
                     name: 'Champions League',
+                    week:5
                 },
                 week: {
                     id: 5,
@@ -53,6 +54,7 @@ export default [
                     competition: {
                         id: 3,
                         name: 'Champions League',
+                        week:3
                     },
                     week: {
                         id: 5,
@@ -531,7 +533,7 @@ export default [
                         bid_score: 6
                     }
                 }]},
-            {id:2,name:"Europa League",currentWeek:6,id_country:1,data:[{//upcoming not bidded
+            {id:2,name:"Europa",currentWeek:6,id_country:1,data:[{//upcoming not bidded
                     competition: {
                         id: 3,
                         name: 'Prva Srpska Liga',

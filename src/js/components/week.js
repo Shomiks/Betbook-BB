@@ -1,37 +1,43 @@
 import React from 'react';
 import MatchShort from './match_short';
-import Match_Details from "../tickets/Match_Details";
-import Header from "./header";
 import '../../style/week.scss'
+import '../../style/betbook/components/match_short.scss'
 
-class Week extends React.Component {
+import {Route, HashRouter, Switch, Redirect, Link} from "react-router-dom";
+
+class Weeks extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            currentMatch: null
+            currentData: props.data
         }
     }
 
-    handleMatchClick = (currentMatch)=> {
-        this.setState({currentMatch:currentMatch});
+    renderGames = () => {
+        return <div>
+            {this.state.currentData[1].data.map((match, i) => <Link to={`/match/${match.match.id}`}> <MatchShort
+                match={match}/>
+            </Link>)}
+        </div>
     }
 
     render() {
-
-        if(this.state.currentMatch){
-            return <Match_Details match={this.state.currentMatch} />
-        }
-
-        console.log(this.props.data[0])
         return (
-
-                    <div className='game-week'>
-                        {
-                            this.props.data[0].data.map((match) => <div onClick={()=>{this.handleMatchClick(match)}} className='match-field'><MatchShort match={match} key={match.match.id+'_'}  /></div>)
-                        }
+            <div className='game-week'>
+                <Link to={`/competition/${this.state.currentData[1].currentWeek}/week/${this.state.currentData[1].id}`}>
+                    <div className='hs_league-week-header'>
+                        <div className='hs_league-tittle'><span
+                            className='text17'>{this.state.currentData[1].data[0].competition.name + " matchday " + this.state.currentData[1].data[0].competition.id}</span>
+                        </div>
+                        <div className='hs_chevron'><img src='./assets/images/arrow_right.png'/></div>
                     </div>
+                </Link>
+                <div>
+                    {this.renderGames()}
+                </div>
+            </div>
 
         );
     }
@@ -39,4 +45,4 @@ class Week extends React.Component {
 }
 
 
-export default Week;
+export default Weeks;
