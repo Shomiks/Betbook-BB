@@ -4,8 +4,9 @@
   background-color: #FFFFFF;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
   position: relative;
-  display: block;
-
+  display: flex;
+  justify-content: start;
+  align-items: center;
 
   .ps_number {
     height: 22px;
@@ -38,15 +39,36 @@
 
     .ps_points {
       height: 24px;
-      width: 205px;
+      width: 190px;
     }
   }
 
   .ps_member-success {
     height: 24px;
     width: 48px;
-    position: relative;
+    position: absolute;
+    right: 0;
+    margin-right: 5%;
     display: inline-block;
   }
 
+}
+
+@media only screen and (max-width: 330px) {
+  #root {
+    .App {
+      .ps_number {
+        display: none;
+      }
+
+      .ps_member-image {
+        display: none;
+      }
+
+      .ps_member-name {
+        width: 100%;
+      }
+
+    }
+  }
 }

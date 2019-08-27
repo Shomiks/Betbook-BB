@@ -1,232 +1,242 @@
-.ms-left-field {
-  position: relative;
-  border-right: 0.5px solid #cfcfcf;
-  display: inline-block;
-  height: 60px;
-  width: 19%;
 
-  .ms_status-field {
-    .text12 {
-      color: #9B9B9B;
-    }
+.main_content {
 
-    .text12-red {
-      color: red;
-      font-family: "SF Display";
-      font-size: 12px;
-      font-weight: 500;
-    }
+  margin-top: 50px;
 
-    .text12-black {
-      color: black;
-      font-family: "SF Display";
-      font-size: 12px;
-      font-weight: 500;
-    }
-
-    .text12-green {
-      color: #7ED321;
-      font-family: "SF Display";
-      font-size: 12px;
-      font-weight: 500;
-    }
-  }
-}
-
-.ms-central-field {
-  position: relative;
-  display: inline-block;
-  height: 60px;
-  width: 79%;
-
-  .text14 {
-    line-height: 30px;
-  }
-
-  .ms_homeField {
+  .ms-left-field {
     position: relative;
+    border-right: 0.5px solid #cfcfcf;
     display: inline-block;
-    margin-right: 5px;
-  }
+    height: 60px;
+    width: 19%;
+    text-align: center;
 
-  .ms_awayField {
-    position: relative;
-    display: inline-block;
-    margin-left: 5px;
-  }
-
-  .ms_resultField {
-    position: relative;
-    display: inline-block;
-  }
-}
-
-.ms-under-teams-field {
-  position: relative;
-  display: block;
-  width: 100%;
-
-  .ms_bid-field {
-    margin: 0 auto;
-
-    .ms_bid {
-      position: relative;
-      display: inline-block;
-      width: 25%;
-
-    }
-
-    .ms_bid-left {
-      position: relative;
-      display: inline-block;
-      width: 24%;
-      background-color: #2F8FBD;
-
-      .text12 {
-        color: #FFF;
-      }
-    }
-
-    .ms_bid-left-white {
-      position: relative;
-      display: inline-block;
-      width: 24%;
-      background-color: #f7f7f8;
-
-      .text12 {
-        color: black;
-      }
-    }
-
-    .ms_bid-left-red {
-      position: relative;
-      display: inline-block;
-      width: 24%;
-      background-color: #EC3B51;
-
-      .text12 {
-        color: #FFF;
-      }
-    }
-
-    .ms_bid-left-green {
-      position: relative;
-      display: inline-block;
-      width: 24%;
-      background-color: #7ED321;
-
-      .text12 {
-        color: #FFF;
-      }
-    }
-
-    .ms_bid-central {
-      position: relative;
-      display: inline-block;
-      width: 24%;
-      border-left: 0.5px solid #cfcfcf;
-      background-color: #2F8FBD;
-
-      .text12 {
-        color: #FFF;
-      }
-    }
-
-    .ms_bid-central-white {
-      position: relative;
-      display: inline-block;
-      width: 24%;
-      background-color: #f7f7f8;
-
-      .text12 {
-        color: black;
-      }
-    }
-
-    .ms_bid-central-red {
-      position: relative;
-      display: inline-block;
-      width: 24%;
-      border-left: 0.5px solid #cfcfcf;
-      background-color: #EC3B51;
-
-      .text12 {
-        color: #FFF;
-      }
-    }
-
-    .ms_bid-central-green {
-      position: relative;
-      display: inline-block;
-      width: 24%;
-      border-left: 0.5px solid #cfcfcf;
-      background-color: #7ED321;
-
-      .text12 {
-        color: #FFF;
-      }
-    }
-
-    .ms_bid-right {
-      position: relative;
-      display: inline-block;
-      width: 24%;
-      border-left: 0.5px solid #cfcfcf;
-      background-color: #2F8FBD;
-
-      .text12 {
-        color: #FFF;
-      }
-    }
-
-    .ms_bid-right-white {
-      position: relative;
-      display: inline-block;
-      width: 24%;
-      background-color: #f7f7f8;
-
-      .text12 {
-        color: black;
-      }
-    }
-
-    .ms_bid-right-red {
-      position: relative;
-      display: inline-block;
-      width: 24%;
-      border-left: 0.5px solid #cfcfcf;
-      background-color: #EC3B51;
-
-      .text12 {
-        color: #FFF;
-      }
-    }
-
-    .ms_bid-right-green {
-      position: relative;
-      display: inline-block;
-      width: 24%;
-      border-left: 0.5px solid #cfcfcf;
-      background-color: #7ED321;
-
-      .text12 {
-        color: #FFF;
-      }
-    }
-
-    .ms_game-field {
-      position: relative;
-      display: inline-block;
-      margin-right: 10px;
-
+    .ms_status-field {
       .text12 {
         color: #9B9B9B;
       }
+
+      .text12-red {
+        color: red;
+        font-family: "SF Display";
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      .text12-black {
+        color: black;
+        font-family: "SF Display";
+        font-size: 12px;
+        font-weight: 500;
+      }
+
+      .text12-green {
+        color: #7ED321;
+        font-family: "SF Display";
+        font-size: 12px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .ms-central-field {
+    position: relative;
+    display: inline-block;
+    height: 60px;
+    width: 79%;
+    text-align: center;
+
+    .text14 {
+      line-height: 30px;
     }
 
-    .ms_bided-field {
+    .ms_homeField {
+      position: relative;
+      display: inline-block;
+      margin-right: 5px;
+    }
+
+    .ms_awayField {
+      position: relative;
+      display: inline-block;
+      margin-left: 5px;
+    }
+
+    .ms_resultField {
       position: relative;
       display: inline-block;
     }
   }
+
+  .ms-under-teams-field {
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: center;
+
+    .ms_bid-field {
+      margin: 0 auto;
+
+      .ms_bid {
+        position: relative;
+        display: inline-block;
+        width: 25%;
+
+      }
+
+      .ms_bid-left {
+        position: relative;
+        display: inline-block;
+        width: 24%;
+        background-color: #2F8FBD;
+
+        .text12 {
+          color: #FFF;
+        }
+      }
+
+      .ms_bid-left-white {
+        position: relative;
+        display: inline-block;
+        width: 24%;
+        background-color: #f7f7f8;
+
+        .text12 {
+          color: black;
+        }
+      }
+
+      .ms_bid-left-red {
+        position: relative;
+        display: inline-block;
+        width: 24%;
+        background-color: #EC3B51;
+
+        .text12 {
+          color: #FFF;
+        }
+      }
+
+      .ms_bid-left-green {
+        position: relative;
+        display: inline-block;
+        width: 24%;
+        background-color: #7ED321;
+
+        .text12 {
+          color: #FFF;
+        }
+      }
+
+      .ms_bid-central {
+        position: relative;
+        display: inline-block;
+        width: 24%;
+        border-left: 0.5px solid #cfcfcf;
+        background-color: #2F8FBD;
+
+        .text12 {
+          color: #FFF;
+        }
+      }
+
+      .ms_bid-central-white {
+        position: relative;
+        display: inline-block;
+        width: 24%;
+        background-color: #f7f7f8;
+
+        .text12 {
+          color: black;
+        }
+      }
+
+      .ms_bid-central-red {
+        position: relative;
+        display: inline-block;
+        width: 24%;
+        border-left: 0.5px solid #cfcfcf;
+        background-color: #EC3B51;
+
+        .text12 {
+          color: #FFF;
+        }
+      }
+
+      .ms_bid-central-green {
+        position: relative;
+        display: inline-block;
+        width: 24%;
+        border-left: 0.5px solid #cfcfcf;
+        background-color: #7ED321;
+
+        .text12 {
+          color: #FFF;
+        }
+      }
+
+      .ms_bid-right {
+        position: relative;
+        display: inline-block;
+        width: 24%;
+        border-left: 0.5px solid #cfcfcf;
+        background-color: #2F8FBD;
+
+        .text12 {
+          color: #FFF;
+        }
+      }
+
+      .ms_bid-right-white {
+        position: relative;
+        display: inline-block;
+        width: 24%;
+        background-color: #f7f7f8;
+
+        .text12 {
+          color: black;
+        }
+      }
+
+      .ms_bid-right-red {
+        position: relative;
+        display: inline-block;
+        width: 24%;
+        border-left: 0.5px solid #cfcfcf;
+        background-color: #EC3B51;
+
+        .text12 {
+          color: #FFF;
+        }
+      }
+
+      .ms_bid-right-green {
+        position: relative;
+        display: inline-block;
+        width: 24%;
+        border-left: 0.5px solid #cfcfcf;
+        background-color: #7ED321;
+
+        .text12 {
+          color: #FFF;
+        }
+      }
+
+      .ms_game-field {
+        position: relative;
+        display: inline-block;
+        margin-right: 10px;
+
+        .text12 {
+          color: #9B9B9B;
+        }
+      }
+
+      .ms_bided-field {
+        position: relative;
+        display: inline-block;
+      }
+    }
+  }
+
 }

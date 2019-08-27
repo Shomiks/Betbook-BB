@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../../src/style/betbook/login.scss'
 import '../../../src/style/app.scss'
 import '../../../src/style/betbook/user/login.scss'
 
@@ -30,7 +29,6 @@ class Login extends React.Component {
             <button className='sign-up-button'> sign up </button>
             <button className='login-button'> login </button>
           </div>
-          <div className='image-field'><img src='./assets/images/betbook-logo.png'></img></div>
         </div>
     )
   }
