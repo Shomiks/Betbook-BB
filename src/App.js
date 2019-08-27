@@ -1,86 +1,106 @@
 import React from 'react';
 import Login from './js/user/Login'
-import Match_Details from './js/tickets/Match_Details'
-import Competition_Listing from './js/tickets/Competition_Listing'
-import Ticket_Listing from './js/tickets/Ticket_Listing'
-import Home_Listing from './js/tickets/Home_Listing'
 
 import './style/app.scss'
 import Header from './js/components/header';
-import Footer from './js/components/footer';
-import MatchShort from "./js/components/match_short";
 import Week_games_Listing from "./js/tickets/Week_games_Listing";
 import Home_screen from "./js/tickets/home_screen";
 import Profile_Tickets from "./js/tickets/Profile_Tickets";
+import Competition_Listing from "./js/tickets/Competition_Listing";
+import Weeks from "./js/components/week";
+import {Route,HashRouter} from "react-router-dom";
+import APIHelper from "./js/data/apihelper";
+import Match_Details from "./js/tickets/Match_Details";
+import Footer from "./js/components/footer";
 import LeaderBoards from "./js/tickets/LeaderBoards";
-
 
 class App extends React.Component {
 
-    constructor(props) {
-        super(props);
+  constructor(props){
+    super(props);
 
-        this.state = {
-            hash: window.location.hash
-        }
+    this.state = {
+      hash: window.location.hash,
+      loaded:false
+    };
 
-        window.addEventListener("hashchange", this.onHashChange);
+    this.sharedObject = {};
+
+    window.addEventListener("hashchange", this.onHashChange);
+  }
+  componentDidMount() {
+    this.fetchData(`http://localhost/index.php/api/fixture/213`)
+  }
+
+  fetchData(inputMatch){
+    fetch(inputMatch)
+        .then(res => res.json())
+        .then(res =>{
+          this.sharedObject = {
+            apiHelper: new APIHelper(res),
+            headerInstance: null
+          };
+          this.setState({data: res, loaded: true})
+        })
+  }
+
+  onHashChange = () => {
+    this.setState({hash: window.location.hash})
+  }
+
+  render(){
+    console.log(this.sharedObject)
+    let stepComponent = null;
+    if(this.state.hash == '#1'){
+      return <div className='App'>
+        <Login/>
+      </div>;
+    }
+    else if(this.state.hash == '#2'){
+      stepComponent = <Competition_Listing/>;
+    }
+    else if(this.state.hash == '#3'){
+      stepComponent = <Home_screen/>;
+    }
+    else if(this.state.hash == '#/3'){
+      stepComponent = <Week_games_Listing />;
+    }
+    else if(this.state.hash == '#5'){
+      stepComponent = <Weeks/>;
+    }
+    else if(this.state.hash == '#6'){
+      return <div className='App'>
+        <Profile_Tickets/>
+      </div>
     }
 
+       if(this.state.loaded){
 
-    onHashChange = () => {
-        this.setState({hash: window.location.hash})
-    }
+         return (
+             <div className='App'>
 
-    render() {
+               {window.location.hash!='#/login' ? <Header ref={(instance) => {
+                 this.sharedObject.headerInstance = instance}}  /> : <div></div>}
 
-        let stepComponent = null;
-        console.log(window.location.hash)
+               <HashRouter>
+                 <Route path="/login" render={(props) => (<Login sharedObj={this.sharedObject} {...props}/>)} />
+                 <Route path="/home" render={(props) => (<Home_screen sharedObj={this.sharedObject} {...props}/>)} />
+                 <Route path="/leagues" render={(props) => (<Competition_Listing key={'competition_current'} sharedObj={this.sharedObject} {...props}/>)} />
+                 <Route path="/leagues/:countryid" render={(props) => (<Competition_Listing key={'competition_' + props.match.params.countryid} sharedObj={this.sharedObject} {...props}/>)} />
+                 <Route path="/league/:leagueid/round/:roundid" render={(props) => (<Week_games_Listing sharedObj={this.sharedObject} {...props}/>)} />
+                 <Route path="/round/:roundid/league/:leagueid" render={(props) => (<Week_games_Listing sharedObj={this.sharedObject} {...props}/>)} />
+                 <Route path="/fixture/:fixtureid" render={(props) => (<Match_Details sharedObj={this.sharedObject} {...props}/>)} />
+                 <Route path="/leaderboards" render={(props) => (<LeaderBoards sharedObj={this.sharedObject} {...props}/>)} />
+               </HashRouter>
+               <Footer/>
+             </div>
 
-        const headerProps = {
-            title: '',
-            competition: false
-        }
+         );
+       }else{
+         return(<div>Loading....</div>);
+       }
+       }
 
-        if (this.state.hash == '#1') {
-            return <div className='App'>
-                <Login/>
-            </div>;
-        } else if (this.state.hash == '#2') {
-            headerProps.title = 'Competitions';
-            stepComponent = <Home_Listing/>;
-        } else if (this.state.hash == '#3') {
-            headerProps.title = 'Home';
-            stepComponent = <Home_screen/>;
-        } else if (this.state.hash == '#4') {
-            headerProps.title = 'Home vs. Away';
-            stepComponent = <Match_Details/>;
-        } else if (this.state.hash == '#5') {
-            headerProps.title = 'Competition';
-            headerProps.competition = true;
-            stepComponent = <Week_games_Listing/>;
-        } else if (this.state.hash == '#6') {
-            return <div className='App'>
-                <Profile_Tickets/>
-                <Footer/>
-            </div>;
-        } else if (this.state.hash == '#7') {
-            return <div className='App'>
-                <LeaderBoards/>
-                <Footer/>
-            </div>;
-        }
-
-        return (
-            <div className='App'>
-                <Header title={headerProps.title} competition={headerProps.competition}/>
-                <div className='main_content'>
-                    {stepComponent}
-                </div>
-                <Footer/>
-            </div>
-        );
-    }
 }
 
 export default App;
