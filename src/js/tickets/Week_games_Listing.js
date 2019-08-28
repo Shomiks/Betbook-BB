@@ -25,14 +25,17 @@ class Week_games_Listing extends React.Component {
     }
 
     renderGames = () => {
-        this.sharedObj.headerInstance.setTitle(this.state.realData[0].league);
-        return <div>
-            <div className='game-week'><span className='text14'>{ this.state.realData[0].round.name}</span></div>
-            {this.state.realData.map((fixture) => <Link to={`/fixture/${fixture.matches.id}`}> <MatchShort  match={fixture.matches}/></Link>)}
-        </div>
+        this.sharedObj.headerInstance.setTitle(this.state.realData.league);
+        if(this.state.realData.matches)
+            return <div>
+            <div className='game-week'><span className='text14'>{ this.state.realData.round.name}</span></div>
+            {this.state.realData.matches.map((fixture) => <Link to={`/fixture/${fixture.id}`}> <MatchShort  match={fixture}/></Link>)}
+                </div>
     }
 
     render() {
+
+        if(this.state.loaded == true)console.log(this.state.realData)
 
         if(this.state.loaded) return (
             <div className='betbook_screen'>

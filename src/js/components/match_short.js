@@ -10,47 +10,47 @@ class MatchShort extends React.Component {
         }
     }
 
-    handleGameState = () => {
-
-        if (this.props.match.upcoming != 0) {
-            return <div className='ms-left-field'>
-                <div className='ms_date-field'><span
-                    className='text10'>{this.props.match.dateTime}</span></div>
-                <div className='ms_status-field'><span
-                    className='text12'>Upcoming</span></div>
-            </div>
-        }
-        if (this.props.match.result) {
-                if (this.props.match.result.finished == 1 && this.props.match.ticket) {
-                return <div className='ms-left-field'>
-                    <div className='ms_date-field'><span
-                        className='text10'>12.08.2079.</span></div>
-                    <div className='ms_time-field'><span
-                        className='text10'>15:15</span></div>
-                    <div className='ms_status-field'><span
-                        className={this.props.match.ticket.bid_score == this.props.match.ticket.final_score ? "text12-green" : "text12-red"}>
-                        {this.props.match.ticket.bid_score == this.props.match.ticket.final_score ? "Ticket won!" : "Ticket lost!"}</span>
-                    </div>
-                </div>
-            } else if (this.props.match.result.finished == 1) {
-                return <div className='ms-left-field'>
-                    <div className='ms_date-field'><span
-                        className='text10'>12.08.2079.</span></div>
-                    <div className='ms_time-field'><span
-                        className='text10'>15:15</span></div>
-                    <div className='ms_status-field'><span
-                        className='text12'>Finished</span></div>
-                </div>
-            } else return <div className='ms-left-field'>
-                <div className='ms_date-field'><span
-                    className='text10'>started 15:15h</span></div>
-                <div className='ms_time-field'><span
-                    className='text12'>'79:16</span></div>
-                <div className='ms_status-field'><span
-                    className='text12-red'>* Live *</span></div>
-            </div>
-        }
-    };
+    // handleGameState = () => {
+    //
+    //     if (this.props.match.upcoming != 0) {
+    //         return <div className='ms-left-field'>
+    //             <div className='ms_date-field'><span
+    //                 className='text10'>{this.props.match.dateTime}</span></div>
+    //             <div className='ms_status-field'><span
+    //                 className='text12'>Upcoming</span></div>
+    //         </div>
+    //     }
+    //     if (this.props.match.result) {
+    //             if (this.props.match.result.finished == 1 && this.props.match.ticket) {
+    //             return <div className='ms-left-field'>
+    //                 <div className='ms_date-field'><span
+    //                     className='text10'>12.08.2079.</span></div>
+    //                 <div className='ms_time-field'><span
+    //                     className='text10'>15:15</span></div>
+    //                 <div className='ms_status-field'><span
+    //                     className={this.props.match.ticket.bid_score == this.props.match.ticket.final_score ? "text12-green" : "text12-red"}>
+    //                     {this.props.match.ticket.bid_score == this.props.match.ticket.final_score ? "Ticket won!" : "Ticket lost!"}</span>
+    //                 </div>
+    //             </div>
+    //         } else if (this.props.match.result.finished == 1) {
+    //             return <div className='ms-left-field'>
+    //                 <div className='ms_date-field'><span
+    //                     className='text10'>12.08.2079.</span></div>
+    //                 <div className='ms_time-field'><span
+    //                     className='text10'>15:15</span></div>
+    //                 <div className='ms_status-field'><span
+    //                     className='text12'>Finished</span></div>
+    //             </div>
+    //         } else return <div className='ms-left-field'>
+    //             <div className='ms_date-field'><span
+    //                 className='text10'>started 15:15h</span></div>
+    //             <div className='ms_time-field'><span
+    //                 className='text12'>'79:16</span></div>
+    //             <div className='ms_status-field'><span
+    //                 className='text12-red'>* Live *</span></div>
+    //         </div>
+    //     }
+    // };
 
     handleBidField = () => {
 
@@ -123,7 +123,7 @@ class MatchShort extends React.Component {
 
     render() {
 
-        return <div >{this.handleGameState()}{this.handleBidField()}</div>
+        return <div >{this.handleBidField()}</div>
           }
 }
 

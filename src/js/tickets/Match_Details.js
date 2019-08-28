@@ -53,8 +53,6 @@ class Match_Details extends React.Component {
 
 
     renderStateCompopnent = () => {
-        console.log('a')
-        console.log(this.state.realData)
         this.sharedObj.headerInstance.setTitle(this.state.realData.round.name);
         let classState ='betbook_screen';
         if(this.state.realData.result){
@@ -72,21 +70,17 @@ class Match_Details extends React.Component {
                     </div>
                     <div className='place-field'><span className='text10'>1st place</span></div>
                 </div>
-                <div className='md_league-week-details'><span className='text12'>{'COMPETITION ROUND' + ' ' + this.state.realData.round.week_number}</span></div>
+                <div className='md_league-week-details'><span className='text12'>datum</span></div>
                 <div className='md_date-time-vs-field'>
-                    <div className={this.state.realData.result == null ? 'vs-datetime-field' : 'hidden'}><span
-                        className='text18'>VS</span>
-                    </div>
-                    <div className={this.state.realData.result != null ?
-                        'vs-datetime-field-result' :
-                        'hidden'}>
-                        <span className='text25'>{this.state.realData.upcoming == 0 ? this.state.realData.result.ft_home_goals : ""} : {this.state.realData.upcoming == 0 ? this.state.realData.result.ft_away_goals : ""}</span>
-                        <div><span className='text12'>{this.state.realData.upcoming == 0 ? this.state.realData.result.ht_home_goals : ""} : {this.state.realData.upcoming == 0 ? this.state.realData.result.ht_away_goals : ""}</span></div>
+                    <div className={this.state.realData.result != null ? 'vs-datetime-field-result' : 'hidden'}>
+                        <span className='text25'>{this.state.realData.upcoming == false ? this.state.realData.result.ft_home_goals : ""} : {this.state.realData.upcoming == false ? this.state.realData.result.ft_away_goals : ""}</span>
+                        <div><span className='text12'>{this.state.realData.upcoming == false ? this.state.realData.result.ht_home_goals : ""} : {this.state.realData.upcoming == false ? this.state.realData.result.ht_away_goals : ""}</span></div>
                     </div>
                     <div
-                        className={(this.state.realData.upcoming == 0) ? 'minuteLive' : 'hidden'}><span
-                        className={(this.state.realData.upcoming == 0 && this.state.realData.result.finished == false) ? 'text18' : 'hidden'}>'{this.state.realData.result ? this.state.realData.result.current_min : ''}<br/><span
-                        className='text18-red-field'>* LIVE *</span></span></div>
+                        className={(this.state.realData.upcoming == false) ? 'minuteLive' : 'hidden'}><span
+                        className={(this.state.realData.upcoming == false && this.state.realData.result.finished == false) ? 'text18' : 'hidden'}>'{this.state.realData.result ? this.state.realData.result.current_min : ''}<br/><span
+                        className='text18-red-field'>* LIVE *</span></span>
+                    </div>
                     <div className='time-date-field'><span
                         className={this.state.realData.result == null ? 'text10' : 'hidden'}>{this.state.realData.dateTime}</span>
                     </div>

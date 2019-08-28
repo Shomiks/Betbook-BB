@@ -57,8 +57,14 @@ class APIHelper extends React.Component {
             fetch(`http://192.168.8.113/index.php/api/league/?league_id=` + league_id)
                 .then(res => res.json())
                 .then(res => {
-                    let league = Object.values(res)
-                    callBack(league)
+                    if(res) {
+                        if(res['0'].matches) {
+                            let matches = Object.values(res['0'].matches);
+                            res['0'].matches = matches;
+                            callBack(res['0'])
+                        }
+                        else callBack(res['0'])
+                    }
                 })
         }
     }
