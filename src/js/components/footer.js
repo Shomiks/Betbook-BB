@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../style/betbook/components/footer.scss';
-import {Link} from "react-router-dom";
 
 // import '../../..src/style/betbook/components/footer.scss'
 
