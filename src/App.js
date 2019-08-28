@@ -27,20 +27,20 @@ class App extends React.Component {
     window.addEventListener("hashchange", this.onHashChange);
   }
   componentDidMount() {
-    this.fetchData(`http://localhost/index.php/api/fixture/213`)
-  }
+      this.sharedObject = {
+          apiHelper: new APIHelper(),
+          headerInstance: null
+      };
+      this.setState({loaded: true})
+    }
 
-  fetchData(inputMatch){
-    fetch(inputMatch)
-        .then(res => res.json())
-        .then(res =>{
-          this.sharedObject = {
-            apiHelper: new APIHelper(res),
-            headerInstance: null
-          };
-          this.setState({data: res, loaded: true})
-        })
-  }
+  // fetchData(inputMatch){
+  //   fetch(inputMatch)
+  //       .then(res => res.json())
+  //       .then(res =>{
+  //
+  //       })
+  // }
 
   onHashChange = () => {
     this.setState({hash: window.location.hash})
@@ -49,6 +49,8 @@ class App extends React.Component {
   render(){
 
        if(this.state.loaded){
+
+           console.log(this.sharedObject)
 
          return (
              <div className='App'>
@@ -78,7 +80,7 @@ class App extends React.Component {
          );
        }else{
          return(<div>Loading....</div>);
-       }
+         }
        }
 
 }

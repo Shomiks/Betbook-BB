@@ -19,14 +19,14 @@ class Home_screen extends React.Component {
         this.sharedObj = props.sharedObj;
     }
 
-    componentDidMount() {
-        console.log('testttt');
-        this.fetchData()
-    }
-
-    fetchData(){
-        this.fetchHome(`http://localhost/index.php/api/user_favourite_league`)
-    }
+    // componentDidMount() {
+    //     console.log('testttt');
+    //     this.fetchData()
+    // }
+    //
+    // fetchData(){
+    //     this.fetchHome(`http://localhost/index.php/api/user_favourite_league`)
+    // }
 
     fetchHome(input){
         fetch(input)

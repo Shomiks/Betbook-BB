@@ -122,8 +122,6 @@ class MatchShort extends React.Component {
     };
 
     render() {
-        console.log('a')
-        console.log(this.state)
 
         return <div >{this.handleGameState()}{this.handleBidField()}</div>
           }

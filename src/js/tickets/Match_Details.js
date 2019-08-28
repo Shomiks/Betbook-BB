@@ -9,29 +9,26 @@ class Match_Details extends React.Component {
 
         this.state = {
             loaded:false,
-            realData:null
+            realData:[]
         };
         this.sharedObj = props.sharedObj;
         this.hashFixture = window.location.hash.split('/',5).slice(0,3).pop();
     }
 
     componentDidMount() {
-        this.fetchData();
+        this.getRoundById();
     }
 
-    fetchData(){
-        this.fetchFixture(`http://localhost/index.php/api/fixture/` + this.hashFixture);
-    }
-
-    fetchFixture(input){
-        fetch(input)
-            .then(res => res.json())
-            .then(res => this.setState({data:res,loaded:true}))
-    }
+    getRoundById(){
+        this.sharedObj.apiHelper.rounds.getCurrentByLeagueID(this.hashFixture,(res) => {
+            console.log(res)
+            this.setState({realData:res,loaded:true})
+        });
+    };
 
     renderGameTip = (label, game, tip, bidfield) => {
         let className = bidfield;
-        if (this.state.data.result && this.state.data.result[game + '_' + tip] == 1) {
+        if (this.state.realData.result && this.state.realData.result[game + '_' + tip] == 1) {
             className += ' won';
         }
         if (this.state.data.ticket) {
@@ -39,8 +36,8 @@ class Match_Details extends React.Component {
                 className += ' bided';
             }
 
-            if (this.state.data.ticket[game + '_tip'] == tip && this.state.data.result != null) {
-                if (this.state.data.result.finished == 1) {
+            if (this.state.realData.ticket[game + '_tip'] == tip && this.state.realData.result != null) {
+                if (this.state.realData.result.finished == 1) {
                     if (className.includes('won')) {
                         className += ' green'
                     } else className += ' red'
@@ -49,17 +46,17 @@ class Match_Details extends React.Component {
         }
         return <div className={className}>
             <div className='col-3_game-field'><span
-                className={this.state.data.ticket ? (this.state.data.ticket[game + '_tip'] == tip ? 'text12-white' : 'text12') : 'text12'}>{label}</span></div>
+                className={this.state.realData.ticket ? (this.state.realData.ticket[game + '_tip'] == tip ? 'text12-white' : 'text12') : 'text12'}>{label}</span></div>
             <div className='col-3_bid-field'><span
-                className={this.state.data.ticket ? (this.state.data.ticket[game + '_tip'] == tip ? 'text12-white' : 'text12') : 'text12'}>{this.state.data[game + '_' + tip]}</span></div>
+                className={this.state.realData.ticket ? (this.state.realData.ticket[game + '_tip'] == tip ? 'text12-white' : 'text12') : 'text12'}>{this.state.realData[game + '_' + tip]}</span></div>
         </div>
     };
 
 
     renderStateCompopnent = () => {
         let classState ='betbook_screen';
-        if(this.state.data.result){
-            if(this.state.data.result.finished == false){
+        if(this.state.realData.result){
+            if(this.state.realData.result.finished == false){
                 classState += ' live'
             }
             else classState += ' finished'
@@ -68,36 +65,36 @@ class Match_Details extends React.Component {
 
         return <div className={classState}>
             <div className='match-details-field'>
-                <div className='md_home-team-field'><img className='logo' src={this.state.data.team_home.logo}/>
-                    <div className='home-text-field'><span className='text18'>{this.state.data.team_home.team_name}</span>
+                <div className='md_home-team-field'><img className='logo' src={this.state.realData.team_home.logo}/>
+                    <div className='home-text-field'><span className='text18'>{this.state.realData.team_home.team_name}</span>
                     </div>
                     <div className='place-field'><span className='text10'>1st place</span></div>
                 </div>
-                <div className='md_league-week-details'><span className='text12'>{'COMPETITION ROUND' + ' ' + this.state.data.round.week_number}</span></div>
+                <div className='md_league-week-details'><span className='text12'>{'COMPETITION ROUND' + ' ' + this.state.realData.round.week_number}</span></div>
                 <div className='md_date-time-vs-field'>
-                    <div className={this.state.data.result == null ? 'vs-datetime-field' : 'hidden'}><span
+                    <div className={this.state.realData.result == null ? 'vs-datetime-field' : 'hidden'}><span
                         className='text18'>VS</span>
                     </div>
-                    <div className={this.state.data.result != null ?
+                    <div className={this.state.realData.result != null ?
                         'vs-datetime-field-result' :
                         'hidden'}>
-                        <span className='text25'>{this.state.data.upcoming == false ? this.state.data.result.ft_home_goals : ""} : {this.state.data.upcoming == false ? this.state.data.result.ft_away_goals : ""}</span>
-                        <div><span className='text12'>({this.state.data.upcoming == false ? this.state.data.result.ht_home_goals : ""} : {this.state.data.upcoming == false ? this.state.data.result.ht_away_goals : ""})</span></div>
+                        <span className='text25'>{this.state.realData.upcoming == false ? this.state.realData.result.ft_home_goals : ""} : {this.state.realData.upcoming == false ? this.state.realData.result.ft_away_goals : ""}</span>
+                        <div><span className='text12'>({this.state.realData.upcoming == false ? this.state.realData.result.ht_home_goals : ""} : {this.realData.data.upcoming == false ? this.state.realData.result.ht_away_goals : ""})</span></div>
                     </div>
                     <div
-                        className={(this.state.data.upcoming == false) ? 'minuteLive' : 'hidden'}><span
-                        className={(this.state.data.upcoming == false && this.state.data.result.finished == false) ? 'text18' : 'hidden'}>'{this.state.data.result ? this.state.data.result.current_min : ''}<br/><span
+                        className={(this.state.realData.upcoming == false) ? 'minuteLive' : 'hidden'}><span
+                        className={(this.state.realData.upcoming == false && this.state.realData.result.finished == false) ? 'text18' : 'hidden'}>'{this.state.realData.result ? this.state.realData.result.current_min : ''}<br/><span
                         className='text18-red-field'>* LIVE *</span></span></div>
                     <div className='time-date-field'><span
-                        className={this.state.data.result == null ? 'text10' : 'hidden'}>{this.state.data.dateTime}</span>
+                        className={this.state.realData.result == null ? 'text10' : 'hidden'}>{this.state.realData.dateTime}</span>
                     </div>
                     <div className='location-field'><span className='text10'>STADION</span>
                     </div>
                 </div>
                 <div className='md_away-team-field'>
-                    <img className='logo' src={this.state.data.team_away.logo}/>
+                    <img className='logo' src={this.state.realData.team_away.logo}/>
                     <div className='home-text-field'><span
-                        className='text18'>{this.state.data.team_away.team_name}</span></div>
+                        className='text18'>{this.state.realData.team_away.team_name}</span></div>
                     <div className='place-field'><span
                         className='text10'>2nd place</span></div>
                 </div>
@@ -165,7 +162,9 @@ class Match_Details extends React.Component {
     }
 
     render() {
-        console.log(this.state.data)
+
+        console.log(this.sharedObj.apiHelper.props)
+
         return <div>{this.state.loaded == true ? this.renderStateCompopnent() : <div/>}</div>
     }
 }

@@ -24,7 +24,8 @@ class Detailed_Competition_Listing extends React.Component {
     }
 
     render() {
-
+        // console.log('saaaa')
+        // console.log(this.sharedObj.apiHelper.props)
         if (this.state.loaded) return (
             <div className='betbook_screen'>
                 <div className='main-content'>

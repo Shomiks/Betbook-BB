@@ -1,7 +1,5 @@
 import data from './data';
 import React from 'react'
-import dataCompetitions from "./dataCompetitions";
-import hsData from "./hsData";
 
 const timeoutInterval = 0;
 
@@ -58,7 +56,7 @@ class APIHelper extends React.Component {
                 })
         },
         getByID: (league_id, callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/round/?league_id=` + league_id)
+            fetch(`http://192.168.8.113/index.php/api/league/?league_id=` + league_id)
                 .then(res => res.json())
                 .then(res => {
                     let league = Object.values(res)
@@ -71,7 +69,7 @@ class APIHelper extends React.Component {
 
     rounds = {
         getCurrentByLeagueID: (league_id,callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/rounds/?league_id=` + league_id)
+            fetch(`http://192.168.8.113/index.php/api/round/?league_id=` + league_id)
                 .then(res => res.json())
                 .then(res => {
                     let rounds = Object.values(res);
@@ -81,7 +79,7 @@ class APIHelper extends React.Component {
                 })
         },
         getByID: (round_id,callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/rounds/?id=` + round_id)
+            fetch(`http://192.168.8.113/index.php/api/round/?id=` + round_id)
                 .then(res => res.json())
                 .then(res => {
                     let data = Object.values(res);
@@ -89,6 +87,8 @@ class APIHelper extends React.Component {
                 })
         }
     }
+
+    // fixture =
 
     fixture = {
         getByID: (id, callBack) => {
