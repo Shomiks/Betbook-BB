@@ -30,8 +30,8 @@ class Match_Details extends React.Component {
         if (this.state.realData.result && this.state.realData.result[game + '_' + tip] == 1) {
             className += ' won';
         }
-        if (this.state.data.ticket) {
-            if (this.state.data.ticket[game + '_tip'] == tip) {
+        if (this.state.realData.ticket) {
+            if (this.state.realData.ticket[game + '_tip'] == tip) {
                 className += ' bided';
             }
 
@@ -54,7 +54,7 @@ class Match_Details extends React.Component {
 
     renderStateCompopnent = () => {
         console.log('a')
-        console.log(this.state.realData.upcoming)
+        console.log(this.state.realData)
         this.sharedObj.headerInstance.setTitle(this.state.realData.round.name);
         let classState ='betbook_screen';
         if(this.state.realData.result){
@@ -81,7 +81,7 @@ class Match_Details extends React.Component {
                         'vs-datetime-field-result' :
                         'hidden'}>
                         <span className='text25'>{this.state.realData.upcoming == 0 ? this.state.realData.result.ft_home_goals : ""} : {this.state.realData.upcoming == 0 ? this.state.realData.result.ft_away_goals : ""}</span>
-                        <div><span className='text12'>{this.state.realData.upcoming == 0 ? this.state.realData.result.ht_home_goals : ""} : {this.realData.upcoming == 0 ? this.state.realData.result.ht_away_goals : ""}</span></div>
+                        <div><span className='text12'>{this.state.realData.upcoming == 0 ? this.state.realData.result.ht_home_goals : ""} : {this.state.realData.upcoming == 0 ? this.state.realData.result.ht_away_goals : ""}</span></div>
                     </div>
                     <div
                         className={(this.state.realData.upcoming == 0) ? 'minuteLive' : 'hidden'}><span
