@@ -35,7 +35,7 @@ class APIHelper extends React.Component {
 
     countries = {
         getAll: (callBack) => {
-            fetch(`http://192.168.43.244/index.php/api/country`)
+            fetch(`http://192.168.8.113/index.php/api/country`)
                 .then(res => res.json())
                 .then(res => {
                     let countries = Object.values(res);
@@ -46,7 +46,7 @@ class APIHelper extends React.Component {
 
     leagues = {
         getAll: (country_id, callBack) => {
-            fetch(`http://192.168.43.244/index.php/api/league/?country_id=` + country_id)
+            fetch(`http://192.168.8.113/index.php/api/league/?country_id=` + country_id)
                 .then(res => res.json())
                 .then(res => {
                     let leagues = Object.values(res);
@@ -56,7 +56,7 @@ class APIHelper extends React.Component {
                 })
         },
         getByID: (league_id, callBack) => {
-            fetch(`http://192.168.43.244/index.php/api/league/?league_id=` + league_id)
+            fetch(`http://192.168.8.113/index.php/api/league/?league_id=` + league_id)
                 .then(res => res.json())
                 .then(res => {
                     let league = Object.values(res)
@@ -69,7 +69,7 @@ class APIHelper extends React.Component {
 
     rounds = {
         getCurrentByLeagueID: (league_id,callBack) => {
-            fetch(`http://192.168.43.244/index.php/api/round/?league_id=` + league_id)
+            fetch(`http://192.168.8.113/index.php/api/round/?league_id=` + league_id)
                 .then(res => res.json())
                 .then(res => {
                     let rounds = Object.values(res);
@@ -79,7 +79,7 @@ class APIHelper extends React.Component {
                 })
         },
         getByID: (round_id,callBack) => {
-            fetch(`http://192.168.43.244/index.php/api/round/?id=` + round_id)
+            fetch(`http://192.168.43.244/ index.php/api/round/?id=` + round_id)
                 .then(res => res.json())
                 .then(res => {
                     let data = Object.values(res);
@@ -90,13 +90,13 @@ class APIHelper extends React.Component {
 
     // fixture =
 
-    fixture = {
-        getByID: (id, callBack) => {
-            setTimeout(() => {
-                callBack(data[2]);
-            }, timeoutInterval);
-        }
-    }
+    // fixture = {
+    //     getByID: (id, callBack) => {
+    //         setTimeout(() => {
+    //             callBack(data[2]);
+    //         }, timeoutInterval);
+    //     }
+    // }
 
     home = (callBack) => {
 

@@ -1,9 +1,9 @@
 .rectangle_footer {
-  height: 50px;
+  height: 60px;
   width: 100%;
   position: fixed;
   bottom: 0;
-  background-color: #FFF;
+  background-color: #1F2022;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-around;
@@ -11,49 +11,45 @@
 
 
   .timeline {
-    height: 30px;
-    width: 30px;
+    background-repeat: no-repeat;
+    background-image: url("../assets/images/timeline_dark.PNG");
+    height: 100%;
+    width: 25%;
     position: relative;
-    background-color: black;
     display: inline-block;
     vertical-align: middle;
   }
 
   .ball {
-    height: 30px;
-    width: 30px;
+    background-repeat: no-repeat;
+    background-image: url("../assets/images/ball_dark.PNG");
+    height: 100%;
+    width: 25%;
     position: relative;
-    background-color: black;
     display: inline-block;
     vertical-align: middle;
   }
 
   .star {
-    height: 30px;
-    width: 30px;
+    background-repeat: no-repeat;
+    background-image: url("../assets/images/star_dark_footer.PNG");
+    height: 100%;
+    width: 25%;
     position: relative;
-    background-color: black;
     display: inline-block;
     vertical-align: middle;
   }
 
   .profile {
-    height: 30px;
-    width: 30px;
+    background-repeat: no-repeat;
+    background-image: url("../assets/images/profile_dark.PNG");
+    height: 100%;
+    width: 25%;
     position: relative;
-    background-color: black;
     display: inline-block;
     vertical-align: middle;
   }
 
-  .podium {
-    height: 30px;
-    width: 30px;
-    position: relative;
-    background-color: black;
-    display: inline-block;
-    vertical-align: middle;
-  }
 
 }
 
