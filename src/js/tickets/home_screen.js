@@ -1,49 +1,68 @@
-import React from 'react';
+import React from 'react'
 import '../../style/betbook/home_screen.scss'
 import '../../../src/style/app.scss'
-import Week from '../../../src/js/components/week.js'
-import Header from '../components/header';
-import Week_games_Listing from "./Week_games_Listing";
-
-
+import Header from '../components/header'
+import hsData from "../data/hsData"
+import {Link} from "react-router-dom";
 
 class Home_screen extends React.Component {
 
-  constructor(props){
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.state = {
+        this.state = {
+            previousData: hsData,
+            data: hsData,
+            currentData: null,
+            loaded:false
+        };
+        this.sharedObj = props.sharedObj;
     }
 
-  }
+    // componentDidMount() {
+    //     console.log('testttt');
+    //     this.fetchData()
+    // }
+    //
+    // fetchData(){
+    //     this.fetchHome(`http://localhost/index.php/api/user_favourite_league`)
+    // }
 
+    fetchHome(input){
+        fetch(input)
+            .then(res => res.json())
+            .then(res => {
+                this.setState({currentData:Object.values(res),loaded:true})
+            })
+    }
 
-  render(){
+    render() {
+        console.log(this.state.currentData)
+            if(this.state.loaded) return (
+                <div className='betbook_screen'>
+                    <Header title='Home screen'/>
+                    <div className='main-content'>
+                        {this.state.currentData.map(data => {
+                            return <div className='favourite-league'>
+                                <div className='last-week'>
+                                    <div>Matchweek {data.round.week_number - 1}</div>
+                                    <div>Success Rate xx%</div>
+                                    <div> <Link to = {`league/${data.league.id}/round/${data.round.week_number - 1}`}><button>Check the bet</button></Link></div>
+                                </div>
+                                <div className='logo'><img className='league-logo' src ={data.league.flag}/></div>
+                                <div className='current-week'>
+                                    <div>Matchweek {data.round.week_number}</div>
+                                    <div>Start of the week</div>
+                                    <div> <Link to = {`league/${data.league.id}/round/${data.round.week_number}`}><button>Create bet</button></Link></div>
 
-
-    return (
-        <div className='betbook_screen'>
-          <div className='main-content-1'>
-
-            <div className='active-bids-field'>
-              <div className='hs_league-week-header'>
-                <div className='hs_league-tittle'><span className='text17'>Premier League W3</span></div>
-                <div className='hs_chevron'><img src='./assets/images/arrow_right.png'/></div>
-              </div>
-              <Week_games_Listing/>
-            </div>
-
-            <div className='previous-bids-field'>
-              <div className='hs_league-week-header'>
-                <div className='hs_league-tittle'><span className='text17'>Calcio League W3</span></div>
-                <div className='hs_chevron'><img src='./assets/images/arrow_right.png'/></div>
-              </div>
-              <Week_games_Listing/>
-            </div>
-          </div>
-        </div>
-    );
-  }
+                                </div>
+                            </div>
+                        })}
+                    </div>
+                </div>
+            )
+        else return <div>Loading...</div>
+        }
 }
 
 export default Home_screen;
