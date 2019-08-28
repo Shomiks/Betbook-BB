@@ -31,16 +31,8 @@ class App extends React.Component {
           apiHelper: new APIHelper(),
           headerInstance: null
       };
-      this.setState({loaded: true})
-    }
-
-  // fetchData(inputMatch){
-  //   fetch(inputMatch)
-  //       .then(res => res.json())
-  //       .then(res =>{
-  //
-  //       })
-  // }
+      this.setState({ loaded: true})
+  }
 
   onHashChange = () => {
     this.setState({hash: window.location.hash})
@@ -50,8 +42,6 @@ class App extends React.Component {
 
        if(this.state.loaded){
 
-           console.log(this.sharedObject)
-
          return (
              <div className='App'>
 
@@ -59,11 +49,11 @@ class App extends React.Component {
                  this.sharedObject.headerInstance = instance}}  /> : <div></div>}
 
                <HashRouter>
-                   <Route path="/login" render={(props) => (<Login sharedObj={this.sharedObject} {...props}/>)}/>
+                   <Route path="/login" render={(props) => (<Login sharedObj={this.sharedObject} {...props}  />)}/>
                    <Route path="/home" render={(props) => (<Home_screen sharedObj={this.sharedObject} {...props}/>)}/>
 
 
-                   <Route path="/countries" render={(props) => (<Competition_Listing key={'competition_current'} sharedObj={this.sharedObject} {...props}/>)}/>
+                   <Route path="/countries" render={(props) => (<Competition_Listing key={'competition_current'}{...props} sharedObj={this.sharedObject} />)}/>
                    <Route path="/country/:countryid" render={(props) => (<Detailed_Competition_Listing key={'competition_current'} sharedObj={this.sharedObject} {...props}/>)}/>
 
 
@@ -80,7 +70,7 @@ class App extends React.Component {
          );
        }else{
          return(<div>Loading....</div>);
-         }
+       }
        }
 
 }

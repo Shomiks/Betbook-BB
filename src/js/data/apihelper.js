@@ -50,8 +50,6 @@ class APIHelper extends React.Component {
                 .then(res => res.json())
                 .then(res => {
                     let leagues = Object.values(res);
-                    console.log('lige')
-                    console.log(leagues)
                     callBack(leagues)
                 })
         },
@@ -60,8 +58,6 @@ class APIHelper extends React.Component {
                 .then(res => res.json())
                 .then(res => {
                     let league = Object.values(res)
-                    console.log('mecevi')
-                    console.log(league)
                     callBack(league)
                 })
         }
@@ -73,8 +69,6 @@ class APIHelper extends React.Component {
                 .then(res => res.json())
                 .then(res => {
                     let rounds = Object.values(res);
-                    console.log('runde')
-                    console.log(rounds)
                     callBack(rounds)
                 })
         },
@@ -88,13 +82,13 @@ class APIHelper extends React.Component {
         }
     }
 
-    // fixture =
-
     fixture = {
         getByID: (id, callBack) => {
-            setTimeout(() => {
-                callBack(data[2]);
-            }, timeoutInterval);
+            fetch(`http://192.168.8.113/index.php/api/fixture/?id=` + id)
+                .then(res => res.json())
+                .then(res => {
+                    callBack(res)
+                })
         }
     }
 

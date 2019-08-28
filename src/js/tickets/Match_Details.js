@@ -12,16 +12,15 @@ class Match_Details extends React.Component {
             realData:[]
         };
         this.sharedObj = props.sharedObj;
-        this.hashFixture = window.location.hash.split('/',5).slice(0,3).pop();
+        this.fixtureId = props.match.params.fixtureid;
     }
 
     componentDidMount() {
-        this.getRoundById();
+        this.getFixtureById();
     }
 
-    getRoundById(){
-        this.sharedObj.apiHelper.rounds.getCurrentByLeagueID(this.hashFixture,(res) => {
-            console.log(res)
+    getFixtureById(){
+        this.sharedObj.apiHelper.fixture.getByID(this.fixtureId,(res) => {
             this.setState({realData:res,loaded:true})
         });
     };
@@ -54,6 +53,9 @@ class Match_Details extends React.Component {
 
 
     renderStateCompopnent = () => {
+        console.log('a')
+        console.log(this.state.realData.upcoming)
+        this.sharedObj.headerInstance.setTitle(this.state.realData.round.name);
         let classState ='betbook_screen';
         if(this.state.realData.result){
             if(this.state.realData.result.finished == false){
@@ -78,12 +80,12 @@ class Match_Details extends React.Component {
                     <div className={this.state.realData.result != null ?
                         'vs-datetime-field-result' :
                         'hidden'}>
-                        <span className='text25'>{this.state.realData.upcoming == false ? this.state.realData.result.ft_home_goals : ""} : {this.state.realData.upcoming == false ? this.state.realData.result.ft_away_goals : ""}</span>
-                        <div><span className='text12'>({this.state.realData.upcoming == false ? this.state.realData.result.ht_home_goals : ""} : {this.realData.data.upcoming == false ? this.state.realData.result.ht_away_goals : ""})</span></div>
+                        <span className='text25'>{this.state.realData.upcoming == 0 ? this.state.realData.result.ft_home_goals : ""} : {this.state.realData.upcoming == 0 ? this.state.realData.result.ft_away_goals : ""}</span>
+                        <div><span className='text12'>{this.state.realData.upcoming == 0 ? this.state.realData.result.ht_home_goals : ""} : {this.realData.upcoming == 0 ? this.state.realData.result.ht_away_goals : ""}</span></div>
                     </div>
                     <div
-                        className={(this.state.realData.upcoming == false) ? 'minuteLive' : 'hidden'}><span
-                        className={(this.state.realData.upcoming == false && this.state.realData.result.finished == false) ? 'text18' : 'hidden'}>'{this.state.realData.result ? this.state.realData.result.current_min : ''}<br/><span
+                        className={(this.state.realData.upcoming == 0) ? 'minuteLive' : 'hidden'}><span
+                        className={(this.state.realData.upcoming == 0 && this.state.realData.result.finished == false) ? 'text18' : 'hidden'}>'{this.state.realData.result ? this.state.realData.result.current_min : ''}<br/><span
                         className='text18-red-field'>* LIVE *</span></span></div>
                     <div className='time-date-field'><span
                         className={this.state.realData.result == null ? 'text10' : 'hidden'}>{this.state.realData.dateTime}</span>
@@ -162,8 +164,6 @@ class Match_Details extends React.Component {
     }
 
     render() {
-
-        console.log(this.sharedObj.apiHelper.props)
 
         return <div>{this.state.loaded == true ? this.renderStateCompopnent() : <div/>}</div>
     }

@@ -11,7 +11,7 @@ class Detailed_Competition_Listing extends React.Component {
             loaded: false
         };
         this.sharedObj = props.sharedObj;
-        this.countryId = window.location.hash.split('/').pop();
+        this.countryId = props.match.params.countryid;
     }
 
     componentDidMount() {
@@ -24,8 +24,7 @@ class Detailed_Competition_Listing extends React.Component {
     }
 
     render() {
-        // console.log('saaaa')
-        // console.log(this.sharedObj.apiHelper.props)
+
         if (this.state.loaded) return (
             <div className='betbook_screen'>
                 <div className='main-content'>

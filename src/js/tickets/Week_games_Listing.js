@@ -13,7 +13,7 @@ class Week_games_Listing extends React.Component {
             loaded: false
         };
         this.sharedObj = props.sharedObj;
-        this.leagudId = window.location.hash.split('/').pop();
+        this.leagudId = props.match.params.leagueid;
     }
 
     componentDidMount() {
@@ -27,15 +27,12 @@ class Week_games_Listing extends React.Component {
     renderGames = () => {
         this.sharedObj.headerInstance.setTitle(this.state.realData[0].league);
         return <div>
-            <div className='game-week'><span className='text14'>{'Matchday ' + this.state.realData[0].round.week_number}</span></div>
-            {this.state.realData.map((fixture) => <Link to={`/fixture/${fixture.id}`}> <MatchShort  match={fixture.matches}/></Link>)}
+            <div className='game-week'><span className='text14'>{ this.state.realData[0].round.name}</span></div>
+            {this.state.realData.map((fixture) => <Link to={`/fixture/${fixture.matches.id}`}> <MatchShort  match={fixture.matches}/></Link>)}
         </div>
     }
 
     render() {
-
-        // console.log('here')
-        // console.log(this.sharedObj.apiHelper.props)
 
         if(this.state.loaded) return (
             <div className='betbook_screen'>
