@@ -1,109 +1,19 @@
-.betbook_screen-login {
+.betbook-screen-loading {
   height: 100%;
   width: 100%;
   position: absolute;
   text-align: center;
   display: block;
-  background-color: #99c2ff;
+  background-color: #141415;
 
-
-  .login_layout {
-    height: 175px;
-    width: 340px;
-    position: relative;
-    display: block;
-    top: 200px;
+  .betbook-logo-box {
+    height: 60px;
+    width: 200px;
     margin: 0 auto;
-    padding-top: 10px;
-    background: linear-gradient(180deg, #FAD961 0%, #F76B1C 100%);
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
-
-    .login-text-field {
-      margin-bottom: 15px;
-    }
-
-    .step_input_container {
-      height: 50px;
-      width: 100%;
-      position: relative;
-
-      .step_input_label {
-        height: 30px;
-        width: 75px;
-        position: relative;
-      }
-
-      .left-input-field {
-        position: relative;
-        display: inline-block;
-        height: 20px;
-        width: 100px;
-      }
-
-      .right-input-field {
-        position: relative;
-        display: inline-block;
-        height: 45px;
-      }
-
-      .step_input {
-        width: 100%;
-        height: 40px;
-        border-radius: 9px;
-        border: solid 1px #b3bec4;
-        background-color: #ffffff;
-        display: inline-block;
-        font-family: SF Display;
-        font-size: 17px;
-        font-weight: normal;
-        font-style: normal;
-        font-stretch: normal;
-        letter-spacing: normal;
-        color: #3c5060;
-        position: relative;
-        padding-left: 15px;
-
-        .step_input
-        &:active {
-          outline: none;
-          border: none;
-          box-shadow: inset 2px 4px 4px 0 rgba(0, 0, 0, 0.2);
-
-        }
-
-      }
-
-      .text17 {
-        color: #0A0A0A;
-        font-family: "SF Display";
-        font-size: 17px;
-        font-weight: 500;
-      }
-
-    }
-
-  }
-
-  .image-field {
-    position: absolute;
-    margin-bottom: 208px;
-    bottom: 0;
-    left: 50%;
-    margin-left: -90px;
-  }
-
-  .sign-up-button {
-    height: 30px;
-    width: 60px;
     position: relative;
-    display: inline-block;
+    top: 50%;
+    margin-top: -30px;
   }
-
-  .login-button {
-    height: 30px;
-    width: 60px;
-    position: relative;
-    display: inline-block;
-  }
-
 }
+
+

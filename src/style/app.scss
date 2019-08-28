@@ -4,7 +4,9 @@
   src: url("https://sf.abarba.me/SF-UI-Display-Black.otf");
 }
 
-@font-face {
+@font-face
+
+u {
   font-family: "SF Display";
   font-weight: 700;
   src: url("https://sf.abarba.me/SF-UI-Display-Bold.otf");
@@ -87,12 +89,20 @@ html, body {
   font-weight: 500;
 }
 
+.text11-grey {
+  color: #999;
+  font-family: "SF Display";
+  font-size: 11px;
+  font-weight: 500;
+}
+
 .text12 {
   color: #0A0A0A;
   font-family: "SF Display";
   font-size: 12px;
   font-weight: 500;
 }
+
 .text12-white {
   color: #FAFAFA;
   font-family: "SF Display";
@@ -107,12 +117,33 @@ html, body {
   font-weight: 500;
 }
 
+.text15-white {
+  color: #FFF;
+  font-family: "SF Display";
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.text14-white {
+  color: #FFF;
+  font-family: "SF Display";
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 2.8;
+}
+
 .text17 {
   color: #0A0A0A;
   font-family: "SF Display";
   font-size: 17px;
   font-weight: 500;
+}
 
+.text17-white {
+  color: #FFF;
+  font-family: "SF Display";
+  font-size: 17px;
+  font-weight: 500;
 }
 
 .text18 {
@@ -120,7 +151,14 @@ html, body {
   font-family: "SF Display";
   font-size: 18px;
   font-weight: 500;
+}
 
+.text18-white {
+  color: #FFF;
+  font-family: "SF Display";
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 2.5;
 }
 
 .text25 {
@@ -208,8 +246,7 @@ html, body {
     position: relative;
     display: inline-block;
     margin-top: 15px;
-    left:15px;
-
+    left: 15px;
 
 
     .text12 {
@@ -292,7 +329,7 @@ html, body {
     position: relative;
     display: inline-block;
     margin-top: 15px;
-    left:15px;
+    left: 15px;
 
     .text12 {
       color: #47B1E4;
@@ -369,6 +406,7 @@ html, body {
       color: #FAFAFA;
     }
   }
+
   .bided {
     background-color: #2F8FBD;
   }
@@ -392,14 +430,13 @@ html, body {
       color: #FAFAFA;
       font-weight: 400;
     }
-
   }
 
   .col-3_bid-field {
     position: relative;
     display: inline-block;
     margin-top: 15px;
-    left:20px;
+    left: 20px;
 
     .text12 {
       color: #47B1E4;
@@ -418,6 +455,7 @@ html, body {
       .containerImage {
         display: none;
       }
+
       .containerContent {
         width: 100%;
       }
@@ -425,6 +463,10 @@ html, body {
   }
 }
 
-.hidden{
-  background-color: #9B9B9B;
+.hide {
+  display: none;
+}
+
+.text14-white{
+  color:#FFF;
 }

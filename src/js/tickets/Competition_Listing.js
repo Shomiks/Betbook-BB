@@ -21,21 +21,31 @@ class Competition_Listing extends React.Component {
         this.sharedObj.headerInstance.setTitle('Leagues');
     }
 
-    getAllCountries(){
-        this.sharedObj.apiHelper.countries.getAll((res) => this.setState({realData:res,loaded:true}));
+    getAllCountries() {
+        this.sharedObj.apiHelper.countries.getAll((res) => this.setState({realData: res, loaded: true}));
     }
 
-      render() {
+    render() {
 
+        console.log(this.state.realData)
         if (this.state.loaded) return (
             <div className='betbook_screen'>
                 <div className='main-content'>
                     <div className='countries-container'>
-                    {this.state.realData.map((data) => <Link to={`country/${data.id}`}><div key={data.id + '_'} className='country-field'>
-                        <div className='flag-container'> <img className='flag' src={data.flag} /></div>
-                        <div className='country-info'><span className='text12'>14 Leagues <br/> <span>{data.name}</span> <br/> 154 matches</span></div>
-                    </div></Link>)}
-                 </div>
+                        <div className='favorites-field'>
+                            <div className='favorites-position'><span className='text11-grey'>Favorites</span></div>
+                        </div>
+                        {this.state.realData.map((data) => <Link to={`country/${data.id}`}>
+                            <div key={data.id + '_'} className='country-field'>
+                                <div className='flag-container'><img className='flag' src={data.flag}/></div>
+                                <div className='country-info'>
+                                    <div className='leagues-info'><span className='text11-grey'>14 Leagues</span></div>
+                                    <div className='dataname-info'><span className='text15-white'>{data.name}</span></div>
+                                    <div className='number-matches-info'><span className='text11-grey'>154 matches</span></div>
+                                </div>
+                            </div>
+                        </Link>)}
+                    </div>
                 </div>
                 <Footer/>
             </div>
