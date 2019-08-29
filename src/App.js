@@ -23,7 +23,7 @@ class App extends React.Component {
 
     this.state = {
       hash: window.location.hash,
-      loaded: false
+      loaded:true
     };
 
     this.sharedObject = {};
@@ -54,10 +54,11 @@ class App extends React.Component {
                  this.sharedObject.headerInstance = instance}}  />}
 
                <HashRouter>
+                   <Route path="/login" render={(props) => (<Login sharedObj={this.sharedObject} {...props}  />)}/>
                    <Route path="/home" render={(props) => (<Home_screen sharedObj={this.sharedObject} {...props}/>)}/>
 
 
-                   <Route path="/countries" render={(props) => (<Competition_Listing key={'competition_current'} sharedObj={this.sharedObject} {...props} /> )}/>
+                   <Route path="/countries" render={(props) => (<Competition_Listing key={'competition_current'}{...props} sharedObj={this.sharedObject} />)}/>
                    <Route path="/country/:countryid" render={(props) => (<Detailed_Competition_Listing key={'competition_current'} sharedObj={this.sharedObject} {...props}/>)}/>
 
 
@@ -73,7 +74,13 @@ class App extends React.Component {
                  <Route path="/register" render={(props) => (<Register sharedObj={this.sharedObject} {...props}/>)} />
                  <Route path="/login" render={(props) => (<Login sharedObj={this.sharedObject} {...props}/>)} />
                  <Route path="/forgot-password" render={(props) => (<ForgotPassword sharedObj={this.sharedObject} {...props}/>)} />
-
+                 <Route path="/home" render={(props) => (<Home_screen sharedObj={this.sharedObject} {...props}/>)} />
+                 <Route path="/leagues" render={(props) => (<Competition_Listing key={'competition_current'} sharedObj={this.sharedObject} {...props}/>)} />
+                 <Route path="/leagues/:countryid" render={(props) => (<Competition_Listing key={'competition_' + props.match.params.countryid} sharedObj={this.sharedObject} {...props}/>)} />
+                 <Route path="/league/:leagueid/round/:roundid" render={(props) => (<Week_games_Listing sharedObj={this.sharedObject} {...props}/>)} />
+                 <Route path="/round/:roundid/league/:leagueid" render={(props) => (<Week_games_Listing sharedObj={this.sharedObject} {...props}/>)} />
+                 <Route path="/fixture/:fixtureid" render={(props) => (<Match_Details sharedObj={this.sharedObject} {...props}/>)} />
+                 <Route path="/leaderboards" render={(props) => (<LeaderBoards sharedObj={this.sharedObject} {...props}/>)} />
                </HashRouter>
                {(window.location.hash=='#/login' || window.location.hash=='#/register' || window.location.hash=='#/forgot-password' || window.location.hash=='#/loading' || window.location.hash=='#/welcome')
                    ? <div></div> : <Footer />}
