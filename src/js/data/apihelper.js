@@ -1,4 +1,3 @@
-import data from './data';
 import React from 'react'
 
 const timeoutInterval = 0;

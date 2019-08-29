@@ -23,7 +23,7 @@ class App extends React.Component {
 
     this.state = {
       hash: window.location.hash,
-      loaded:true
+      loaded:false
     };
 
     this.sharedObject = {};

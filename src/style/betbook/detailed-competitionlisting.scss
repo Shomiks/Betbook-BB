@@ -1,24 +1,60 @@
-.leagues-container{
+.leagues-container {
 
-  margin-top:50px;
+  margin-top: 50px;
 
-.league-field {
-  height: 100px;
-  width: 100%;
-  text-align: center;
-  vertical-align: middle;
-  display: flex;
-
-  .text18 {
+  .league-field {
+    border: 1px solid #2A2A2B;
+    height: 80px;
+    width: 100%;
     text-align: center;
     vertical-align: middle;
-  }
+    display: flex;
+    background-color: #1F2022;
 
-  .logo-container {
-    .logo {
-      width: 70px   ;
+    .league-info {
       position: relative;
+      display: block;
+
+      .leagues-info {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 11px;
+        width: 57px;
+
+      }
+
+      .dataname-info {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 32px;
+
+      }
+
+      .number-matches-info {
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 11px;
+        width: 64px;
+      }
+    }
+
+    .text18 {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .logo-container {
+      position: relative;
+      width: 85px;
+
+      .logo {
+        width: 60px;
+        height: 60px;
+        padding: 11px 10px 14px 5px;
+      }
     }
   }
-}
 }
