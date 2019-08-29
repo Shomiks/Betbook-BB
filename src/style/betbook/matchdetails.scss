@@ -75,18 +75,13 @@
       position: relative;
       display: inline-block;
       margin-top: 15px;
-
-
       .text12 {
         color: #47B1E4;
       }
-
       .text12-white {
         color: #FAFAFA;
         font-weight: 400;
       }
-
-
     }
 
     .bided {
@@ -149,7 +144,6 @@
       cursor: pointer;
     }
 
-
     .bid-2-field {
       height: 52px;
       width: 33.3%;
@@ -184,7 +178,6 @@
         color: #FAFAFA;
         font-weight: 400;
       }
-
     }
 
     .col-3_bid-field {
@@ -192,16 +185,13 @@
       display: inline-block;
       margin-top: 15px;
 
-
       .text12 {
         color: #47B1E4;
       }
-
       .text12-white {
         color: #FAFAFA;
         font-weight: 400;
       }
-
 
     }
   }
@@ -238,32 +228,24 @@
       .text12-grey {
         color: #CFD1D4;
       }
-
       .text12-white {
         color: #FAFAFA;
         font-weight: 400;
       }
-
     }
 
     .col-3_bid-field {
       position: relative;
       display: inline-block;
       margin-top: 15px;
-
-
       .text12 {
         color: #47B1E4;
       }
-
       .text12-white {
         color: #FAFAFA;
         font-weight: 400;
       }
-
-
     }
-
 
     .bid-2-field {
       height: 52px;
@@ -299,7 +281,6 @@
         color: #FAFAFA;
         font-weight: 400;
       }
-
     }
 
     .col-3_bid-field {
@@ -316,10 +297,7 @@
         color: #FAFAFA;
         font-weight: 400;
       }
-
-
     }
-
 
     .bid-3-field {
       height: 52px;
@@ -361,18 +339,13 @@
       position: relative;
       display: inline-block;
       margin-top: 15px;
-
-
       .text12 {
         color: #47B1E4;
       }
-
       .text12-white {
         color: #FAFAFA;
         font-weight: 400;
       }
-
-
     }
 
     .col-4_game-field {
@@ -390,9 +363,7 @@
         color: #FAFAFA;
         font-weight: 400;
       }
-
     }
-
     .col-4_bid-field {
       position: relative;
       display: inline-block;
@@ -415,7 +386,7 @@
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-
+    margin-top:60px;
 
     .md_league-week-details {
       height: 20px;
@@ -431,6 +402,9 @@
       display: inline-block;
       background-color: #FFF;
       margin-top: 15px;
+      .logo{
+        width:63px;
+      }
     }
 
     .md_date-time-vs-field {
@@ -497,6 +471,9 @@
       display: inline-block;
       background-color: #FFF;
       margin-top: 15px;
+      .logo{
+        width:63px;
+      }
     }
 
     .place-field {

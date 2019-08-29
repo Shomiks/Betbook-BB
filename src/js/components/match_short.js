@@ -10,48 +10,6 @@ class MatchShort extends React.Component {
         }
     }
 
-    // handleGameState = () => {
-    //
-    //     if (this.props.match.upcoming != 0) {
-    //         return <div className='ms-left-field'>
-    //             <div className='ms_date-field'><span
-    //                 className='text10'>{this.props.match.dateTime}</span></div>
-    //             <div className='ms_status-field'><span
-    //                 className='text12'>Upcoming</span></div>
-    //         </div>
-    //     }
-    //     if (this.props.match.result) {
-    //             if (this.props.match.result.finished == 1 && this.props.match.ticket) {
-    //             return <div className='ms-left-field'>
-    //                 <div className='ms_date-field'><span
-    //                     className='text10'>12.08.2079.</span></div>
-    //                 <div className='ms_time-field'><span
-    //                     className='text10'>15:15</span></div>
-    //                 <div className='ms_status-field'><span
-    //                     className={this.props.match.ticket.bid_score == this.props.match.ticket.final_score ? "text12-green" : "text12-red"}>
-    //                     {this.props.match.ticket.bid_score == this.props.match.ticket.final_score ? "Ticket won!" : "Ticket lost!"}</span>
-    //                 </div>
-    //             </div>
-    //         } else if (this.props.match.result.finished == 1) {
-    //             return <div className='ms-left-field'>
-    //                 <div className='ms_date-field'><span
-    //                     className='text10'>12.08.2079.</span></div>
-    //                 <div className='ms_time-field'><span
-    //                     className='text10'>15:15</span></div>
-    //                 <div className='ms_status-field'><span
-    //                     className='text12'>Finished</span></div>
-    //             </div>
-    //         } else return <div className='ms-left-field'>
-    //             <div className='ms_date-field'><span
-    //                 className='text10'>started 15:15h</span></div>
-    //             <div className='ms_time-field'><span
-    //                 className='text12'>'79:16</span></div>
-    //             <div className='ms_status-field'><span
-    //                 className='text12-red'>* Live *</span></div>
-    //         </div>
-    //     }
-    // };
-
     handleBidField = () => {
 
         let game1 ='';
@@ -82,40 +40,31 @@ class MatchShort extends React.Component {
         }
 
         return <div className='ms-central-field'>
-               <div className='ms_homeField'> <img className='logo' src={this.props.match.team_home.logo}/><span className='text14'>{this.props.match.team_home.team_name}</span>
-                </div>
+               <div className='ms_homeField'><img className='logo' src={this.props.match.team_home.logo}/><span className='text14'>{this.props.match.team_home.team_name}</span></div>
                 <div className='ms_resultField'><span
                     className='text14'>{this.props.match.result ? this.props.match.result.goals_home_ft : ''}</span><span className='text14'> : </span><span
                     className='text14'>{this.props.match.result ? this.props.match.result.goals_away_ft : ''}</span></div>
-                <div className='ms_awayField'><span className='text14'>{this.props.match.team_away.team_name}</span> <img className='logo' src={this.props.match.team_away.logo}/>
-                </div>
+                <div className='ms_awayField'><span className='text14'>{this.props.match.team_away.team_name}</span> <img className='logo' src={this.props.match.team_away.logo}/></div>
                 <div className='ms-under-teams-field'>
-                    <div className='ms_bid-field'>
-                        <div className={'ms_bid-left'+game1}>
-                            <div className='ms_game-field'><span
-                                className={game1 == '-white' ? 'text10' : 'text12-white'}>{game1 == '-white' ? 'Final Bid' : this.props.match.ticket.game1_tip}</span></div>
+                    {this.props.match.ticket ? <div className='ms_bid-field'>
+                        <div  className={'ms_bid-left'+game1}>
                             <div className='ms_bided-field'><span
                                 className='text12'>{game1 == '-white' ? '' : this.props.match.ticket.game1_odd}</span></div>
                         </div>
                         <div className={'ms_bid-central'+game2}>
-                            <div className='ms_game-field'><span
-                                className={game2 == '-white' ? 'text10' : 'text12-white'}>{game2 == '-white' ? 'Goals Bid' : this.props.match.ticket.game2_tip}</span></div>
                             <div className='ms_bided-field'><span
                                 className='text12'>{game2 == '-white' ? '' : this.props.match.ticket.game2_odd}</span></div>
                         </div>
                         <div className={'ms_bid-central'+game3}>
-                            <div className='ms_game-field'><span
-                                className={game3 == '-white' ? 'text10' : 'text12-white'}>{game3 == '-white' ? 'Both Teams' : this.props.match.ticket.game3_tip}</span></div>
                             <div className='ms_bided-field'><span
                                 className='text12'>{game3 == '-white' ? '' : this.props.match.ticket.game3_odd}</span></div>
                         </div>
-                        <div className={'ms_bid-right'+game4}>
-                            <div className='ms_game-field'><span
-                                className={game4 == '-white' ? 'text10' : 'text12-white'}>{game4 == '-white' ? 'HT/FT Bid' : (this.props.match.ticket.game4_tip.split("")[0] + "/" + this.props.match.ticket.game4_tip.split("")[1]).toLocaleUpperCase()}</span></div>
+                        <div className={'ms_bid-left'+game4}>
                             <div className='ms_bided-field'><span
                                 className='text12'>{game4 == '-white' ? '' : this.props.match.ticket.game4_odd}</span></div>
                         </div>
-                    </div>
+                    </div> :
+                        <button className='ms_bid-field'>JBT</button>}
                 </div>
             </div>
 

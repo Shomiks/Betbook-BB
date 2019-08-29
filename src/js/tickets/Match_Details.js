@@ -68,7 +68,6 @@ class Match_Details extends React.Component {
                 <div className='md_home-team-field'><img className='logo' src={this.state.realData.team_home.logo}/>
                     <div className='home-text-field'><span className='text18'>{this.state.realData.team_home.team_name}</span>
                     </div>
-                    <div className='place-field'><span className='text10'>1st place</span></div>
                 </div>
                 <div className='md_league-week-details'><span className='text12'>datum</span></div>
                 <div className='md_date-time-vs-field'>
@@ -84,15 +83,11 @@ class Match_Details extends React.Component {
                     <div className='time-date-field'><span
                         className={this.state.realData.result == null ? 'text10' : 'hidden'}>{this.state.realData.dateTime}</span>
                     </div>
-                    <div className='location-field'><span className='text10'>STADION</span>
-                    </div>
                 </div>
                 <div className='md_away-team-field'>
                     <img className='logo' src={this.state.realData.team_away.logo}/>
                     <div className='home-text-field'><span
                         className='text18'>{this.state.realData.team_away.team_name}</span></div>
-                    <div className='place-field'><span
-                        className='text10'>2nd place</span></div>
                 </div>
             </div>
             <div className='scrolable-bids-field'>

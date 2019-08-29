@@ -1,43 +1,4 @@
 
-.main_content {
-
-  margin-top: 50px;
-
-  .ms-left-field {
-    position: relative;
-    border-right: 0.5px solid #cfcfcf;
-    display: inline-block;
-    height: 60px;
-    width: 19%;
-    text-align: center;
-
-    .ms_status-field {
-      .text12 {
-        color: #9B9B9B;
-      }
-
-      .text12-red {
-        color: red;
-        font-family: "SF Display";
-        font-size: 12px;
-        font-weight: 500;
-      }
-
-      .text12-black {
-        color: black;
-        font-family: "SF Display";
-        font-size: 12px;
-        font-weight: 500;
-      }
-
-      .text12-green {
-        color: #7ED321;
-        font-family: "SF Display";
-        font-size: 12px;
-        font-weight: 500;
-      }
-    }
-  }
 
   .ms-central-field {
     position: relative;
@@ -54,12 +15,22 @@
       position: relative;
       display: inline-block;
       margin-right: 5px;
+
+      .logo{
+        width: 21px;
+        height: 21px;
+      }
+
     }
 
     .ms_awayField {
       position: relative;
       display: inline-block;
       margin-left: 5px;
+      .logo{
+        width: 21px;
+        height: 21px;
+      }
     }
 
     .ms_resultField {
@@ -234,9 +205,7 @@
 
       .ms_bided-field {
         position: relative;
-        display: inline-block;
       }
     }
   }
 
-}
