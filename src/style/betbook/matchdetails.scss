@@ -9,17 +9,13 @@
   .main-titlle-field {
     height: 20px;
     width: 100%;
-
     box-shadow: 0 0 0.5px 0 rgba(0, 0, 0, 0.2);
     position: relative;
-    border-bottom: 0.5px solid #cfcfcf;
-    border-top: 0.5px solid #cfcfcf;
-    background-color: #fff9de;
+    background-color: #151516;
 
     .ft_text_position {
-      position: absolute;
-      left: 0;
-      margin-left: 4%;
+      position: relative;
+      text-align: center;
     }
   }
 
@@ -386,6 +382,7 @@
     display: flex;
     justify-content: space-evenly;
     margin-top:60px;
+    background-color: #151516;
 
     .md_league-week-details {
       height: 20px;

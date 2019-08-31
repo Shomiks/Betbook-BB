@@ -69,11 +69,11 @@ class Match_Details extends React.Component {
                     <div className='home-text-field'><span className='text18'>{this.state.realData.team_home.team_name}</span>
                     </div>
                 </div>
-                <div className='md_league-week-details'><span className='text12'>datum</span></div>
+                <div className='md_league-week-details'><span className='text11-grey'>datum</span></div>
                 <div className='md_date-time-vs-field'>
                     <div className={this.state.realData.result != null ? 'vs-datetime-field-result' : 'hidden'}>
-                        <span className='text25'>{this.state.realData.upcoming == false ? this.state.realData.result.ft_home_goals : ""} : {this.state.realData.upcoming == false ? this.state.realData.result.ft_away_goals : ""}</span>
-                        <div><span className='text12'>{this.state.realData.upcoming == false ? this.state.realData.result.ht_home_goals : ""} : {this.state.realData.upcoming == false ? this.state.realData.result.ht_away_goals : ""}</span></div>
+                        <span className='text18-white'>{this.state.realData.upcoming == false ? this.state.realData.result.ft_home_goals : ""} : {this.state.realData.upcoming == false ? this.state.realData.result.ft_away_goals : ""}</span>
+                        <div><span className='text12-white'>{this.state.realData.upcoming == false ? this.state.realData.result.ht_home_goals : ""} : {this.state.realData.upcoming == false ? this.state.realData.result.ht_away_goals : ""}</span></div>
                     </div>
                     <div
                         className={(this.state.realData.upcoming == false) ? 'minuteLive' : 'hidden'}><span
@@ -81,7 +81,7 @@ class Match_Details extends React.Component {
                         className='text18-red-field'>* LIVE *</span></span>
                     </div>
                     <div className='time-date-field'><span
-                        className={this.state.realData.result == null ? 'text10' : 'hidden'}>{this.state.realData.dateTime}</span>
+                        className={this.state.realData.result == null ? 'text11-grey' : 'hidden'}>{this.state.realData.dateTime}</span>
                     </div>
                 </div>
                 <div className='md_away-team-field'>
@@ -93,7 +93,7 @@ class Match_Details extends React.Component {
             <div className='scrolable-bids-field'>
                 <div className='full-time-result-field'>
                     <div className='main-titlle-field'>
-                        <div className='ft_text_position'><span className='text12'>Fulltime Result</span></div>
+                        <div className='ft_text_position'><span className='text12-grey'>Match Outcome</span></div>
                     </div>
                     <div className='col-3-bid-field'>
                         {this.renderGameTip('1', 'game1', '1', 'bid-1-field')}
@@ -103,9 +103,9 @@ class Match_Details extends React.Component {
                 </div>
                 <div className='match-goals-field'>
                     <div className='main-titlle-field'>
-                        <div className='ft_text_position'><span className='text12'>Match Goals</span></div>
+                        <div className='ft_text_position'><span className='text12-grey'>Match Goals</span></div>
                     </div>
-                    <div className='col-3-bid-field' style={{borderBottom: '0.5px solid #cfcfcf'}}>
+                    <div className='col-3-bid-field'>
                         {this.renderGameTip('0-1', 'game2', '1', 'bid-1-field')}
                         {this.renderGameTip('0-2', 'game2', '2', 'bid-2-field')}
                         {this.renderGameTip('0-3', 'game2', '3', 'bid-1-field')}
@@ -119,7 +119,7 @@ class Match_Details extends React.Component {
                 </div>
                 <div className='both-teams-goals-field'>
                     <div className='main-titlle-field'>
-                        <div className='ft_text_position'><span className='text12'>Both Team Goals</span>
+                        <div className='ft_text_position'><span className='text12-grey'>Both Team Goals</span>
                         </div>
                     </div>
                     <div className='col-2-bid-field'>
@@ -129,20 +129,20 @@ class Match_Details extends React.Component {
                 </div>
                 <div className='ht-ft-result-field'>
                     <div className='main-titlle-field'>
-                        <div className='ft_text_position'><span className='text12'>Half / Full Time Result</span>
+                        <div className='ft_text_position'><span className='text12-grey'>Half / Full Time Result</span>
                         </div>
                     </div>
-                    <div className='col-3-bid-field' style={{borderBottom: '1px solid #cfcfcf'}}>
+                    <div className='col-3-bid-field'>
                         {this.renderGameTip('1-1', 'game4', '11', 'bid-1-field')}
                         {this.renderGameTip('1-X', 'game4', '1x', 'bid-2-field')}
                         {this.renderGameTip('1-2', 'game4', '12', 'bid-1-field')}
                     </div>
-                    <div className='col-3-bid-field' style={{borderBottom: '1px solid #cfcfcf'}}>
+                    <div className='col-3-bid-field'>
                         {this.renderGameTip('X-1', 'game4', 'x1', 'bid-1-field')}
                         {this.renderGameTip('X-X', 'game4', 'xx', 'bid-2-field')}
                         {this.renderGameTip('X-2', 'game4', 'x2', 'bid-1-field')}
                     </div>
-                    <div className='col-3-bid-field' style={{borderBottom: '1px solid #cfcfcf'}}>
+                    <div className='col-3-bid-field'>
                         {this.renderGameTip('2-1', 'game4', '21', 'bid-1-field')}
                         {this.renderGameTip('2-X', 'game4', '2x', 'bid-2-field')}
                         {this.renderGameTip('2-2', 'game4', '22', 'bid-1-field')}
@@ -153,6 +153,8 @@ class Match_Details extends React.Component {
     }
 
     render() {
+
+        console.log(this.state.realData)
 
         return <div>{this.state.loaded == true ? this.renderStateCompopnent() : <div/>}</div>
     }
