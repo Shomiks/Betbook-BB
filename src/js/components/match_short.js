@@ -42,7 +42,7 @@ class MatchShort extends React.Component {
         return <div className='ms-central-field'>
             <div className='ms-teams-field'>
                <div className='ms_homeField'>
-                   <img className='logo' src={this.props.match.team_home.logo}/>
+                   <img className='logo' src={'./assets/images/Teams/' + this.props.match.team_home.logo}/>
                    <div className='ms_hometeam-text'><span className='text11-white'>{this.props.match.team_home.team_name}</span></div>
                </div>
 
@@ -53,11 +53,11 @@ class MatchShort extends React.Component {
             </div>
                 <div className='ms_awayField'>
                     <div className='ms_awayteam-text'><span className='text11-white'>{this.props.match.team_away.team_name}</span></div>
-                    <img className='logo' src={this.props.match.team_away.logo}/>
+                    <img className='logo' src={'./assets/images/Teams/' + this.props.match.team_away.logo}/>
                 </div>
             </div>
                 <div className='ms-under-teams-field'>
-                    {this.props.match.ticket ? <div className='ms_bid-field'>
+                    {this.props.match.ticket && this.props.match ? <div className='ms_bid-field'>
                         <div  className={'ms_bid-box'+game1}>
                             <div className='ms_game-field'><span className='text11-grey'>1</span></div>
                             <div className='ms_odd-field'><span className='text11-white'>{this.props.match.ticket.game1_odd}</span></div>
@@ -83,7 +83,7 @@ class MatchShort extends React.Component {
 
     render() {
 
-
+        console.log(this.props.match)
         return <div >{this.handleBidField()}</div>
           }
 }
