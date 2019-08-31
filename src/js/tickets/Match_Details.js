@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../../src/style/betbook/matchdetails.scss';
-
+import '../../../src/style/app.scss';
 class Match_Details extends React.Component {
 
     constructor(props) {
@@ -63,17 +63,21 @@ class Match_Details extends React.Component {
         }
         else classState += ' upcoming';
 
-        return <div className={classState}>
+        return <div className='betbook-context'>
+        <div className={classState}>
             <div className='match-details-field'>
-                <div className='md_home-team-field'><img className='logo' src={this.state.realData.team_home.logo}/>
-                    <div className='home-text-field'><span className='text18'>{this.state.realData.team_home.team_name}</span>
+                <div className='md_league-week-details'><span className='text11-grey'>{this.state.realData.date}</span></div>
+                <div className='md_league_match_fixture'>
+                <div className='md_home-team-field'><img className='logo' src={'./assets/images/Teams/' + this.state.realData.team_home.logo}/>
+                    <div className='home-text-field'><span className='text18-white'>{this.state.realData.team_home.name}</span>
+
                     </div>
                 </div>
-                <div className='md_league-week-details'><span className='text11-grey'>datum</span></div>
+
                 <div className='md_date-time-vs-field'>
                     <div className={this.state.realData.result != null ? 'vs-datetime-field-result' : 'hidden'}>
-                        <span className='text18-white'>{this.state.realData.upcoming == false ? this.state.realData.result.ft_home_goals : ""} : {this.state.realData.upcoming == false ? this.state.realData.result.ft_away_goals : ""}</span>
-                        <div><span className='text12-white'>{this.state.realData.upcoming == false ? this.state.realData.result.ht_home_goals : ""} : {this.state.realData.upcoming == false ? this.state.realData.result.ht_away_goals : ""}</span></div>
+                        <div className='text18-white result'>{this.state.realData.upcoming == false ? this.state.realData.result.ft_home_goals : "4"} : {this.state.realData.upcoming == false ? this.state.realData.result.ft_away_goals : "1"}</div>
+                        <div><span className='text12-white ht-result'>{this.state.realData.upcoming == false ? this.state.realData.result.ht_home_goals : "0"} : {this.state.realData.upcoming == false ? this.state.realData.result.ht_away_goals : "1"}</span></div>
                     </div>
                     <div
                         className={(this.state.realData.upcoming == false) ? 'minuteLive' : 'hidden'}><span
@@ -85,15 +89,17 @@ class Match_Details extends React.Component {
                     </div>
                 </div>
                 <div className='md_away-team-field'>
-                    <img className='logo' src={this.state.realData.team_away.logo}/>
+                    <img className='logo' src={'./assets/images/Teams/' + this.state.realData.team_away.logo}/>
                     <div className='home-text-field'><span
-                        className='text18'>{this.state.realData.team_away.team_name}</span></div>
+                        className='text18-white'>{this.state.realData.team_away.name}</span></div>
+                </div>
                 </div>
             </div>
             <div className='scrolable-bids-field'>
                 <div className='full-time-result-field'>
                     <div className='main-titlle-field'>
                         <div className='ft_text_position'><span className='text12-grey'>Match Outcome</span></div>
+                        <div className='game-underline'/>
                     </div>
                     <div className='md_bid-box'>
                         {this.renderGameTip('1', 'game1', '1', 'bid-field')}
@@ -104,6 +110,7 @@ class Match_Details extends React.Component {
                 <div className='match-goals-field'>
                     <div className='main-titlle-field'>
                         <div className='ft_text_position'><span className='text12-grey'>Match Goals</span></div>
+                        <div className='game-underline'/>
                     </div>
                     <div className='md_bid-box'>
                         {this.renderGameTip('0-1', 'game2', '1', 'bid-field')}
@@ -120,6 +127,7 @@ class Match_Details extends React.Component {
                 <div className='both-teams-goals-field'>
                     <div className='main-titlle-field'>
                         <div className='ft_text_position'><span className='text12-grey'>Both Team Goals</span>
+                            <div className='game-underline'/>
                         </div>
                     </div>
                     <div className='md_bid-box'>
@@ -130,6 +138,7 @@ class Match_Details extends React.Component {
                 <div className='ht-ft-result-field'>
                     <div className='main-titlle-field'>
                         <div className='ft_text_position'><span className='text12-grey'>Half / Full Time Result</span>
+                            <div className='game-underline'/>
                         </div>
                     </div>
                     <div className='md_bid-box'>
@@ -149,6 +158,7 @@ class Match_Details extends React.Component {
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     }
 

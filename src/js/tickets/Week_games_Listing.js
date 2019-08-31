@@ -25,7 +25,7 @@ class Week_games_Listing extends React.Component {
     }
 
     renderGames = () => {
-        this.sharedObj.headerInstance.setTitle(this.state.realData.league);
+        this.sharedObj.headerInstance.setTitle(this.state.realData.name);
         if(this.state.realData.matches)
             return <div>
             <div className='game-week'><span className='text14'>{ this.state.realData.round.name}</span></div>
@@ -34,6 +34,8 @@ class Week_games_Listing extends React.Component {
     }
 
     render() {
+
+        console.log(this.state.realData)
 
         if(this.state.loaded) return (
             <div className='betbook_screen'>

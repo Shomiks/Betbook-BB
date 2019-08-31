@@ -14,8 +14,10 @@
 
   .ms-teams-field {
     position: relative;
-    display: block;
     height: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 
     .ms_homeField {
       position: absolute;
@@ -59,14 +61,16 @@
     }
 
     .ms_resultField {
+      letter-spacing: 15px;
       position: relative;
-      display: inline-block;
 
       .ms_date {
         position: relative;
         display: inline-block;
         margin-top: 12px;
+        font-size: 15px;
       }
+
     }
   }
 }
@@ -109,56 +113,58 @@
     line-height: 1.5;
   }
 
-  .ms_bid-box-green {
-    height: 26px;
-    width: 21%;
-    background-color: #1A281D;
-    display: inline-block;
-    position: relative;
-    border-radius: 20px;
-    border: 1px solid #43BA58;
-    margin-left: 1%;
-    margin-right: 1%;
-    line-height: 1.5;
-  }
+  .ms_bid-field {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
 
-  .ms_bid-box-red {
-    height: 26px;
-    width: 21%;
-    background-color: #31190F;
-    display: inline-block;
-    position: relative;
-    border-radius: 20px;
-    border: 1px solid #BA4343;
-    margin-left: 1%;
-    margin-right: 1%;
-    line-height: 1.5;
-  }
+    .ms_bid-box-green {
+      background-color: #1A281D;
+      border: 1px solid #43BA58;
+      border-radius: 20px;
+      height: 26px;
+      min-width: 60px;
+      flex: 1 1;
+      margin: 7px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
 
-  .ms_bid-box-white {
-    height: 26px;
-    width: 21%;
-    background-color: #122F3F;
-    display: inline-block;
-    visibility: hidden;
-    position: relative;
-    border-radius: 20px;
-    border: 1px solid #47B0E3;
-    margin-left: 1%;
-    margin-right: 1%;
-    line-height: 1.5;
-  }
+    }
 
+
+    .ms_bid-box-red {
+      border: 1px solid #BA4343;
+      background-color: #31190F;
+      height: 26px;
+      min-width: 60px;
+      flex: 1 1;
+      margin: 7px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .ms_bid-box-white {
+      border: 1px solid #47B0E3;
+      background-color: #122F3F;
+      visibility: hidden;
+      height: 26px;
+      min-width: 60px;
+      flex: 1 1;
+      margin: 7px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+  }
   .ms_game-field {
-    position: absolute;
-    left: 10%;
-    display: inline-block;
   }
 
   .ms_odd-field {
-    position: absolute;
-    right: 10%;
-    display: inline-block;
   }
 
 

@@ -1,4 +1,7 @@
-.betbook_screen {
+.betbook-context{
+  padding: 0 30px 70px;
+
+  .betbook_screen {
   height: 100%;
   width: 100%;
   background-color: #151516;
@@ -7,41 +10,56 @@
   display: block;
 
   .match-details-field {
-    position: relative;
-    height: 150px;
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     background-color: #151516;
     margin-top: 60px;
-
-    .md_home-team-field {
-      position: relative;
-      display: inline-block;
-
-      .logo {
-        position: relative;
-        height: 60px;
-        width: 60px;
-      }
-    }
+    margin-bottom: 30px;
 
     .md_league-week-details {
-      display: inline-block;
+      display: block;
       position: relative;
+      width: 100%;
+      text-align: center;
     }
 
-    .md_date-time-vs-field {
-      display: inline-block;
-      position: relative;
-    }
+    .md_league_match_fixture {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-content: center;
 
-    .md_away-team-field {
-      position: relative;
-      display: inline-block;
-
-      .logo {
+      .md_home-team-field {
         position: relative;
-        height: 60px;
-        width: 60px;
+        display: inline-block;
+
+        .logo {
+          position: relative;
+          height: 60px;
+          width: 60px;
+        }
+      }
+
+
+      .md_date-time-vs-field {
+        margin-top: 15px;
+        display: block;
+        width: 40%;
+        position: relative;
+        line-height: 30px;
+      }
+
+      .md_away-team-field {
+        position: relative;
+        display: inline-block;
+
+        .logo {
+          position: relative;
+          height: 60px;
+          width: 60px;
+        }
       }
     }
   }
@@ -57,25 +75,37 @@
       position: relative;
       text-align: center;
     }
+    .game-underline{
+      height:0.5px;
+      background-color: #FFF;
+      opacity: 0.15;
+      width: 120px;
+      margin:5px auto;
+      border-radius: 4px;
+    }
   }
 
 
   .scrolable-bids-field {
     .md_bid-box {
       position: relative;
-      height: 65px;
       background-color: #151516;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
 
     }
   }
 
   .bid-field {
     height: 36px;
-    width: 105px;
+    min-width: 105px;
     border: 1px solid #2A2A2B;
     border-radius: 20px;
-    display: inline-block;
     background-color: #212122;
+    margin: 5px;
+    flex: 1;
   }
 
   .bid-field-bigger {
@@ -88,22 +118,17 @@
 
   .game-bid-align {
     position: relative;
+    display: flex;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
 
-    .game-text {
-      position: absolute;
-      left: 12px;
-      display: inline-block;
-      line-height: 2;
-    }
-
-    .bid-text {
-      position: absolute;
-      right: 22px;
-      display: inline-block;
-      line-height: 2;
-    }
   }
 }
+}
+
+
+
 
 
 .hidden {
