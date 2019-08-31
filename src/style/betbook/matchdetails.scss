@@ -1,15 +1,55 @@
 .betbook_screen {
   height: 100%;
   width: 100%;
-  background-color: #FFFFFF;
+  background-color: #151516;
   position: relative;
   text-align: center;
   display: block;
 
-  .main-titlle-field {
-    height: 20px;
+  .match-details-field {
+    position: relative;
+    height: 150px;
     width: 100%;
-    box-shadow: 0 0 0.5px 0 rgba(0, 0, 0, 0.2);
+    background-color: #151516;
+    margin-top: 60px;
+
+    .md_home-team-field {
+      position: relative;
+      display: inline-block;
+
+      .logo {
+        position: relative;
+        height: 60px;
+        width: 60px;
+      }
+    }
+
+    .md_league-week-details {
+      display: inline-block;
+      position: relative;
+    }
+
+    .md_date-time-vs-field {
+      display: inline-block;
+      position: relative;
+    }
+
+    .md_away-team-field {
+      position: relative;
+      display: inline-block;
+
+      .logo {
+        position: relative;
+        height: 60px;
+        width: 60px;
+      }
+    }
+  }
+
+
+  .main-titlle-field {
+    height: 25px;
+    width: 100%;
     position: relative;
     background-color: #151516;
 
@@ -19,496 +59,49 @@
     }
   }
 
-  .column-with-2-field {
-    position: relative;
-    display: flex;
-    justify-content: center;
-
-    .bid-1-field {
-      height: 52px;
-      width: 50%;
-      background-color: #FAFAFA;
-      position: relative;
-      display: inline-block;
-      margin-top: 1px;
-      cursor: pointer;
-    }
-
-
-    .bid-2-field {
-      height: 52px;
-      width: 50%;
-      background-color: #FAFAFA;
-      position: relative;
-      display: inline-block;
-      border-left: 0.5px solid #cfcfcf;
-      cursor: pointer;
-    }
-
-    .col-3_game-field {
-      position: absolute;
-      left: 0;
-      margin-left: 11%;
-      display: inline-block;
-      margin-top: 15px;
-
-      .text12 {
-        color: #9B9B9B;
-      }
-
-      .text12-grey {
-        color: #CFD1D4;
-      }
-
-      .text12-white {
-        color: #FAFAFA;
-        font-weight: 400;
-      }
-
-    }
-
-    .col-3_bid-field {
-
-      position: relative;
-      display: inline-block;
-      margin-top: 15px;
-      .text12 {
-        color: #FFF;
-      }
-      .text12-white {
-        color: #FAFAFA;
-        font-weight: 400;
-      }
-    }
-
-    .bided {
-      background-color: #2F8FBD;
-    }
-
-    .col-2_game-field {
-      position: absolute;
-      left: 0;
-      margin-left: 11%;
-      display: inline-block;
-      margin-top: 15px;
-
-      .text12 {
-        color: #9B9B9B;
-      }
-
-      .text12-grey {
-        color: #CFD1D4;
-      }
-
-      .text12-white {
-        color: #FAFAFA;
-        font-weight: 400;
-      }
-    }
-
-    .col-2_bid-field {
-      position: relative;
-      display: inline-block;
-      margin-top: 15px;
-      margin-left: 30px;
-
-      .text12 {
-        color: #47B1E4;
-      }
-
-      .text12-white {
-        color: #FAFAFA;
-      }
-    }
-  }
-
-  .column-with-3-field {
-    position: relative;
-    display: flex;
-    justify-content: center;
-
-
-    .text12-grey {
-      color: #FFF;
-    }
-
-    .bid-1-field {
-      height: 52px;
-      width: 33.3%;
-      background-color: #FAFAFA;
-      position: relative;
-      display: inline-block;
-      cursor: pointer;
-    }
-
-    .bid-2-field {
-      height: 52px;
-      width: 33.3%;
-      background-color: #FAFAFA;
-      position: relative;
-      display: inline-block;
-      border-left: 0.5px solid #cfcfcf;
-      border-right: 0.5px solid #cfcfcf;
-      cursor: pointer;
-    }
-
-    .bided {
-      background-color: #2F8FBD;
-    }
-
-    .col-3_game-field {
-      position: absolute;
-      left: 0;
-      margin-left: 11%;
-      display: inline-block;
-      margin-top: 15px;
-
-      .text12 {
-        color: #9B9B9B;
-      }
-
-      .text12-grey {
-        color: #CFD1D4;
-      }
-
-      .text12-white {
-        color: #FAFAFA;
-        font-weight: 400;
-      }
-    }
-
-    .col-3_bid-field {
-      position: relative;
-      display: inline-block;
-      margin-top: 15px;
-
-      .text12 {
-        color: #47B1E4;
-      }
-      .text12-white {
-        color: #FAFAFA;
-        font-weight: 400;
-      }
-    }
-  }
-
-  .column-with-4-field {
-    position: relative;
-    display: flex;
-    justify-content: center;
-
-    .bid-1-field {
-      height: 52px;
-      width: 25%;
-      background-color: #FAFAFA;
-      position: relative;
-      display: inline-block;
-      cursor: pointer;
-    }
-
-    .bided {
-      background-color: #2F8FBD;
-    }
-
-    .col-3_game-field {
-      position: absolute;
-      left: 0;
-      margin-left: 11%;
-      display: inline-block;
-      margin-top: 15px;
-
-      .text12 {
-        color: #9B9B9B;
-      }
-
-      .text12-grey {
-        color: #CFD1D4;
-      }
-      .text12-white {
-        color: #FAFAFA;
-        font-weight: 400;
-      }
-    }
-
-    .col-3_bid-field {
-      position: relative;
-      display: inline-block;
-      margin-top: 15px;
-      .text12 {
-        color: #47B1E4;
-      }
-      .text12-white {
-        color: #FAFAFA;
-        font-weight: 400;
-      }
-    }
-
-    .bid-2-field {
-      height: 52px;
-      width: 25%;
-      background-color: #FAFAFA;
-      position: relative;
-      display: inline-block;
-      border-left: 0.5px solid #cfcfcf;
-      border-right: 0.5px solid #cfcfcf;
-      cursor: pointer;
-    }
-
-    .bided {
-      background-color: #2F8FBD;
-    }
-
-    .col-3_game-field {
-      position: absolute;
-      left: 0;
-      margin-left: 11%;
-      display: inline-block;
-      margin-top: 15px;
-
-      .text12 {
-        color: #9B9B9B;
-      }
-
-      .text12-grey {
-        color: #CFD1D4;
-      }
-
-      .text12-white {
-        color: #FAFAFA;
-        font-weight: 400;
-      }
-    }
-
-    .col-3_bid-field {
-      position: relative;
-      display: inline-block;
-      margin-top: 15px;
-
-
-      .text12 {
-        color: #47B1E4;
-      }
-
-      .text12-white {
-        color: #FAFAFA;
-        font-weight: 400;
-      }
-    }
-
-    .bid-3-field {
-      height: 52px;
-      width: 25%;
-      background-color: #FAFAFA;
-      position: relative;
-      display: inline-block;
-      border-right: 0.5px solid #cfcfcf;
-      cursor: pointer;
-    }
-
-    .bided {
-      background-color: #2F8FBD;
-    }
-
-    .col-3_game-field {
-      position: absolute;
-      left: 0;
-      margin-left: 11%;
-      display: inline-block;
-      margin-top: 15px;
-
-      .text12 {
-        color: #9B9B9B;
-      }
-
-      .text12-grey {
-        color: #CFD1D4;
-      }
-
-      .text12-white {
-        color: #FAFAFA;
-        font-weight: 400;
-      }
-
-    }
-
-    .col-3_bid-field {
-      position: relative;
-      display: inline-block;
-      margin-top: 15px;
-      .text12 {
-        color: #47B1E4;
-      }
-      .text12-white {
-        color: #FAFAFA;
-        font-weight: 400;
-      }
-    }
-
-    .col-4_game-field {
-      position: absolute;
-      left: 0;
-      margin-left: 11%;
-      display: inline-block;
-      margin-top: 15px;
-
-      .text12 {
-        color: #9B9B9B;
-      }
-
-      .text12-white {
-        color: #FAFAFA;
-        font-weight: 400;
-      }
-    }
-    .col-4_bid-field {
-      position: relative;
-      display: inline-block;
-      margin-top: 15px;
-      margin-left: 30px;
-
-      .text12 {
-        color: #47B1E4;
-      }
-
-      .text12-white {
-        color: #FAFAFA;
-        font-weight: 400;
-      }
-    }
-  }
-
-  .match-details-field {
-    height: 180px;
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    margin-top:60px;
-    background-color: #151516;
-
-    .md_league-week-details {
-      height: 20px;
-      width: 100%;
-      position: absolute;
-      display: block;
-    }
-
-    .md_home-team-field {
-      height: 95px;
-      width: 120px;
-      position: relative;
-      display: inline-block;
-      background-color: #FFF;
-      margin-top: 15px;
-      .logo{
-        width:63px;
-      }
-    }
-
-    .md_date-time-vs-field {
-      height: 100%;
-      width: 60px;
-      position: relative;
-      display: inline-block;
-
-      .vs-datetime-field-result {
-        margin-top: 35px;
-        position: relative;
-      }
-
-      .minuteLive {
-        margin-top: 25px;
-        position: relative;
-        display: block;
-        left: 50%;
-        margin-left: -60px;
-
-      }
-
-      .text18-red-field {
-        color: red;
-      }
-
-      .vs-datetime-field {
-        margin-top: 35px;
-
-        .vs-datetime-field-result {
-          margin-top: 35px;
-          visibility: visible;
-
-
-          &_result {
-            .vs-datetime-field-result {
-              visibility: hidden;
-            }
-          }
-        }
-      }
-
-      .time-date-field {
-        position: absolute;
-        bottom: 10px;
-        margin-bottom: 20px;
-        left: 50%;
-        margin-left: -35px;
-      }
-
-      .location-field {
-        position: absolute;
-        bottom: 10px;
-        left: 50%;
-        margin-left: -25px;
-
-      }
-    }
-
-    .md_away-team-field {
-      height: 95px;
-      width: 120px;
-      position: relative;
-      display: inline-block;
-      background-color: #FFF;
-      margin-top: 15px;
-      .logo{
-        width:63px;
-      }
-    }
-
-    .place-field {
-      margin-top: 4px;
-    }
-  }
 
   .scrolable-bids-field {
+    .md_bid-box {
+      position: relative;
+      height: 65px;
+      background-color: #151516;
 
-    overflow: scroll;
-    margin-bottom: 50px;
-
-    .full-time-result-field {
-      width: 100%;
-      background-color: #FFF;
-    }
-
-    .match-goals-field {
-      width: 100%;
-
-    }
-
-    .both-teams-goals-field {
-      width: 100%;
-
-    }
-
-    .ht-ft-result-field {
-      width: 100%;
     }
   }
 
-  .green {
-    background-color: #7ED321;
+  .bid-field {
+    height: 36px;
+    width: 105px;
+    border: 1px solid #2A2A2B;
+    border-radius: 20px;
+    display: inline-block;
+    background-color: #212122;
   }
 
-  .red {
-    background-color: #EC3B51;
+  .bid-field-bigger {
+    height: 36px;
+    width: 160px;
+    border: 1px solid #2A2A2B;
+    border-radius: 20px;
+    display: inline-block;
+  }
+
+  .game-bid-align {
+    position: relative;
+
+    .game-text {
+      position: absolute;
+      left: 12px;
+      display: inline-block;
+      line-height: 2;
+    }
+
+    .bid-text {
+      position: absolute;
+      right: 22px;
+      display: inline-block;
+      line-height: 2;
+    }
   }
 }
 
