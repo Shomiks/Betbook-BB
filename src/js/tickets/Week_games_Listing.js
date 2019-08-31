@@ -35,7 +35,7 @@ class Week_games_Listing extends React.Component {
 
     render() {
 
-        if(this.state.loaded == true)console.log(this.state.realData)
+        console.log(this.state.realData)
 
         if(this.state.loaded) return (
             <div className='betbook_screen'>

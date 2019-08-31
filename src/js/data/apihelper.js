@@ -53,7 +53,7 @@ class APIHelper extends React.Component {
                 })
         },
         getByID: (league_id, callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/league/?league_id=` + league_id)
+            fetch(`http://192.168.8.113/index.php/api/league/` + league_id)
                 .then(res => res.json())
                 .then(res => {
                     if(res) {
@@ -97,10 +97,14 @@ class APIHelper extends React.Component {
         }
     }
 
-    home = (callBack) => {
-
+    home = (user_id,callBack) => {
+        fetch(`http://192.168.8.113/index.php/api/user_favourite_league/?user_id=` + user_id)
+            .then(res => res.json())
+            .then(res => {
+                let leagues = Object.values(res);
+                callBack(leagues)
+            })
     }
-
 }
 
 export default APIHelper

@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../../src/style/betbook/competitionlisting.scss';
-import '../../../src/style/app.scss';
+
 
 import Footer from '../components/footer';
 import {Link} from "react-router-dom";
@@ -36,7 +36,7 @@ class Competition_Listing extends React.Component {
                         </div>
                         {this.state.realData.map((data) => <Link to={`country/${data.id}`}>
                             <div key={data.id + '_'} className='country-field'>
-                                <div className='flag-container'><img className='flag' src={data.flag}/></div>
+                                <div className='flag-container'><img className='flag' src={'./assets/images/Countries/'+data.flag+''}/></div>
                                 <div className='country-info'>
                                     <div className='leagues-info'><span className='text11-grey'>14 Leagues</span></div>
                                     <div className='dataname-info'><span className='text15-white'>{data.name}</span></div>

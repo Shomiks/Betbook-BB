@@ -23,7 +23,7 @@ class App extends React.Component {
 
     this.state = {
       hash: window.location.hash,
-      loaded:true
+      loaded:false
     };
 
     this.sharedObject = {};
@@ -49,12 +49,17 @@ class App extends React.Component {
          return (
              <div className='App'>
 
-               {(window.location.hash=='#/login' || window.location.hash=='#/register' || window.location.hash=='#/forgot-password' || window.location.hash=='#/loading' || window.location.hash=='#/welcome')
-                   ? <div></div> : <Header ref={(instance) => {
-                 this.sharedObject.headerInstance = instance}}  />}
-
                <HashRouter>
+
+                   {(window.location.hash=='#/login' || window.location.hash=='#/register' || window.location.hash=='#/forgot-password' || window.location.hash=='#/loading' || window.location.hash=='#/welcome')
+                       ? <div/> : <Header ref={(instance) => {
+                           this.sharedObject.headerInstance = instance}}  />}
+
+                   <Route path="/loading" render={(props) => (<LoadingScreen sharedObj={this.sharedObject} {...props}/>)} />
+                   <Route path="/register" render={(props) => (<Register sharedObj={this.sharedObject} {...props}/>)} />
                    <Route path="/login" render={(props) => (<Login sharedObj={this.sharedObject} {...props}  />)}/>
+                   <Route path="/forgot-password" render={(props) => (<ForgotPassword sharedObj={this.sharedObject} {...props}/>)} />
+                   <Route path="/welcome" render={(props) => (<AppHome sharedObj={this.sharedObject} {...props}/>)} />
                    <Route path="/home" render={(props) => (<Home_screen sharedObj={this.sharedObject} {...props}/>)}/>
 
 
@@ -69,21 +74,11 @@ class App extends React.Component {
                    <Route path="/fixture/:fixtureid" render={(props) => (<Match_Details sharedObj={this.sharedObject} {...props}/>)}/>
                    <Route path="/leaderboards" render={(props) => (<LeaderBoards sharedObj={this.sharedObject} {...props}/>)}/>
 
-                 <Route path="/welcome" render={(props) => (<AppHome sharedObj={this.sharedObject} {...props}/>)} />
-                 <Route path="/loading" render={(props) => (<LoadingScreen sharedObj={this.sharedObject} {...props}/>)} />
-                 <Route path="/register" render={(props) => (<Register sharedObj={this.sharedObject} {...props}/>)} />
-                 <Route path="/login" render={(props) => (<Login sharedObj={this.sharedObject} {...props}/>)} />
-                 <Route path="/forgot-password" render={(props) => (<ForgotPassword sharedObj={this.sharedObject} {...props}/>)} />
-                 <Route path="/home" render={(props) => (<Home_screen sharedObj={this.sharedObject} {...props}/>)} />
-                 <Route path="/leagues" render={(props) => (<Competition_Listing key={'competition_current'} sharedObj={this.sharedObject} {...props}/>)} />
-                 <Route path="/leagues/:countryid" render={(props) => (<Competition_Listing key={'competition_' + props.match.params.countryid} sharedObj={this.sharedObject} {...props}/>)} />
-                 <Route path="/league/:leagueid/round/:roundid" render={(props) => (<Week_games_Listing sharedObj={this.sharedObject} {...props}/>)} />
-                 <Route path="/round/:roundid/league/:leagueid" render={(props) => (<Week_games_Listing sharedObj={this.sharedObject} {...props}/>)} />
-                 <Route path="/fixture/:fixtureid" render={(props) => (<Match_Details sharedObj={this.sharedObject} {...props}/>)} />
-                 <Route path="/leaderboards" render={(props) => (<LeaderBoards sharedObj={this.sharedObject} {...props}/>)} />
+                   {(window.location.hash=='#/login' || window.location.hash=='#/register' || window.location.hash=='#/forgot-password' || window.location.hash=='#/loading' || window.location.hash=='#/welcome')
+                       ? <div/> : <Footer />}
+
                </HashRouter>
-               {(window.location.hash=='#/login' || window.location.hash=='#/register' || window.location.hash=='#/forgot-password' || window.location.hash=='#/loading' || window.location.hash=='#/welcome')
-                   ? <div></div> : <Footer />}
+
              </div>
 
          );

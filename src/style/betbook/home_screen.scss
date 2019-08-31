@@ -1,61 +1,33 @@
 
-
-  .main-content-1 {
+  .main-content {
     position: relative;
     padding-top: 50px;
     overflow: scroll;
     margin-bottom: 4px;
     padding-bottom: 50px;
-    margin-top: -50px;
+    margin-top: 50px;
 
+    .favourite-league {
+      width:100%;
+      .favourite-league-container{
+        display:flex;
+      }
+      .last-week{
+        width:33%;
 
-
-
-    .hs_league-week-header {
-      position: relative;
-      display: block;
-      height: 100%;
-      width: 100%;
-      border-top: 0.5px solid #BBC2CA;
-      border-bottom: 0.5px solid #BBC2CA;
-      background-color: #99c2ff;
-      .text17 {
-        line-height: 2;
+        display:block;
       }
 
-      .hs_league-tittle {
-        position: relative;
-        display: inline-block;
-        height: 35px;
-
-
+      .logo {
+        width:33%;
+        .league-logo {
+          width: 50px;
+        }
       }
-
-      .hs_chevron {
-        position: absolute;
-        right: 0;
-        margin-right: 5%;
-        display: inline-block;
-        margin-top: 2px;
+      .current-week{
+        width:33%;
+        display:block;
       }
-    }
-
-    .active-bids-field {
-      position: relative;
-      display: block;
-      width: 100%;
-    }
-
-    .previous-bids-field {
-      position: relative;
-      display: block;
-      width: 100%;
-    }
-
-    .bids-title-field {
-      height: 30px;
-      width: 100%;
-      padding-top: 10px;
-      background-color: #FFF;
     }
   }
+

@@ -1,6 +1,6 @@
 .countries-container {
 
-  margin-top: 50px;
+  margin-top: -10px;
 
   .favorites-field {
     background-color: #1F2022;
@@ -54,6 +54,8 @@
         position: absolute;
         left: 0;
         top: 32px;
+        height: auto;
+        width:auto;
 
       }
 
