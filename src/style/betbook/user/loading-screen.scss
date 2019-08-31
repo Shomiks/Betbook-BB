@@ -1,0 +1,19 @@
+.betbook-screen-loading {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  display: block;
+  background-color: #141415;
+
+  .betbook-logo-box {
+    height: 60px;
+    width: 200px;
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    margin-top: -30px;
+  }
+}
+
+

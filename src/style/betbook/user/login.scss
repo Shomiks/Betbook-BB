@@ -1,160 +1,121 @@
-.betbook_screen-login {
+.betbook-screen-login {
   height: 100%;
   width: 100%;
   position: absolute;
-  text-align: center;
   display: block;
-  background-color: #23282b;
+  background: linear-gradient(to bottom, #131313 0%, #1c1c1c 0%, #111111 0%, #000000 0%, #2c2c2c 0%, #111111 0%, #000000 0%, #2b2b2b 1%, #111111 1%, #898989 99%, #666666 100%, #4c4c4c 100%);
 
-
-  .login_layout {
-    height: 175px;
-    width: 340px;
-    position: relative;
-    display: block;
-    top: 200px;
-    margin: 0 auto;
-    padding-top: 10px;
-    background: linear-gradient(180deg, #FAD961 0%, #F76B1C 100%);
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
-
-    .login-text-field {
-      margin-bottom: 15px;
-    }
-
-    .step_input_container {
-      height: 50px;
-      width: 100%;
-      position: relative;
-
-      .step_input_label {
-        height: 30px;
-        width: 75px;
-        position: relative;
-      }
-
-      .left-input-field {
-        position: relative;
-        display: inline-block;
-        height: 20px;
-        width: 100px;
-      }
-
-      .right-input-field {
-        position: relative;
-        display: inline-block;
-        height: 45px;
-      }
-
-      .step_input {
-        width: 100%;
-        height: 40px;
-        border-radius: 9px;
-        border: solid 1px #b3bec4;
-        background-color: #ffffff;
-        display: inline-block;
-        font-family: SF Display;
-        font-size: 17px;
-        font-weight: normal;
-        font-style: normal;
-        font-stretch: normal;
-        letter-spacing: normal;
-        color: #3c5060;
-        position: relative;
-        padding-left: 15px;
-
-        .step_input
-        &:active {
-          outline: none;
-          border: none;
-          box-shadow: inset 2px 4px 4px 0 rgba(0, 0, 0, 0.2);
-
-        }
-
-      }
-
-      .text17 {
-        color: #0A0A0A;
-        font-family: "SF Display";
-        font-size: 17px;
-        font-weight: 500;
-      }
-
-    }
-
-  }
-
-  .image-field {
+  .betbook-logo-box {
     position: absolute;
-    margin-bottom: 208px;
-    bottom: 0;
+    top: 0;
+    margin-top: 115px;
     left: 50%;
-    margin-left: -90px;
+    margin-left: -87px;
   }
 
-  .sign-up-button {
-    height: 30px;
-    width: 60px;
-    position: relative;
-    display: inline-block;
+  .bs-user-container {
+    height: 80px;
+    width: 305px;
+    position: absolute;
+    top: 0;
+    margin-top: 320px;
+    left: 50%;
+    margin-left: -152.5px;
+
+    .bs-username-text {
+      margin-bottom: 11px;
+    }
+
+    .bs-username-box {
+      height: 40px;
+      width: 305px;
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+      border: 1px solid #FFFFFF;
+      box-sizing: border-box;
+      border-radius: 25px;
+      padding-left: 20px;
+    }
   }
 
-  .login-button {
-    height: 30px;
-    width: 60px;
-    position: relative;
-    display: inline-block;
+  .bs-email-container {
+    height: 80px;
+    width: 305px;
+    position: absolute;
+    top: 0;
+    margin-top: 402px;
+    left: 50%;
+    margin-left: -152.5px;
+
+    .bs-email-text {
+      margin-bottom: 11px;
+    }
+
+    .bs-email-box {
+      height: 40px;
+      width: 305px;
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+      border: 1px solid #FFFFFF;
+      box-sizing: border-box;
+      border-radius: 25px;
+      padding-left: 20px;
+    }
   }
+
+  .bs-password-container {
+    height: 80px;
+    width: 305px;
+    position: absolute;
+    top: 0;
+    margin-top: 482px;
+    left: 50%;
+    margin-left: -152.5px;
+
+    .bs-password-text {
+      margin-bottom: 11px;
+    }
+
+    .bs-password-box {
+      height: 40px;
+      width: 305px;
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+      border: 1px solid #FFFFFF;
+      box-sizing: border-box;
+      border-radius: 25px;
+      padding-left: 20px;
+    }
+
+    .bs-text-under-password {
+      margin-top: 24px;
+    }
+  }
+
+
+  .bs-create-account-box {
+    position: absolute;
+    display: block;
+    height: 50px;
+    width: 305px;
+    bottom: 0;
+    margin-bottom: 145px;
+    background: linear-gradient(180deg, #FEA938 0%, rgba(255, 171, 58, 0) 100%), #EA6309;
+    border-radius: 25px;
+    left: 50%;
+    margin-left: -152.5px;
+  }
+
+  .bs-i-already-have-an-account-box {
+    position: absolute;
+    display: block;
+    height: 40px;
+    width: 200px;
+    bottom: 0;
+    margin-bottom: 80px;
+    border-radius: 25px;
+    border: 1px solid white;
+    left: 50%;
+    margin-left: -100px;
+  }
+
 
 }
 
-
-// .step_input_container {
-//      position: relative;
-//      height: 97px;
-//      text-align: left;
-//      display: block;
-//
-//      .step_input_label {
-//        font-family: Roboto;
-//        font-size: 24px;
-//        font-weight: normal;
-//        font-style: normal;
-//        font-stretch: normal;
-//        line-height: normal;
-//        letter-spacing: normal;
-//        color: #3c5060;
-//        position: relative;
-//        left: 23px;
-//        display: block;
-//      }
-//
-//      .step_input {
-//        width: 100%;
-//        height: 58px;
-//        border-radius: 9px;
-//        border: solid 1px #b3bec4;
-//        background-color: #ffffff;
-//        display: block;
-//        margin-top: 7px;
-//        font-family: Roboto;
-//        font-size: 24px;
-//        font-weight: normal;
-//        font-style: normal;
-//        font-stretch: normal;
-//        letter-spacing: normal;
-//        color: #3c5060;
-//        position: relative;
-//        padding-left: 22px;
-//        margin-left: -22px;
-//
-//
-//        &:focus{
-//          outline: none;
-//          border-radius: 9px;
-//          box-shadow: inset 3px 3px 4px 0 rgba(0, 0, 0, 0.2);
-//          border: solid 1px #86cfca;
-//          background-color: #ffffff;
-//        }
-//
-//      }

@@ -1,41 +1,41 @@
 import React from 'react';
-import '../../../src/style/betbook/login.scss'
 import '../../../src/style/app.scss'
-import '../../../src/style/betbook/user/login.scss'
+import '../../../src/style/betbook/user/register.scss'
 
 class Login extends React.Component {
 
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.state = {
-      validName: true,
-      validPassword: true,
+        this.state = {
+            validName: true,
+            validPassword: true,
+        }
     }
-  }
 
-  render() {
+    render() {///12/35
 
-    return (<div className='betbook_screen-login'>
-          <div className='login_layout'>
-            <div className='login-text-field'> <span className='text17'>Member login</span> </div>
-            <div className='step_input_container'>
-              <div className='left-input-field'><span className='text17'> User name </span></div>
-              <div className='right-input-field'><input className='step_input' type='text17'></input></div>
+        return (<div className='betbook-screen-login'>
+                <div className='main-container'>
+                    <div className='betbook-logo-box'><img src='./assets/images/betbook-logo.png'></img></div>
+                    <div className='bs-email-container'>
+                        <div className='bs-email-text'><span className='text15-white'>Email</span></div>
+                        <input className='bs-email-box' type='email'></input>
+                    </div>
+                    <div className='bs-password-container'>
+                        <div className='bs-password-text'><span className='text15-white'>Password</span></div>
+                        <input className='bs-password-box' type='password'></input>
+                        <div className='bs-text-under-password'><span
+                            className='text11-white'>I forgot my password. </span></div>
+                    </div>
+                    <div className='bs-create-account-box'><span className='text18-white'>Sign in</span></div>
+                    <div className='bs-i-already-have-an-account-box'><span className='text14-white'>I don't have an account.</span>
+                    </div>
+                </div>
             </div>
-            <div className='step_input_container'>
-              <div className='left-input-field'><span className='text17'> Password </span></div>
-              <div className='right-input-field'><input className='step_input' type='password'></input></div>
-            </div>
-            <button className='sign-up-button'> sign up </button>
-            <button className='login-button'> login </button>
-          </div>
-          <div className='image-field'><img src='./assets/images/betbook-logo.png'></img></div>
-        </div>
-    )
-  }
+        )
+    }
 }
-
 
 
 export default Login;

@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../../src/style/app.scss'
-import Header from '../components/header';
 import '../../../src/style/betbook/leaderboards.scss'
 import ProfileShort from "../components/profileshort";
 
@@ -19,7 +18,6 @@ class LeaderBoards extends React.Component {
 
         return (
             <div className='betbook_screen'>
-                <Header title='Leaderboards'></Header>
                 <div className='lb_header'>
                     <div className='lb_tickets-singles-field'>
                         <div className='lb_box-left'>

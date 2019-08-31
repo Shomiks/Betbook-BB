@@ -1,14 +1,13 @@
 .betbook_screen {
   height: 100%;
   width: 100%;
-  background-color: #FFFFFF;
   position: relative;
   text-align: center;
   display: block;
 
   .main-content {
     position: relative;
-    padding-top: 50px;
+    padding-top: 10px;
     overflow: scroll;
     margin-bottom: 4px;
     padding-bottom: 50px;
@@ -22,6 +21,7 @@
       height: 60px;
       width: 100%;
 
+
       .teams-field{
         position: relative;
         width: 40%;
@@ -34,7 +34,7 @@
     }
     .game-week{
       .text14 {
-        color: #0A0A0A;
+        color: #FFF;
         font-family: "SF Display";
         font-size: 14px;
         font-weight: 500;

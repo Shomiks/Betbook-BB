@@ -1,34 +1,73 @@
-.rectangle_layout {
-  height: 60px;
-  width: 100%;
-  background-color: #FFFFFF;
-  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
-  position: relative;
-}
+.countries-container {
 
-.noun_ball_image {
-  height: 25px;
-  width: 25px;
-  position: absolute;
-  display: block;
-  vertical-align: top;
-  left: 0;
-  margin-left: 19px;
-  background-color: #0A0A0A;
-  margin-top: 18px;
-}
+  margin-top: -10px;
 
-.chevron {
-  height: 25px;
-  width: 24px;
-  position: absolute;
-  display: block;
-  right: 0;
-  top: 0;
-  margin-top: 18px;
-  margin-right: 26px;
-  color: #0A0A0A;
-  font-family: "SF Display";
-  font-size: 21px;
-  font-weight: 500;
+  .favorites-field {
+    background-color: #1F2022;
+    position: relative;
+
+    .favorites-position {
+      position: relative;
+      left: -156px;
+    }
+  }
+
+  .country-field {
+    border: 1px solid #2A2A2B;
+    height: 80px;
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+    background-color: #1F2022;
+
+    .text18 {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .flag-container {
+      width: 85px;
+      padding: 22px 10px 14px 5px;
+
+      .flag {
+        width: 50px;
+        border-radius: 50%;
+        position: relative;
+      }
+    }
+
+    .country-info {
+      position: relative;
+      display: block;
+
+      .leagues-info {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 11px;
+        width: 57px;
+
+      }
+
+      .dataname-info {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 32px;
+        height: auto;
+        width:auto;
+
+      }
+
+      .number-matches-info {
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 11px;
+        width: 64px;
+      }
+    }
+
+
+  }
 }

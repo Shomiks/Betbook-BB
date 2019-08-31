@@ -1,7 +1,7 @@
 import React from 'react';
-import '../../../src/style/betbook/week-games.scss';
 import MatchShort from '../components/match_short';
 import {Link} from "react-router-dom";
+import '../../style/betbook/week-games.scss';
 
 class Week_games_Listing extends React.Component {
 
@@ -9,42 +9,43 @@ class Week_games_Listing extends React.Component {
         super(props);
 
         this.state = {
-            data: [],
+            realData: [],
             loaded: false
         };
         this.sharedObj = props.sharedObj;
+        this.leagudId = props.match.params.leagueid;
     }
 
     componentDidMount() {
-        this.sharedObj.apiHelper.competitions.getByID(1, this.handleCompetitionLoaded);
+        this.getAllFixtures();
     }
 
-    handleCompetitionLoaded = (data) => {
-        this.setState({data, loaded: true});
+    getAllFixtures(){
+        this.sharedObj.apiHelper.leagues.getByID(this.leagudId,(res) => this.setState({realData:res,loaded:true}));
     }
 
     renderGames = () => {
-        return <div>
-            <div className='game-week'><span className='text14'>{'Matchday ' + this.state.data.currentWeek}</span></div>`
-            {this.state.data.data.map((match, i) => <Link to={`/match/${match.match.id}`}> <MatchShort match={match}/>
-            </Link>)}
-        </div>
+        this.sharedObj.headerInstance.setTitle(this.state.realData.name);
+        if(this.state.realData.matches)
+            return <div>
+            <div className='game-week'><span className='text14'>{ this.state.realData.round.name}</span></div>
+            {this.state.realData.matches.map((fixture) => <Link to={`/fixture/${fixture.id}`}> <MatchShort  match={fixture}/></Link>)}
+                </div>
     }
 
     render() {
 
-        console.log(this.state.data)
-        if (this.state.loaded) {
-            this.sharedObj.headerInstance.setTitle(this.state.data.name);
-        }
+        console.log(this.state.realData)
 
-        return (
+        if(this.state.loaded) return (
             <div className='betbook_screen'>
                 <div className='main-content'>
                     {this.state.loaded ? this.renderGames() : <div>Loading ... </div>}
                 </div>
             </div>
         );
+
+        else return <div>Loading...</div>
     }
 }
 

@@ -21,7 +21,7 @@ class Home_Listing extends React.Component {
     return (
         <div className='betbook_screen'>
           <Header competition={true} title='Competition'/>
-          <div className='main-content'>
+          <div className='main-content-1'>
             <div className='competition-title-field'><span className='text18'> International Competitions </span>
             </div>
             <Listing>

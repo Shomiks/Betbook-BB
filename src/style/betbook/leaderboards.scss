@@ -1,7 +1,6 @@
 .betbook_screen {
   height: 100%;
   width: 100%;
-  background-color: #FFFFFF;
   position: relative;
   text-align: center;
   display: block;
@@ -11,6 +10,8 @@
     position: relative;
     height: 80px;
     width: 100%;
+    background-color: #fff9de;
+
 
     .lb_tickets-singles-field {
       position: relative;
@@ -21,6 +22,7 @@
       width: 182px;
       margin: 0 auto;
       margin-top: 25px;
+      background-color: #FFF;
 
       .lb_box-left {
         position: relative;
