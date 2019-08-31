@@ -46,7 +46,7 @@ class Match_Details extends React.Component {
         return <div className={className}>
             <div className='game-bid-align'>
             <div className='game-text'><span className='text11-grey'>{label}</span></div>
-            <div className='bid-text'><span className='text15-white'>{this.state.realData.ticket[''+game+'_odd']}</span></div>
+            <div className='bid-text'><span className='text15-white'>{this.state.realData[game + '_' + tip]}</span></div>
             </div>
         </div>
     };
@@ -75,9 +75,9 @@ class Match_Details extends React.Component {
                 </div>
 
                 <div className='md_date-time-vs-field'>
-                    <div className={this.state.realData.result != null ? 'vs-datetime-field-result' : 'hidden'}>
-                        <div className='text18-white result'>{this.state.realData.upcoming == false ? this.state.realData.result.ft_home_goals : "4"} : {this.state.realData.upcoming == false ? this.state.realData.result.ft_away_goals : "1"}</div>
-                        <div><span className='text12-white ht-result'>{this.state.realData.upcoming == false ? this.state.realData.result.ht_home_goals : "0"} : {this.state.realData.upcoming == false ? this.state.realData.result.ht_away_goals : "1"}</span></div>
+                    <div className={this.state.realData.result ? 'vs-datetime-field-result' : 'hidden'}>
+                        <div className='text18-white result'>{this.state.realData.result ? this.state.realData.result.ft_home_goals : "4"} : {this.state.realData.upcoming == false ? this.state.realData.result.ft_away_goals : "1"}</div>
+                        <div><span className='text12-white ht-result'>{this.state.realData.result ? this.state.realData.result.ht_home_goals : "0"} : {this.state.realData.upcoming == false ? this.state.realData.result.ht_away_goals : "1"}</span></div>
                     </div>
                     <div
                         className={(this.state.realData.upcoming == false) ? 'minuteLive' : 'hidden'}><span

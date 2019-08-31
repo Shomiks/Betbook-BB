@@ -1,5 +1,5 @@
 .betbook-context{
-  padding: 0 30px 70px;
+  padding: 0 15px 70px;
 
   .betbook_screen {
   height: 100%;
@@ -100,8 +100,8 @@
 
   .bid-field {
     height: 36px;
-    min-width: 105px;
-    border: 1px solid #2A2A2B;
+    width: 105px;
+    border-bottom: 1px solid #2A2A2B;
     border-radius: 20px;
     background-color: #212122;
     margin: 5px;
