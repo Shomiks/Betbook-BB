@@ -19,16 +19,64 @@ class Profile_Tickets extends React.Component {
         return (
             <div className='betbook_screen'>
                 <div className='pt_header-field'>
-                    <div className='pt_header-left-arrow-field'><img src='./assets/images/flag.png'></img></div>
                     <div className='pt_header-central-field'>
-                        <div className='pt_image-field'><img src='./assets/images/profile_picture.png'></img></div>
-                        <div className='pt_member-name'><span className='text20'>Me, Myself, & I</span></div>
-                        <div className='pt_member-since'><span className='text12'>Member since Nobember 2018.</span></div>
-                        <div className='pt_tickets'><span className='text14-tickets'>tickets</span></div>
+                        <div className='pt_member-name'><span className='text18-white'>Alexander Shultz</span></div>
+                        <div className='pt_country'><span className='text11-white'>Germany</span></div>
+                        <div className='pt_image-field'><img src='./assets/images/profile_picture.png'/></div>
                     </div>
-                    <div className='pt_header-right-settings-field'><img src='./assets/images/settings.png'></img></div>
                 </div>
-                <div className='pt_homescreen'></div>
+
+                <div className='scrolable-bids-field'>
+                    <div className='pt_statistics-text'><span className='text18-white'>Statistics</span></div>
+                    <div className='full-time-result-field'>
+                        <div className='main-titlle-field'>
+                            <div className='pt_yellow-bet-box'><span className='text11-white'>See bets>></span></div>
+                            <div className='ft_text_position'><span className='text12-grey'>Match Outcome</span></div>
+                            <div className='game-underline'/></div>
+                        <div className='md_bid-box'></div>
+                    </div>
+                    <div className='match-goals-field'>
+                        <div className='main-titlle-field'>
+                            <div className='pt_yellow-bet-box'><span className='text11-white'>See bets>></span></div>
+                            <div className='ft_text_position'><span className='text12-grey'>Match Goals</span></div>
+                            <div className='game-underline'/>
+                        </div>
+                        <div className='md_bid-box'>
+
+                        </div>
+                        <div className='md_bid-box'>
+
+                        </div>
+                    </div>
+                    <div className='both-teams-goals-field'>
+                        <div className='main-titlle-field'>
+                            <div className='pt_yellow-bet-box'><span className='text11-white'>See bets>></span></div>
+                            <div className='ft_text_position'><span className='text12-grey'>Both Team Goals</span>
+                                <div className='game-underline'/>
+                            </div>
+                        </div>
+                        <div className='md_bid-box'>
+                        </div>
+                    </div>
+                    <div className='ht-ft-result-field'>
+                        <div className='main-titlle-field'>
+                            <div className='pt_yellow-bet-box'><span className='text11-white'>See bets>></span></div>
+                            <div className='ft_text_position'><span
+                                className='text12-grey'>Half / Full Time Result</span>
+                                <div className='game-underline'/>
+                            </div>
+                        </div>
+                        <div className='md_bid-box'>
+
+                        </div>
+                        <div className='md_bid-box'>
+
+                        </div>
+                        <div className='md_bid-box'>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         );
     }
