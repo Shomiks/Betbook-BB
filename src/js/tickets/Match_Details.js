@@ -24,31 +24,29 @@ class Match_Details extends React.Component {
         });
     };
 
-    handleBidClick (data,game,tip) {
+    handleBidClick (game,tip,className) {
 
+        console.log(className)
+
+        let data = this.state.realData['ticket'];
         let game_tip = game + '_'+tip+'';
         let game_odd = game + '_odd';
         let id = this.state.realData.ticket['id'];
 
-        this.sharedObj.apiHelper.bids.updateGameBid(id,{
-            "id": ""+id+"",
-            "game4_odd": ""+game_odd+"",
-            "game4_tip": ""+game_tip+""
-        });
-
         data[game + '_tip'] = tip;
         data[''+game_odd+''] = this.state.realData[''+game_tip+''];
+
+        console.log(data)
 
         let updated = this.state.realData;
         updated['ticket'] = data;
         this.setState({realData: updated});
-        console.log(this.state.realData)
+
+        this.sharedObj.apiHelper.bids.updateGameBid(id, {updated});
 
     }
 
-
-    renderGameTip = (label, game, tip, bidfield) => {
-
+    handleState = (game,tip,bidfield) => {
         let className = bidfield;
         if (this.state.realData.result && this.state.realData.result[game + '_' + tip] == 1) {
             className += ' won';
@@ -58,7 +56,7 @@ class Match_Details extends React.Component {
                 className += ' bided';
             }
 
-            if (this.state.realData.ticket[game + '_tip'] == tip && this.state.realData.result != null) {
+            if (this.state.realData.ticket[game + '_tip'] == tip && this.state.realData.result) {
                 if (this.state.realData.result.is_finished == 1) {
                     if (className.includes('won')) {
                         className += ' green'
@@ -66,7 +64,15 @@ class Match_Details extends React.Component {
                 }
             }
         }
-        return <div className={className} onClick = {() => this.handleBidClick(this.state.realData.ticket,game,tip)}>
+        return className;
+    }
+
+
+    renderGameTip = (label, game, tip, bidfield) => {
+
+        let className = this.handleState(game,tip,bidfield);
+
+        return <div className={className} onClick = {this.state.realData.result ? () => this.handleBidClick(game,tip,{className}) : ''}>
             <div className='game-bid-align'>
             <div className='game-text'><span className='text11-grey'>{label}</span></div>
             <div className='bid-text'><span className='text15-white'>{this.state.realData[game + '_' + tip]}</span></div>
@@ -108,7 +114,7 @@ class Match_Details extends React.Component {
                         className='text18-red-field'>* LIVE *</span></span>
                     </div>
                     <div className='time-date-field'><span
-                        className={this.state.realData.result == null ? 'text11-grey' : 'hidden'}>{this.state.realData.dateTime}</span>
+                        className={!this.state.realData.result ? 'text11-grey' : 'hidden'}>{this.state.realData.dateTime}</span>
                     </div>
                 </div>
                 <div className='md_away-team-field'>
