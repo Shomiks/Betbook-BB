@@ -34,7 +34,7 @@ class Match_Details extends React.Component {
             "id": ""+id+"",
             "game4_odd": ""+game_odd+"",
             "game4_tip": ""+game_tip+""
-        })
+        });
 
         data[game + '_tip'] = tip;
         data[''+game_odd+''] = this.state.realData[''+game_tip+''];

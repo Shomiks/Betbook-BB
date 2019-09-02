@@ -147,10 +147,18 @@
       align-items: center;
     }
 
-    .ms_bid-box-white {
+    .ms_bid-box {
       border: 1px solid #47B0E3;
       background-color: #122F3F;
-      visibility: hidden;
+      height: 26px;
+      min-width: 60px;
+      flex: 1 1;
+      margin: 7px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .ms_bid-box-white {
       height: 26px;
       min-width: 60px;
       flex: 1 1;
