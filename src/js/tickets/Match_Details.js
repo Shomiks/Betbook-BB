@@ -24,28 +24,26 @@ class Match_Details extends React.Component {
         });
     };
 
-    handleBidClick (game,tip) {
+    handleBidClick (data,game,tip) {
 
         let game_tip = game + '_'+tip+'';
         let game_odd = game + '_odd';
+        let id = this.state.realData.ticket['id'];
 
-        this.sharedObj.apiHelper.bids.updateGameBid({
-        //     "id": "3",
-        //     "user_id": "3",
-        //     "fixture_id": "123",
-        //     "final_score": "6",
-        //     "game1_odd": "1.5",
-        //     "game2_odd": "1.5",
-        //     "game3_odd": "12",
-        //     "game4_odd": "11.5",
-        //     "game1_tip": "2",
-        //     "game2_tip": "3ft",
-        //     "game3_tip": "notgg",
-        //     "game4_tip": "12",
-        //     "bid_score": 6
+        this.sharedObj.apiHelper.bids.updateGameBid(id,{
+            "id": ""+id+"",
+            "game4_odd": ""+game_odd+"",
+            "game4_tip": ""+game_tip+""
         })
-        console.log(game_tip,game_odd)
-        console.log(this.state.realData[game + '_' + tip])
+
+        data[game + '_tip'] = tip;
+        data[''+game_odd+''] = this.state.realData[''+game_tip+''];
+
+        let updated = this.state.realData;
+        updated['ticket'] = data;
+        this.setState({realData: updated});
+        console.log(this.state.realData)
+
     }
 
 
@@ -61,14 +59,14 @@ class Match_Details extends React.Component {
             }
 
             if (this.state.realData.ticket[game + '_tip'] == tip && this.state.realData.result != null) {
-                if (this.state.realData.result.finished == 1) {
+                if (this.state.realData.result.is_finished == 1) {
                     if (className.includes('won')) {
                         className += ' green'
                     } else className += ' red'
                 }
             }
         }
-        return <div className={className} onClick = {() => this.handleBidClick(game,tip)}>
+        return <div className={className} onClick = {() => this.handleBidClick(this.state.realData.ticket,game,tip)}>
             <div className='game-bid-align'>
             <div className='game-text'><span className='text11-grey'>{label}</span></div>
             <div className='bid-text'><span className='text15-white'>{this.state.realData[game + '_' + tip]}</span></div>
@@ -81,7 +79,7 @@ class Match_Details extends React.Component {
         this.sharedObj.headerInstance.setTitle(this.state.realData.round.name);
         let classState ='betbook_screen';
         if(this.state.realData.result){
-            if(this.state.realData.result.finished == false){
+            if(this.state.realData.result.is_finished == false){
                 classState += ' live'
             }
             else classState += ' finished'
@@ -106,7 +104,7 @@ class Match_Details extends React.Component {
                     </div>
                     <div
                         className={(this.state.realData.upcoming == false) ? 'minuteLive' : 'hidden'}><span
-                        className={(this.state.realData.upcoming == false && this.state.realData.result.finished == false) ? 'text18' : 'hidden'}>'{this.state.realData.result ? this.state.realData.result.current_min : ''}<br/><span
+                        className={(this.state.realData.upcoming == false && this.state.realData.result.is_finished == false) ? 'text18' : 'hidden'}>'{this.state.realData.result ? this.state.realData.result.current_min : ''}<br/><span
                         className='text18-red-field'>* LIVE *</span></span>
                     </div>
                     <div className='time-date-field'><span
@@ -191,7 +189,7 @@ class Match_Details extends React.Component {
 
         console.log(this.state.realData)
 
-        return <div>{this.state.loaded == true ? this.renderStateCompopnent() : <div/>}</div>
+        return <>{this.state.loaded == true ? this.renderStateCompopnent() : <div/>}</>
     }
 }
 

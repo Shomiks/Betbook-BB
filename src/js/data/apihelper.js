@@ -107,8 +107,9 @@ class APIHelper extends React.Component {
     }
 
     bids = {
-        updateGameBid : (data,callBack) => {
-            fetch(`http://localhost/index.php/api/user_fixture_bid/` + data.id, {
+        updateGameBid : (id,data,callBack) => {
+            // console.log(id,data)
+            fetch(`http://localhost/index.php/api/user_fixture_bid/` + id, {
                 method: 'PUT',
                 mode:'cors',
                 body: JSON.stringify(data),
@@ -117,7 +118,7 @@ class APIHelper extends React.Component {
                 }
             })
                 .then(res => res.json())
-                .then(res => console.log(res))
+                // .then(res => console.log(res))
         }
     }
 }

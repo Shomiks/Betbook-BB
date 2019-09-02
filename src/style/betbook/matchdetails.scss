@@ -94,6 +94,12 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
+      .green{
+        background-color:green;
+      }
+      .red{
+        background-color: red;
+      }
 
     }
   }
@@ -106,6 +112,7 @@
     background-color: #212122;
     margin: 5px;
     flex: 1;
+
   }
 
   .bid-field-bigger {
@@ -125,7 +132,10 @@
 
   }
 }
+
 }
+
+
 
 
 
