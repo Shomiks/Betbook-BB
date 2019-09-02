@@ -68,13 +68,68 @@
   }
 
 
-  .pt_homescreen {
-    position: relative;
-    height: 300px;
+  .main-titlle-field {
+    height: 25px;
     width: 100%;
-    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+    position: relative;
+    background-color: #151516;
+
+    .ft_text_position {
+      position: relative;
+      text-align: center;
+    }
+
+    .bided {
+      background-color: #1E8FE1;
+    }
+
+    .game-underline {
+      height: 0.5px;
+      background-color: #FFF;
+      opacity: 0.15;
+      width: 120px;
+      margin: 5px auto;
+      border-radius: 4px;
+    }
   }
 
+  .pt_statistics-text {
+    margin-top: 80px;
+
+    .text18-white {
+      color: #FFF;
+      font-family: "SF Display";
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+
+  .full-time-result-field {
+    height: 114px;
+  }
+
+  .match-goals-field {
+    height: 114px;
+  }
+
+  .both-teams-goals-field {
+    height: 114px;
+  }
+
+  .ht-ft-result-field {
+    height: 114px;
+  }
+
+
+  .pt_yellow-bet-box {
+    height: 26px;
+    width: 25%;
+    position: absolute;
+    right: 0;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background: linear-gradient(180deg, #FFAC3A 0%, #EB670C 100%), #ED8035;
+  }
 }
 
 
