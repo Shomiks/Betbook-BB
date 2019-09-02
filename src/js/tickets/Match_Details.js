@@ -24,6 +24,31 @@ class Match_Details extends React.Component {
         });
     };
 
+    handleBidClick (game,tip) {
+
+        let game_tip = game + '_'+tip+'';
+        let game_odd = game + '_odd';
+
+        this.sharedObj.apiHelper.bids.updateGameBid({
+        //     "id": "3",
+        //     "user_id": "3",
+        //     "fixture_id": "123",
+        //     "final_score": "6",
+        //     "game1_odd": "1.5",
+        //     "game2_odd": "1.5",
+        //     "game3_odd": "12",
+        //     "game4_odd": "11.5",
+        //     "game1_tip": "2",
+        //     "game2_tip": "3ft",
+        //     "game3_tip": "notgg",
+        //     "game4_tip": "12",
+        //     "bid_score": 6
+        })
+        console.log(game_tip,game_odd)
+        console.log(this.state.realData[game + '_' + tip])
+    }
+
+
     renderGameTip = (label, game, tip, bidfield) => {
 
         let className = bidfield;
@@ -43,7 +68,7 @@ class Match_Details extends React.Component {
                 }
             }
         }
-        return <div className={className}>
+        return <div className={className} onClick = {() => this.handleBidClick(game,tip)}>
             <div className='game-bid-align'>
             <div className='game-text'><span className='text11-grey'>{label}</span></div>
             <div className='bid-text'><span className='text15-white'>{this.state.realData[game + '_' + tip]}</span></div>

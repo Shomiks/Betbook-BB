@@ -105,6 +105,21 @@ class APIHelper extends React.Component {
                 callBack(leagues)
             })
     }
+
+    bids = {
+        updateGameBid : (data,callBack) => {
+            fetch(`http://localhost/index.php/api/user_fixture_bid/` + data.id, {
+                method: 'PUT',
+                mode:'cors',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(res => res.json())
+                .then(res => console.log(res))
+        }
+    }
 }
 
 export default APIHelper
