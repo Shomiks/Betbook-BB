@@ -107,18 +107,27 @@ class APIHelper extends React.Component {
     }
 
     bids = {
-        updateGameBid : (id,data,callBack) => {
+        updateFixtureBids : (id,data,callBack) => {
             console.log(data.updated.ticket)
             fetch(`http://192.168.8.113/index.php/api/user_fixture_bid/` + id, {
                 method: 'PUT',
                 body: JSON.stringify(data.updated.ticket),
                 headers: {
                     'Content-Type': 'application/json'
-
                 }
             })
                 .then(res => res.json())
-        }
+        },
+        // createFixtureBids: () => {
+        //     fetch(`http://192.168.8.113/index.php/api/user_fixture_bid/`, {
+        //         method: 'POST',
+        //         body: JSON.stringify(data.updated.ticket),
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         }
+        //     })
+        //         .then(res => res.json())
+        // }
     }
 }
 

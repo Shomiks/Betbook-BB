@@ -13,7 +13,7 @@ class MatchShort extends React.Component {
     handleStateField = (tip) => {
         let game = "game" + tip;
 
-        if(!this.props.match.ticket) return '';
+        if(!this.props.match.ticket[game + '_tip']) return ' unbided';
         else{
             if(this.props.match.result){
                 if(this.props.match.result.is_finished == 0) return ' bided';
