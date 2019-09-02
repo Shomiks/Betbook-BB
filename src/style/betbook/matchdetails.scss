@@ -89,7 +89,6 @@
       }
     }
 
-
     .scrolable-bids-field {
       .md_bid-box {
         position: relative;
@@ -98,6 +97,10 @@
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
+
+        .bided{
+          background-color: #1E8FE1;
+        }
 
         .green {
           background-color: #1A281D;
@@ -108,11 +111,6 @@
           background-color: #31190F;
           border: 1px solid #BA4343;
         }
-        .bided{
-          background-color: #122F3F;
-          border: 1px solid #47B0E3;
-        }
-
       }
     }
 
