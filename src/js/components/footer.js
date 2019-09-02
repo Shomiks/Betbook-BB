@@ -17,7 +17,7 @@ import {Link} from "react-router-dom";
              <Link to={`/home`}> <div className='timeline'/></Link>
              <Link to={`/countries`}><div className='ball'/></Link>
            <div className='star'/>
-           <div className='profile'/>
+             <Link to={`/profile`}><div className='profile'></div></Link>
          </div>
      )
    }

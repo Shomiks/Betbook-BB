@@ -6,33 +6,50 @@
   display: block;
 
   .pt_header-field {
-    height: 260px;
+    height: 150px;
     width: 100%;
     position: relative;
-    background-color: #FFF;
+    background: #7db9e8; /* Old browsers */
+    background: -moz-linear-gradient(top, #7db9e8 0%, #1e5799 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #7db9e8 0%, #1e5799 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #7db9e8 0%, #1e5799 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7db9e8', endColorstr='#1e5799', GradientType=0); /* IE6-9 */
+    margin-top: 60px;
 
-    .pt_header-left-arrow-field {
-      position: absolute;
-      left: 0;
-      margin-left: 5%;
-      top: 0;
-      margin-top: 3%;
-    }
 
     .pt_header-central-field {
       position: relative;
       margin-top: 15px;
 
       .pt_member-name {
-        margin-top: 15px;
+        padding-top: 19px;
+        width: 100%;
+        text-align: center;
+
+        .text18-white {
+          color: #FFF;
+          font-family: "SF Display";
+          font-size: 18px;
+          font-weight: 500;
+        }
       }
 
-      .pt_member-since {
-        margin-top: 7px;
+      .pt_country {
+        margin-top: 12px;
+        margin-bottom: 25px;
+        width: 100%;
 
         .text12 {
           color: #9B9B9B;
         }
+      }
+
+      .pt_image-field {
+        margin: 0 auto;
+        height: 110px;
+        width: 110px;
+        position: relative;
+        z-index: 100;
       }
 
       .pt_tickets {
@@ -48,13 +65,6 @@
       }
     }
 
-    .pt_header-right-settings-field {
-      position: absolute;
-      right: 0;
-      top: 0;
-      margin-right: 5%;
-      margin-top: 3%;
-    }
   }
 
 
@@ -62,7 +72,7 @@
     position: relative;
     height: 300px;
     width: 100%;
-    box-shadow: 0 0 4px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
   }
 
 }
