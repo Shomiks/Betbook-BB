@@ -197,7 +197,10 @@ html, body {
   font-family: "SF Display";
   font-size: 18px;
   font-weight: 500;
-  line-height: 2.5;
+  line-height: 1.5;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   &.result{
     letter-spacing: 10px;

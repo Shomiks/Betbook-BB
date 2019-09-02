@@ -15,6 +15,7 @@ import Register from "./js/user/Register";
 import LoadingScreen from "./js/user/LoadingScreen";
 import AppHome from "./js/user/AppHome";
 import ForgotPassword from "./js/user/ForgotPassword";
+import Profile_Tickets from "./js/tickets/Profile_Tickets";
 
 class App extends React.Component {
 
@@ -73,6 +74,7 @@ class App extends React.Component {
 
                    <Route path="/fixture/:fixtureid" render={(props) => (<Match_Details sharedObj={this.sharedObject} {...props}/>)}/>
                    <Route path="/leaderboards" render={(props) => (<LeaderBoards sharedObj={this.sharedObject} {...props}/>)}/>
+                   <Route path="/profile" render={(props) => (<Profile_Tickets sharedObj={this.sharedObject} {...props}/>)}/>
 
                    {(window.location.hash=='#/login' || window.location.hash=='#/register' || window.location.hash=='#/forgot-password' || window.location.hash=='#/loading' || window.location.hash=='#/welcome')
                        ? <div/> : <Footer />}
