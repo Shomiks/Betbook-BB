@@ -109,12 +109,12 @@ class APIHelper extends React.Component {
     bids = {
         updateGameBid : (id,data,callBack) => {
             console.log(data.updated.ticket)
-            fetch(`http://localhost/index.php/api/user_fixture_bid/` + id, {
+            fetch(`http://192.168.8.113/index.php/api/user_fixture_bid/` + id, {
                 method: 'PUT',
-                mode:'cors',
                 body: JSON.stringify(data.updated.ticket),
                 headers: {
                     'Content-Type': 'application/json'
+
                 }
             })
                 .then(res => res.json())
