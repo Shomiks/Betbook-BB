@@ -4,6 +4,7 @@
   position: relative;
   text-align: center;
   display: block;
+  margin-bottom: 120px;
 
   .pt_header-field {
     height: 150px;
@@ -49,7 +50,7 @@
         height: 110px;
         width: 110px;
         position: relative;
-        z-index: 100;
+        z-index: 0;
       }
 
       .pt_tickets {
@@ -71,6 +72,7 @@
     width: 100%;
     height: 100%;
     overflow: scroll;
+    margin-bottom: 160px;
   }
 
   .main-titlle-field {
@@ -110,19 +112,19 @@
     }
   }
 
-  .full-time-result-field {
+  .full-time-statistics-field {
     height: 114px;
   }
 
-  .match-goals-field {
+  .match-goals-statistics-field {
     height: 114px;
   }
 
-  .both-teams-goals-field {
+  .both-teams-goals-statistics-field {
     height: 114px;
   }
 
-  .ht-ft-result-field {
+  .ht-ft-statistics-field {
     height: 114px;
   }
 
@@ -136,57 +138,59 @@
     border-bottom-left-radius: 20px;
     background: linear-gradient(180deg, #FFAC3A 0%, #EB670C 100%), #ED8035;
   }
-}
 
-.pt_box {
-  position: relative;
-  display: flex;
-  justify-content: space-around;
-  margin-top: 17px;
 
-  .pt_up-text {
+  .pt_box {
     position: relative;
-    display: block;
-  }
+    display: flex;
+    justify-content: space-around;
+    margin-top: 17px;
 
-  pt_down-number {
-    position: relative;
-    display: block;
-  }
+    .pt_up-text {
+      position: relative;
+      display: block;
+    }
 
-  .pt_left-box {
-    position: relative;
-    display: inline-block;
-  }
+    pt_down-number {
+      position: relative;
+      display: block;
+    }
 
-  .pt_central-box {
-    position: relative;
-    display: inline-block;
-  }
+    .pt_left-box {
+      position: relative;
+      display: inline-block;
+    }
 
-  .pt_right-box {
-    position: relative;
-    display: inline-block;
-  }
-}
+    .pt_central-box {
+      position: relative;
+      display: inline-block;
+    }
 
-
-.hidden {
-  display: none;
-}
-
-@media only screen and (max-width: 260px) {
-  #root {
-    .App {
-      .ft_text_position {
-        position: absolute;
-        left: 10px;
-      }
-
-      .pt_yellow-bet-box {
-        width: 40%;
-      }
+    .pt_right-box {
+      position: relative;
+      display: inline-block;
     }
   }
 }
+
+
+  .hidden {
+    display: none;
+  }
+
+  @media only screen and (max-width: 260px) {
+    #root {
+      .App {
+        .ft_text_position {
+          position: absolute;
+          left: 10px;
+        }
+
+        .pt_yellow-bet-box {
+          width: 40%;
+        }
+      }
+    }
+  }
+
 

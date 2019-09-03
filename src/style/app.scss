@@ -224,31 +224,6 @@ html, body {
   font-weight: 500;
 }
 
-@media only screen and (max-width: 950px) {
-  #root {
-    .App {
-      .containerImage {
-        display: none;
-      }
-
-      .containerContent {
-        width: 100%;
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 435px) {
-  .bid-field {
-    height: 36px;
-    width: 70px;
-    border: 1px solid #2A2A2B;
-    border-radius: 20px;
-    display: inline-block;
-    background-color: #212122;
-  }
-}
-
 .hide {
   display: none;
 }
