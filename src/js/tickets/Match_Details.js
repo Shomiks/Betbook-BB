@@ -88,28 +88,25 @@ class Match_Details extends React.Component {
             <div className='md_league_match_fixture'>
                 <div className='md_home-team-field'><img className='logo' src={'./assets/images/Teams/' + this.state.realData.team_home.logo} />
                     <div className='home-text-field'><span className='text18-white'>{this.state.realData.team_home.name}</span>
-
                     </div>
                 </div>
-
                 <div className='md_vs-field'>
                     <div className={this.state.realData.result ? 'result' : 'hidden'}>
-                        <div className='text18-white result'>{this.state.realData.result ? this.state.realData.result.ft_home_goals : "4"} : {this.state.realData.result ? this.state.realData.result.ft_away_goals : "1"}</div>
-                        <div><span className='text12-white ht-result'>{this.state.realData.result ? this.state.realData.result.ht_home_goals : "0"} : {this.state.realData.result ? this.state.realData.result.ht_away_goals : "1"}</span></div>
+                        <div className={this.state.realData.result.is_finished == 0 ? 'text21-yellow result' : 'text18-white result'}>
+                            {this.state.realData.result ? this.state.realData.result.ft_home_goals : "4"} : {this.state.realData.result ? this.state.realData.result.ft_away_goals : "1"}</div>
+                        <div><span className={this.state.realData.result.is_finished == 0 ? 'text16-yellow result' : 'text12-white ht-result'}>
+                            {this.state.realData.result ? this.state.realData.result.ht_home_goals : "0"} : {this.state.realData.result ? this.state.realData.result.ht_away_goals : "1"}</span></div>
                     </div>
-                    <div
-                        className={(this.state.realData.result && this.state.realData.result.is_finished == false) ? 'minuteLive' : 'hidden'}><span
-                        className={(this.state.realData.result && this.state.realData.result.is_finished == false) ? 'text18' : 'hidden'}>'{this.state.realData.result ? this.state.realData.result.elapsed : ''}<br/><span
-                        className='text18-red-field'>* LIVE *</span></span>
+                    <div className={(this.state.realData.result && this.state.realData.result.is_finished == false) ? 'minuteLive' : 'hidden'}>
+                        <div className='live-field'>live</div>
+                        <div className='live-minut-field'><span className={(this.state.realData.result && this.state.realData.result.is_finished == false) ? 'text15-yellow' : 'hidden'}>{this.state.realData.result ? this.state.realData.result.elapsed : ''}'</span></div>
                     </div>
-                    <div className='time-date-field'><span
-                        className={!this.state.realData.result ? 'text11-grey' : 'hidden'}>{this.state.realData.dateTime}</span>
-                    </div>
+                    {/*<div className='time-date-field'><span className={!this.state.realData.result ? 'text11-grey' : 'hidden'}>{this.state.realData.dateTime}</span>*/}
+                    {/*</div>*/}
                 </div>
                 <div className='md_away-team-field'>
                     <img className='logo' src={'./assets/images/Teams/' + this.state.realData.team_away.logo}/>
-                    <div className='home-text-field'><span
-                        className='text18-white'>{this.state.realData.team_away.name}</span></div>
+                    <div className='home-text-field'><span className='text18-white'>{this.state.realData.team_away.name}</span></div>
                 </div>
             </div>
         </div>

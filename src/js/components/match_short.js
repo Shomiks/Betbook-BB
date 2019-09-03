@@ -62,7 +62,7 @@ class MatchShort extends React.Component {
                         <div className='ms_odd-field'><span className='text11-white'>{this.props.match.ticket.game3_odd}</span></div>
                         </div>
                         <div className={'ms_bid-box' + this.handleStateField(4)}>
-                        <div className='ms_game-field'><span className='text11-grey'>{this.props.match.ticket.game4_tip.slice(0,1) + '/' + this.props.match.ticket.game4_tip.slice(1,2)}</span></div>
+                        <div className='ms_game-field'><span className='text11-grey'>{this.props.match.ticket.game4_tip}</span></div>
                         <div className='ms_odd-field'><span className='text11-white'>{this.props.match.ticket.game4_odd}</span></div>
                         </div>
                         </div>)}

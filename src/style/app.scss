@@ -84,6 +84,13 @@ html, body {
   overflow: scroll;
 }
 
+.text6-white {
+  color: #FFF;
+  font-family: "SF Display";
+  font-size: 6px;
+  font-weight: 500;
+}
+
 .text10 {
   color: #0A0A0A;
   font-family: "SF Display";
@@ -119,7 +126,7 @@ html, body {
   font-size: 12px;
   font-weight: 500;
 
-  &.ht-result{
+  &.ht-result {
     font-size: 15px;
     letter-spacing: 10px;
     opacity: 0.6;
@@ -201,11 +208,34 @@ html, body {
   display: inline-block;
   overflow: hidden;
   text-overflow: ellipsis;
-
-  &.result{
+  &.result {
     letter-spacing: 10px;
     line-height: inherit;
-    font-size: 21px;
+     white-space: nowrap;
+  }
+
+}
+
+.text21-yellow {
+  color: #FFAC3A;
+  font-family: "SF Display";
+  font-size: 21px;
+  font-weight: 500;
+  &.result {
+    letter-spacing: 10px;
+    line-height: inherit;
+    white-space: nowrap;
+  }
+}
+
+.text16-yellow {
+  color: #FFAC3A;
+  font-family: "SF Display";
+  font-size: 16px;
+  font-weight: 500;
+  &.result {
+    letter-spacing: 10px;
+    line-height: inherit;
     white-space: nowrap;
   }
 }
@@ -231,3 +261,4 @@ html, body {
 .text14-white {
   color: #FFF;
 }
+
