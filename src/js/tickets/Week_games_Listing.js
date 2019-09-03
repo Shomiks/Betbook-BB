@@ -27,10 +27,10 @@ class Week_games_Listing extends React.Component {
     renderGames = () => {
         this.sharedObj.headerInstance.setTitle(this.state.realData.name);
         if(this.state.realData.matches)
-            return <div>
+            return <>
             <div className='game-week'><span className='text14'>{ this.state.realData.round.name}</span></div>
             {this.state.realData.matches.map((fixture) => <Link to={`/fixture/${fixture.id}`}> <MatchShort  match={fixture}/></Link>)}
-                </div>
+                </>
     }
 
     render() {

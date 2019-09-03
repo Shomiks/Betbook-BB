@@ -10,34 +10,23 @@ class MatchShort extends React.Component {
         }
     }
 
-    handleBidField = () => {
+    handleStateField = (tip) => {
+        let game = "game" + tip;
 
-        let game1 ='';
-        let game2 ='';
-        let game3 ='';
-        let game4 ='';
-
-        if (!this.props.match.ticket){ game1 = '-white'; game2 = '-white'; game3 = '-white'; game4 = '-white'}
+        if(!this.props.match.ticket[game + '_tip']) return ' unbided';
         else{
             if(this.props.match.result){
-                if(this.props.match.result.is_finished == 0){
-                    game1 = this.props.match.ticket.game1_tip !=null ? '' : '-white' ; game2 = this.props.match.ticket.game2_tip !=null ? '' : '-white';
-                    game3 = this.props.match.ticket.game3_tip !=null ? '' : '-white'; game4 = this.props.match.ticket.game4_tip !=null ? '' : '-white'
-                }
+                if(this.props.match.result.is_finished == 0) return ' bided';
                 else{
-                    if(this.props.match.ticket.final_score == this.props.match.ticket.bid_score && this.props.match.ticket.bid_score != 0){
-                        game1 = this.props.match.ticket.game1_tip !=null ? '-green' : '-white'; game2 = this.props.match.ticket.game2_tip !=null ? '-green' : '-white';
-                        game3 = this.props.match.ticket.game3_tip !=null ? '-green' : '-white'; game4 = this.props.match.ticket.game4_tip !=null ? '-green' : '-white';
-                    }
-                    else {
-                        game1 = this.props.match.ticket.game1_tip != null ? (this.props.match.ticket.game1_odd == 0 ? '-red' : '-green') : '-white';
-                        game2 = this.props.match.ticket.game2_tip != null ? (this.props.match.ticket.game2_odd == 0 ? '-red' : '-green') : '-white';
-                        game3 = this.props.match.ticket.game3_tip != null ? (this.props.match.ticket.game3_odd == 0 ? '-red' : '-green') : '-white';
-                        game4 = this.props.match.ticket.game4_tip != null ? (this.props.match.ticket.game4_odd == 0 ? '-red' : '-green') : '-white';
-                    }
+                    if(this.props.match.result[game + '_' + this.props.match.ticket[game + '_tip']] == 1) return ' green';
+                    else return ' red';
                 }
             }
+            else return ' bided';
         }
+    }
+
+    handleBidField = () => {
 
         return <div className='ms-central-field'>
             <div className='ms-teams-field'>
@@ -60,19 +49,19 @@ class MatchShort extends React.Component {
                     {!this.props.match.ticket ? (!this.props.match.result ? <div className='ms_not-bided-yellow'><span className='text11-white'>Make a bet</span></div> : <div/>)
                         : (
                         <div className='ms_bid-field'>
-                        <div className={'ms_bid-box'+game1}>
+                        <div className={'ms_bid-box' + this.handleStateField(1)}>
                         <div className='ms_game-field'><span className='text11-grey'>{this.props.match.ticket.game1_tip}</span></div>
                         <div className='ms_odd-field'><span className='text11-white'>{this.props.match.ticket.game1_odd}</span></div>
                         </div>
-                        <div className={'ms_bid-box'+game2}>
+                        <div className={'ms_bid-box' + this.handleStateField(2)}>
                         <div className='ms_game-field'><span className='text11-grey'>{this.props.match.ticket.game2_tip}</span></div>
                         <div className='ms_odd-field'><span className='text11-white'>{this.props.match.ticket.game2_odd}</span></div>
                         </div>
-                        <div className={'ms_bid-box'+game3}>
+                        <div className={'ms_bid-box' + this.handleStateField(3)}>
                         <div className='ms_game-field'><span className='text11-grey'>{this.props.match.ticket.game3_tip}</span></div>
                         <div className='ms_odd-field'><span className='text11-white'>{this.props.match.ticket.game3_odd}</span></div>
                         </div>
-                        <div className={'ms_bid-box'+game4}>
+                        <div className={'ms_bid-box' + this.handleStateField(4)}>
                         <div className='ms_game-field'><span className='text11-grey'>{this.props.match.ticket.game4_tip.slice(0,1) + '/' + this.props.match.ticket.game4_tip.slice(1,2)}</span></div>
                         <div className='ms_odd-field'><span className='text11-white'>{this.props.match.ticket.game4_odd}</span></div>
                         </div>
@@ -84,7 +73,6 @@ class MatchShort extends React.Component {
 
     render() {
 
-        console.log(this.props.match)
         return <>{this.handleBidField()}</>
           }
 }
