@@ -67,6 +67,11 @@
 
   }
 
+  .scrolable-field {
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+  }
 
   .main-titlle-field {
     height: 25px;
@@ -95,6 +100,7 @@
 
   .pt_statistics-text {
     margin-top: 80px;
+    margin-bottom: 20px;
 
     .text18-white {
       color: #FFF;
@@ -123,7 +129,7 @@
 
   .pt_yellow-bet-box {
     height: 26px;
-    width: 25%;
+    width: 27.5%;
     position: absolute;
     right: 0;
     border-top-left-radius: 20px;
@@ -132,8 +138,55 @@
   }
 }
 
+.pt_box {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 17px;
+
+  .pt_up-text {
+    position: relative;
+    display: block;
+  }
+
+  pt_down-number {
+    position: relative;
+    display: block;
+  }
+
+  .pt_left-box {
+    position: relative;
+    display: inline-block;
+  }
+
+  .pt_central-box {
+    position: relative;
+    display: inline-block;
+  }
+
+  .pt_right-box {
+    position: relative;
+    display: inline-block;
+  }
+}
+
 
 .hidden {
   display: none;
+}
+
+@media only screen and (max-width: 260px) {
+  #root {
+    .App {
+      .ft_text_position {
+        position: absolute;
+        left: 10px;
+      }
+
+      .pt_yellow-bet-box {
+        width: 40%;
+      }
+    }
+  }
 }
 

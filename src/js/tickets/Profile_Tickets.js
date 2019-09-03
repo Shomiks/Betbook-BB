@@ -25,55 +25,97 @@ class Profile_Tickets extends React.Component {
                         <div className='pt_image-field'><img src='./assets/images/profile_picture.png'/></div>
                     </div>
                 </div>
-
                 <div className='scrolable-bids-field'>
-                    <div className='pt_statistics-text'><span className='text18-white'>Statistics</span></div>
+                    <div className='pt_statistics-text'><span className='text18-white'>My statistics</span></div>
                     <div className='full-time-result-field'>
                         <div className='main-titlle-field'>
                             <div className='pt_yellow-bet-box'><span className='text11-white'>See bets>></span></div>
                             <div className='ft_text_position'><span className='text12-grey'>Match Outcome</span></div>
-                            <div className='game-underline'/></div>
-                        <div className='md_bid-box'></div>
+                            <div className='game-underline'/>
+                        </div>
+                        <div className='pt_box'>
+                            <div className='pt_left-box'>
+                                <div className='pt_up-text'><span className='text12-grey'>No. of bets</span></div>
+                                <div className='pt_down-number'><span className='text26-white'>98</span></div>
+                            </div>
+                            <div className='pt_central-box'>
+                                <div className='pt_up-text'><span className='text12-grey'>Avg. odd</span></div>
+                                <div className='pt_down-number'><span className='text26-white'>2.17</span></div>
+                            </div>
+                            <div className='pt_right-box'>
+                                <div className='pt_up-text'><span className='text12-grey'>Success rate</span></div>
+                                <div className='pt_down-number'><span className='text26-white'>64%</span></div>
+                            </div>
+                        </div>
                     </div>
                     <div className='match-goals-field'>
                         <div className='main-titlle-field'>
                             <div className='pt_yellow-bet-box'><span className='text11-white'>See bets>></span></div>
-                            <div className='ft_text_position'><span className='text12-grey'>Match Goals</span></div>
+                            <div className='ft_text_position'><span className='text12-grey'>Over/Under</span></div>
                             <div className='game-underline'/>
                         </div>
-                        <div className='md_bid-box'>
-
-                        </div>
-                        <div className='md_bid-box'>
-
+                        <div className='pt_box'>
+                            <div className='pt_left-box'>
+                                <div className='pt_up-text'><span className='text12-grey'>No. of bets</span></div>
+                                <div className='pt_down-number'><span className='text26-white'>123</span></div>
+                            </div>
+                            <div className='pt_central-box'>
+                                <div className='pt_up-text'><span className='text12-grey'>Avg. odd</span></div>
+                                <div className='pt_down-number'><span className='text26-white'>1.82</span></div>
+                            </div>
+                            <div className='pt_right-box'>
+                                <div className='pt_up-text'><span className='text12-grey'>Success rate</span></div>
+                                <div className='pt_down-number'><span className='text26-white'>73%</span></div>
+                            </div>
                         </div>
                     </div>
                     <div className='both-teams-goals-field'>
                         <div className='main-titlle-field'>
                             <div className='pt_yellow-bet-box'><span className='text11-white'>See bets>></span></div>
-                            <div className='ft_text_position'><span className='text12-grey'>Both Team Goals</span>
+                            <div className='ft_text_position'><span className='text12-grey'>Half Time / Full Time</span>
                                 <div className='game-underline'/>
+                                <div className='pt_box'>
+                                    <div className='pt_left-box'>
+                                        <div className='pt_up-text'><span className='text12-grey'>No. of bets</span>
+                                        </div>
+                                        <div className='pt_down-number'><span className='text26-white'>32</span></div>
+                                    </div>
+                                    <div className='pt_central-box'>
+                                        <div className='pt_up-text'><span className='text12-grey'>Avg. odd</span></div>
+                                        <div className='pt_down-number'><span className='text26-white'>3.14</span></div>
+                                    </div>
+                                    <div className='pt_right-box'>
+                                        <div className='pt_up-text'><span className='text12-grey'>Success rate</span>
+                                        </div>
+                                        <div className='pt_down-number'><span className='text26-white'>32%</span></div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div className='md_bid-box'>
                         </div>
                     </div>
                     <div className='ht-ft-result-field'>
                         <div className='main-titlle-field'>
                             <div className='pt_yellow-bet-box'><span className='text11-white'>See bets>></span></div>
                             <div className='ft_text_position'><span
-                                className='text12-grey'>Half / Full Time Result</span>
+                                className='text12-grey'>Both Team Goals</span>
                                 <div className='game-underline'/>
+                                <div className='pt_box'>
+                                    <div className='pt_left-box'>
+                                        <div className='pt_up-text'><span className='text12-grey'>No. of bets</span>
+                                        </div>
+                                        <div className='pt_down-number'><span className='text26-white'>29</span></div>
+                                    </div>
+                                    <div className='pt_central-box'>
+                                        <div className='pt_up-text'><span className='text12-grey'>Avg. odd</span></div>
+                                        <div className='pt_down-number'><span className='text26-white'>2.45</span></div>
+                                    </div>
+                                    <div className='pt_right-box'>
+                                        <div className='pt_up-text'><span className='text12-grey'>Success rate</span>
+                                        </div>
+                                        <div className='pt_down-number'><span className='text26-white'>18%</span></div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div className='md_bid-box'>
-
-                        </div>
-                        <div className='md_bid-box'>
-
-                        </div>
-                        <div className='md_bid-box'>
-
                         </div>
                     </div>
                 </div>
