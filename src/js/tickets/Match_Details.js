@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../../src/style/betbook/matchdetails.scss';
 import '../../../src/style/app.scss';
+import ticketHelper from "../data/ticketHelper";
 class Match_Details extends React.Component {
 
     constructor(props) {
@@ -16,7 +17,7 @@ class Match_Details extends React.Component {
 
     componentDidMount() {
         this.getFixtureById();
-    }
+    };
 
     getFixtureById(){
         this.sharedObj.apiHelper.fixture.getByID(this.fixtureId,(res) => {
@@ -25,7 +26,6 @@ class Match_Details extends React.Component {
     };
 
     handleBidClick = (game,tip,className) => {
-
         if(this.state.realData.ticket) {
 
             let data = this.state.realData['ticket'];
@@ -44,9 +44,50 @@ class Match_Details extends React.Component {
             this.setState({realData: updated});
             this.sharedObj.apiHelper.bids.updateFixtureBids(id, {updated});
         }
-        else{
-            let data = this.state.realData;
+
+        else {
+            let ticket = this.handleReturnTicket();
+            ticket.fixture_id = this.state.realData.id;
+            ticket.user_id = 7;
+            ticket[game + '_tip'] = tip;
+            ticket[game + '_odd'] = this.state.realData[game + '_' + tip];
+
+            this.handleCreateTicket(ticket);
         }
+    };
+
+    handleReturnTicket = () => {
+        let ticket = {
+            user_id: null,
+            fixture_id: null,
+            game1_tip: null,
+            game1_odd: 0,
+            game2_tip: null,
+            game2_odd: 0,
+            game3_tip: null,
+            game3_odd: 0,
+            game4_tip: null,
+            game4_odd: 0,
+            bid_score: 0,
+            final_score: 0
+        }
+        return ticket;
+    };
+
+    handleCreateTicket = (ticket) => {
+        console.log(ticket)
+
+        this.sharedObj.apiHelper.bids.createFixtureBids({ticket},(id) => {
+            console.log(ticket)
+            ticket['id'] = id;
+
+            this.setState(prevState => ({
+                realData:{
+                    ...prevState.realData,
+                    ticket: ticket,
+                }
+            }));
+        });
     };
 
     handleBidState = (game,tip,bidfield) => {
@@ -93,13 +134,13 @@ class Match_Details extends React.Component {
                 <div className='md_vs-field'>
                     <div className={this.state.realData.result ? 'result' : 'hidden'}>
                         <div className={this.state.realData.result.is_finished == 0 ? 'text21-yellow result' : 'text18-white result'}>
-                            {this.state.realData.result ? this.state.realData.result.ft_home_goals : "4"} : {this.state.realData.result ? this.state.realData.result.ft_away_goals : "1"}</div>
-                        <div><span className={this.state.realData.result.is_finished == 0 ? 'text16-yellow result' : 'text12-white ht-result'}>
-                            {this.state.realData.result ? this.state.realData.result.ht_home_goals : "0"} : {this.state.realData.result ? this.state.realData.result.ht_away_goals : "1"}</span></div>
+                            {this.state.realData.result ? this.state.realData.result.ft_home_goals : "4"} <span className='separator-ft'> : </span> {this.state.realData.result ? this.state.realData.result.ft_away_goals : "1"}</div>
+                        <div className={this.state.realData.result.is_finished == 0 ? 'text16-yellow result' : 'text12-white ht-result'}>
+                            {this.state.realData.result ? this.state.realData.result.ht_home_goals : "0"} <span className='separator-ht'> : </span> {this.state.realData.result ? this.state.realData.result.ht_away_goals : "1"}</div>
                     </div>
                     <div className={(this.state.realData.result && this.state.realData.result.is_finished == false) ? 'minuteLive' : 'hidden'}>
                         <div className='live-field'>live</div>
-                        <div className='live-minut-field'><span className={(this.state.realData.result && this.state.realData.result.is_finished == false) ? 'text15-yellow' : 'hidden'}>{this.state.realData.result ? this.state.realData.result.elapsed : ''}'</span></div>
+                        <div className='live-minut-field'><span className={(this.state.realData.result && this.state.realData.result.is_finished == false) ? 'text16-yellow' : 'hidden'}>{this.state.realData.result ? this.state.realData.result.elapsed : ''}'</span></div>
                     </div>
                     {/*<div className='time-date-field'><span className={!this.state.realData.result ? 'text11-grey' : 'hidden'}>{this.state.realData.dateTime}</span>*/}
                     {/*</div>*/}
@@ -205,7 +246,6 @@ class Match_Details extends React.Component {
     };
 
     render() {
-        console.log(this.state.realData)
         return <>{this.state.loaded == true ? this.renderStateCompopnent() : <div/>}</>
     }
 }

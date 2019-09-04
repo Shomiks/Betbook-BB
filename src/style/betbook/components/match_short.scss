@@ -61,8 +61,16 @@
     }
 
     .ms_resultField {
-      letter-spacing: 15px;
       position: relative;
+
+
+      .text15-white {
+        color: #FFF;
+        font-family: "SF Display";
+        font-size: 15px;
+        font-weight: 500;
+        margin: 15px;
+      }
 
       .ms_date {
         position: relative;
