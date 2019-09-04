@@ -25,20 +25,19 @@ class Home_screen extends React.Component {
     }
 
     handlePreviousMatchWeek(data){
-        if(data.round.order > 0) return  <div className='last-week'>
-            <div>Matchweek {data.round.order}</div>
+        if(1) return  <div className='last-week'>
+            <div>Matchweek 4</div>
             <div>Success Rate xx%</div>
-            <div> <Link to = {`league/${data.league.id}/round/${data.round.order}`}><button>Check the bet</button></Link></div>
+            <div> <Link to = {`league/${data.league.id}/round/4`}><button>Check the bet</button></Link></div>
         </div>;
         else return <div className='last-week'/>
     }
 
     handleCurrentMatchWeek(data){
-        let matchweek = parseInt(data.round.order) + 1;
         return <div className='current-week'>
-            <div>Matchweek {matchweek}</div>
+            <div>Matchweek 4</div>
             <div>Start of the week</div>
-            <div> <Link to = {`league/${data.league.id}/round/${matchweek}`}><button>Create bet</button></Link></div>
+            <div> <Link to = {`league/${data.league.id}/round/4`}><button>Create bet</button></Link></div>
         </div>
     }
 
@@ -57,6 +56,7 @@ class Home_screen extends React.Component {
 
     render() {
 
+        console.log()
         if(this.state.loaded) return (
                 <div className='betbook_screen'>
                     <div className='betbook-logo'/>

@@ -32,9 +32,7 @@ class Competition_Listing extends React.Component {
             <div className='betbook_screen'>
                 <div className='main-content'>
                     <div className='countries-container'>
-                        <div className='favorites-field'>
-                            <div className='favorites-position'><span className='text11-grey'>Favorites</span></div>
-                        </div>
+                        <div className='favourites'><span className='text11-grey'> Favorites </span></div>
                         {this.state.realData.map((data) => <Link to={`country/${data.id}`}>
                             <div key={data.id + '_'} className='country-field'>
                                 <div className='flag-container'><img className='flag' src={'./assets/images/Countries/'+data.flag+''}/></div>
