@@ -33,31 +33,66 @@
 
     }
 
+
     .last-week {
       width: 50%;
       background: linear-gradient(179.51deg, #156993 0.8%, #49B4E7 99.49%);
-      display: block;
     }
 
     .logo {
       position: absolute;
       display: block;
       left: 50%;
-      margin-left: -50px;
+      margin-left: -35px;
 
       .league-logo {
         width: 50px;
       }
     }
-
-    .current-week {
-      width: 50%;
-      display: block;
-      background: linear-gradient(179.51deg, #EC6A0E 0.8%, #FEA938 99.49%);
-
   }
+
+  .hs_left-box {
+    position: relative;
+    padding: 21px 69px 29px 14px;
+
+    .hs_left-middle-text {
+      margin-top: 5px;
+    }
+
+    .hs_left-bottom-text {
+      margin-top: 12px;
+
+      .text11-white {
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .hs_right-box {
+    position: relative;
+    padding: 21px 30px 18px 57px;
+
+    .hs_left-middle-text {
+      margin-top: 5px;
+    }
+
+    .hs_left-bottom-text {
+      margin-top: 12px;
+
+      .text11-white {
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .current-week {
+    width: 50%;
+    display: block;
+    background: linear-gradient(179.51deg, #EC6A0E 0.8%, #FEA938 99.49%);
+
   }
 }
+
 
 .hs_select-box {
   height: 120px;
