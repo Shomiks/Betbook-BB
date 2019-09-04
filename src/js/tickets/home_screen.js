@@ -68,7 +68,7 @@ class Home_screen extends React.Component {
         if(this.state.loaded) return (
                 <div className='betbook_screen'>
                     <div className='betbook-logo'/>
-                    {!this.state.realData.user_favourite_leagues ? <div className='main-content'>
+                    {this.state.realData.user_favourite_leagues ? <div className='main-content'>
                         <div className='welcome-text'> My Leagues</div>
                         {this.handleFavouriteLeagues()}
                     </div> : <div className='main-content'>

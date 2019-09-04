@@ -16,6 +16,8 @@ import LoadingScreen from "./js/user/LoadingScreen";
 import AppHome from "./js/user/AppHome";
 import ForgotPassword from "./js/user/ForgotPassword";
 import Profile_Tickets from "./js/tickets/Profile_Tickets";
+import Search from "./js/user/Search";
+import Settings from "./js/user/Settings";
 
 class App extends React.Component {
 
@@ -53,7 +55,7 @@ class App extends React.Component {
                <HashRouter>
 
                    {(window.location.hash=='#/login' || window.location.hash=='#/register' || window.location.hash=='#/forgot-password' || window.location.hash=='#/loading'
-                       || window.location.hash=='#/welcome' || window.location.hash=='#/home')
+                       || window.location.hash=='#/welcome' || window.location.hash=='#/home' || window.location.hash=='#/profile')
                        ? <div/> : <Header ref={(instance) => {
                            this.sharedObject.headerInstance = instance}}  />}
 
@@ -76,6 +78,8 @@ class App extends React.Component {
                    <Route path="/fixture/:fixtureid" render={(props) => (<Match_Details sharedObj={this.sharedObject} {...props}/>)}/>
                    <Route path="/leaderboards" render={(props) => (<LeaderBoards sharedObj={this.sharedObject} {...props}/>)}/>
                    <Route path="/profile" render={(props) => (<Profile_Tickets sharedObj={this.sharedObject} {...props}/>)}/>
+                   <Route path="/settings" render={(props) => (<Settings sharedObj={this.sharedObject} {...props}/>)}/>
+                   <Route path="/search" render={(props) => (<Search sharedObj={this.sharedObject} {...props}/>)}/>
 
                    {(window.location.hash=='#/login' || window.location.hash=='#/register' || window.location.hash=='#/forgot-password' || window.location.hash=='#/loading' || window.location.hash=='#/welcome')
                        ? <div/> : <Footer />}
