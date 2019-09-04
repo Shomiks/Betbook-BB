@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../../src/style/betbook/matchdetails.scss';
 import '../../../src/style/app.scss';
+import ticketHelper from "../data/ticketHelper";
 class Match_Details extends React.Component {
 
     constructor(props) {
@@ -16,7 +17,7 @@ class Match_Details extends React.Component {
 
     componentDidMount() {
         this.getFixtureById();
-    }
+    };
 
     getFixtureById(){
         this.sharedObj.apiHelper.fixture.getByID(this.fixtureId,(res) => {
@@ -25,7 +26,6 @@ class Match_Details extends React.Component {
     };
 
     handleBidClick = (game,tip,className) => {
-
         if(this.state.realData.ticket) {
 
             let data = this.state.realData['ticket'];
@@ -44,9 +44,50 @@ class Match_Details extends React.Component {
             this.setState({realData: updated});
             this.sharedObj.apiHelper.bids.updateFixtureBids(id, {updated});
         }
-        else{
-            let data = this.state.realData;
+
+        else {
+            let ticket = this.handleReturnTicket();
+            ticket.fixture_id = this.state.realData.id;
+            ticket.user_id = 7;
+            ticket[game + '_tip'] = tip;
+            ticket[game + '_odd'] = this.state.realData[game + '_' + tip];
+
+            this.handleCreateTicket(ticket);
         }
+    };
+
+    handleReturnTicket = () => {
+        let ticket = {
+            user_id: null,
+            fixture_id: null,
+            game1_tip: null,
+            game1_odd: 0,
+            game2_tip: null,
+            game2_odd: 0,
+            game3_tip: null,
+            game3_odd: 0,
+            game4_tip: null,
+            game4_odd: 0,
+            bid_score: 0,
+            final_score: 0
+        }
+        return ticket;
+    };
+
+    handleCreateTicket = (ticket) => {
+        console.log(ticket)
+
+        this.sharedObj.apiHelper.bids.createFixtureBids({ticket},(id) => {
+            console.log(ticket)
+            ticket['id'] = id;
+
+            this.setState(prevState => ({
+                realData:{
+                    ...prevState.realData,
+                    ticket: ticket,
+                }
+            }));
+        });
     };
 
     handleBidState = (game,tip,bidfield) => {
@@ -208,7 +249,6 @@ class Match_Details extends React.Component {
     };
 
     render() {
-        console.log(this.state.realData)
         return <>{this.state.loaded == true ? this.renderStateCompopnent() : <div/>}</>
     }
 }

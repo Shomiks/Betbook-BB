@@ -1,6 +1,6 @@
 import React from 'react'
 
-const timeoutInterval = 0;
+const timeoutInterval = 5000;
 
 class APIHelper extends React.Component {
     constructor(props) {
@@ -8,12 +8,16 @@ class APIHelper extends React.Component {
     }
 
     login = (username, password, callBack) => {
+        fetch(`http://192.168.8.113/index.php/api/user/?username=` + username)
+            .then(res => res.json())
+            .then(res => callBack(res))
         setTimeout(() => {
-            callBack({success: true});
-        }, timeoutInterval);
+        },timeoutInterval)
     }
 
     register = (username, password, email, callBack) => {
+        fetch(`http://192.168.8.113/index.php/api/`)
+            .then(res => res.json())
         setTimeout(() => {
             callBack({success: true});
         }, timeoutInterval);
@@ -107,8 +111,7 @@ class APIHelper extends React.Component {
     }
 
     bids = {
-        updateFixtureBids : (id,data,callBack) => {
-            console.log(data.updated.ticket)
+        updateFixtureBids : (id,data) => {
             fetch(`http://192.168.8.113/index.php/api/user_fixture_bid/` + id, {
                 method: 'PUT',
                 body: JSON.stringify(data.updated.ticket),
@@ -118,16 +121,17 @@ class APIHelper extends React.Component {
             })
                 .then(res => res.json())
         },
-        // createFixtureBids: () => {
-        //     fetch(`http://192.168.8.113/index.php/api/user_fixture_bid/`, {
-        //         method: 'POST',
-        //         body: JSON.stringify(data.updated.ticket),
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         }
-        //     })
-        //         .then(res => res.json())
-        // }
+        createFixtureBids: (data,callBack) => {
+            fetch(`http://192.168.8.113/index.php/api/user_fixture_bid/`, {
+                method: 'POST',
+                body: JSON.stringify(data.ticket),
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+                .then(res => res.json())
+                .then(res => callBack(res))
+        }
     }
 }
 

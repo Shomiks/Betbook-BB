@@ -1,3 +1,16 @@
+.betbook-logo{
+  background-image: url("assets/images/betbook-logo.PNG");
+  background-size: cover;
+  height:100px;
+}
+
+.welcome-text{
+  height: 30px;
+  font-size: 20px;
+  color:#FFFFFF;
+  margin: 15px 0;
+  font-family: 'SF Display';
+}
 
   .main-content {
     position: relative;
@@ -5,7 +18,6 @@
     overflow: scroll;
     margin-bottom: 4px;
     padding-bottom: 50px;
-    margin-top: 50px;
 
     .favourite-league {
       width:100%;

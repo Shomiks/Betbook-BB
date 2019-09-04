@@ -15,7 +15,6 @@ class Home_screen extends React.Component {
     }
 
     componentDidMount() {
-        this.sharedObj.headerInstance.setTitle('My Leagues');
         this.getUserFavorites();
     }
 
@@ -43,21 +42,27 @@ class Home_screen extends React.Component {
         </div>
     }
 
+    handleFavouriteLeagues(){
+        return  <>{this.state.realData.map(data => {
+                if(!data.round) data.round=null;
+                return <div className='favourite-league' key={data.id + '_'}>
+                    <div className='favourite-league-container'>
+                        {this.handlePreviousMatchWeek(data)}
+                        <div className='logo'><img className='league-logo' src ={'./assets/images/Logos/'+ data.league.logo}/><br/><span>{data.league.name}</span></div>
+                        {this.handleCurrentMatchWeek(data)}
+                    </div>
+                </div>
+            })}</>
+    }
+
     render() {
 
         if(this.state.loaded) return (
                 <div className='betbook_screen'>
+                    <div className='betbook-logo'/>
+                    <div className='welcome-text'> {this.state.realData.user_favourite_leagues ? 'My Leagues' : 'Welcome Alexander!'}</div>
                     <div className='main-content'>
-                        {this.state.realData.map(data => {
-                            if(!data.round) data.round=null;
-                            return <div className='favourite-league' key={data.id + '_'}>
-                                <div className='favourite-league-container'>
-                                    {this.handlePreviousMatchWeek(data)}
-                                <div className='logo'><img className='league-logo' src ={'./assets/images/Logos/'+ data.league.logo}/><br/><span>{data.league.name}</span></div>
-                                    {this.handleCurrentMatchWeek(data)}
-                            </div>
-                            </div>
-                        })}
+                        {this.handleFavouriteLeagues()}
                     </div>
                 </div>
             );

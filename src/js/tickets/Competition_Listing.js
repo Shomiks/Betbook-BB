@@ -18,11 +18,12 @@ class Competition_Listing extends React.Component {
 
     componentDidMount() {
         this.getAllCountries();
-        this.sharedObj.headerInstance.setTitle('Leagues');
+
     }
 
     getAllCountries() {
         this.sharedObj.apiHelper.countries.getAll((res) => this.setState({realData: res, loaded: true}));
+        this.sharedObj.headerInstance.setTitle('Leagues');
     }
 
     render() {

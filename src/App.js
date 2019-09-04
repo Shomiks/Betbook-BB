@@ -52,7 +52,8 @@ class App extends React.Component {
 
                <HashRouter>
 
-                   {(window.location.hash=='#/login' || window.location.hash=='#/register' || window.location.hash=='#/forgot-password' || window.location.hash=='#/loading' || window.location.hash=='#/welcome')
+                   {(window.location.hash=='#/login' || window.location.hash=='#/register' || window.location.hash=='#/forgot-password' || window.location.hash=='#/loading'
+                       || window.location.hash=='#/welcome' || window.location.hash=='#/home')
                        ? <div/> : <Header ref={(instance) => {
                            this.sharedObject.headerInstance = instance}}  />}
 
