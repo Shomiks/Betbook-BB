@@ -16,11 +16,14 @@ class Detailed_Competition_Listing extends React.Component {
 
     componentDidMount() {
             this.getAllLeagues();
-            this.sharedObj.headerInstance.setTitle('England');
     }
 
     getAllLeagues(){
-        this.sharedObj.apiHelper.leagues.getAll(this.countryId,(res) => this.setState({realData:res,loaded:true}));
+        this.sharedObj.apiHelper.leagues.getAll(this.countryId,(res) => {
+            this.setState({realData: res, loaded: true});
+            this.sharedObj.headerInstance.setTitle('England');
+            this.sharedObj.footerInstance.setActive('star');
+        });
     }
 
     render() {

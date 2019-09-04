@@ -6,45 +6,40 @@ import {Link} from "react-router-dom";
    constructor(props) {
      super(props);
      this.state = {
-         timeline: false,
-         ball: false,
-         star: false,
-         profile: false
+         currentState: false,
+         currentActive: null
      };
-     this.sharedObj = props.sharedObj;
+       this.sharedObj = props.sharedObj;
    }
 
-     toggleClass(timeline) {
-         const currentState = this.state.active;
-         this.setState({ timeline: !currentState });
-     };
+     setActive = (active) => {
+         this.setState({currentActive:active})
+     }
 
-   onClickAddActive = (className) => {
-       return className + ' active'
-   }
+     render() {
 
-   render() {
-
-
-     return (
+  return (
 
          <div className='rectangle_footer'>
-             <div className='ft_home-field'>
-                 <Link to={`/home`}> <div className={this.state.active ? 'timeline active' : 'timeline'} onClick={() => this.toggleClass('timeline')}><span>{this.state.timeline ? 'Home' : ''}</span></div></Link>
+             <div className={this.state.currentActive == 'timeline' ? 'ft_home-field active' : 'ft_home-field'}>
+                 <Link to={`/home`}> <div className='timeline'>
+                     <span>{this.state.currentActive == 'timeline' ? 'Home' : ''}</span></div></Link>
              </div>
-             <div className='ft_countries-field'><Link to={`/countries`}><div className='ball'/></Link>
+             <div className={this.state.currentActive == 'ball' ? 'ft_countries-field active' : 'ft_countries-field'}>
+                 <Link to={`/countries`}> <div className='ball'>
+                     <span>{this.state.currentActive == 'ball' ? 'Sport' : ''}</span></div></Link>
              </div>
-             <div className='ft_star-field'><div className='star'/>
+             <div className={this.state.currentActive == 'star' ? 'ft_star-field active' : 'ft_star-field'}>
+                 <Link to={`/country/246`}> <div className='star'>
+                     <span>{this.state.currentActive == 'star' ? 'Favorites' : ''}</span></div></Link>
              </div>
-             <div className='ft_profile-field'><Link to={`/profile`}><div className='profile'/><span className='text10-white'>Profile</span></Link>
+             <div className={this.state.currentActive == 'profile' ? 'ft_profile-field active' : 'ft_profile-field'}>
+                 <Link to={`/profile`}> <div className='profile'>
+                     <span>{this.state.currentActive == 'profile' ? 'Profile' : ''}</span></div></Link>
              </div>
          </div>
      )
    }
  }
-
-Footer.defaultProps = {
-  title: 'Meni',
-};
 
 export default Footer;

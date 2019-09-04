@@ -27,7 +27,7 @@ class Login extends React.Component {
     render() {///12/35
 
         if(this.state.validName && this.state.validPassword){
-            return <Redirect to='/countries'/>
+            return <Redirect to='/home'/>
         }
 
         return (<div className='betbook-screen-login'>

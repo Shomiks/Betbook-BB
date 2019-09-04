@@ -36,7 +36,8 @@ class App extends React.Component {
   componentDidMount() {
       this.sharedObject = {
           apiHelper: new APIHelper(),
-          headerInstance: null
+          headerInstance: null,
+          footerInstance: null
       };
       this.setState({ loaded: true})
   }
@@ -66,14 +67,11 @@ class App extends React.Component {
                    <Route path="/welcome" render={(props) => (<AppHome sharedObj={this.sharedObject} {...props}/>)} />
                    <Route path="/home" render={(props) => (<Home_screen sharedObj={this.sharedObject} {...props}/>)}/>
 
-
                    <Route path="/countries" render={(props) => (<Competition_Listing key={'competition_current'}{...props} sharedObj={this.sharedObject} />)}/>
                    <Route path="/country/:countryid" render={(props) => (<Detailed_Competition_Listing key={'competition_current'} sharedObj={this.sharedObject} {...props}/>)}/>
 
-
                    <Route path="/league/:leagueid" render={(props) => (<Week_games_Listing sharedObj={this.sharedObject} {...props}/>)}/>
                    <Route path="/round/:roundid" render={(props) => (<Week_games_Listing sharedObj={this.sharedObject} {...props}/>)}/>
-
 
                    <Route path="/fixture/:fixtureid" render={(props) => (<Match_Details sharedObj={this.sharedObject} {...props}/>)}/>
                    <Route path="/leaderboards" render={(props) => (<LeaderBoards sharedObj={this.sharedObject} {...props}/>)}/>
@@ -82,10 +80,9 @@ class App extends React.Component {
                    <Route path="/search" render={(props) => (<Search sharedObj={this.sharedObject} {...props}/>)}/>
 
                    {(window.location.hash=='#/login' || window.location.hash=='#/register' || window.location.hash=='#/forgot-password' || window.location.hash=='#/loading' || window.location.hash=='#/welcome')
-                       ? <div/> : <Footer />}
-
+                       ? <div/> : <Footer ref={(instance) => {
+                           this.sharedObject.footerInstance = instance}}/>}
                </HashRouter>
-
              </div>
 
          );
@@ -93,7 +90,6 @@ class App extends React.Component {
          return(<div>Loading....</div>);
        }
        }
-
 }
 
 export default App;

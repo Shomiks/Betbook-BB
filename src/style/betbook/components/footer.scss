@@ -55,11 +55,6 @@
   .ft_profile-field {
     position: relative;
     width: 25%;
-    height: 80px;
-    background: linear-gradient(180deg, #FFAB39 0%, rgba(255, 255, 255, 0) 100%), #E86107;
-    box-shadow: 0px 0px 20px #000000;
-    border-top-left-radius: 10px;
-
 
     .profile {
       background-image: url("../assets/images/profile_dark.PNG");
@@ -68,6 +63,13 @@
       width: 39px;
       margin: 0 auto;
     }
+  }
+
+  .active{
+    height: 80px;
+    background: linear-gradient(180deg, #FFAB39 0%, rgba(255, 255, 255, 0) 100%), #E86107;
+    box-shadow: 0 0 20px #000000;
+    border-top-left-radius: 10px;
   }
 
 }

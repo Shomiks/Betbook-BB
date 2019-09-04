@@ -26,7 +26,6 @@ class Match_Details extends React.Component {
     };
 
     handleBidClick = (game,tip,className) => {
-        console.log('click')
         if(this.state.realData.ticket) {
 
             let data = this.state.realData['ticket'];

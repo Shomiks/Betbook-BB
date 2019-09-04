@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../../src/style/betbook/profile-tickets.scss';
-import '../../../src/style/app.scss';
 import {Link} from "react-router-dom";
 
 
@@ -10,12 +9,19 @@ class Profile_Tickets extends React.Component {
         super(props);
 
         this.state = {}
+        this.sharedObj = props.sharedObj
+    }
+
+    componentDidMount() {
+        setTimeout(() => {
+            this.sharedObj.footerInstance.setActive('profile');
+        },10 );
     }
 
     render() {
+
         return (
-            <div className='.betbook-context'>
-                <div className='betbook_screen'>
+            <div className='betbook_context'>
                     <div className='pt_header-field'>
                         <div className='pt_header-central-field'>
                             <Link to={`/settings`}><div className='options'/></Link>
@@ -125,7 +131,6 @@ class Profile_Tickets extends React.Component {
                         </div>
                     </div>
                 </div>
-            </div>
         );
     }
 }
