@@ -1,7 +1,5 @@
 import React from 'react';
 import '../../../src/style/betbook/competitionlisting.scss';
-
-
 import Footer from '../components/footer';
 import {Link} from "react-router-dom";
 
@@ -18,12 +16,11 @@ class Competition_Listing extends React.Component {
 
     componentDidMount() {
         this.getAllCountries();
-
     }
 
     getAllCountries() {
         this.sharedObj.apiHelper.countries.getAll((res) => this.setState({realData: res, loaded: true}));
-        this.sharedObj.headerInstance.setTitle('Leagues');
+        // this.sharedObj.headerInstance.setTitle('Leagues');
     }
 
     render() {
