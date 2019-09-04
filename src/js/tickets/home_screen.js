@@ -28,7 +28,7 @@ class Home_screen extends React.Component {
         if(1) return  <div className='last-week'>
             <div><span className='text11-white'>Matchweek 3</span></div>
             <div><span className='text11-white'>Success Rate xx%</span></div>
-            <div> <Link to = {`league/${data.league.id}/round/4`}><button><span className='text11-white'>Check the bet</span></button></Link></div>
+            <div> <Link to = {`league/${data.league.id}/round/4`}><div><span className='text11-white'>Check the bet</span></div></Link></div>
         </div>;
         else return <div className='last-week'/>
     }
