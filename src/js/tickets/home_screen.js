@@ -26,18 +26,18 @@ class Home_screen extends React.Component {
 
     handlePreviousMatchWeek(data){
         if(1) return  <div className='last-week'>
-            <div>Matchweek 4</div>
-            <div>Success Rate xx%</div>
-            <div> <Link to = {`league/${data.league.id}/round/4`}><button>Check the bet</button></Link></div>
+            <div><span className='text11-white'>Matchweek 3</span></div>
+            <div><span className='text11-white'>Success Rate xx%</span></div>
+            <div> <Link to = {`league/${data.league.id}/round/4`}><button><span className='text11-white'>Check the bet</span></button></Link></div>
         </div>;
         else return <div className='last-week'/>
     }
 
     handleCurrentMatchWeek(data){
         return <div className='current-week'>
-            <div>Matchweek 4</div>
-            <div>Start of the week</div>
-            <div> <Link to = {`league/${data.league.id}/round/4`}><button>Create bet</button></Link></div>
+            <div><span className='text11-white'>Matchweek 4</span></div>
+            <div><span className='text11-white'>Start of the week</span></div>
+            <div> <Link to = {`league/${data.league.id}/round/4`}><button><span className='text11-white'>Create bet</span></button></Link></div>
         </div>
     }
 
@@ -54,17 +54,25 @@ class Home_screen extends React.Component {
             })}</>
     }
 
+    handleFirstTimeLogin(){
+        return <><div><div className='hs_select-box'><span className='text26-white'>Select your favourite leagues and start your journey</span></div></div></>
+    }
+
     render() {
 
-        console.log()
+        console.log(this.state.realData)
         if(this.state.loaded) return (
                 <div className='betbook_screen'>
                     <div className='betbook-logo'/>
-                    <div className='welcome-text'> {this.state.realData.user_favourite_leagues ? 'My Leagues' : 'Welcome Alexander!'}</div>
-                    <div className='main-content'>
+                    {!this.state.realData.user_favourite_leagues ? <div className='main-content'>
+                        <div className='welcome-text'> My Leagues</div>
                         {this.handleFavouriteLeagues()}
-                    </div>
+                    </div> : <div className='main-content'>
+                        <div className='text17-white'>Welcome Alexander!</div>
+                        {this.handleFirstTimeLogin()}
+                    </div>}
                 </div>
+
             );
         else return <div>Loading...</div>
         }

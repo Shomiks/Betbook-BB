@@ -1,48 +1,70 @@
-.betbook-logo{
+.betbook-logo {
   background-image: url("assets/images/betbook-logo.PNG");
-  background-size: cover;
-  height:100px;
+  background-repeat: no-repeat;
+  height: 60px;
+  position: relative;
+  display: block;
+  left: 50%;
+  margin-left: -90px;
+  margin-top: 50px;
 }
 
-.welcome-text{
+.welcome-text {
   height: 30px;
   font-size: 20px;
-  color:#FFFFFF;
-  margin: 15px 0;
+  color: #FFFFFF;
+  margin: 25px 0;
   font-family: 'SF Display';
 }
 
-  .main-content {
-    position: relative;
-    padding-top: 50px;
-    overflow: scroll;
-    margin-bottom: 4px;
-    padding-bottom: 50px;
+.main-content {
+  position: relative;
+  overflow: scroll;
+  margin-bottom: 4px;
+  padding-bottom: 50px;
 
-    .favourite-league {
-      width:100%;
+  .favourite-league {
+    width: 100%;
+
+
+    .favourite-league-container {
+      display: flex;
       height: 120px;
 
-      .favourite-league-container{
-        display:flex;
+    }
 
-      }
-      .last-week{
-        width:33%;
+    .last-week {
+      width: 50%;
+      background: linear-gradient(179.51deg, #156993 0.8%, #49B4E7 99.49%);
+      display: block;
+    }
 
-        display:block;
-      }
+    .logo {
+      position: absolute;
+      display: block;
+      left: 50%;
+      margin-left: -50px;
 
-      .logo {
-        width:33%;
-        .league-logo {
-          width: 50px;
-        }
-      }
-      .current-week{
-        width:33%;
-        display:block;
+      .league-logo {
+        width: 50px;
       }
     }
-  }
 
+    .current-week {
+      width: 50%;
+      display: block;
+      background: linear-gradient(179.51deg, #EC6A0E 0.8%, #FEA938 99.49%);
+
+  }
+  }
+}
+
+.hs_select-box {
+  height: 120px;
+  width: 250px;
+  position: fixed;
+  left: 50%;
+  margin-left: -125px;
+  top: 50%;
+  margin-top: -60px;
+}
