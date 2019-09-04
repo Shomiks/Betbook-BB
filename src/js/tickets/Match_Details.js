@@ -26,6 +26,7 @@ class Match_Details extends React.Component {
     };
 
     handleBidClick = (game,tip,className) => {
+        console.log('click')
         if(this.state.realData.ticket) {
 
             let data = this.state.realData['ticket'];
@@ -115,12 +116,30 @@ class Match_Details extends React.Component {
 
         let className = this.handleBidState(game,tip,bidfield);
 
-        return <div className={className} onClick = {this.state.realData.result ? () => this.handleBidClick(game,tip,className) : () =>{}}>
+        return <div className={className} onClick = {!this.state.realData.result ? () => this.handleBidClick(game,tip,className) : () =>{}}>
             <div className='game-bid-align'>
             <div className='game-text'><span className='text11-grey'>{label}</span></div>
             <div className='bid-text'><span className='text15-white'>{this.state.realData[game + '_' + tip]}</span></div>
             </div>
         </div>
+    };
+
+    renderLive = () => {
+        return  <div className='minuteLive'>
+                    <div className='live-field'>live</div>
+                    <div className='live-minut-field'><span className='text16-yellow'>{this.state.realData.result.elapsed}'</span></div>
+            </div>
+    };
+
+    renderResult = () => {
+        return <> <div className='result'>
+            <div className={this.state.realData.result.is_finished == 0 ? 'text21-yellow result' : 'text18-white result'}>
+                {this.state.realData.result.ft_home_goals} <span className='separator-ft'> : </span> {this.state.realData.result.ft_away_goals}</div>
+            <div className={this.state.realData.result.is_finished == 0 ? 'text16-yellow result' : 'text12-white ht-result'}>
+                {this.state.realData.result.ht_home_goals} <span className='separator-ht'> : </span> {this.state.realData.result.ht_away_goals}</div>
+        </div>
+            {this.state.realData.result.is_finished == 0 ? this.renderLive() : null}
+            </>
     };
 
     renderMatchDetails = () => {
@@ -132,18 +151,7 @@ class Match_Details extends React.Component {
                     </div>
                 </div>
                 <div className='md_vs-field'>
-                    <div className={this.state.realData.result ? 'result' : 'hidden'}>
-                        <div className={this.state.realData.result.is_finished == 0 ? 'text21-yellow result' : 'text18-white result'}>
-                            {this.state.realData.result ? this.state.realData.result.ft_home_goals : "4"} <span className='separator-ft'> : </span> {this.state.realData.result ? this.state.realData.result.ft_away_goals : "1"}</div>
-                        <div className={this.state.realData.result.is_finished == 0 ? 'text16-yellow result' : 'text12-white ht-result'}>
-                            {this.state.realData.result ? this.state.realData.result.ht_home_goals : "0"} <span className='separator-ht'> : </span> {this.state.realData.result ? this.state.realData.result.ht_away_goals : "1"}</div>
-                    </div>
-                    <div className={(this.state.realData.result && this.state.realData.result.is_finished == false) ? 'minuteLive' : 'hidden'}>
-                        <div className='live-field'>live</div>
-                        <div className='live-minut-field'><span className={(this.state.realData.result && this.state.realData.result.is_finished == false) ? 'text16-yellow' : 'hidden'}>{this.state.realData.result ? this.state.realData.result.elapsed : ''}'</span></div>
-                    </div>
-                    {/*<div className='time-date-field'><span className={!this.state.realData.result ? 'text11-grey' : 'hidden'}>{this.state.realData.dateTime}</span>*/}
-                    {/*</div>*/}
+                    {this.state.realData.result ? this.renderResult() : null}
                 </div>
                 <div className='md_away-team-field'>
                     <img className='logo' src={'./assets/images/Teams/' + this.state.realData.team_away.logo}/>
@@ -246,6 +254,8 @@ class Match_Details extends React.Component {
     };
 
     render() {
+
+        console.log(this.state.realData)
         return <>{this.state.loaded == true ? this.renderStateCompopnent() : <div/>}</>
     }
 }
