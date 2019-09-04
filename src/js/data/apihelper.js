@@ -112,6 +112,7 @@ class APIHelper extends React.Component {
 
     bids = {
         updateFixtureBids : (id,data) => {
+            console.log(JSON.stringify(data.updated.ticket));
             fetch(`http://192.168.8.113/index.php/api/user_fixture_bid/` + id, {
                 method: 'PUT',
                 body: JSON.stringify(data.updated.ticket),
@@ -122,6 +123,7 @@ class APIHelper extends React.Component {
                 .then(res => res.json())
         },
         createFixtureBids: (data,callBack) => {
+            console.log(JSON.stringify(data.ticket));
             fetch(`http://192.168.8.113/index.php/api/user_fixture_bid/`, {
                 method: 'POST',
                 body: JSON.stringify(data.ticket),

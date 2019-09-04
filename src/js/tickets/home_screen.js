@@ -30,7 +30,7 @@ class Home_screen extends React.Component {
             <div>Success Rate xx%</div>
             <div> <Link to = {`league/${data.league.id}/round/${data.round.order}`}><button>Check the bet</button></Link></div>
         </div>;
-        return <div className='last-week'/>
+        else return <div className='last-week'/>
     }
 
     handleCurrentMatchWeek(data){
