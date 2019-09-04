@@ -138,7 +138,6 @@
         .bid-field {
           height: 36px;
           width: 105px;
-          border: 1px solid #2A2A2B;
           border-radius: 20px;
           background-color: #212122;
           margin: 5px;
@@ -172,6 +171,9 @@
   }
 }
 
+.won{
+  border: 1px solid #43BA58;
+}
 
 .hidden {
   display: none;
