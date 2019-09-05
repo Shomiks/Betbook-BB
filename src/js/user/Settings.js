@@ -6,6 +6,11 @@ class Settings extends React.Component {
         super(props);
 
         this.state = {}
+        this.sharedObj = props.sharedObj
+    }
+
+    componentDidMount() {
+        this.sharedObj.headerInstance.setTitle('Settings')
     }
 
     render() {///11/35

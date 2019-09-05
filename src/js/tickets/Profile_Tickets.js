@@ -25,9 +25,9 @@ class Profile_Tickets extends React.Component {
                     <div className='pt_header-field'>
                         <div className='pt_header-central-field'>
                             <div className='first-row'>
-                            <Link to={`/settings`}><img src='./assets/images/search1' className='settings'/></Link>
+                            <Link to={`/settings`}><img src='./assets/images/settings.png' className='settings'/></Link>
                             <div className='pt_member-name'><span className='text18-white'>Alexander Shultz</span></div>
-                            <Link to={`/search`}><img src='./assets/images/search1' className='search'/></Link>
+                            <Link to={`/search`}><img src='./assets/images/search.png' className='search'/></Link>
 
                             </div>
                             <div className='pt_country'><span className='text11-white'>Germany</span></div>

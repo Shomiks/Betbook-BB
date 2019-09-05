@@ -6,10 +6,20 @@ class Search extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            loaded:false
+        };
+        this.sharedObj = props.sharedObj
     }
 
+    componentDidMount() {
+        this.setState({loaded:true})
+    }
+
+
     render() {///11/35
+
+        if(this.state.loaded) this.sharedObj.headerInstance.setTitle('Search for users')
         return <div className='betbook-screen'>
                 <div className='main-container'>
 
