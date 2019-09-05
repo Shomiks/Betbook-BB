@@ -14,14 +14,14 @@ import {Link} from "react-router-dom";
 
      setActive = (active) => {
          this.setState({currentActive:active})
-     }
+     };
 
      render() {
 
   return (
 
          <div className='rectangle_footer'>
-             <div className={this.state.currentActive == 'timeline' ? 'ft_home-field active' : 'ft_home-field'}>
+             <div className={this.state.currentActive == 'timeline' ? 'ft_home-field active-timeline' : 'ft_home-field'}>
                  <Link to={`/home`}> <div className='timeline'>
                      <span>{this.state.currentActive == 'timeline' ? 'Home' : ''}</span></div></Link>
              </div>
@@ -33,7 +33,7 @@ import {Link} from "react-router-dom";
                  <Link to={`/country/246`}> <div className='star'>
                      <span>{this.state.currentActive == 'star' ? 'Favorites' : ''}</span></div></Link>
              </div>
-             <div className={this.state.currentActive == 'profile' ? 'ft_profile-field active' : 'ft_profile-field'}>
+             <div className={this.state.currentActive == 'profile' ? 'ft_profile-field active-profile' : 'ft_profile-field'}>
                  <Link to={`/profile`}> <div className='profile'>
                      <span>{this.state.currentActive == 'profile' ? 'Profile' : ''}</span></div></Link>
              </div>
