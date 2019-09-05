@@ -19,6 +19,24 @@
     .pt_header-central-field {
       position: relative;
 
+      .first-row {
+        display: flex;
+        align-items: center;
+
+        .settings {
+          margin-left:15px;
+          height: 15px;
+          width: 15px;
+        }
+
+        .search {
+          margin-right:15px;
+          height: 15px;
+          width: 15px;
+        }
+      }
+
+
       .pt_member-name {
         padding-top: 19px;
         width: 100%;

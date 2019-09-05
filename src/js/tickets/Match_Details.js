@@ -1,7 +1,6 @@
 import React from 'react';
 import '../../../src/style/betbook/matchdetails.scss';
 import '../../../src/style/app.scss';
-import ticketHelper from "../data/ticketHelper";
 class Match_Details extends React.Component {
 
     constructor(props) {
@@ -21,6 +20,7 @@ class Match_Details extends React.Component {
 
     getFixtureById(){
         this.sharedObj.apiHelper.fixture.getByID(this.fixtureId,(res) => {
+            this.sharedObj.headerInstance.setItemRight('options');
             this.setState({realData:res,loaded:true})
         });
     };
@@ -75,10 +75,8 @@ class Match_Details extends React.Component {
     };
 
     handleCreateTicket = (ticket) => {
-        console.log(ticket)
 
         this.sharedObj.apiHelper.bids.createFixtureBids({ticket},(id) => {
-            console.log(ticket)
             ticket['id'] = id;
 
             this.setState(prevState => ({
@@ -145,7 +143,7 @@ class Match_Details extends React.Component {
         return <div className='match-details-field'>
             <div className='md_league-week-details'><span className='text11-grey'>{this.state.realData.date}</span></div>
             <div className='md_league_match_fixture'>
-                <div className='md_home-team-field'><img className='logo' src={'./assets/images/Teams/' + this.state.realData.team_home.logo} />
+                <div className='md_home-team-field'><img className='logo' src={'./assets/images/Teams/' + this.state.realData.team_home.logo}  alt=''/>
                     <div className='home-text-field'><span className='text18-white'>{this.state.realData.team_home.name}</span>
                     </div>
                 </div>

@@ -12,9 +12,7 @@ class LeaderBoards extends React.Component {
 
     }
 
-
     render() {
-
 
         return (
             <div className='betbook_screen'>

@@ -8,7 +8,7 @@ class Profile_Tickets extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {}
+        this.state = {};
         this.sharedObj = props.sharedObj
     }
 
@@ -24,11 +24,14 @@ class Profile_Tickets extends React.Component {
             <div className='betbook_context'>
                     <div className='pt_header-field'>
                         <div className='pt_header-central-field'>
-                            <Link to={`/settings`}><div className='options'/></Link>
+                            <div className='first-row'>
+                            <Link to={`/settings`}><img src='./assets/images/search1' className='settings'/></Link>
                             <div className='pt_member-name'><span className='text18-white'>Alexander Shultz</span></div>
-                            <Link to={`/search`}><div className='search'/></Link>
+                            <Link to={`/search`}><img src='./assets/images/search1' className='search'/></Link>
+
+                            </div>
                             <div className='pt_country'><span className='text11-white'>Germany</span></div>
-                            <div className='pt_image-field'><img src='./assets/images/profile_picture.png'/></div>
+                            <div className='pt_image-field'><img src='./assets/images/profile_picture.png' alt=''/></div>
                         </div>
                     </div>
                     <div className='scrolable-bids-field'>

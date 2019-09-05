@@ -42,6 +42,8 @@
     .country-info {
       position: relative;
       display: block;
+      height:80px;
+      width:200px;
 
       .leagues-info {
         display: block;
@@ -49,6 +51,10 @@
         left: 0;
         top: 11px;
         width: 57px;
+
+        .text11-grey{
+          left:0;
+        }
 
       }
 

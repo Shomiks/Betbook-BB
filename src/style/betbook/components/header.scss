@@ -41,14 +41,26 @@
 
     .sport {
       text-align: center;
-
-
-
+    }
+    .settings{
+      background-size: cover;
+      background-image: url("../assets/images/ball.png");
+      width: 10px;
+      height: 18px;
+      cursor: pointer;
     }
 
     .calendar {
       background-size: cover;
-      background-image: url("../assets/images/arrow_left_dark.PNG");
+      background-image: url("../assets/images/calendar.PNG");
+      width: 10px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .options{
+      background-size: cover;
+      background-image: url("../assets/images/podium.PNG");
       width: 10px;
       height: 18px;
       cursor: pointer;

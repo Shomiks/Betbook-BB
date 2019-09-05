@@ -21,7 +21,9 @@ class Week_games_Listing extends React.Component {
     }
 
     getAllFixtures(){
-        this.sharedObj.apiHelper.leagues.getByID(this.leagudId,(res) => this.setState({realData:res,loaded:true}));
+        this.sharedObj.apiHelper.leagues.getByID(this.leagudId,(res) =>{
+            this.sharedObj.headerInstance.setItemRight('calendar');
+            this.setState({realData:res,loaded:true})});
     }
 
     renderGames = () => {
