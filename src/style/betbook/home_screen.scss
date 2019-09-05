@@ -31,6 +31,12 @@
       display: flex;
       height: 120px;
 
+      .hs_league-name {
+        height: 32px;
+        width: 70px;
+        margin: 0 auto;
+      }
+
     }
 
 
@@ -43,10 +49,16 @@
       position: absolute;
       display: block;
       left: 50%;
-      margin-left: -35px;
+      margin-left: -50px;
+      background-image: url("../betbook/assets/images/logo_bg.svg");
+      width: 100px;
+      height: 120px;
 
       .league-logo {
-        width: 50px;
+        height: 42px;
+        width: 60px;
+        margin-top: 10px;
+        object-fit: contain;
       }
     }
   }

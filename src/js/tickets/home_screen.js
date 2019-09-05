@@ -58,9 +58,9 @@ class Home_screen extends React.Component {
             return <div className='favourite-league' key={data.id + '_'}>
                 <div className='favourite-league-container'>
                     {this.handlePreviousMatchWeek(data)}
-                    <div className='logo'><img className='league-logo'
-                                               src={'./assets/images/Logos/' + data.league.logo}/><br/><span
-                        className='text11'>{data.league.name}</span></div>
+                    <div className='logo'><img className='league-logo' src={'./assets/images/Logos/' + data.league.logo}/><br/>
+                        <div className='hs_league-name'><span className='text11'>{data.league.name}</span></div>
+                    </div>
                     {this.handleCurrentMatchWeek(data)}
                 </div>
             </div>
@@ -80,7 +80,7 @@ class Home_screen extends React.Component {
             <div className='betbook_screen'>
                 <div className='betbook-logo'/>
                 <div className='main-content'>
-                    {this.state.realData.user_favourite_leagues ?
+                    {!this.state.realData.user_favourite_leagues ?
                         <>
                             <div className='welcome-text'> My Leagues</div>
                             {this.handleFavouriteLeagues()}</>

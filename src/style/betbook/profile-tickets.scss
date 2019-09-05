@@ -171,23 +171,23 @@
 }
 
 
-  .hidden {
-    display: none;
-  }
+.hidden {
+  display: none;
+}
 
-  @media only screen and (max-width: 260px) {
-    #root {
-      .App {
-        .ft_text_position {
-          position: absolute;
-          left: 10px;
-        }
+@media only screen and (max-width: 260px) {
+  #root {
+    .App {
+      .ft_text_position {
+        position: absolute;
+        left: 10px;
+      }
 
-        .pt_yellow-bet-box {
-          width: 40%;
-        }
+      .pt_yellow-bet-box {
+        width: 40%;
       }
     }
   }
+}
 
 
