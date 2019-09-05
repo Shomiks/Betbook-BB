@@ -28,7 +28,7 @@ class MatchShort extends React.Component {
 
     handleBidField = () => {
 
-        return <div className='ms-central-field'>
+        return <div className={this.props.match.ticket ? 'ms-central-field' : 'ms-central-field yellow'}>
             <div className='ms-teams-field'>
                <div className='ms_homeField'>
                    <img className='logo' src={'./assets/images/Teams/' + this.props.match.team_home.logo}/>
@@ -46,7 +46,7 @@ class MatchShort extends React.Component {
                 </div>
             </div>
                 <div className='ms-under-teams-field'>
-                    {!this.props.match.ticket ? (!this.props.match.result ? <div className='ms_not-bided-yellow'><span className='text11-white'>Make a bet</span></div> : <div/>)
+                    {!this.props.match.ticket ? (!this.props.match.result ? <div className='ms_not-bided-yellow'><span className='text11-white'>Make a bid</span></div> : <div/>)
                         : (
                         <div className='ms_bid-field'>
                         <div className={'ms_bid-box' + this.handleStateField(1)}>
