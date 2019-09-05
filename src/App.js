@@ -18,6 +18,7 @@ import ForgotPassword from "./js/user/ForgotPassword";
 import Profile_Tickets from "./js/tickets/Profile_Tickets";
 import Search from "./js/user/Search";
 import Settings from "./js/user/Settings";
+import FavoriteClub from "./js/user/FavoriteClub";
 
 class App extends React.Component {
 
@@ -56,12 +57,13 @@ class App extends React.Component {
                <HashRouter>
 
                    {(window.location.hash=='#/login' || window.location.hash=='#/register' || window.location.hash=='#/forgot-password' || window.location.hash=='#/loading'
-                       || window.location.hash=='#/welcome' || window.location.hash=='#/home' || window.location.hash=='#/profile')
+                       || window.location.hash=='#/welcome' || window.location.hash=='#/home' || window.location.hash=='#/profile' ||  window.location.hash=='#/favorite-club')
                        ? <div/> : <Header ref={(instance) => {
                            this.sharedObject.headerInstance = instance}}  />}
 
                    <Route path="/loading" render={(props) => (<LoadingScreen sharedObj={this.sharedObject} {...props}/>)} />
                    <Route path="/register" render={(props) => (<Register sharedObj={this.sharedObject} {...props}/>)} />
+                   <Route path="/favorite-club" render={(props) => (<FavoriteClub sharedObj={this.sharedObject} {...props}/>)}/>
                    <Route path="/login" render={(props) => (<Login sharedObj={this.sharedObject} {...props}  />)}/>
                    <Route path="/forgot-password" render={(props) => (<ForgotPassword sharedObj={this.sharedObject} {...props}/>)} />
                    <Route path="/welcome" render={(props) => (<AppHome sharedObj={this.sharedObject} {...props}/>)} />
@@ -79,7 +81,8 @@ class App extends React.Component {
                    <Route path="/settings" render={(props) => (<Settings sharedObj={this.sharedObject} {...props}/>)}/>
                    <Route path="/search" render={(props) => (<Search sharedObj={this.sharedObject} {...props}/>)}/>
 
-                   {(window.location.hash=='#/login' || window.location.hash=='#/register' || window.location.hash=='#/forgot-password' || window.location.hash=='#/loading' || window.location.hash=='#/welcome')
+                   {(window.location.hash=='#/login' || window.location.hash=='#/register' || window.location.hash=='#/forgot-password' || window.location.hash=='#/loading' || window.location.hash=='#/welcome'
+                   || window.location.hash=='#/favorite-club')
                        ? <div/> : <Footer ref={(instance) => {
                            this.sharedObject.footerInstance = instance}}/>}
                </HashRouter>
