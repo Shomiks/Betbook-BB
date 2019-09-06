@@ -11,8 +11,9 @@ class Login extends React.Component {
         this.state = {
             username: '',
             password: '',
-            validName: false,
-            validPassword: false
+            validName: true,
+            validPassword: true,
+            loggedIn:false
         };
         this.sharedObj = props.sharedObj;
     }
@@ -20,27 +21,27 @@ class Login extends React.Component {
     handleLogin = () => {
         if(this.state.username!='' && this.state.password!=''){
         this.sharedObj.apiHelper.login(this.state.username,this.state.password,(res) => {
-            localStorage.setItem('user_id',res.id)
+            localStorage.setItem('user_id',res.id);
                 if (this.state.username == res.username && this.state.password == res.password) {
-                    this.setState({validName: true, validPassword: true});
+                    this.setState({loggedIn:true});
                 }
-                else alert('si lud ti')
+                    else this.setState({validName: false, validPassword: false});
                 })
         }
-            else alert('odjebi')
+            else this.setState({validName:false,validPassword:false});
     };
 
     handleChangeUsername = (e) => {
         this.setState({username: e.target.value});
-    }
+    };
 
     handleChangePassword = (e) => {
         this.setState({password: e.target.value});
-    }
+    };
 
     render() {
 
-        if(this.state.validName && this.state.validPassword){
+        if(this.state.loggedIn){
             return <Redirect to='/home'/>
         }
 
@@ -49,11 +50,11 @@ class Login extends React.Component {
                     <div className='betbook-logo-box'><img src='./assets/images/betbook-logo.png' alt=''/></div>
                     <div className='bs-email-container'>
                         <div className='bs-email-text'><span className='text15-white'>Username</span></div>
-                        <input className='bs-email-box' type='username' value={this.state.username} onChange={this.handleChangeUsername}/>
+                        <input className={this.state.validPassword ? 'bs-email-box' : 'bs-email-box bs-email-box-error'} type='username' value={this.state.username} onChange={this.handleChangeUsername}/>
                     </div>
                     <div className='bs-password-container'>
                         <div className='bs-password-text'><span className='text15-white'>Password</span></div>
-                        <input className='bs-password-box' type='password' value={this.state.password} onChange={this.handleChangePassword}/>
+                        <input className={this.state.validPassword ? 'bs-password-box' : 'bs-password-box bs-password-box-error'} type='password' value={this.state.password} onChange={this.handleChangePassword}/>
                         <Link to={`/forgot-password`}><div className='bs-text-under-password'><span
                             className='text11-white'>I forgot my password. </span></div></Link>
                     </div>

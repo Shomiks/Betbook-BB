@@ -9,9 +9,12 @@ class Register extends React.Component {
         super(props);
 
         this.state = {
-            username: null,
-            password: null,
-            email: null,
+            username: '',
+            password: '',
+            email: '',
+            validUsername:true,
+            validPassword:true,
+            validEmail:true,
             country_id: null,
             team_id: null,
             registered: false
@@ -27,14 +30,32 @@ class Register extends React.Component {
         this.setState({password: e.target.value});
     };
 
+    handleChangeEmail = (e) => {
+        this.setState({email: e.target.value})
+    };
+
+    validateEmail = (email) => {
+        let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    };
+
     handleRegister = () => {
-        if(this.state.username!=null && this.state.password!=null) {
-            this.sharedObj.apiHelper.register(this.state.username, this.state.password, (res) => {
-                this.setState({registered: true});
-                localStorage.setItem('user_id',res)
-            })
+        if(this.state.username != '' && this.state.password != '') {
+            this.setState({validUsername: true, validPassword: true});
+            if(!this.validateEmail(this.state.email)){
+                this.setState({validEmail: false})
+            }
+            else{
+                this.setState({validEmail: true});
+                this.sharedObj.apiHelper.register(this.state.username, this.state.password, (res) => {
+                    this.setState({registered: true});
+                    localStorage.setItem('user_id',res)
+                })
+            }
         }
-        else alert ('odjebi')
+        else {
+            this.setState({validUsername: false,validPassword: false,validEmail: false})
+        }
     };
 
     render() {
@@ -46,15 +67,15 @@ class Register extends React.Component {
                     <div className='betbook-logo-box'><img src='./assets/images/betbook-logo.png' alt=''/></div>
                     <div className='bs-user-container'>
                         <div className='bs-username-text'><span className='text15-white'>Username</span></div>
-                        <input className='bs-username-box' type='text' value={this.state.username} onChange={this.handleChangeUsername}/>
+                        <input className={this.state.validUsername ? 'bs-username-box' : 'bs-username-box bs-username-box-error'} type='text' value={this.state.username} onChange={this.handleChangeUsername}/>
                     </div>
                     <div className='bs-email-container'>
                         <div className='bs-email-text'><span className='text15-white'>Email</span></div>
-                        <input className='bs-email-box' type='email' />
+                        <input className={this.state.validEmail ? 'bs-email-box' : 'bs-email-box bs-email-box-error' }value={this.state.email} onChange={this.handleChangeEmail} type='email' />
                     </div>
                     <div className='bs-password-container'>
                         <div className='bs-password-text'><span className='text15-white'>Password</span></div>
-                        <input className='bs-password-box' type='password' value={this.state.password} onChange={this.handleChangePassword}/>
+                        <input className={this.state.validPassword ? 'bs-password-box' : 'bs-password-box bs-password-box-error'} type='password' value={this.state.password} onChange={this.handleChangePassword}/>
                         <div className='bs-text-under-password'><span className='text11-white'>By procceding further I agree with general terms & conditions. </span>
                         </div>
                     </div>

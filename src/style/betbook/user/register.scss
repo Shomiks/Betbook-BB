@@ -45,6 +45,17 @@
         font-size: 15px;
         color: #2A2A2B;
       }
+
+      .bs-username-box-error {
+        height: 40px;
+        width: 309px;
+        background: linear-gradient(0deg, rgba(186, 67, 67, 0.5), rgba(186, 67, 67, 0.5));
+        border: 1px solid #BA4343;
+        box-sizing: border-box;
+        border-radius: 25px;
+        color: #FFF;
+      }
+
     }
 
 
@@ -88,15 +99,6 @@
       left: 50%;
       margin-left: -152.5px;
 
-      &.error{
-        height: 40px;
-        width: 309px;
-        background: linear-gradient(0deg, rgba(186, 67, 67, 0.5), rgba(186, 67, 67, 0.5));
-        border: 1px solid #BA4343;
-        box-sizing: border-box;
-        border-radius: 25px;
-      }
-
       .bs-email-text {
         margin-bottom: 11px;
       }
@@ -112,6 +114,15 @@
         font-family: SF Display;
         font-size: 15px;
         color: #2A2A2B;
+      }
+      .bs-email-box-error{
+        height: 40px;
+        width: 309px;
+        background: linear-gradient(0deg, rgba(186, 67, 67, 0.5), rgba(186, 67, 67, 0.5));
+        border: 1px solid #BA4343;
+        box-sizing: border-box;
+        border-radius: 25px;
+        color:#FFF;
       }
     }
 
@@ -139,6 +150,16 @@
         font-family: SF Display;
         font-size: 15px;
         color: #2A2A2B;
+      }
+
+      .bs-password-box-error {
+        height: 40px;
+        width: 309px;
+        background: linear-gradient(0deg, rgba(186, 67, 67, 0.5), rgba(186, 67, 67, 0.5));
+        border: 1px solid #BA4343;
+        box-sizing: border-box;
+        border-radius: 25px;
+        color: #FFF;
       }
 
       .bs-text-under-password {
