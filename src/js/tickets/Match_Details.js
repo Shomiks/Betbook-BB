@@ -48,7 +48,6 @@ class Match_Details extends React.Component {
         else {
             let ticket = this.handleReturnTicket();
             ticket.fixture_id = this.state.realData.id;
-            ticket.user_id = 7;
             ticket[game + '_tip'] = tip;
             ticket[game + '_odd'] = this.state.realData[game + '_' + tip];
 
@@ -58,7 +57,7 @@ class Match_Details extends React.Component {
 
     handleReturnTicket = () => {
         let ticket = {
-            user_id: null,
+            user_id: localStorage.getItem('user_id'),
             fixture_id: null,
             game1_tip: null,
             game1_odd: 0,
@@ -90,6 +89,9 @@ class Match_Details extends React.Component {
 
     handleBidState = (game,tip,bidfield) => {
         let className = bidfield;
+
+        // if(this.state.realData.ticket.user_id != localStorage.getItem('user_id')) return  className;
+
         if (this.state.realData.result && this.state.realData.result[game + '_' + tip] == 1) {
             className += ' won';
         }

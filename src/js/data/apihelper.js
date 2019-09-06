@@ -1,6 +1,6 @@
 import React from 'react'
 
-const timeoutInterval = 5000;
+const timeoutInterval = 0;
 
 class APIHelper extends React.Component {
     constructor(props) {
@@ -8,20 +8,28 @@ class APIHelper extends React.Component {
     }
 
     login = (username, password, callBack) => {
+        console.log(username)
         fetch(`http://192.168.8.113/index.php/api/user/?username=` + username)
             .then(res => res.json())
             .then(res => callBack(res))
-        setTimeout(() => {
-        },timeoutInterval)
     }
 
-    register = (username, password, email, callBack) => {
-        fetch(`http://192.168.8.113/index.php/api/`)
+    register = (username, password, callBack) => {
+        let data = {
+            username:username,
+            password:password
+        }
+        fetch(`http://192.168.8.113/index.php/api/user/`, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
             .then(res => res.json())
-        setTimeout(() => {
-            callBack({success: true});
-        }, timeoutInterval);
+            .then(res => callBack(res))
     }
+
 
     settings = {
         getSettings: (callBack) => {

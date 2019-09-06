@@ -21,7 +21,7 @@ class Home_screen extends React.Component {
     };
 
     getUserFavorites = () => {
-        this.sharedObj.apiHelper.home(1, (res) => {
+        this.sharedObj.apiHelper.home(localStorage.getItem('user_id'), (res) => {
             this.setState({realData: res, loaded: true});
             this.sharedObj.footerInstance.setActive('timeline');
         });
@@ -30,7 +30,7 @@ class Home_screen extends React.Component {
     handlePreviousMatchWeek = (data) => {
         if (1) return <div className='last-week'>
             <div className='hs_left-box'>
-                <div><span className='text11-white'>Matchweek 3</span></div>
+                <div><span className='text11-white'>Matchweek {data.round.order}</span></div>
                 <div className='hs_left-middle-text'><span className='text11-white'>Success Rate xx%</span></div>
                 <div className='hs_left-bottom-text'><Link to={`league/${data.league.id}/round/4`}>
                     <div><span className='text11-white'>Check the bet</span></div>
@@ -43,7 +43,7 @@ class Home_screen extends React.Component {
     handleCurrentMatchWeek = (data) => {
         return <div className='current-week'>
             <div className='hs_right-box'>
-                <div><span className='text11-white'>Matchweek 4</span></div>
+                <div><span className='text11-white'>Matchweek {parseInt(data.round.order) + 1}</span></div>
                 <div className='hs_left-middle-text'><span className='text11-white'>Start of the week</span></div>
                 <div className='hs_left-bottom-text'><Link to={`league/${data.league.id}/round/4`}>
                     <div><span className='text11-white'>Create bet</span></div>
@@ -58,7 +58,7 @@ class Home_screen extends React.Component {
             return <div className='favourite-league' key={data.id + '_'}>
                 <div className='favourite-league-container'>
                     {this.handlePreviousMatchWeek(data)}
-                    <div className='logo'><img className='league-logo' src={'./assets/images/Logos/' + data.league.logo}/><br/>
+                    <div className='logo'><img className='league-logo' src={'./assets/images/Logos/' + data.league.logo} alt=''/><br/>
                         <div className='hs_league-name'><span className='text11'>{data.league.name}</span></div>
                     </div>
                     {this.handleCurrentMatchWeek(data)}
@@ -80,7 +80,7 @@ class Home_screen extends React.Component {
             <div className='betbook_screen'>
                 <div className='betbook-logo'/>
                 <div className='main-content'>
-                    {!this.state.realData.user_favourite_leagues ?
+                    {this.state.realData.length ?
                         <>
                             <div className='welcome-text'> My Leagues</div>
                             {this.handleFavouriteLeagues()}</>

@@ -46,7 +46,9 @@ class MatchShort extends React.Component {
                 </div>
             </div>
                 <div className='ms-under-teams-field'>
-                    {!this.props.match.ticket ? (!this.props.match.result ? <div className='ms_not-bided-yellow'><span className='text11-white'>Make a bid</span></div> : <div/>)
+                    {!this.props.match.ticket || this.props.match.ticket.user_id != localStorage.getItem('user_id')
+                    || (this.props.match.ticket.game1_tip==null && this.props.match.ticket.game2_tip==null && this.props.match.ticket.game3_tip==null && this.props.match.ticket.game4_tip==null)
+                        ? (!this.props.match.result ? <div className='ms_not-bided-yellow'><span className='text11-white'>Make a bid</span></div> : <div/>)
                         : (
                         <div className='ms_bid-field'>
                         <div className={'ms_bid-box' + this.handleStateField(1)}>

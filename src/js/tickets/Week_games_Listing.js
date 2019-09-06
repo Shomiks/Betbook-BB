@@ -23,6 +23,7 @@ class Week_games_Listing extends React.Component {
     getAllFixtures(){
         this.sharedObj.apiHelper.leagues.getByID(this.leagudId,(res) =>{
             this.sharedObj.headerInstance.setItemRight('calendar');
+            this.sharedObj.footerInstance.setActive('star');
             this.setState({realData:res,loaded:true})});
     }
 
@@ -30,7 +31,7 @@ class Week_games_Listing extends React.Component {
         this.sharedObj.headerInstance.setTitle(this.state.realData.name);
         if(this.state.realData.matches)
             return <>
-            <div className='game-week'><span className='text11-grey'>Mathweek {this.state.realData.round.order}</span></div>
+            <div className='game-week'><span className='text11-grey'>Mathweek {this.state.realData.round ? this.state.realData.round.order : 'unknown'}</span></div>
             {this.state.realData.matches.map((fixture) => <Link to={`/fixture/${fixture.id}`}> <MatchShort  match={fixture}/></Link>)}
                 </>
     }

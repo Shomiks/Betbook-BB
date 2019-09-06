@@ -22,8 +22,8 @@ class Detailed_Competition_Listing extends React.Component {
         this.sharedObj.apiHelper.leagues.getAll(this.countryId,(res) => {
             this.setState({realData: res, loaded: true});
             this.sharedObj.headerInstance.setTitle('England');
-            this.sharedObj.headerInstance.setItemRight('star');
-            this.sharedObj.footerInstance.setActive('star');
+            // this.sharedObj.headerInstance.setItemRight('star');
+            this.sharedObj.footerInstance.setActive('ball');
         });
     }
 
