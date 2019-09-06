@@ -11,7 +11,7 @@ class Login extends React.Component {
 
         this.state = {
             validName: false,
-            validPassword: false,
+            validPassword: true,
         }
         this.sharedObj = props.sharedObj;
     }
@@ -33,11 +33,11 @@ class Login extends React.Component {
         return (<div className='betbook-screen-login'>
                 <div className='main-container'>
                     <div className='betbook-logo-box'><img src='./assets/images/betbook-logo.png'/></div>
-                    <div className='bs-email-container'>
+                    <div className={this.state.validName ? 'bs-email-container' : 'bs-email-container error'}>
                         <div className='bs-email-text'><span className='text15-white'>Email</span></div>
                         <input className='bs-email-box' type='email'/>
                     </div>
-                    <div className='bs-password-container'>
+                        <div className={this.state.validPassword ? 'bs-password-container' : 'bs-password-container error'}>
                         <div className='bs-password-text'><span className='text15-white'>Password</span></div>
                         <input className='bs-password-box' type='password'/>
                         <Link to={`/forgot-password`}><div className='bs-text-under-password'><span
@@ -52,5 +52,5 @@ class Login extends React.Component {
     }
 }
 
-
+//          <div className={this.state.validName ? 'step_input_container' : 'step_input_container step_input_container_error'}
 export default Login;
