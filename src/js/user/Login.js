@@ -1,8 +1,7 @@
 import React from 'react';
 import '../../../src/style/app.scss'
 import '../../../src/style/betbook/user/register.scss'
-import {Link} from "react-router-dom";
-import {Redirect} from "react-router";
+import {Link,Redirect} from "react-router-dom";
 
 class Login extends React.Component {
 

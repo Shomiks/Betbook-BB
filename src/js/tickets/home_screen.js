@@ -17,7 +17,6 @@ class Home_screen extends React.Component {
 
     componentDidMount = () => {
         this.getUserFavorites();
-
     };
 
     getUserFavorites = () => {

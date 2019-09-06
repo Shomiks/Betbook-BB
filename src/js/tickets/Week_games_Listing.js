@@ -17,11 +17,13 @@ class Week_games_Listing extends React.Component {
     }
 
     componentDidMount() {
+
+
         this.getAllFixtures();
     }
 
     getAllFixtures(){
-        this.sharedObj.apiHelper.leagues.getByID(this.leagudId,(res) =>{
+        this.sharedObj.apiHelper.leagues.getByID(this.leagudId,localStorage.getItem('user_id'),(res) =>{
             this.sharedObj.headerInstance.setItemRight('calendar');
             this.sharedObj.footerInstance.setActive('star');
             this.setState({realData:res,loaded:true})});

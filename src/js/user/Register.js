@@ -3,7 +3,6 @@ import '../../../src/style/betbook/user/register.scss'
 import '../../../src/style/app.scss'
 import {Link, Redirect} from "react-router-dom";
 
-
 class Register extends React.Component {
 
     constructor(props) {
@@ -16,17 +15,17 @@ class Register extends React.Component {
             country_id: null,
             team_id: null,
             registered: false
-        }
+        };
         this.sharedObj = props.sharedObj
     }
 
     handleChangeUsername = (e) => {
         this.setState({username: e.target.value});
-    }
+    };
 
     handleChangePassword = (e) => {
         this.setState({password: e.target.value});
-    }
+    };
 
     handleRegister = () => {
         if(this.state.username!=null && this.state.password!=null) {
@@ -39,14 +38,12 @@ class Register extends React.Component {
     };
 
     render() {
-
             if(this.state.registered){
                 return <Redirect to='/home'/>
             }
-
-        return (<div className='betbook-screen-login'>
+            else return (<div className='betbook-screen-login'>
                 <div className='main-container'>
-                    <div className='betbook-logo-box'><img src='./assets/images/betbook-logo.png'/></div>
+                    <div className='betbook-logo-box'><img src='./assets/images/betbook-logo.png' alt=''/></div>
                     <div className='bs-user-container'>
                         <div className='bs-username-text'><span className='text15-white'>Username</span></div>
                         <input className='bs-username-box' type='text' value={this.state.username} onChange={this.handleChangeUsername}/>
@@ -69,6 +66,5 @@ class Register extends React.Component {
         )
     }
 }
-
 
 export default Register;
