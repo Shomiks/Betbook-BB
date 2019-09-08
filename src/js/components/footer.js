@@ -30,7 +30,7 @@ import {Link} from "react-router-dom";
                      <span>{this.state.currentActive == 'ball' ? 'Sport' : ''}</span></div></Link>
              </div>
              <div className={this.state.currentActive == 'star' ? 'ft_star-field active' : 'ft_star-field'}>
-                 <Link to={`/country/246`}> <div className='star'>
+                 <Link to={`/user_favourites`}> <div className='star'>
                      <span>{this.state.currentActive == 'star' ? 'Favorites' : ''}</span></div></Link>
              </div>
              <div className={this.state.currentActive == 'profile' ? 'ft_profile-field active-profile' : 'ft_profile-field'}>

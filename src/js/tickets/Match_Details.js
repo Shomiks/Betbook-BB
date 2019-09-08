@@ -75,6 +75,7 @@ class Match_Details extends React.Component {
 
     handleCreateTicket = (ticket) => {
 
+        this.sharedObj.apiHelper.favourites.update(localStorage.getItem('user_id'), this.state.realData.league.id,);
         this.sharedObj.apiHelper.bids.createFixtureBids({ticket},(id) => {
             ticket['id'] = id;
 
@@ -113,7 +114,7 @@ class Match_Details extends React.Component {
 
         let className = this.handleBidState(game,tip,bidfield);
 
-        return <div className={className} onClick = {this.state.realData.result ? () => this.handleBidClick(game,tip,className) : () =>{}}>
+        return <div className={className} onClick = {!this.state.realData.result ? () => this.handleBidClick(game,tip,className) : () =>{}}>
             <div className='game-bid-align'>
             <div className='game-text'><span className='text11-grey'>{label}</span></div>
             <div className='bid-text'><span className='text15-white'>{this.state.realData[game + '_' + tip]}</span></div>
@@ -160,7 +161,7 @@ class Match_Details extends React.Component {
 
     renderBidFieldDetails = () => {
         return <div className='scrolable-bids-field'>
-            <div className='full-time-result-field'>
+            <div className={this.state.realData.game1_1 ?'full-time-result-field' : 'hidden'}>
                 <div className='main-titlle-field'>
                     <div className='ft_text_position'><span className='text12-grey'>Match Outcome</span></div>
                     <div className='game-underline'/>
@@ -171,7 +172,7 @@ class Match_Details extends React.Component {
                     {this.handleBidType('2', 'game1', '2', 'bid-field')}
                 </div>
             </div>
-            <div className='match-goals-field'>
+            <div className={this.state.realData.game2_1 ? 'match-goals-field' : 'hidden'}>
                 <div className='main-titlle-field'>
                     <div className='ft_text_position'><span className='text12-grey'>Match Goals</span></div>
                     <div className='game-underline'/>
@@ -188,7 +189,7 @@ class Match_Details extends React.Component {
                     {this.handleBidType('4+FT', 'game2', '4ft', 'bid-field')}
                 </div>
             </div>
-            <div className='both-teams-goals-field'>
+            <div className={this.state.realData.game3_gg ? 'both-teams-goals-field' : 'hidden'}>
                 <div className='main-titlle-field'>
                     <div className='ft_text_position'><span className='text12-grey'>Both Team Goals</span>
                         <div className='game-underline'/>
@@ -196,10 +197,10 @@ class Match_Details extends React.Component {
                 </div>
                 <div className='md_bid-box'>
                     {this.handleBidType('YES', 'game3', 'gg', 'bid-field')}
-                    {this.handleBidType('NO', 'game3', 'notgg', 'bid-field')}
+                    {this.handleBidType('NO', 'game3', 'gg3p', 'bid-field')}
                 </div>
             </div>
-            <div className='ht-ft-result-field'>
+            <div className={this.state.realData.game4_11 ? 'ht-ft-result-field' : 'hidden'}>
                 <div className='main-titlle-field'>
                     <div className='ft_text_position'><span className='text12-grey'>Half / Full Time Result</span>
                         <div className='game-underline'/>

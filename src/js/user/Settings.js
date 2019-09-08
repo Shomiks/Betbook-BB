@@ -6,15 +6,18 @@ class Settings extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {}
+        this.state = {};
         this.sharedObj = props.sharedObj
     }
 
     componentDidMount() {
-        this.sharedObj.headerInstance.setTitle('Settings')
+        setTimeout(() => {
+            this.sharedObj.headerInstance.setTitle('Settings')
+        },1)
+
     }
 
-    render() {///11/35
+    render() {
 
         return (<div className='betbook-screen'>
                 <div className='main-container'>
