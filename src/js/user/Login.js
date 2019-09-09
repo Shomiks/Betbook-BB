@@ -51,6 +51,7 @@ class Login extends React.Component {
                     <div className='bs-email-container'>
                         <div className='bs-email-text'><span className='text15-white'>Username</span></div>
                         <input className={this.state.validPassword ? 'bs-email-box' : 'bs-email-box bs-email-box-error'} type='username' value={this.state.username} onChange={this.handleChangeUsername}/>
+                        <span className={this.state.validate == false ? 'bs-error-text-down' : 'none'}> Enter email address </span>
                     </div>
                     <div className='bs-password-container'>
                         <div className='bs-password-text'><span className='text15-white'>Password</span></div>

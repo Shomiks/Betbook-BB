@@ -92,6 +92,7 @@
         font-family: SF Display;
         font-size: 15px;
         color: #2A2A2B;
+
         &:focus {
           outline: none;
           border: solid 1px #f68c25;
@@ -128,6 +129,7 @@
         font-family: SF Display;
         font-size: 15px;
         color: #2A2A2B;
+
         &:focus {
           outline: none;
           border: solid 1px #f68c25;
@@ -142,6 +144,10 @@
         box-sizing: border-box;
         border-radius: 25px;
         color: #FFF;
+      }
+
+      .bs-error-text-down {
+        color: #d65b4d;
       }
     }
 
@@ -256,4 +262,8 @@
       }
     }
   }
+}
+
+.none {
+  display: none;
 }
