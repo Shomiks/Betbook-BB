@@ -253,7 +253,6 @@ class Match_Details extends React.Component {
     };
 
     render() {
-        console.log(this.state.realData)
         return <>{this.state.loaded == true ? this.renderStateCompopnent() : <div/>}</>
     }
 }
