@@ -57,8 +57,8 @@ class APIHelper extends React.Component {
     };
 
     teams = {
-        getAll : (callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/team`)
+        getByCountryId : (country_id, callBack) => {
+            fetch(`http://192.168.8.113/index.php/api/team/?country_id=` + country_id)
                 .then(res => res.json())
                 .then(res => {
                     callBack(res);
