@@ -13,15 +13,17 @@
     background-color: orangered;
   }
 
+
   .ft_home-field {
     position: relative;
     width: 25%;
 
+
     .timeline {
-      background-image: url("../assets/images/timeline_dark.PNG");
+      background-image: url("../assets/images/timeline.svg");
       background-size: cover;
-      height: 25px;
-      width: 25px;
+      height: 24px;
+      width: 19px;
       margin: 0 auto;
 
 
@@ -36,7 +38,7 @@
     width: 25%;
 
     .ball {
-      background-image: url("../assets/images/ball_dark.PNG");
+      background-image: url("../assets/images/ball.svg");
       background-size: cover;
       height: 25px;
       width: 25px;
@@ -85,29 +87,53 @@
     }
   }
 
-  .active{
+  .active {
     height: 80px;
     background: linear-gradient(180deg, #FFAB39 0%, rgba(255, 255, 255, 0) 100%), #E86107;
     box-shadow: 0 0 20px #000000;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    a{
+      text-decoration: none;
+    }
+
+    .ball {
+      margin-top: 14px;
+    }
 
   }
 
-  .active-timeline{
+  .active-timeline {
     height: 80px;
     background: linear-gradient(180deg, #FFAB39 0%, rgba(255, 255, 255, 0) 100%), #E86107;
     box-shadow: 0 0 20px #000000;
     border-top-right-radius: 10px;
+    a{
+      text-decoration: none;
+    }
+
+    .ball {
+      margin-top: 14px;
+    }
+
+    .timeline {
+      margin-top: 14px;
+    }
   }
 
-  .active-profile{
+  .active-profile {
     height: 80px;
     background: linear-gradient(180deg, #FFAB39 0%, rgba(255, 255, 255, 0) 100%), #E86107;
     box-shadow: 0 0 20px #000000;
     border-top-left-radius: 10px;
-  }
+    a{
+      text-decoration: none;
+    }
 
+    .profile {
+      margin-top: 14px;
+    }
+  }
 
 
 }
