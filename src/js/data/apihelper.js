@@ -18,11 +18,13 @@ class APIHelper extends React.Component {
     };
 
     register = {
-        register : (username, email, password, callBack) => {
+        register : (username, password, email, country_id, club_id, callBack) => {
             let data = {
                 username: username,
                 email: email,
-                password: password
+                password: password,
+                country_id: country_id,
+                team_id: club_id
             };
             fetch(`http://192.168.8.113/index.php/api/user/`, {
                 method: 'POST',

@@ -2,7 +2,6 @@ import React from 'react';
 import '../../../src/style/betbook/user/register.scss'
 import '../../../src/style/app.scss'
 import {Link, Redirect} from "react-router-dom";
-import Select from 'react-select'
 
 class Register extends React.Component {
 
@@ -14,23 +13,21 @@ class Register extends React.Component {
             username: '',
             password: '',
             email: '',
+            country_id: null,
+            team_id: null,
             validUsername: true,
             validPassword: true,
             validEmail: true,
-            favourites: true,
-            country_selected: 'Tap to select',
-            club_selected:'Tap to select',
-            clubs_fatched: false,
+            favourites: false,
+            country_selected: false,
+            club_selected: false,
+            clubs_fetched: false,
             registered: false,
-            countries: null,
-            country_clubs: null
+            countries: [],
+            country_clubs: [],
+            login:false
         };
         this.sharedObj = props.sharedObj;
-        this.options = [
-            {value: 'chocolate', label: 'Chocolate'},
-            {value: 'strawberry', label: 'Strawberry'},
-            {value: 'vanilla', label: 'Vanilla'}
-        ]
     }
 
     componentDidMount() {
@@ -54,16 +51,15 @@ class Register extends React.Component {
         return re.test(String(email).toLowerCase());
     };
 
-    handleRegister = () => {
+    handleRegisterStepOne = () => {
         if (this.state.username != '' && this.state.password != '') {
             this.setState({validUsername: true, validPassword: true});
             if (!this.validateEmail(this.state.email)) {
                 alert('invalid email!');
                 this.setState({validEmail: false})
             } else {
-                this.setState({validEmail: true});
                 this.sharedObj.apiHelper.register.validateRegister(this.state.username, this.state.email, (result) => {
-
+                    this.setState({validEmail:false});
                     if (result == 'empty_user') {
                         alert('empty username!');
                     } else if (result == 'empty_email') {
@@ -73,23 +69,42 @@ class Register extends React.Component {
                     } else if (result[0] == false && result[1] != false) {
                         alert('email already taken!');
                     } else if (result[0] != false && result[1] == false) {
+                        this.setState({validEmail: true,validUsername:false});
                         alert('username already taken!');
                     } else if (result[0] && result[1]) {
-                        this.setState({validEmail: false});
+                        this.setState({validEmail: false,validUsername:false});
                         alert('email and username already taken!');
-                    } else if (!result[0] && !result[1]) this.sharedObj.apiHelper.register.register(this.state.username, this.state.email, this.state.password, (res) => {
-                        alert('WELCOME!');
-                        this.setState({favourites: true});
-                        localStorage.setItem('user_id', res)
-                    });
-                    else console.log('bad')
+                    } else if (!result[0] && !result[1]){
+                        this.setState({favourites: true,validEmail:true});
+                    }
+                    else alert ('bad');
                 })
 
             }
         } else {
-            alert('empty fields!');
-            this.setState({validUsername: false, validPassword: false, validEmail: false})
+            if(this.state.email == ''){
+                this.setState({validEmail:false});
+            }
+            if(this.state.username == '' && this.state.password != ''){
+                alert('Empty username!');
+                this.setState({validUsername: false});
+            }
+            if(this.state.username != '' && this.state.password == ''){
+                alert('Empty password!');
+                this.setState({validPassword: false,validEmail:false});
+            }
+            if(this.state.username == '' && this.state.password == ''){
+                alert('Empty username and password!');
+                this.setState({validUsername:false, validPassword:false});
+            }
         }
+    };
+
+    handleRegisterStepTwo = () => {
+        this.sharedObj.apiHelper.register.register(this.state.username,this.state.password,this.state.email,this.state.country_id,this.state.team_id,(id)=>{
+            localStorage.setItem('user_id', id);
+        });
+        this.setState({login:true});
     };
 
     getAllCountries = () => {
@@ -101,34 +116,45 @@ class Register extends React.Component {
     handleGetClubs = () => {
         let selected_country_id = null;
         this.state.countries.forEach(country=>{
-            if(country.name == this.state.country_selected) selected_country_id = country.id;
+            if(country.name == this.state.country_selected) {
+                selected_country_id = country.id;
+                this.setState({country_id:country.id});
+            }
         });
         this.getAllCLubsByCountryId(selected_country_id);
-    }
+    };
 
     getAllCLubsByCountryId = (country_id) => {
         this.sharedObj.apiHelper.teams.getByCountryId(country_id,res => {
-            this.setState({country_clubs: res,clubs_fatched:true})
+            this.setState({country_clubs: res,clubs_fetched:true});
         })
     };
 
     handleCountryChange = (event) => {
-      this.setState({country_selected:event.target.value})
+      this.setState({country_selected:event.target.value});
+      setTimeout(() => this.handleGetClubs(),1);
     };
 
     handleClubChange = (event) => {
-        this.setState({club_selected:event.target.value})
+        let club_selected = event.target.value;
+       if(this.state.country_clubs.length > 0) this.state.country_clubs.forEach(club=>{
+            if(club.name == club_selected) {
+                this.setState({team_id:club.id});
+            }
+        });
+        this.setState({club_selected:club_selected,registered:true})
+    };
+
+    handleError = () => {
+        alert("Country and club not selected!");
     };
 
     render() {
 
         if (this.state.loaded) {
 
-            if (this.state.country_selected != 'Tap to select') {
-                this.handleGetClubs();
-            }
-
-            if (this.state.registered) {
+            if (this.state.login) {
+                alert('WELCOME AMIGO');
                 return <Redirect to='/home'/>
             }
 
@@ -147,31 +173,33 @@ class Register extends React.Component {
                                 <span className='text15-white'>Email</span>}</div>
 
                             {this.state.favourites ? <select className='bs-email-box' value={this.state.country_selected} onChange={this.handleCountryChange}>
-                                    <option selected='selected'>{this.state.country_selected}</option>
-                                    {this.state.countries.map(country => <option value ={country.name} key ={country.name}>{country.name}</option>)}
+                                    <option selected='selected' className={this.state.country_selected != false ? 'hidden' : ''}>Tap to select</option>
+                                    {this.state.countries.map(country => <option value ={country.name} key ={country.name + country.id}>{country.name}</option>)}
                                 </select>
                                 : <><input
                                     className={this.state.validEmail ? 'bs-email-box' : 'bs-email-box bs-email-box-error'}
                                     value={this.state.email} onChange={this.handleChangeEmail} type='email'/></>
                             }
                         </div>
-                        <div className='bs-password-container'>
+                        <div className={this.state.country_selected || !this.state.favourites ? 'bs-password-container' : 'bs-password-container hidden'}>
                             <div className='bs-password-text'>{this.state.favourites ?
                                 <span className='text15-white'>Select your favourite club</span> :
                                 <span className='text15-white'>Password</span>}</div>
+
                             {this.state.favourites ? <select className='bs-password-box' value={this.state.club_selected} onChange={this.handleClubChange}>
-                                    <option selected='selected'>{this.state.club_selected}</option>
-                                    {this.state.clubs_fatched ? this.state.country_clubs.map(club => <option value ={club.name} key ={club.name}>{club.name}</option>) : ''}
+                                    <option selected='selected' className={this.state.club_selected != false ? 'hidden' : ''}>Tap to select</option>
+                                    {this.state.country_clubs.length != 0 ? this.state.country_clubs.map(club => <option value ={club.name} key ={club.name + club.id}>{club.name}</option>) : ''}
                                 </select>
                                 : <><input
                                     className={this.state.validPassword ? 'bs-password-box' : 'bs-password-box bs-password-box-error'}
                                     type='password' value={this.state.password}
                                     onChange={this.handleChangePassword}/></>}
+
                             <div className='bs-text-under-password'><span className='text11-white'>By procceding further I agree with general terms & conditions. </span>
                             </div>
                         </div>
                         <div className='bs-create-account-box'
-                             onClick={this.state.favourites ? this.handleRegister : () => this.setState({favourites: true})}>
+                             onClick={!this.state.favourites ? () => this.handleRegisterStepOne() : (this.state.registered ? () => this.handleRegisterStepTwo() : ()=>this.handleError())}>
                             <span className='text18-white'>Continue</span></div>
                         <Link to={`/login`}>
                             <div className='bs-i-already-have-an-account-box'><span className='text14-white'>I already have an account.</span>

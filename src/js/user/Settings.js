@@ -30,7 +30,7 @@ class Settings extends React.Component {
                         </div>
                         <div className='right-box'>
                             <div className='edit-text'><span className='text11-grey'>Edit</span></div>
-                            <div className='chevron-field'></div>
+                            <div className='chevron-field'/>
                         </div>
                     </div>
                     <div className='settings-box'>
@@ -99,7 +99,7 @@ class Settings extends React.Component {
                     </div>
                     <div className='settings-box'>
                         <div className='left-box'>
-                            <div className='down-text'><span className='text17-red'>Logout</span></div>
+                            <Link to={`/login`}><div className='down-text'><span className='text17-red' onClick={()=> localStorage.clear()}>Logout</span></div></Link>
                         </div>
                         <div className='right-box'>
                             <div className='chevron-field-red'></div>
@@ -112,5 +112,3 @@ class Settings extends React.Component {
 }
 
 export default Settings;
-
-//                    <Link to={`/login`}><button onClick={() => localStorage.removeItem('user_id')} style={{margin: 100, fontSize: 24}}>LOGOUT</button></Link>
