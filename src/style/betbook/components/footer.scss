@@ -20,9 +20,14 @@
     .timeline {
       background-image: url("../assets/images/timeline_dark.PNG");
       background-size: cover;
-      width: 41px;
-      height: 37px;
+      height: 25px;
+      width: 25px;
       margin: 0 auto;
+
+
+      .text10-white {
+        line-height: 7;
+      }
     }
   }
 
@@ -32,9 +37,15 @@
 
     .ball {
       background-image: url("../assets/images/ball_dark.PNG");
-      width: 44px;
-      height: 38px;
+      background-size: cover;
+      height: 25px;
+      width: 25px;
       margin: 0 auto;
+
+
+      .text10-white {
+        line-height: 7;
+      }
     }
   }
 
@@ -45,9 +56,14 @@
     .star {
       background-image: url("../assets/images/star_final.svg");
       background-size: cover;
-      height: 30px;
-      width: 32px;
+      height: 25px;
+      width: 25px;
       margin: 0 auto;
+
+
+      .text10-white {
+        line-height: 7;
+      }
     }
   }
 
@@ -58,9 +74,14 @@
     .profile {
       background-image: url("../assets/images/profile_final.svg");
       background-size: cover;
-      height: 38px;
-      width: 39px;
+      height: 25px;
+      width: 25px;
       margin: 0 auto;
+
+
+      .text10-white {
+        line-height: 7;
+      }
     }
   }
 
@@ -70,6 +91,7 @@
     box-shadow: 0 0 20px #000000;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+
   }
 
   .active-timeline{
