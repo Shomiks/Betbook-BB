@@ -42,6 +42,7 @@ class Match_Details extends React.Component {
 
             updated['ticket'] = data;
             this.setState({realData: updated});
+            // this.sharedObj.apiHelper.favourites.update(localStorage.getItem('user_id'),this.state.realData.league.id);
             this.sharedObj.apiHelper.bids.updateFixtureBids(id, {updated});
         }
 

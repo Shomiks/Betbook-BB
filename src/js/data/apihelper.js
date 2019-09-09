@@ -43,7 +43,6 @@ class APIHelper extends React.Component {
         }
     };
 
-
     settings = {
         getSettings: (callBack) => {
             setTimeout(() => {
@@ -54,6 +53,16 @@ class APIHelper extends React.Component {
             setTimeout(() => {
                 callBack({success: true});
             }, timeoutInterval);
+        }
+    };
+
+    teams = {
+        getAll : (callBack) => {
+            fetch(`http://192.168.8.113/index.php/api/team`)
+                .then(res => res.json())
+                .then(res => {
+                    callBack(res);
+                })
         }
     };
 
@@ -105,7 +114,7 @@ class APIHelper extends React.Component {
                                 if(match.ticket) {
                                     Object.values(match.ticket).map(ticket => {
                                         if (ticket.user_id == user_id) user_ticket = ticket;
-                                    })
+                                    });
                                     match.ticket = user_ticket;
                                 }
                             });
@@ -185,18 +194,6 @@ class APIHelper extends React.Component {
                 .then(res => res.json())
                 .then(res => callBack(res))
         }
-    };
-
-    updateResults = (id, data, callBack) => {//data = result & ticket ?
-        console.log(JSON.stringify(data));
-        fetch(`http://192.168.8.113/index.php/api/result/` + id, {
-            method: 'PUT',
-            body: JSON.stringify(data.result),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(res => res.json())
     };
 
     favourites = {
