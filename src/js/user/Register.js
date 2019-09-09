@@ -18,11 +18,16 @@ class Register extends React.Component {
             country_id: null,
             team_id: null,
             favourites: false,
+            country_selected:false,
             registered: false,
             countries: null,
             clubs: null
         };
         this.sharedObj = props.sharedObj
+    }
+
+    componentDidMount() {
+        this.getAllCountries();
     }
 
     handleChangeUsername = (e) => {
@@ -92,17 +97,10 @@ class Register extends React.Component {
         })
     };
 
-    handleCountries = () => {
-      this.state.countries.forEach(country => {
-
-      })
-    };
-
     render() {
 
         if (this.state.favourites) {
-            this.getAllCLubs();
-            this.getAllCountries();
+            console.log(this.state.clubs)
         }
         if (this.state.registered) {
             return <Redirect to='/home'/>
@@ -119,7 +117,9 @@ class Register extends React.Component {
                         <div className='bs-email-text'>{this.state.favourites ?
                             <span className='text15-white'>Select your favourite national team</span> :
                             <span className='text15-white'>Email</span>}</div>
-                        {this.state.favourites ? <><select className='bs-email-box' value='Tap to select'/></>
+                        {this.state.favourites ? <select className='bs-email-box'>
+                                <option selected='selected'>Tap to select</option>
+                            </select>
                             : <><input
                                 className={this.state.validEmail ? 'bs-email-box' : 'bs-email-box bs-email-box-error'}
                                 value={this.state.email} onChange={this.handleChangeEmail} type='email'/></>
@@ -129,9 +129,11 @@ class Register extends React.Component {
                         <div className='bs-password-text'>{this.state.favourites ?
                             <span className='text15-white'>Select your favourite club</span> :
                             <span className='text15-white'>Password</span>}</div>
-                        {this.state.favourites ? <select className='bs-password-box'>
-                                <option selected='Tap to select'/>
-                                {this.renderOptions}
+                        {this.state.favourites ? <select className='bs-password-box' >
+                                <option selected='selected'>Tap to select</option>
+                                    {this.state.clubs.forEach(club => {
+                                        return <option value={club.name} />
+                                    })}
                             </select>
                             : <><input
                                 className={this.state.validPassword ? 'bs-password-box' : 'bs-password-box bs-password-box-error'}
