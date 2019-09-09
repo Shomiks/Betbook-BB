@@ -93,12 +93,24 @@
     box-shadow: 0 0 20px #000000;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    a{
+
+    a {
       text-decoration: none;
     }
 
     .ball {
       margin-top: 14px;
+    }
+
+    .star {
+      margin-top: 14px;
+
+      .center-text {
+        position: relative;
+        display: block;
+        left: 50%;
+        margin-left: -20px;
+      }
     }
 
   }
@@ -108,7 +120,8 @@
     background: linear-gradient(180deg, #FFAB39 0%, rgba(255, 255, 255, 0) 100%), #E86107;
     box-shadow: 0 0 20px #000000;
     border-top-right-radius: 10px;
-    a{
+
+    a {
       text-decoration: none;
     }
 
@@ -118,6 +131,13 @@
 
     .timeline {
       margin-top: 14px;
+
+      .center-text {
+        position: relative;
+        display: block;
+        left: 50%;
+        margin-left: -14px;
+      }
     }
   }
 
@@ -126,7 +146,8 @@
     background: linear-gradient(180deg, #FFAB39 0%, rgba(255, 255, 255, 0) 100%), #E86107;
     box-shadow: 0 0 20px #000000;
     border-top-left-radius: 10px;
-    a{
+
+    a {
       text-decoration: none;
     }
 
