@@ -19,6 +19,7 @@ import Profile_Tickets from "./js/tickets/Profile_Tickets";
 import Search from "./js/user/Search";
 import Settings from "./js/user/Settings";
 import FavoriteClub from "./js/user/FavoriteClub";
+import User_Favourite_Leagues from "./js/user/User_Favourite_Leagues";
 
 class App extends React.Component {
 
@@ -68,6 +69,7 @@ class App extends React.Component {
                    <Route path="/forgot-password" render={(props) => (<ForgotPassword sharedObj={this.sharedObject} {...props}/>)} />
                    <Route path="/welcome" render={(props) => (<AppHome sharedObj={this.sharedObject} {...props}/>)} />
                    <Route path="/home" render={(props) => (<Home_screen sharedObj={this.sharedObject} {...props}/>)}/>
+                   <Route path="/user_favourites" render={(props) => (<User_Favourite_Leagues sharedObj={this.sharedObject} {...props}/>)}/>
 
                    <Route path="/countries" render={(props) => (<Competition_Listing key={'competition_current'}{...props} sharedObj={this.sharedObject} />)}/>
                    <Route path="/country/:countryid" render={(props) => (<Detailed_Competition_Listing key={'competition_current'} sharedObj={this.sharedObject} {...props}/>)}/>

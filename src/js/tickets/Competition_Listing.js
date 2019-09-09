@@ -23,23 +23,24 @@ class Competition_Listing extends React.Component {
             this.sharedObj.headerInstance.setTitle('Leagues');
             this.sharedObj.headerInstance.setItemRight('star');
             this.sharedObj.footerInstance.setActive('ball');
-    })
+     })
     }
 
     render() {
+        console.log(this.state.realData)
 
         if (this.state.loaded) return (
             <div className='betbook_screen'>
                 <div className='main-content'>
                     <div className='countries-container'>
                         <div className='favourites'><span className='text11-grey'> Favorites </span></div>
-                        {this.state.realData.map((data) => <Link to={`country/${data.id}`}>
-                            <div key={data.id + '_'} className='country-field'>
+                        {this.state.realData.map((data) => <Link to={`country/${data.id}`} key={data.id + data.name}>
+                            <div className='country-field'>
                                 <div className='flag-container'><img className='flag' src={'./assets/images/Countries/'+data.flag+''} alt=''/></div>
                                 <div className='country-info'>
-                                    <div className='leagues-info'><span className='text11-grey'>{Object.values(data.leagues).length} Leagues</span></div>
+                                    <div className='leagues-info'><span className='text11-grey'>{data.leagues_count} Leagues</span></div>
                                     <div className='dataname-info'><span className='text15-white'>{data.name}</span></div>
-                                    <div className='number-matches-info'><span className='text11-grey'>154 matches</span></div>
+                                    <div className='number-matches-info'><span className='text11-grey'>{data.fixtures_count} Matches</span></div>
                                 </div>
                             </div>
                         </Link>)}

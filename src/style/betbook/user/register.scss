@@ -44,11 +44,6 @@
         font-family: SF Display;
         font-size: 15px;
         color: #2A2A2B;
-
-        &:focus {
-          outline: none;
-          border: solid 1px #f68c25;
-        }
       }
 
       .bs-username-box-error {
@@ -92,11 +87,6 @@
         font-family: SF Display;
         font-size: 15px;
         color: #2A2A2B;
-
-        &:focus {
-          outline: none;
-          border: solid 1px #f68c25;
-        }
       }
     }
 
@@ -108,11 +98,6 @@
       margin-bottom: 260px;
       left: 50%;
       margin-left: -152.5px;
-
-      &:focus {
-        outline: none;
-        border: solid 1px #f68c25;
-      }
 
       .bs-email-text {
         margin-bottom: 11px;
@@ -129,25 +114,15 @@
         font-family: SF Display;
         font-size: 15px;
         color: #2A2A2B;
-
-        &:focus {
-          outline: none;
-          border: solid 1px #f68c25;
-        }
       }
-
-      .bs-email-box-error {
+      .bs-email-box-error{
         height: 40px;
         width: 309px;
         background: linear-gradient(0deg, rgba(186, 67, 67, 0.5), rgba(186, 67, 67, 0.5));
         border: 1px solid #BA4343;
         box-sizing: border-box;
         border-radius: 25px;
-        color: #FFF;
-      }
-
-      .bs-error-text-down {
-        color: #d65b4d;
+        color:#FFF;
       }
     }
 
@@ -159,11 +134,6 @@
       margin-bottom: 180px;
       left: 50%;
       margin-left: -152.5px;
-
-      &:focus {
-        outline: none;
-        border: solid 1px #f68c25;
-      }
 
       .bs-password-text {
         margin-bottom: 11px;
@@ -180,11 +150,6 @@
         font-family: SF Display;
         font-size: 15px;
         color: #2A2A2B;
-
-        &:focus {
-          outline: none;
-          border: solid 1px #f68c25;
-        }
       }
 
       .bs-password-box-error {
@@ -264,6 +229,6 @@
   }
 }
 
-.none {
-  display: none;
+.hidden{
+  display:none;
 }

@@ -1,7 +1,6 @@
 import React from 'react'
 import '../../style/betbook/home_screen.scss'
 import {Link} from "react-router-dom";
-import Footer from "../components/footer";
 
 class Home_screen extends React.Component {
 
@@ -27,9 +26,9 @@ class Home_screen extends React.Component {
     };
 
     handlePreviousMatchWeek = (data) => {
-        if (1) return <div className='last-week'>
+        if (data.round ? (data.round.order != 0) : (0)) return <div className='last-week'>
             <div className='hs_left-box'>
-                <div><span className='text11-white'>Matchweek {data.round.order}</span></div>
+                <div><span className='text11-white'>Matchweek {data.round ? data.round.order : 'unknown'}</span></div>
                 <div className='hs_left-middle-text'><span className='text11-white'>Success Rate xx%</span></div>
                 <div className='hs_left-bottom-text'><Link to={`league/${data.league.id}/round/4`}>
                     <div><span className='text11-white'>Check the bet</span></div>
@@ -42,8 +41,8 @@ class Home_screen extends React.Component {
     handleCurrentMatchWeek = (data) => {
         return <div className='current-week'>
             <div className='hs_right-box'>
-                <div><span className='text11-white'>Matchweek {parseInt(data.round.order) + 1}</span></div>
-                <div className='hs_left-middle-text'><span className='text11-white'>Start of the week</span></div>
+                <div><span className='text11-white'>Matchweek {data.round  ? (parseInt(data.round.order) + 1) : 'unknown'}</span></div>
+                <div className='hs_left-middle-text'><span className='text11-white'>{data.round ? data.round.start_date : 'Unknown start date'}</span></div>
                 <div className='hs_left-bottom-text'><Link to={`league/${data.league.id}/round/4`}>
                     <div><span className='text11-white'>Create bet</span></div>
                 </Link></div>
@@ -74,6 +73,8 @@ class Home_screen extends React.Component {
     };
 
     render() {
+
+        console.log(this.state.realData)
 
         if (this.state.loaded) return (
             <div className='betbook_screen'>

@@ -20,15 +20,22 @@ class Login extends React.Component {
 
     handleLogin = () => {
         if(this.state.username!='' && this.state.password!=''){
-        this.sharedObj.apiHelper.login(this.state.username,this.state.password,(res) => {
+        this.sharedObj.apiHelper.login(this.state.username,this.state.password,1,(res) => {
             localStorage.setItem('user_id',res.id);
-                if (this.state.username == res.username && this.state.password == res.password) {
+                if (res) {
                     this.setState({loggedIn:true});
+                    alert("WELCOME AMIGO!");
                 }
-                    else this.setState({validName: false, validPassword: false});
+                    else{
+                       alert('wrong username/password!');
+                        this.setState({validName: false, validPassword: false});
+                        }
                 })
         }
-            else this.setState({validName:false,validPassword:false});
+            else {
+                alert('username and password cannot be empty!');
+            this.setState({validName: false, validPassword: false});
+        }
     };
 
     handleChangeUsername = (e) => {
