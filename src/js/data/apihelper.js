@@ -8,21 +8,21 @@ class APIHelper extends React.Component {
     }
 
     login = (username, password,login, callBack) => {
-        console.log(username,password);
         fetch(`http://192.168.8.113/index.php/api/user/?login=` + login + `&username=` + username + '&password=' + password)
             .then(res => res.json())
             .then(res => {
-                console.log(res);
                 callBack(res);
             })
     };
 
     register = {
-        register : (username, email, password, callBack) => {
+        register : (username, password, email, country_id, club_id, callBack) => {
             let data = {
                 username: username,
                 email: email,
-                password: password
+                password: password,
+                country_id: country_id,
+                team_id: club_id
             };
             fetch(`http://192.168.8.113/index.php/api/user/`, {
                 method: 'POST',
@@ -53,6 +53,27 @@ class APIHelper extends React.Component {
             setTimeout(() => {
                 callBack({success: true});
             }, timeoutInterval);
+        },
+        getUserCountryAndClubByID: (id,callBack) => {
+            fetch(`http://192.168.8.113/index.php/api/user/?id=` + id)
+                .then(res => res.json())
+                .then(res => {
+                    callBack(res);
+                })
+        },
+        updateCountryAndTeam: (user_id, country_id, team_id) =>{
+           let data = {
+                country_id: country_id,
+                team_id: team_id
+            };
+            fetch(`http://192.168.8.113/index.php/api/user/` + user_id,{
+                method: 'PUT',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(res => res.json())
         }
     };
 
@@ -173,7 +194,6 @@ class APIHelper extends React.Component {
 
     bids = {
         updateFixtureBids : (id,data) => {
-            console.log(JSON.stringify(data.updated.ticket));
             fetch(`http://192.168.8.113/index.php/api/user_fixture_bid/` + id, {
                 method: 'PUT',
                 body: JSON.stringify(data.updated.ticket),
@@ -210,7 +230,6 @@ class APIHelper extends React.Component {
                 }
             })
                 .then(res => res.json())
-                .then(res => console.log(res));
         },
         delete: (id) => {
             fetch(`http://192.168.8.113/index.php/api/user_favourite_league/` + id, {
@@ -220,7 +239,6 @@ class APIHelper extends React.Component {
                 }
         })
                 .then(res => res.json())
-                .then(res=> console.log(res))
      }
     }
 }
