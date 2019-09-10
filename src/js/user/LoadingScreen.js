@@ -10,11 +10,11 @@ class LoadingScreen extends React.Component {
         }
     }
 
-    render() {
+    render() {///26/35
 
         return (
             <div className='betbook-screen-loading'>
-                <div className='betbook-logo-box'><img src='./assets/images/betbook-logo.png'/></div>
+                <div className='betbook-logo-box'><img src='./assets/images/betbook---logo.png'></img></div>
             </div>
         )
     }

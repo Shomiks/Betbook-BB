@@ -75,13 +75,14 @@ html, body {
 }
 
 .App {
-  padding: 0;
   margin: 0;
   display: block;
   position: relative;
   height: 100%;
   width: 100%;
-  overflow: scroll;
+  overflow: hidden;
+  //padding: 60px 0;
+  //box-sizing: border-box;
 }
 
 .text6-white {
