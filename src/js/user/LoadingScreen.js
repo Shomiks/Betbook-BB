@@ -14,7 +14,7 @@ class LoadingScreen extends React.Component {
 
         return (
             <div className='betbook-screen-loading'>
-                <div className='betbook-logo-box'><img src='./assets/images/betbook-logo.png'></img></div>
+                <div className='betbook-logo-box'><img src='./assets/images/betbook---logo.png'></img></div>
             </div>
         )
     }

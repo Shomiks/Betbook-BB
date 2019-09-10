@@ -24,16 +24,20 @@
         align-items: center;
 
         .settings {
-          margin-left:15px;
-          height: 15px;
-          width: 15px;
+          margin-left: 20px;
+          height: 23px;
+          width: 23px;
+          background-image: url("assets/images/settings---final.svg");
+          background-repeat: no-repeat;
         }
 
         .search {
-          //background-image: url("./assets/images/search1.PNG");
-          margin-right:15px;
-          height: 22px;
-          width: 22px;
+          margin-right: 20px;
+          height: 23px;
+          width: 23px;
+          background-image: url("assets/images/search---final.svg");
+          background-repeat: no-repeat;
+          background-size: cover;
         }
       }
 

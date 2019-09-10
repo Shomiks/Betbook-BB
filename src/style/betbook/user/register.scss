@@ -11,7 +11,7 @@
     position: absolute;
     top: 196px;
     left: 50%;
-    margin-left: -87px;
+    margin-left: -107px;
   }
 
   .main-container {
@@ -44,6 +44,11 @@
         font-family: SF Display;
         font-size: 15px;
         color: #2A2A2B;
+
+        &:focus {
+          outline: none;
+          border-color: #1E8FE1;
+        }
       }
 
       .bs-username-box-error {
@@ -87,6 +92,11 @@
         font-family: SF Display;
         font-size: 15px;
         color: #2A2A2B;
+
+        &:focus {
+          outline: none;
+          border-color: #f68c25;
+        }
       }
     }
 
@@ -114,15 +124,26 @@
         font-family: SF Display;
         font-size: 15px;
         color: #2A2A2B;
+
+        &:focus {
+          outline: none;
+          border-color: #f68c25;
+        }
       }
-      .bs-email-box-error{
+
+      .bs-email-box-error {
         height: 40px;
         width: 309px;
         background: linear-gradient(0deg, rgba(186, 67, 67, 0.5), rgba(186, 67, 67, 0.5));
         border: 1px solid #BA4343;
         box-sizing: border-box;
         border-radius: 25px;
-        color:#FFF;
+        color: #FFF;
+
+        &:focus {
+          outline: none;
+          border-color: #f68c25;
+        }
       }
     }
 
@@ -150,6 +171,11 @@
         font-family: SF Display;
         font-size: 15px;
         color: #2A2A2B;
+
+        &:focus {
+          outline: none;
+          border-color: #f68c25;
+        }
       }
 
       .bs-password-box-error {
@@ -160,6 +186,11 @@
         box-sizing: border-box;
         border-radius: 25px;
         color: #FFF;
+
+        &:focus {
+          outline: none;
+          border-color: #f68c25;
+        }
       }
 
       .bs-text-under-password {
@@ -179,14 +210,37 @@
       left: 50%;
       margin-left: -152.5px;
 
+      &:focus {
+        outline: none;
+        border-color: #f68c25;
+      }
+
 
       .text18-white {
         line-height: 2.8;
       }
     }
 
-    .bs-i-already-have-an-account-box {
+    .bs-signin-box {
       position: absolute;
+      bottom: 81px;
+      height: 40px;
+      width: 225px;
+      border: 1px solid #FFFFFF;
+      box-sizing: border-box;
+      border-radius: 25px;
+      left: 50%;
+      margin-left: -112.5px;
+
+
+
+      .text15-white {
+        line-height: 2.6;
+      }
+    }
+
+    .bs-i-already-have-an-account-box {
+      position: relative;
       display: block;
       height: 40px;
       width: 200px;
@@ -195,7 +249,25 @@
       border: 1px solid white;
       left: 50%;
       margin-left: -100px;
+
+      &:focus {
+        outline: none;
+        border-color: #f68c25;
+      }
     }
+
+
+    .sent-email-box {
+      height: 124px;
+      width: 180px;
+      position: relative;
+      margin: 0 auto;
+
+      .text17-white {
+        line-height: 31px;
+      }
+    }
+
   }
 
 }
@@ -229,6 +301,6 @@
   }
 }
 
-.hidden{
-  display:none;
+.hidden {
+  display: none;
 }
