@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../../src/style/betbook/matchdetails.scss';
 import '../../../src/style/app.scss';
+import Loader from "../components/loader";
 class Match_Details extends React.Component {
 
     constructor(props) {
@@ -253,7 +254,7 @@ class Match_Details extends React.Component {
     };
 
     render() {
-        return <>{this.state.loaded == true ? this.renderStateCompopnent() : <div/>}</>
+        return <>{this.state.loaded == true ? this.renderStateCompopnent() : <Loader/>}</>
     }
 }
 

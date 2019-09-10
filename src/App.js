@@ -49,7 +49,7 @@ class App extends React.Component {
 
     onHashChange = () => {
         this.setState({hash: window.location.hash})
-    }
+    };
 
     render() {
         if (this.state.loaded) {
@@ -113,7 +113,7 @@ class App extends React.Component {
 
             );
         } else {
-            return (<div>Loading....</div>);
+            return <Loader/>
         }
     }
 }

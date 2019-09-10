@@ -1,5 +1,5 @@
 .leagues-container {
-
+  overflow: hidden;
   margin-top: 10px;
 
   .league-field {
@@ -20,7 +20,6 @@
         display: flex;
         align-items: center;
         position: relative;
-
 
 
         text18-white {
@@ -53,20 +52,27 @@
       }
     }
 
-    .league_favorite_action{
-      right: 20px;
+    .league_favorite_action {
+      right: 10px;
       position: absolute;
-      .league_favorite_action_label.MuiFormControlLabel-root{
+      padding: 30px;
+      cursor: pointer;
+      display: flex;
+
+      .league_favorite_action_label.MuiFormControlLabel-root {
         margin-right: 0px;
-        margin-left: 0px;
-        padding: 20px 10px 14px 5px;
+        margin-left: 0px;;
       }
 
       .star {
-        background-image: url("./assets/images/star_final.svg");
-        background-size: cover;
-        height: 22px;
-        width: 22px;
+        &_checked {
+          svg {
+            path {
+              fill: #f68c25;
+              stroke: #f68c25;
+            }
+          }
+        }
       }
     }
 

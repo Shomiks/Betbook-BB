@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../../src/style/betbook/detailed-competitionlisting.scss';
 import {Link} from "react-router-dom";
+import Loader from "../components/loader";
 
 class Detailed_Competition_Listing extends React.Component {
 
@@ -53,7 +54,9 @@ class Detailed_Competition_Listing extends React.Component {
                 </div>
             </div>
         );
-        else return <div>Loading ...</div>
+        else {
+            return <Loader/>
+        }
     }
 }
 
