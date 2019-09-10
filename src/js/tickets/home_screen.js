@@ -1,6 +1,7 @@
 import React from 'react'
 import '../../style/betbook/home_screen.scss'
 import {Link} from "react-router-dom";
+import Loader from "../components/loader";
 
 class Home_screen extends React.Component {
 
@@ -61,7 +62,7 @@ class Home_screen extends React.Component {
             return <div className='favourite-league' key={data.id + '_'}>
                 <div className='favourite-league-container'>
                     {this.handlePreviousMatchWeek(data)}
-                    <div className='logo'><img className='league-logo' src={'./assets/images/Logos/' + data.league.logo} alt=''/><br/>
+                    <div className='logo'><img className='league-logo'  src={'./assets/images/Logos/' + data.league.logo} alt=''/><br/>
                         <div className='hs_league-name'><span className='text11'>{data.league.name}</span></div>
                     </div>
                     {this.handleCurrentMatchWeek(data)}
@@ -97,7 +98,9 @@ class Home_screen extends React.Component {
                 </div>
             </div>
         );
-        else return <div>Loading...</div>
+        else {
+            return <Loader/>
+        }
     }
 }
 

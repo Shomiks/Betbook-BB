@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../../src/style/betbook/profile-tickets.scss';
 import {Link} from "react-router-dom";
+import Loader from "../components/loader";
 
 
 class Profile_Tickets extends React.Component {
@@ -8,7 +9,9 @@ class Profile_Tickets extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {};
+        this.state = {
+            loaded:false
+        };
         this.sharedObj = props.sharedObj
     }
 
@@ -16,11 +19,12 @@ class Profile_Tickets extends React.Component {
         setTimeout(() => {
             this.sharedObj.footerInstance.setActive('profile');
         },10 );
+        this.setState({loaded:true})
     }
 
     render() {
 
-        return (
+       if(this.state.loaded) return (
             <div className='betbook_context'>
                     <div className='pt_header-field'>
                         <div className='pt_header-central-field'>
@@ -134,6 +138,9 @@ class Profile_Tickets extends React.Component {
                     </div>
                 </div>
         );
+       else {
+           return <Loader/>
+       }
     }
 }
 

@@ -2,6 +2,7 @@ import React from 'react';
 import MatchShort from '../components/match_short';
 import {Link} from "react-router-dom";
 import '../../style/betbook/week-games.scss';
+import Loader from "../components/loader";
 
 class Week_games_Listing extends React.Component {
 
@@ -46,7 +47,9 @@ class Week_games_Listing extends React.Component {
             </div>
         );
 
-        else return <div>Loading...</div>
+        else {
+            return <Loader/>
+        }
     }
 }
 
