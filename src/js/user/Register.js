@@ -150,6 +150,7 @@ class Register extends React.Component {
             else return (<div className='betbook-screen-login'>
                     <div className='main-container'>
                         <div className='betbook-logo-box'><img src='./assets/images/betbook---logo.png' alt=''/></div>
+                        <div className='register-container'>
                         <div className={this.state.favourites ? 'hidden' : 'bs-user-container'}>
                             <div className='bs-username-text'><span className='text15-white'>Username</span></div>
                             <input
@@ -193,6 +194,7 @@ class Register extends React.Component {
                             <div className='bs-i-already-have-an-account-box'><span className='text14-white'>I already have an account.</span>
                             </div>
                         </Link>
+                        </div>
                     </div>
                 </div>
             )
