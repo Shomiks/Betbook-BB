@@ -16,6 +16,11 @@ class Home_screen extends React.Component {
 
     componentDidMount = () => {
         this.getUserFavorites();
+        this.getUsername();
+    };
+
+    getUsername = () => {
+
     };
 
     getUserFavorites = () => {
@@ -74,8 +79,6 @@ class Home_screen extends React.Component {
 
     render() {
 
-        console.log(this.state.realData)
-
         if (this.state.loaded) return (
             <div className='betbook_screen'>
                 <div className='betbook-logo'/>
@@ -86,7 +89,7 @@ class Home_screen extends React.Component {
                             {this.handleFavouriteLeagues()}</>
                         :
                         <>
-                            <div className='text17-white'>Welcome User!</div>
+                            <div className='text17-white'>Welcome {this.state.real}!</div>
                             {this.handleFirstTimeLogin()}</>
                     }
                 </div>

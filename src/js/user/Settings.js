@@ -22,7 +22,7 @@ class Settings extends React.Component {
 
         return (<div className='betbook-screen'>
                 <div className='main-container'>
-                    <div className='personal-info'><span className='text11-grey'>Personal info</span></div>
+                    <div className='personal-info'><span className='text11-grey'>Personal info</span><Link to={`/edit`}><button>EDIT</button></Link></div>
                     <div className='settings-box'>
                         <div className='left-box'>
                             <div className='up-text'><span className='text11-grey'>Username</span></div>

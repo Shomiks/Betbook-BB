@@ -53,6 +53,27 @@ class APIHelper extends React.Component {
             setTimeout(() => {
                 callBack({success: true});
             }, timeoutInterval);
+        },
+        getUserCountryAndClubByID: (id,callBack) => {
+            fetch(`http://192.168.8.113/index.php/api/user/?id=` + id)
+                .then(res => res.json())
+                .then(res => {
+                    callBack(res);
+                })
+        },
+        updateCountryAndTeam: (user_id, country_id, team_id) =>{
+           let data = {
+                country_id: country_id,
+                team_id: team_id
+            };
+            fetch(`http://192.168.8.113/index.php/api/user/` + user_id,{
+                method: 'PUT',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(res => res.json())
         }
     };
 

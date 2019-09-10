@@ -20,6 +20,7 @@ import Search from "./js/user/Search";
 import Settings from "./js/user/Settings";
 import FavoriteClub from "./js/user/FavoriteClub";
 import User_Favourite_Leagues from "./js/user/User_Favourite_Leagues";
+import Edit from "./js/user/Edit";
 
 class App extends React.Component {
 
@@ -82,6 +83,7 @@ class App extends React.Component {
                    <Route path="/profile" render={(props) => (<Profile_Tickets sharedObj={this.sharedObject} {...props}/>)}/>
                    <Route path="/settings" render={(props) => (<Settings sharedObj={this.sharedObject} {...props}/>)}/>
                    <Route path="/search" render={(props) => (<Search sharedObj={this.sharedObject} {...props}/>)}/>
+                   <Route path="/edit" render={(props) => (<Edit sharedObj={this.sharedObject} {...props}/>)}/>
 
                    {(window.location.hash=='#/login' || window.location.hash=='#/register' || window.location.hash=='#/forgot-password' || window.location.hash=='#/loading' || window.location.hash=='#/welcome'
                    || window.location.hash=='#/favorite-club')
