@@ -25,6 +25,10 @@ class Match_Details extends React.Component {
         });
     };
 
+    checkIfUnbided = () => {
+        return !(this.state.realData.ticket['game1_tip'] || this.state.realData.ticket['game2_tip'] || this.state.realData.ticket['game3_tip'] || this.state.realData.ticket['game4_tip'])
+    };
+
     handleBidClick = (game,tip,className) => {
         if(this.state.realData.ticket) {
 
@@ -38,6 +42,12 @@ class Match_Details extends React.Component {
             } else {
                 data[game + '_tip'] = null;
                 data[game + '_odd'] = 0;
+                if(this.checkIfUnbided()) {
+                    this.sharedObj.apiHelper.bids.deleteFixtureBid(this.state.realData.ticket.id);
+                    updated['ticket'] = null;
+                    this.setState({realData: updated});
+                    return;
+                }
             }
 
             updated['ticket'] = data;
@@ -51,7 +61,6 @@ class Match_Details extends React.Component {
             ticket.fixture_id = this.state.realData.id;
             ticket[game + '_tip'] = tip;
             ticket[game + '_odd'] = this.state.realData[game + '_' + tip];
-
             this.handleCreateTicket(ticket);
         }
     };
@@ -111,7 +120,7 @@ class Match_Details extends React.Component {
         return className;
     };
 
-    handleBidType = (label, game, tip, bidfield) => {//OVDE PROMENI !THIS.STATE.REALDATA.RESULT
+    handleBidType = (label, game, tip, bidfield) => {
 
         let className = this.handleBidState(game,tip,bidfield);
 
@@ -153,7 +162,7 @@ class Match_Details extends React.Component {
                     {this.state.realData.result ? this.renderResult() : null}
                 </div>
                 <div className='md_away-team-field'>
-                    <img className='logo' src={'./assets/images/Teams/' + this.state.realData.team_away.logo}/>
+                    <img className='logo' src={'./assets/images/Teams/' + this.state.realData.team_away.logo} alt=''/>
                     <div className='home-text-field'><span className='text18-white'>{this.state.realData.team_away.name}</span></div>
                 </div>
             </div>
@@ -253,6 +262,8 @@ class Match_Details extends React.Component {
     };
 
     render() {
+        console.log(this.state.realData)
+
         return <>{this.state.loaded == true ? this.renderStateCompopnent() : <div/>}</>
     }
 }

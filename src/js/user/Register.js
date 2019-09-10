@@ -125,13 +125,8 @@ class Register extends React.Component {
     };
 
     handleClubChange = (event) => {
-        let club_selected = event.target.value;
-       if(this.state.country_clubs.length > 0) this.state.country_clubs.forEach(club=>{
-            if(club.name == club_selected) {
-                this.setState({team_id:event.target.value});
-            }
-        });
-        this.setState({club_selected:club_selected,registered:true})
+        let club_selected_id = event.target.value;
+        this.setState({team_id:club_selected_id,registered:true})
     };
 
     handleError = () => {
@@ -150,12 +145,16 @@ class Register extends React.Component {
             else return (<div className='betbook-screen-login'>
                     <div className='main-container'>
                         <div className='betbook-logo-box'><img src='./assets/images/betbook-logo.png' alt=''/></div>
+
+
                         <div className={this.state.favourites ? 'hidden' : 'bs-user-container'}>
                             <div className='bs-username-text'><span className='text15-white'>Username</span></div>
                             <input
                                 className={this.state.validUsername ? 'bs-username-box' : 'bs-username-box bs-username-box-error'}
                                 type='text' value={this.state.username} onChange={this.handleChangeUsername}/>
                         </div>
+
+
                         <div className='bs-email-container'>
                             <div className='bs-email-text'>{this.state.favourites ?
                                 <span className='text15-white'>Select your favourite national team</span> :
@@ -170,6 +169,8 @@ class Register extends React.Component {
                                     value={this.state.email} onChange={this.handleChangeEmail} type='email'/></>
                             }
                         </div>
+
+
                         <div className={this.state.country_id || !this.state.favourites ? 'bs-password-container' : 'bs-password-container hidden'}>
                             <div className='bs-password-text'>{this.state.favourites ?
                                 <span className='text15-white'>Select your favourite club</span> :
@@ -186,6 +187,8 @@ class Register extends React.Component {
 
                             <div className='bs-text-under-password'><span className='text11-white'>By procceding further I agree with general terms & conditions. </span></div>
                         </div>
+
+
                         <div className='bs-create-account-box'
                              onClick={!this.state.favourites ? () => this.handleRegisterStepOne() : (this.state.registered ? () => this.handleRegisterStepTwo() : ()=>this.handleError())}>
                             <span className='text18-white'>Continue</span></div>

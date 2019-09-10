@@ -16,14 +16,15 @@ class APIHelper extends React.Component {
     };
 
     register = {
-        register : (username, password, email, country_id, club_id, callBack) => {
+        register : (username, password, email, country_id, team_id, callBack) => {
             let data = {
                 username: username,
                 email: email,
                 password: password,
                 country_id: country_id,
-                team_id: club_id
+                team_id: team_id
             };
+            console.log(data)
             fetch(`http://192.168.8.113/index.php/api/user/`, {
                 method: 'POST',
                 body: JSON.stringify(data),
@@ -213,7 +214,16 @@ class APIHelper extends React.Component {
             })
                 .then(res => res.json())
                 .then(res => callBack(res))
-        }
+        },
+        deleteFixtureBid: (id) => {
+            fetch(`http://192.168.8.113/index.php/api/user_fixture_bid/` + id, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(res => res.json())
+         }
     };
 
     favourites = {
