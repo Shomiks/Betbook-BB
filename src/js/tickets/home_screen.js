@@ -79,6 +79,8 @@ class Home_screen extends React.Component {
 
     render() {
 
+        console.log(this.state.realData)
+
         if (this.state.loaded) return (
             <div className='betbook_screen'>
                 <div className='betbook-logo'/>

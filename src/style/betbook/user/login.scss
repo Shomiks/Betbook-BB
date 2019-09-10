@@ -1,122 +1,122 @@
-//.betbook-screen-login {
-//  height: 100%;
-//  width: 100%;
-//  position: absolute;
-//  display: block;
-//  background: linear-gradient(to bottom, #131313 0%, #1c1c1c 0%, #111111 0%, #000000 0%, #2c2c2c 0%, #111111 0%, #000000 0%, #2b2b2b 1%, #111111 1%, #898989 99%, #666666 100%, #4c4c4c 100%);
-//
-//  .betbook-logo-box {
-//    position: absolute;
-//    top: 0;
-//    margin-top: 115px;
-//    left: 50%;
-//    margin-left: -98px;
-//
-//  }
-//
-//  .bs-username-container {
-//    height: 80px;
-//    width: 305px;
-//    position: absolute;
-//    top: 0;
-//    margin-top: 320px;
-//    left: 50%;
-//    margin-left: -152.5px;
-//
-//    .bs-username-text {
-//      margin-bottom: 11px;
-//    }
-//
-//    .bs-username-box {
-//      height: 40px;
-//      width: 305px;
-//      background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
-//      border: 1px solid #FFFFFF;
-//      box-sizing: border-box;
-//      border-radius: 25px;
-//      padding-left: 20px;
-//    }
-//  }
-//
-//  .bs-email-container {
-//    height: 80px;
-//    width: 305px;
-//    position: absolute;
-//    top: 0;
-//    margin-top: 402px;
-//    left: 50%;
-//    margin-left: -152.5px;
-//
-//    .bs-email-text {
-//      margin-bottom: 11px;
-//    }
-//
-//    .bs-email-box {
-//      height: 40px;
-//      width: 305px;
-//      background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
-//      border: 1px solid #FFFFFF;
-//      box-sizing: border-box;
-//      border-radius: 25px;
-//      padding-left: 20px;
-//    }
-//  }
-//
-//  .bs-password-container {
-//    height: 80px;
-//    width: 305px;
-//    position: absolute;
-//    top: 0;
-//    margin-top: 482px;
-//    left: 50%;
-//    margin-left: -152.5px;
-//
-//    .bs-password-text {
-//      margin-bottom: 11px;
-//    }
-//
-//    .bs-password-box {
-//      height: 40px;
-//      width: 305px;
-//      background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
-//      border: 1px solid #FFFFFF;
-//      box-sizing: border-box;
-//      border-radius: 25px;
-//      padding-left: 20px;
-//    }
-//
-//    .bs-text-under-password {
-//      margin-top: 24px;
-//    }
-//  }
-//
-//
-//  .bs-create-account-box {
-//    position: absolute;
-//    display: block;
-//    height: 50px;
-//    width: 305px;
-//    bottom: 0;
-//    margin-bottom: 145px;
-//    background: linear-gradient(180deg, #FEA938 0%, rgba(255, 171, 58, 0) 100%), #EA6309;
-//    border-radius: 25px;
-//    left: 50%;
-//    margin-left: -152.5px;
-//  }
-//
-//  .bs-i-already-have-an-account-box {
-//    position: absolute;
-//    display: block;
-//    height: 40px;
-//    width: 200px;
-//    bottom: 0;
-//    margin-bottom: 80px;
-//    border-radius: 25px;
-//    border: 1px solid white;
-//    left: 50%;
-//    margin-left: -100px;
-//  }
-//
-//
-//}
-//
+.betbook-screen-login {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: block;
+  background: linear-gradient(to bottom, #131313 0%, #1c1c1c 0%, #111111 0%, #000000 0%, #2c2c2c 0%, #111111 0%, #000000 0%, #2b2b2b 1%, #111111 1%, #898989 99%, #666666 100%, #4c4c4c 100%);
+
+  .betbook-logo-box {
+    position: absolute;
+    top: 0;
+    margin-top: 115px;
+    left: 50%;
+    margin-left: -98px;
+
+  }
+
+  .bs-username-container {
+    height: 80px;
+    width: 305px;
+    position: absolute;
+    top: 0;
+    margin-top: 320px;
+    left: 50%;
+    margin-left: -152.5px;
+
+    .bs-username-text {
+      margin-bottom: 11px;
+    }
+
+    .bs-username-box {
+      height: 40px;
+      width: 305px;
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+      border: 1px solid #FFFFFF;
+      box-sizing: border-box;
+      border-radius: 25px;
+      padding-left: 20px;
+    }
+  }
+
+  .bs-email-container {
+    height: 80px;
+    width: 305px;
+    position: absolute;
+    top: 0;
+    margin-top: 402px;
+    left: 50%;
+    margin-left: -152.5px;
+
+    .bs-email-text {
+      margin-bottom: 11px;
+    }
+
+    .bs-email-box {
+      height: 40px;
+      width: 305px;
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+      border: 1px solid #FFFFFF;
+      box-sizing: border-box;
+      border-radius: 25px;
+      padding-left: 20px;
+    }
+  }
+
+  .bs-password-container {
+    height: 80px;
+    width: 305px;
+    position: absolute;
+    top: 0;
+    margin-top: 482px;
+    left: 50%;
+    margin-left: -152.5px;
+
+    .bs-password-text {
+      margin-bottom: 11px;
+    }
+
+    .bs-password-box {
+      height: 40px;
+      width: 305px;
+      background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+      border: 1px solid #FFFFFF;
+      box-sizing: border-box;
+      border-radius: 25px;
+      padding-left: 20px;
+    }
+
+    .bs-text-under-password {
+      margin-top: 24px;
+    }
+  }
+
+
+  .bs-create-account-box {
+    position: absolute;
+    display: block;
+    height: 50px;
+    width: 305px;
+    bottom: 0;
+    margin-bottom: 145px;
+    background: linear-gradient(180deg, #FEA938 0%, rgba(255, 171, 58, 0) 100%), #EA6309;
+    border-radius: 25px;
+    left: 50%;
+    margin-left: -152.5px;
+  }
+
+  .bs-i-already-have-an-account-box {
+    position: absolute;
+    display: block;
+    height: 40px;
+    width: 200px;
+    bottom: 0;
+    margin-bottom: 80px;
+    border-radius: 25px;
+    border: 1px solid white;
+    left: 50%;
+    margin-left: -100px;
+  }
+
+
+}
+

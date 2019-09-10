@@ -39,8 +39,10 @@ class Match_Details extends React.Component {
             if (className !== 'bid-field bided') {
                 data[game + '_tip'] = tip;
                 data[game + '_odd'] = this.state.realData[game + '_' + tip];
+                data['bid_score'] = parseFloat(data['bid_score']) + parseFloat(data[game + '_odd']);
             } else {
                 data[game + '_tip'] = null;
+                data['bid_score'] = parseFloat(data['bid_score']) - parseFloat(data[game + '_odd']);
                 data[game + '_odd'] = 0;
                 if(this.checkIfUnbided()) {
                     this.sharedObj.apiHelper.bids.deleteFixtureBid(this.state.realData.ticket.id);
@@ -61,6 +63,7 @@ class Match_Details extends React.Component {
             ticket.fixture_id = this.state.realData.id;
             ticket[game + '_tip'] = tip;
             ticket[game + '_odd'] = this.state.realData[game + '_' + tip];
+            ticket['bid_score'] = ticket[game + '_odd'];
             this.handleCreateTicket(ticket);
         }
     };
@@ -237,7 +240,7 @@ class Match_Details extends React.Component {
 
 
     renderStateCompopnent = () => {
-        this.sharedObj.headerInstance.setTitle(this.state.realData.round.name);
+        // this.sharedObj.headerInstance.setTitle(this.state.realData.round.name);
 
         let classState ='betbook_screen';
 

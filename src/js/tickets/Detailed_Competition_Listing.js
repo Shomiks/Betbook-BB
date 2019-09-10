@@ -28,6 +28,7 @@ class Detailed_Competition_Listing extends React.Component {
 
     render() {
 
+        console.log(this.state.realData)
 
 
         if (this.state.loaded) return (
@@ -39,7 +40,7 @@ class Detailed_Competition_Listing extends React.Component {
                             <div className='leagues-info'>
                             <div className='league-info'><span className='text11-grey'>Matchweek 4</span></div>
                             <div className='dataname-info'><span className='text15-white'>{data.name}</span></div>
-                            <div className='number-matches-info'><span className='text11-grey'>10 matches</span></div>
+                            <div className='number-matches-info'><span className='text11-grey'>{data.fixtures_count} matches</span></div>
                             </div>
                         </div></Link>)}
                     </div>

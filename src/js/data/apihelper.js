@@ -106,79 +106,44 @@ class APIHelper extends React.Component {
                 })
         },
         getByID: (league_id,user_id, callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/round/?league_id=` + league_id + '?user_id=' + user_id)
+            console.log(league_id,user_id)
+            fetch(`http://192.168.8.113/index.php/api/league/?league_id=` + league_id + '&user_id=' + user_id)
                 .then(res => res.json())
                 .then(res => {
-                    if(res['1']) {
-                        if(res['1'].matches) {
-                            let matches = Object.values(res['1'].matches);
-                            matches.map(match => {
-                                let user_ticket = null;
-                               if(match.ticket) {
-                                   Object.values(match.ticket).map(ticket => {
-                                       if (ticket.user_id == user_id) user_ticket = ticket;
-                                   });
-                                     match.ticket = user_ticket;
-                               }
-                            });
-                            res['1'].matches = matches;
-                            callBack(res['1'])
-                        }
-                        else callBack(res['1'])
-                    }
-                    else {
-                        if(res)
-                        if(res['0'].matches) {
-                            let matches = Object.values(res['0'].matches);
-                            matches.map(match => {
-                                let user_ticket = null;
-                                if(match.ticket) {
-                                    Object.values(match.ticket).map(ticket => {
-                                        if (ticket.user_id == user_id) user_ticket = ticket;
-                                    });
-                                    match.ticket = user_ticket;
-                                }
-                            });
-                            res['0'].matches = matches;
-                            callBack(res['0'])
-                        }
-                        else callBack(res['0'])
-                    }
-
+                    console.log('a')
+                    console.log(res)
+                    callBack(res)
                 })
         }
     };
 
-    rounds = {
-        getCurrentByLeagueID: (league_id,callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/round/?league_id=` + league_id)
-                .then(res => res.json())
-                .then(res => {
-                    let rounds = Object.values(res);
-                    callBack(rounds)
-                })
-        },
-        getByID: (round_id,callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/round/?id=` + round_id)
-                .then(res => res.json())
-                .then(res => {
-                    let data = Object.values(res);
-                    callBack(data)
-                })
-        }
-    };
+    // rounds = {
+    //     getCurrentByLeagueID: (league_id,callBack) => {
+    //         fetch(`http://192.168.8.113/index.php/api/round/?league_id=` + league_id)
+    //             .then(res => res.json())
+    //             .then(res => {
+    //                 let rounds = Object.values(res);
+    //                 callBack(rounds)
+    //             })
+    //     },
+    //     getByID: (round_id,callBack) => {
+    //         fetch(`http://192.168.8.113/index.php/api/round/?id=` + round_id)
+    //             .then(res => res.json())
+    //             .then(res => {
+    //                 let data = Object.values(res);
+    //                 callBack(data)
+    //             })
+    //     }
+    // };
 
     fixture = {
         getByID: (id,user_id, callBack) => {
             fetch(`http://192.168.8.113/index.php/api/fixture/?id=` + id + '&user_id=' + user_id)
                 .then(res => res.json())
                 .then(res => {
-                    let user_ticket = null;
-                    if(res.ticket) Object.values(res.ticket).map(ticket => {
-                        if(ticket.user_id == user_id) user_ticket = ticket;
-                    });
-                    if(user_ticket != null)  res.ticket = user_ticket;
-                    callBack(res)
+                    let result = res;
+                    console.log(result)
+                    callBack(result)
                 })
         }
     };

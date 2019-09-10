@@ -17,8 +17,6 @@ class Week_games_Listing extends React.Component {
     }
 
     componentDidMount() {
-
-
         this.getAllFixtures();
     }
 
@@ -30,11 +28,11 @@ class Week_games_Listing extends React.Component {
     }
 
     renderGames = () => {
-        this.sharedObj.headerInstance.setTitle(this.state.realData.name);
-        if(this.state.realData.matches)
+        this.sharedObj.headerInstance.setTitle(this.state.realData.league.name);
+        if(this.state.realData.fixtures)
             return <>
-            <div className='game-week'><span className='text11-grey'>Matchweek {this.state.realData.order ? parseInt(this.state.realData.order) + 1 : 'unknown'}</span></div>
-            {this.state.realData.matches.map((fixture) => <Link to={`/fixture/${fixture.id}`} key={fixture.id}> <MatchShort  match={fixture}/></Link>)}
+            <div className='game-week'><span className='text11-grey'>Matchweek {this.state.realData.league.round ? (parseInt(this.state.realData.league.round.order) + 1) : 'unknown'}</span></div>
+            {this.state.realData.fixtures.map((fixture) => <Link to={`/fixture/${fixture.id}`} key={fixture.id}> <MatchShort  match={fixture}/></Link>)}
                 </>
     };
 
