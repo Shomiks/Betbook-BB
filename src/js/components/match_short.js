@@ -37,7 +37,7 @@ class MatchShort extends React.Component {
 
                 <div className='ms_resultField'>
                     <span className={this.props.match.result && this.props.match.result.is_finished == 0 ? 'text15-yellow' : 'text15-white'}>{this.props.match.result ? this.props.match.result.ft_home_goals : ''}</span>
-                    <div className='ms_date'><span className='text11-grey'> {!this.props.match.result ? this.props.match.date : ':'} </span></div>
+                    <div className='ms_date'><span className='text11-white'> {!this.props.match.result ? this.props.match.date : ':'} </span></div>
                     <span className={this.props.match.result && this.props.match.result.is_finished == 0 ? 'text15-yellow' : 'text15-white'}>{this.props.match.result ? this.props.match.result.ft_away_goals : ''}</span>
             </div>
                 <div className='ms_awayField'>
@@ -46,7 +46,7 @@ class MatchShort extends React.Component {
                 </div>
             </div>
                 <div className='ms-under-teams-field'>
-                    {!this.props.match.ticket ? (!this.props.match.result ? <div className='ms_not-bided-yellow'><span className='text11-white'>Make a bid</span></div> : <div/>)
+                    {!this.props.match.ticket ? (!this.props.match.result ? <div className='ms_not-bided-yellow'><span className='text11-white'>MAKE A BID</span></div> : <div/>)
                         : (
                         <div className='ms_bid-field'>
                         <div className={'ms_bid-box' + this.handleStateField(1)}>

@@ -8,14 +8,6 @@
   background-color: #1F2022;
   border: 1px solid #2A2A2B;
 
-  .yellow {
-    background-color: rgba(255, 172, 58, 1);
-    background: -moz-linear-gradient(top, rgba(255, 172, 58, 1) 0%, rgba(235, 103, 12, 1) 100%);
-    background: -webkit-linear-gradient(top, rgba(255, 172, 58, 1) 0%, rgba(235, 103, 12, 1) 100%);
-    background: -o-linear-gradient(top, rgba(255, 172, 58, 1) 0%, rgba(235, 103, 12, 1) 100%);
-    background: -ms-linear-gradient(top, rgba(255, 172, 58, 1) 0%, rgba(235, 103, 12, 1) 100%);
-    background: linear-gradient(to bottom, rgba(255, 172, 58, 1) 0%, rgba(235, 103, 12, 1) 100%);
-  }
     .text14 {
       line-height: 30px;
     }
@@ -98,24 +90,6 @@
     height: 50%;
     text-align: center;
 
-
-    .ms_not-bided-yellow {
-      position: relative;
-      height: 26px;
-      width: 169px;
-      margin-top: 4px;
-      margin: 0 auto;
-      border-radius: 20px;
-      background: rgba(255, 172, 58, 1);
-      background: -moz-linear-gradient(top, rgba(255, 172, 58, 1) 0%, rgba(235, 103, 12, 1) 100%);
-      background: -webkit-linear-gradient(top, rgba(255, 172, 58, 1) 0%, rgba(235, 103, 12, 1) 100%);
-      background: -o-linear-gradient(top, rgba(255, 172, 58, 1) 0%, rgba(235, 103, 12, 1) 100%);
-      background: -ms-linear-gradient(top, rgba(255, 172, 58, 1) 0%, rgba(235, 103, 12, 1) 100%);
-      background: linear-gradient(to bottom, rgba(255, 172, 58, 1) 0%, rgba(235, 103, 12, 1) 100%);
-      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffac3a', endColorstr='#eb670c', GradientType=0);
-    }
-
-
     .ms_bid-field {
       display: flex;
       flex-wrap: wrap;
@@ -160,5 +134,14 @@
       }
     }
   }
+
+.yellow {
+  background-color: rgba(255, 172, 58, 1);
+  background: -moz-linear-gradient(top, rgba(255, 172, 58, 1) 0%, rgba(235, 103, 12, 1) 100%);
+  background: -webkit-linear-gradient(top, rgba(255, 172, 58, 1) 0%, rgba(235, 103, 12, 1) 100%);
+  background: -o-linear-gradient(top, rgba(255, 172, 58, 1) 0%, rgba(235, 103, 12, 1) 100%);
+  background: -ms-linear-gradient(top, rgba(255, 172, 58, 1) 0%, rgba(235, 103, 12, 1) 100%);
+  background: linear-gradient(to bottom, rgba(255, 172, 58, 1) 0%, rgba(235, 103, 12, 1) 100%);
+}
 
 

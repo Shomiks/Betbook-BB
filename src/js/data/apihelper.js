@@ -24,7 +24,6 @@ class APIHelper extends React.Component {
                 country_id: country_id,
                 team_id: team_id
             };
-            console.log(data)
             fetch(`http://192.168.8.113/index.php/api/user/`, {
                 method: 'POST',
                 body: JSON.stringify(data),
