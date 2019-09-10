@@ -1,6 +1,10 @@
 import React from 'react';
 import '../../../src/style/betbook/detailed-competitionlisting.scss';
 import {Link} from "react-router-dom";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+// import Checkbox from "../../../_old/src/app/components/common/betSlip/betSlip.component";
+import Checkbox from "@material-ui/core/Checkbox";
+import Loader from "../components/loader";
 
 class User_Favourite_Leagues extends React.Component {
 
@@ -62,11 +66,23 @@ class User_Favourite_Leagues extends React.Component {
     };
 
     renderFavouriteLeagues = () => {
+
+        //star class checked  - "star_checked" not checked - "star"
+
         return  <div className='leagues-container'>
             {this.state.realData.map((data,index) => <div key={data.id + '_'} className='league-field'>
-                <div className='logo-container'> <img className='logo' src={'./assets/images/Logos/'+data.league.logo+''}  alt=''/></div>
+                <div className='logo-container'>
+                    {data.league && data.league.logo ? <img className='logo' src={'./assets/images/Logos/'+data.league.logo+''}  alt=''/> : <img className='logo' src={'./assets/images/alternative-logo.png'}  alt=''/>}
+                    <img className='logo' src={'./assets/images/Logos/'+data.league.logo+''}  alt=''/>
+                </div>
                 <div className='leagues-info'>
-                    <div className='league-name'><span className='text18-white'> {data.league.name}</span><input type="checkbox" name="favourite" onClick={() => this.handleRemoveClick(data,index)} defaultChecked={true}/></div>
+                    <div className='league-name'><span className='text18-white'> {data.league.name}</span>
+
+                        {/*<input type="checkbox" name="favourite" onClick={() => this.handleRemoveClick(data,index)} defaultChecked={true}/>*/}
+                    </div>
+                </div>
+                <div className={'league_favorite_action'}>
+
                 </div>
             </div>)}
         </div>
@@ -85,7 +101,8 @@ class User_Favourite_Leagues extends React.Component {
                 </div>
             </div>
         );
-        else return <div>Loading ...</div>
+        else
+            return <Loader/>
     }
 }
 

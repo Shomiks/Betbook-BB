@@ -15,28 +15,31 @@
       position: relative;
       display: block;
 
-      .league-name{
-       margin-top:20px;
-       display:flex;
-       align-items:center;
+      .league-name {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        position: relative;
 
-        text18-white{
-        font-size:16px;
-        position:absolute;
-       }
+
+
+        text18-white {
+          font-size: 16px;
+          position: absolute;
+        }
       }
 
       .league-info {
-      padding-top:13px;
+        padding-top: 13px;
         display: flex;
         left: 0;
         align-items: center;
-        color:white;
-         font-family: "SF Display";
+        color: white;
+        font-family: "SF Display";
       }
 
       .dataname-info {
-      white-space: nowrap;
+        white-space: nowrap;
         position: absolute;
         left: 0;
         top: 32px;
@@ -47,7 +50,23 @@
         position: absolute;
         left: 0;
         bottom: 11px;
-        width: 64px;
+      }
+    }
+
+    .league_favorite_action{
+      right: 20px;
+      position: absolute;
+      .league_favorite_action_label.MuiFormControlLabel-root{
+        margin-right: 0px;
+        margin-left: 0px;
+        padding: 20px 10px 14px 5px;
+      }
+
+      .star {
+        background-image: url("./assets/images/star_final.svg");
+        background-size: cover;
+        height: 22px;
+        width: 22px;
       }
     }
 

@@ -61,7 +61,7 @@ class Home_screen extends React.Component {
             return <div className='favourite-league' key={data.id + '_'}>
                 <div className='favourite-league-container'>
                     {this.handlePreviousMatchWeek(data)}
-                    <div className='logo'><img className='league-logo' src={'./assets/images/Logos/' + data.league.logo} alt=''/><br/>
+                    <div className='logo'><img className='league-logo'  src={'./assets/images/Logos/' + data.league.logo} alt=''/><br/>
                         <div className='hs_league-name'><span className='text11'>{data.league.name}</span></div>
                     </div>
                     {this.handleCurrentMatchWeek(data)}

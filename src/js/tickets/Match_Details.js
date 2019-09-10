@@ -153,7 +153,7 @@ class Match_Details extends React.Component {
                     {this.state.realData.result ? this.renderResult() : null}
                 </div>
                 <div className='md_away-team-field'>
-                    <img className='logo' src={'./assets/images/Teams/' + this.state.realData.team_away.logo}/>
+                    <img className='logo' alt={'./assets/images/alternative-logo.png'} src={'./assets/images/Teams/' + this.state.realData.team_away.logo}/>
                     <div className='home-text-field'><span className='text18-white'>{this.state.realData.team_away.name}</span></div>
                 </div>
             </div>

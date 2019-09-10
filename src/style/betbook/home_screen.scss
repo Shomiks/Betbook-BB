@@ -2,11 +2,9 @@
   background-image: url("assets/images/logo.png");
   background-repeat: no-repeat;
   height: 60px;
+  width: 210px;
   position: relative;
-  display: block;
-  left: 50%;
-  margin-left: -105px;
-  margin-top: 50px;
+  margin: 0 auto;
 }
 
 .welcome-text {
@@ -53,6 +51,7 @@
       background-image: url("../betbook/assets/images/logo_bg.svg");
       width: 100px;
       height: 120px;
+
 
       .league-logo {
         height: 42px;

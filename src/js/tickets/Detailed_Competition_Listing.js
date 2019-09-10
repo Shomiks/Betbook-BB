@@ -26,6 +26,11 @@ class Detailed_Competition_Listing extends React.Component {
         });
     }
 
+    handleImgError = (league) => {
+        league.logo = 'alternative-logo.png';
+        this.forceUpdate();
+    }
+
     render() {
 
         console.log(this.state.realData)
@@ -35,7 +40,9 @@ class Detailed_Competition_Listing extends React.Component {
                 <div className='main-content'>
                     <div className='leagues-container'>
                         {this.state.realData.leagues.map((data) => <Link to={`/league/${data.id}`} key={data.id + '_'}><div  className='league-field'>
-                            <div className='logo-container'> <img className='logo' src={'./assets/images/Logos/'+data.logo+''}  alt=''/></div>
+                            <div className='logo-container'>
+                                <img className='logo' src={'./assets/images/Logos/'+data.logo} onError={() => this.handleImgError(data) } />
+                            </div>
                             <div className='leagues-info'>
                             <div className='league-info'><span className='text11-grey'>Matchweek 4</span></div>
                             <div className='dataname-info'><span className='text15-white'>{data.name}</span></div>
