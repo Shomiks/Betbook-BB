@@ -69,13 +69,14 @@
               text-align: center;
               letter-spacing: 2.83px;
               color: #FFFFFF;
-              text-transform: uppercase ;
+              text-transform: uppercase;
 
 
               .text6-white {
                 text-transform: uppercase;
               }
             }
+
             .live-minut-field {
               position: relative;
               display: block;
@@ -127,6 +128,33 @@
     }
 
     .scrolable-bids-field {
+
+      .md_match-details-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+
+        .md_line {
+          height: 0;
+          width: 30%;
+          border: 0.5px solid #FFAC3A;
+
+        }
+        .md_match-details-box {
+          position: relative;
+          height: 26px;
+          width: 100px;
+          border: 1px solid #FFAC3A;
+          box-sizing: border-box;
+          border-radius: 20px;
+
+          .text12-yellow {
+            line-height: 2;
+          }
+        }
+      }
+
       .md_bid-box {
         position: relative;
         background-color: #151516;
@@ -172,7 +200,7 @@
   }
 }
 
-.won{
+.won {
   border: 1px solid #43BA58;
 }
 

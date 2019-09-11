@@ -30,7 +30,7 @@ class Detailed_Competition_Listing extends React.Component {
     handleImgError = (league) => {
         league.logo = 'alternative-logo.png';
         this.forceUpdate();
-    }
+    };
 
     render() {
 

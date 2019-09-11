@@ -162,7 +162,9 @@ class Match_Details extends React.Component {
         return <div className='match-details-field'>
             <div className='md_league-week-details'><span className='text11-grey'>{this.state.realData.date}</span></div>
             <div className='md_league_match_fixture'>
-                <div className='md_home-team-field'><img className='logo' src={'./assets/images/Teams/' + this.state.realData.team_home.logo}  alt=''/>
+                <div className='md_home-team-field'>
+                    {this.state.realData.team_home.logo ? <img className='logo' src={'./assets/images/Teams/'+this.state.realData.team_home.logo}/> : <img className='logo' src={'../assets/images/alternative-logo.png'}/>}
+
                     <div className='home-text-field'><span className='text18-white'>{this.state.realData.team_home.name}</span>
                     </div>
                 </div>
@@ -170,7 +172,7 @@ class Match_Details extends React.Component {
                     {this.state.realData.result ? this.renderResult() : null}
                 </div>
                 <div className='md_away-team-field'>
-                    <img className='logo' src={'./assets/images/Teams/' + this.state.realData.team_away.logo} alt=''/>
+                    {this.state.realData.team_away.logo ? <img className='logo' src={'./assets/images/Teams/'+this.state.realData.team_away.logo} /> : <img className='logo' src={'./assets/images/alternative-logo.png'} alt=''/>}
                     <div className='home-text-field'><span className='text18-white'>{this.state.realData.team_away.name}</span></div>
                 </div>
             </div>
@@ -179,6 +181,13 @@ class Match_Details extends React.Component {
 
     renderBidFieldDetails = () => {
         return <div className='scrolable-bids-field'>
+            <div className='md_match-details-container'>
+                <div className='md_line'/>
+                <div className='md_match-details-box'>
+                    <span className='text12-yellow'>Match details</span>
+                </div>
+                <div className='md_line'/>
+            </div>
             <div className={this.state.realData.game1_1 ?'full-time-result-field' : 'hidden'}>
                 <div className='main-titlle-field'>
                     <div className='ft_text_position'><span className='text12-grey'>Match Outcome</span></div>
@@ -270,7 +279,7 @@ class Match_Details extends React.Component {
     };
 
     render() {
-        console.log(this.state.realData)
+        console.log(this.state.realData.team_away ? this.state.realData.team_away.logo : 'jebi se')
 
         return <>{this.state.loaded == true ? this.renderStateCompopnent() : <div/>}</>
     }

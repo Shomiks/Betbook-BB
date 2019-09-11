@@ -68,8 +68,7 @@ class User_Favourite_Leagues extends React.Component {
         return  <div className='leagues-container'>
             {this.state.realData.map((data,index) => <div key={data.id + '_'} className='league-field'>
                 <div className='logo-container'>
-                    {data.league && data.league.logo ? <img className='logo' src={'./assets/images/Logos/'+data.league.logo+''}  alt=''/> : <img className='logo' src={'./assets/images/alternative-logo.png'}  alt=''/>}
-                    <img className='logo' src={'./assets/images/Logos/'+data.league.logo+''}  alt=''/>
+                    {data.league && data.league.logo ? <img className='logo' src={'./assets/images/Logos/'+data.league.logo+''} /> : <img className='logo' src={'./assets/images/alternative-logo.png'} alt=''/>}
                 </div>
                 <div className='leagues-info'>
                     <div className='league-name'><span className='text18-white'> {data.league.name}</span>
