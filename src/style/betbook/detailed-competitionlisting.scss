@@ -22,9 +22,10 @@
         position: relative;
 
 
-        text18-white {
+        .text18-white {
           font-size: 16px;
-          position: absolute;
+          position: relative;
+          line-height: 2.7;
         }
       }
 
@@ -35,6 +36,7 @@
         align-items: center;
         color: white;
         font-family: "SF Display";
+
       }
 
       .dataname-info {
