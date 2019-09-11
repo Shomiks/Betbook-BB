@@ -102,7 +102,6 @@ class Register extends React.Component {
 
     handleRegisterStepTwo = () => {
         this.sharedObj.apiHelper.register.register(this.state.username,this.state.password,this.state.email,this.state.country_id,this.state.team_id,(id)=>{
-            console.log('a')
             localStorage.setItem('user_id', id);
         });
         this.setState({login:true});

@@ -158,11 +158,18 @@ class Match_Details extends React.Component {
             </>
     };
 
+    handleImgError = (team) => {
+        team.logo = 'alternative-logo.png';
+        this.forceUpdate();
+    };
+
+
     renderMatchDetails = () => {
         return <div className='match-details-field'>
             <div className='md_league-week-details'><span className='text11-grey'>{this.state.realData.date}</span></div>
             <div className='md_league_match_fixture'>
-                <div className='md_home-team-field'><img className='logo' src={'./assets/images/Teams/' + this.state.realData.team_home.logo}  alt=''/>
+                <div className='md_home-team-field'>
+                    <img className='logo' src={'./assets/images/Teams/'+this.state.realData.team_home.logo} onError={() => this.handleImgError(this.state.realData.team_home)}/>
                     <div className='home-text-field'><span className='text18-white'>{this.state.realData.team_home.name}</span>
                     </div>
                 </div>
@@ -170,7 +177,7 @@ class Match_Details extends React.Component {
                     {this.state.realData.result ? this.renderResult() : null}
                 </div>
                 <div className='md_away-team-field'>
-                    <img className='logo' src={'./assets/images/Teams/' + this.state.realData.team_away.logo} alt=''/>
+                    <img className='logo' src={'./assets/images/Teams/'+this.state.realData.team_away.logo} onError={() => this.handleImgError(this.state.realData.team_away)}/>
                     <div className='home-text-field'><span className='text18-white'>{this.state.realData.team_away.name}</span></div>
                 </div>
             </div>
@@ -270,7 +277,6 @@ class Match_Details extends React.Component {
     };
 
     render() {
-        console.log(this.state.realData)
 
         return <>{this.state.loaded == true ? this.renderStateCompopnent() : <div/>}</>
     }

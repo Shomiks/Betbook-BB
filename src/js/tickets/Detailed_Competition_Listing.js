@@ -30,12 +30,9 @@ class Detailed_Competition_Listing extends React.Component {
     handleImgError = (league) => {
         league.logo = 'alternative-logo.png';
         this.forceUpdate();
-    }
+    };
 
     render() {
-
-        console.log(this.state.realData)
-
 
         if (this.state.loaded) return (
             <div className='betbook_screen'>

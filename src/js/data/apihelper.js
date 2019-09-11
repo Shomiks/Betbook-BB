@@ -44,16 +44,6 @@ class APIHelper extends React.Component {
     };
 
     settings = {
-        getSettings: (callBack) => {
-            setTimeout(() => {
-                callBack({firstname: 'teeeeest'});
-            }, timeoutInterval);
-        },
-        setSettings: (username, email, callBack) => {
-            setTimeout(() => {
-                callBack({success: true});
-            }, timeoutInterval);
-        },
         getUserCountryAndClubByID: (id,callBack) => {
             fetch(`http://192.168.8.113/index.php/api/user/?id=` + id)
                 .then(res => res.json())
@@ -110,8 +100,6 @@ class APIHelper extends React.Component {
             fetch(`http://192.168.8.113/index.php/api/league/?league_id=` + league_id + '&user_id=' + user_id)
                 .then(res => res.json())
                 .then(res => {
-                    console.log('a')
-                    console.log(res)
 
                     const userBidsIndex = {};
 
@@ -136,7 +124,6 @@ class APIHelper extends React.Component {
                 })
         },
         getByIDFinished: (league_id,user_id,finished, callBack) => {
-            console.log(league_id, user_id)
             fetch(`http://192.168.8.113/index.php/api/league/?league_id=` + league_id + '&user_id=' + user_id + '&finished=' + finished)
                 .then(res => res.json())
                 .then(res => {
@@ -164,25 +151,6 @@ class APIHelper extends React.Component {
         }
     };
 
-    // rounds = {
-    //     getCurrentByLeagueID: (league_id,callBack) => {
-    //         fetch(`http://192.168.8.113/index.php/api/round/?league_id=` + league_id)
-    //             .then(res => res.json())
-    //             .then(res => {
-    //                 let rounds = Object.values(res);
-    //                 callBack(rounds)
-    //             })
-    //     },
-    //     getByID: (round_id,callBack) => {
-    //         fetch(`http://192.168.8.113/index.php/api/round/?id=` + round_id)
-    //             .then(res => res.json())
-    //             .then(res => {
-    //                 let data = Object.values(res);
-    //                 callBack(data)
-    //             })
-    //     }
-    // };
-
     fixture = {
         getByID: (id,user_id, callBack) => {
             fetch(`http://192.168.8.113/index.php/api/fixture/?id=` + id + '&user_id=' + user_id)
@@ -206,8 +174,6 @@ class APIHelper extends React.Component {
 
     bids = {
         updateFixtureBids : (id,data) => {
-            console.log('a')
-            console.log(data.updated.ticket)
             fetch(`http://192.168.8.113/index.php/api/user_fixture_bid/` + id, {
                 method: 'PUT',
                 body: JSON.stringify(data.updated.ticket),
@@ -218,7 +184,6 @@ class APIHelper extends React.Component {
                 .then(res => res.json())
         },
         createFixtureBids: (data,callBack) => {
-            console.log(data.ticket)
             fetch(`http://192.168.8.113/index.php/api/user_fixture_bid/`, {
                 method: 'POST',
                 body: JSON.stringify(data.ticket),

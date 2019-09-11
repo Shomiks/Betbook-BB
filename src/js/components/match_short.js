@@ -50,7 +50,7 @@ class MatchShort extends React.Component {
         return <div className={this.props.match.ticket ? 'ms-central-field' : 'ms-central-field yellow'}>
             <div className='ms-teams-field'>
                <div className='ms_homeField'>
-                   <img className='logo' src={'./assets/images/Teams/' + this.props.match.team_home.logo} alt=''/>
+                   <img className='logo' src={'./assets/images/Teams/'+this.props.match.team_home.logo} onError={() => this.handleImgError(this.props.match.team_home)}/>
                    <div className='ms_hometeam-text'><span className='text11-white'>{this.props.match.team_home.name}</span></div>
                </div>
 
@@ -61,7 +61,7 @@ class MatchShort extends React.Component {
             </div>
                 <div className='ms_awayField'>
                     <div className='ms_awayteam-text'><span className='text11-white'>{this.props.match.team_away.name}</span></div>
-                    <img className='logo' src={'./assets/images/Teams/' + this.props.match.team_away.logo} alt=''/>
+                    <img className='logo' src={'./assets/images/Teams/'+this.props.match.team_away.logo} onError={() => this.handleImgError(this.props.match.team_away)}/>
                 </div>
             </div>
                 <div className='ms-under-teams-field'>
@@ -88,6 +88,11 @@ class MatchShort extends React.Component {
                 </div>
             </div>
         };
+
+    handleImgError = (league) => {
+        league.logo = 'alternative-logo.png';
+        this.forceUpdate();
+    };
 
     render() {
         return <>{this.handleBidField()}</>

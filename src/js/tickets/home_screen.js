@@ -28,6 +28,7 @@ class Home_screen extends React.Component {
         this.sharedObj.apiHelper.home(localStorage.getItem('user_id'), (res) => {
             this.setState({realData: res, loaded: true});
             this.sharedObj.footerInstance.setActive('timeline');
+            console.log(this.state.realData[0])
         });
     };
 
@@ -62,7 +63,7 @@ class Home_screen extends React.Component {
             return <div className='favourite-league' key={data.id + '_'}>
                 <div className='favourite-league-container'>
                     {this.handleFinished(data)}
-                    <div className='logo'><img className='league-logo'  src={'./assets/images/Logos/' + data.league.logo} alt=''/><br/>
+                    <div className='logo'><img className='league-logo' src={'./assets/images/Logos/'+data.league.logo+''}  alt=''/>
                         <div className='hs_league-name'><span className='text11'>{data.league.name}</span></div>
                     </div>
                     {this.handleUpcoming(data)}
@@ -71,10 +72,10 @@ class Home_screen extends React.Component {
         })}</>
     };
 
+
     handleFirstTimeLogin = () => {
         return <><Link to={`/countries`}>
-            <div className='hs_select-box'><span className='text26-white'>Select your favourite leagues and start your journey</span>
-            </div>
+            <div className='hs_select-box'><span className='text26-white'>Select your favourite leagues and start your journey</span></div>
         </Link></>
     };
 
