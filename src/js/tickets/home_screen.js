@@ -28,7 +28,6 @@ class Home_screen extends React.Component {
         this.sharedObj.apiHelper.home(localStorage.getItem('user_id'), (res) => {
             this.setState({realData: res, loaded: true});
             this.sharedObj.footerInstance.setActive('timeline');
-            console.log(this.state.realData[0])
         });
     };
 
