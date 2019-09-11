@@ -144,7 +144,7 @@ class Register extends React.Component {
 
             else return (<div className='betbook-screen-login'>
                     <div className='main-container'>
-                        <div className='betbook-logo-box'><img src='./assets/images/betbook-logo.png' alt=''/></div>
+                        <div className='betbook-logo-box'><img src='./assets/images/betbook---logo.png' alt=''/></div>
 
                     <div className='register-container'>
                         <div className={this.state.favourites ? 'hidden' : 'bs-user-container'}>
