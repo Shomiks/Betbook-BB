@@ -43,3 +43,11 @@ import {Link} from "react-router-dom";
  }
 
 export default Footer;
+
+ //<div className="tile" onClick="myFunction()"></div>
+//
+// <script>
+// function myFunction() {
+//     this.style.background="#000000";
+// }
+// </script>
