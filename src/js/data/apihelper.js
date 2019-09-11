@@ -100,15 +100,12 @@ class APIHelper extends React.Component {
             fetch(`http://192.168.8.113/index.php/api/league/?league_id=` + league_id + '&user_id=' + user_id)
                 .then(res => res.json())
                 .then(res => {
-
                     const userBidsIndex = {};
-
                     if(res.userBids && res.userBids.length){
                         res.userBids.forEach(ub => {
                             userBidsIndex[ub.fixture_id] = ub;
                         })
                     }
-
                     if(res.fixtures && res.fixtures.length){
                         res.fixtures.forEach(fixture => {
                             if(userBidsIndex[fixture.id]){
@@ -119,7 +116,6 @@ class APIHelper extends React.Component {
                             }
                         })
                     }
-
                     callBack(res)
                 })
         },
@@ -145,7 +141,6 @@ class APIHelper extends React.Component {
                             }
                         })
                     }
-
                     callBack(res)
                 })
         }

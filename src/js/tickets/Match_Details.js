@@ -186,6 +186,13 @@ class Match_Details extends React.Component {
 
     renderBidFieldDetails = () => {
         return <div className='scrolable-bids-field'>
+            <div className='md_match-details-container'>
+                <div className='md_line'/>
+                <div className='md_match-details-box'>
+                    <span className='text12-yellow'>Match Details</span>
+                </div>
+                <div className='md_line'/>
+            </div>
             <div className={this.state.realData.game1_1 ?'full-time-result-field' : 'hidden'}>
                 <div className='main-titlle-field'>
                     <div className='ft_text_position'><span className='text12-grey'>Match Outcome</span></div>
