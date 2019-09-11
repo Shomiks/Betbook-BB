@@ -89,7 +89,7 @@ class App extends React.Component {
 
                         <Route path="/league/:leagueid"
                                render={(props) => (<Week_games_Listing sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/round/:roundid"
+                        <Route path="/league/:leagueid/finished"
                                render={(props) => (<Week_games_Listing sharedObj={this.sharedObject} {...props}/>)}/>
 
                         <Route path="/fixture/:fixtureid"

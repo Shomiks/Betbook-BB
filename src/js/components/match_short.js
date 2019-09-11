@@ -7,7 +7,9 @@ class MatchShort extends React.Component {
         super(props);
         this.state = {
             ...props.match
-        }
+        };
+        if(!props.match.result) props.match.result = null;
+        if(!props.match.ticket) props.match.ticket = null;
     }
 
     handleStateField = (tip) => {
@@ -26,6 +28,23 @@ class MatchShort extends React.Component {
         }
     };
 
+    parseTipGame2Row1 = () => {
+        if(this.props.match.ticket.game2_tip == '2' || this.props.match.ticket.game2_tip == '1' || this.props.match.ticket.game2_tip == '3') return '0-';
+    };
+
+    parseTipGame2Row2 = () => {
+        if(this.props.match.ticket.game2_tip == '2ht') return '2+HT';
+        if(this.props.match.ticket.game2_tip == '2ft') return '2+FT';
+        if(this.props.match.ticket.game2_tip == '3ft') return '3+FT';
+        if(this.props.match.ticket.game2_tip == '4ft') return '4+FT';
+    };
+
+    parseTipGame4 = () => {
+        let tip = this.props.match.ticket.game4_tip.toUpperCase();
+        tip.split('');
+        return tip[0] + '-' + tip[1];
+    };
+
     handleBidField = () => {
 
         return <div className={this.props.match.ticket ? 'ms-central-field' : 'ms-central-field yellow'}>
@@ -37,7 +56,7 @@ class MatchShort extends React.Component {
 
                 <div className='ms_resultField'>
                     <span className={this.props.match.result && this.props.match.result.is_finished == 0 ? 'text15-yellow' : 'text15-white'}>{this.props.match.result ? this.props.match.result.ft_home_goals : ''}</span>
-                    <div className='ms_date'><span className='text11-grey'> {!this.props.match.result ? this.props.match.date : ':'} </span></div>
+                    <div className='ms_date'><span className='text11-white'> {!this.props.match.result ? this.props.match.date : ':'} </span></div>
                     <span className={this.props.match.result && this.props.match.result.is_finished == 0 ? 'text15-yellow' : 'text15-white'}>{this.props.match.result ? this.props.match.result.ft_away_goals : ''}</span>
             </div>
                 <div className='ms_awayField'>
@@ -54,15 +73,15 @@ class MatchShort extends React.Component {
                         <div className='ms_odd-field'><span className='text11-white'>{this.props.match.ticket.game1_odd}</span></div>
                         </div>
                         <div className={'ms_bid-box' + this.handleStateField(2)}>
-                        <div className='ms_game-field'><span className='text11-grey'>{this.props.match.ticket.game2_tip}</span></div>
+                        <div className='ms_game-field'><span className='text11-grey'>{this.parseTipGame2Row1() == '0-' ? (this.parseTipGame2Row1() + this.props.match.ticket.game2_tip) : this.parseTipGame2Row2()}</span></div>
                         <div className='ms_odd-field'><span className='text11-white'>{this.props.match.ticket.game2_odd}</span></div>
                         </div>
                         <div className={'ms_bid-box' + this.handleStateField(3)}>
-                        <div className='ms_game-field'><span className='text11-grey'>{this.props.match.ticket.game3_tip}</span></div>
+                        <div className='ms_game-field'><span className='text11-grey'>{this.props.match.ticket.game3_tip == 'gg' ? 'GG' : 'GG3+'}</span></div>
                         <div className='ms_odd-field'><span className='text11-white'>{this.props.match.ticket.game3_odd}</span></div>
                         </div>
                         <div className={'ms_bid-box' + this.handleStateField(4)}>
-                        <div className='ms_game-field'><span className='text11-grey'>{this.props.match.ticket.game4_tip}</span></div>
+                        <div className='ms_game-field'><span className='text11-grey'>{this.props.match.ticket.game4_tip ? this.parseTipGame4() : ''}</span></div>
                         <div className='ms_odd-field'><span className='text11-white'>{this.props.match.ticket.game4_odd}</span></div>
                         </div>
                         </div>)}

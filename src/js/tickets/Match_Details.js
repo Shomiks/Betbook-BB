@@ -1,7 +1,6 @@
 import React from 'react';
 import '../../../src/style/betbook/matchdetails.scss';
 import '../../../src/style/app.scss';
-import Loader from "../components/loader";
 class Match_Details extends React.Component {
 
     constructor(props) {
@@ -13,6 +12,7 @@ class Match_Details extends React.Component {
         };
         this.sharedObj = props.sharedObj;
         this.fixtureId = props.match.params.fixtureid;
+
     }
 
     componentDidMount() {
@@ -22,8 +22,13 @@ class Match_Details extends React.Component {
     getFixtureById(){
         this.sharedObj.apiHelper.fixture.getByID(this.fixtureId,localStorage.getItem('user_id'),(res) => {
             this.sharedObj.headerInstance.setItemRight('options');
+            if(res.ticket) res.ticket = res.ticket['0'];
             this.setState({realData:res,loaded:true})
         });
+    };
+
+    checkIfUnbided = () => {
+        return !(this.state.realData.ticket['game1_tip'] || this.state.realData.ticket['game2_tip'] || this.state.realData.ticket['game3_tip'] || this.state.realData.ticket['game4_tip'])
     };
 
     handleBidClick = (game,tip,className) => {
@@ -34,11 +39,20 @@ class Match_Details extends React.Component {
             let id = this.state.realData.ticket['id'];
 
             if (className !== 'bid-field bided') {
+                let previous_bid_score = this.state.realData.ticket[game + '_odd'];
                 data[game + '_tip'] = tip;
                 data[game + '_odd'] = this.state.realData[game + '_' + tip];
+                if(data[game + '_odd'] > 0) data['bid_score'] = parseFloat(data['bid_score']) - parseFloat(previous_bid_score) + parseFloat(data[game + '_odd']);
             } else {
                 data[game + '_tip'] = null;
+                data['bid_score'] = parseFloat(data['bid_score']) - parseFloat(data[game + '_odd']);
                 data[game + '_odd'] = 0;
+                if(this.checkIfUnbided()) {
+                    this.sharedObj.apiHelper.bids.deleteFixtureBid(this.state.realData.ticket.id);
+                    updated['ticket'] = null;
+                    this.setState({realData: updated});
+                    return;
+                }
             }
 
             updated['ticket'] = data;
@@ -50,9 +64,10 @@ class Match_Details extends React.Component {
         else {
             let ticket = this.handleReturnTicket();
             ticket.fixture_id = this.state.realData.id;
+            ticket.league_id = this.state.realData.league.id;
             ticket[game + '_tip'] = tip;
             ticket[game + '_odd'] = this.state.realData[game + '_' + tip];
-
+            ticket['bid_score'] = ticket[game + '_odd'];
             this.handleCreateTicket(ticket);
         }
     };
@@ -60,6 +75,7 @@ class Match_Details extends React.Component {
     handleReturnTicket = () => {
         let ticket = {
             user_id: localStorage.getItem('user_id'),
+            league_id: null,
             fixture_id: null,
             game1_tip: null,
             game1_odd: 0,
@@ -112,7 +128,7 @@ class Match_Details extends React.Component {
         return className;
     };
 
-    handleBidType = (label, game, tip, bidfield) => {//OVDE PROMENI !THIS.STATE.REALDATA.RESULT
+    handleBidType = (label, game, tip, bidfield) => {
 
         let className = this.handleBidState(game,tip,bidfield);
 
@@ -154,7 +170,7 @@ class Match_Details extends React.Component {
                     {this.state.realData.result ? this.renderResult() : null}
                 </div>
                 <div className='md_away-team-field'>
-                    <img className='logo' alt={'./assets/images/alternative-logo.png'} src={'./assets/images/Teams/' + this.state.realData.team_away.logo}/>
+                    <img className='logo' src={'./assets/images/Teams/' + this.state.realData.team_away.logo} alt=''/>
                     <div className='home-text-field'><span className='text18-white'>{this.state.realData.team_away.name}</span></div>
                 </div>
             </div>
@@ -198,8 +214,8 @@ class Match_Details extends React.Component {
                     </div>
                 </div>
                 <div className='md_bid-box'>
-                    {this.handleBidType('YES', 'game3', 'gg', 'bid-field')}
-                    {this.handleBidType('NO', 'game3', 'gg3p', 'bid-field')}
+                    {this.handleBidType('GG', 'game3', 'gg', 'bid-field')}
+                    {this.handleBidType('GG3+', 'game3', 'gg3p', 'bid-field')}
                 </div>
             </div>
             <div className={this.state.realData.game4_11 ? 'ht-ft-result-field' : 'hidden'}>
@@ -229,7 +245,7 @@ class Match_Details extends React.Component {
 
 
     renderStateCompopnent = () => {
-        this.sharedObj.headerInstance.setTitle(this.state.realData.round.name);
+        // this.sharedObj.headerInstance.setTitle(this.state.realData.round.name);
 
         let classState ='betbook_screen';
 
@@ -254,7 +270,9 @@ class Match_Details extends React.Component {
     };
 
     render() {
-        return <>{this.state.loaded == true ? this.renderStateCompopnent() : <Loader/>}</>
+        console.log(this.state.realData)
+
+        return <>{this.state.loaded == true ? this.renderStateCompopnent() : <div/>}</>
     }
 }
 

@@ -16,13 +16,13 @@ class APIHelper extends React.Component {
     };
 
     register = {
-        register : (username, password, email, country_id, club_id, callBack) => {
+        register : (username, password, email, country_id, team_id, callBack) => {
             let data = {
                 username: username,
                 email: email,
                 password: password,
                 country_id: country_id,
-                team_id: club_id
+                team_id: team_id
             };
             fetch(`http://192.168.8.113/index.php/api/user/`, {
                 method: 'POST',
@@ -106,79 +106,91 @@ class APIHelper extends React.Component {
                 })
         },
         getByID: (league_id,user_id, callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/round/?league_id=` + league_id + '?user_id=' + user_id)
+            console.log(league_id,user_id)
+            fetch(`http://192.168.8.113/index.php/api/league/?league_id=` + league_id + '&user_id=' + user_id)
                 .then(res => res.json())
                 .then(res => {
-                    if(res['1']) {
-                        if(res['1'].matches) {
-                            let matches = Object.values(res['1'].matches);
-                            matches.map(match => {
-                                let user_ticket = null;
-                               if(match.ticket) {
-                                   Object.values(match.ticket).map(ticket => {
-                                       if (ticket.user_id == user_id) user_ticket = ticket;
-                                   });
-                                     match.ticket = user_ticket;
-                               }
-                            });
-                            res['1'].matches = matches;
-                            callBack(res['1'])
-                        }
-                        else callBack(res['1'])
-                    }
-                    else {
-                        if(res)
-                        if(res['0'].matches) {
-                            let matches = Object.values(res['0'].matches);
-                            matches.map(match => {
-                                let user_ticket = null;
-                                if(match.ticket) {
-                                    Object.values(match.ticket).map(ticket => {
-                                        if (ticket.user_id == user_id) user_ticket = ticket;
-                                    });
-                                    match.ticket = user_ticket;
-                                }
-                            });
-                            res['0'].matches = matches;
-                            callBack(res['0'])
-                        }
-                        else callBack(res['0'])
+                    console.log('a')
+                    console.log(res)
+
+                    const userBidsIndex = {};
+
+                    if(res.userBids && res.userBids.length){
+                        res.userBids.forEach(ub => {
+                            userBidsIndex[ub.fixture_id] = ub;
+                        })
                     }
 
-                })
-        }
-    };
+                    if(res.fixtures && res.fixtures.length){
+                        res.fixtures.forEach(fixture => {
+                            if(userBidsIndex[fixture.id]){
+                                fixture.ticket = userBidsIndex[fixture.id];
+                            }
+                            else{
+                                fixture.ticket = null;
+                            }
+                        })
+                    }
 
-    rounds = {
-        getCurrentByLeagueID: (league_id,callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/round/?league_id=` + league_id)
-                .then(res => res.json())
-                .then(res => {
-                    let rounds = Object.values(res);
-                    callBack(rounds)
+                    callBack(res)
                 })
         },
-        getByID: (round_id,callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/round/?id=` + round_id)
+        getByIDFinished: (league_id,user_id,finished, callBack) => {
+            console.log(league_id, user_id)
+            fetch(`http://192.168.8.113/index.php/api/league/?league_id=` + league_id + '&user_id=' + user_id + '&finished=' + finished)
                 .then(res => res.json())
                 .then(res => {
-                    let data = Object.values(res);
-                    callBack(data)
+
+                    const userBidsIndex = {};
+
+                    if (res.userBids && res.userBids.length) {
+                        res.userBids.forEach(ub => {
+                            userBidsIndex[ub.fixture_id] = ub;
+                        })
+                    }
+
+                    if (res.fixtures && res.fixtures.length) {
+                        res.fixtures.forEach(fixture => {
+                            if (userBidsIndex[fixture.id]) {
+                                fixture.ticket = userBidsIndex[fixture.id];
+                            } else {
+                                fixture.ticket = null;
+                            }
+                        })
+                    }
+
+                    callBack(res)
                 })
         }
     };
+
+    // rounds = {
+    //     getCurrentByLeagueID: (league_id,callBack) => {
+    //         fetch(`http://192.168.8.113/index.php/api/round/?league_id=` + league_id)
+    //             .then(res => res.json())
+    //             .then(res => {
+    //                 let rounds = Object.values(res);
+    //                 callBack(rounds)
+    //             })
+    //     },
+    //     getByID: (round_id,callBack) => {
+    //         fetch(`http://192.168.8.113/index.php/api/round/?id=` + round_id)
+    //             .then(res => res.json())
+    //             .then(res => {
+    //                 let data = Object.values(res);
+    //                 callBack(data)
+    //             })
+    //     }
+    // };
 
     fixture = {
         getByID: (id,user_id, callBack) => {
             fetch(`http://192.168.8.113/index.php/api/fixture/?id=` + id + '&user_id=' + user_id)
                 .then(res => res.json())
                 .then(res => {
-                    let user_ticket = null;
-                    if(res.ticket) Object.values(res.ticket).map(ticket => {
-                        if(ticket.user_id == user_id) user_ticket = ticket;
-                    });
-                    if(user_ticket != null)  res.ticket = user_ticket;
-                    callBack(res)
+                    let result = res;
+                    console.log(result)
+                    callBack(result)
                 })
         }
     };
@@ -194,6 +206,8 @@ class APIHelper extends React.Component {
 
     bids = {
         updateFixtureBids : (id,data) => {
+            console.log('a')
+            console.log(data.updated.ticket)
             fetch(`http://192.168.8.113/index.php/api/user_fixture_bid/` + id, {
                 method: 'PUT',
                 body: JSON.stringify(data.updated.ticket),
@@ -204,6 +218,7 @@ class APIHelper extends React.Component {
                 .then(res => res.json())
         },
         createFixtureBids: (data,callBack) => {
+            console.log(data.ticket)
             fetch(`http://192.168.8.113/index.php/api/user_fixture_bid/`, {
                 method: 'POST',
                 body: JSON.stringify(data.ticket),
@@ -213,7 +228,16 @@ class APIHelper extends React.Component {
             })
                 .then(res => res.json())
                 .then(res => callBack(res))
-        }
+        },
+        deleteFixtureBid: (id) => {
+            fetch(`http://192.168.8.113/index.php/api/user_fixture_bid/` + id, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(res => res.json())
+         }
     };
 
     favourites = {

@@ -18,9 +18,12 @@ class Week_games_Listing extends React.Component {
     }
 
     componentDidMount() {
-
-
-        this.getAllFixtures();
+        if(window.location.hash.split('/')[3] != null){
+            this.getAllFixturesFinished();
+        }
+        else {
+            this.getAllFixtures();
+        }
     }
 
     getAllFixtures(){
@@ -30,16 +33,25 @@ class Week_games_Listing extends React.Component {
             this.setState({realData:res,loaded:true})});
     }
 
+    getAllFixturesFinished(){
+        this.sharedObj.apiHelper.leagues.getByIDFinished(this.leagudId,localStorage.getItem('user_id'),1,(res) =>{
+            this.sharedObj.headerInstance.setItemRight('calendar');
+            this.sharedObj.footerInstance.setActive('ball');
+            this.setState({realData:res,loaded:true})});
+    }
+
     renderGames = () => {
-        this.sharedObj.headerInstance.setTitle(this.state.realData.name);
-        if(this.state.realData.matches)
+        this.sharedObj.headerInstance.setTitle(this.state.realData.league.name);
+        if(this.state.realData.fixtures)
             return <>
-            <div className='game-week'><span className='text11-grey'>Matchweek {this.state.realData.order ? parseInt(this.state.realData.order) + 1 : 'unknown'}</span></div>
-            {this.state.realData.matches.map((fixture) => <Link to={`/fixture/${fixture.id}`} key={fixture.id}> <MatchShort  match={fixture}/></Link>)}
+            <div className='game-week'><span className='text11-grey'>Matchweek {this.state.realData.league.round ? (parseInt(this.state.realData.league.round.order) + 1) : 'unknown'}</span></div>
+            {this.state.realData.fixtures.map((fixture) => <Link to={`/fixture/${fixture.id}`} key={fixture.id}> <MatchShort  match={fixture}/></Link>)}
                 </>
     };
 
     render() {
+
+        console.log(this.state.realData)
 
         if(this.state.loaded) return (
             <div className='betbook_screen'>

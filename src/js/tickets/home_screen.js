@@ -31,12 +31,12 @@ class Home_screen extends React.Component {
         });
     };
 
-    handlePreviousMatchWeek = (data) => {
+    handleFinished = (data) => {
         if (data.round ? (data.round.order != 0) : (0)) return <div className='last-week'>
             <div className='hs_left-box'>
                 <div><span className='text11-white'>Matchweek {data.round ? data.round.order : 'unknown'}</span></div>
                 <div className='hs_left-middle-text'><span className='text11-white'>Success Rate xx%</span></div>
-                <div className='hs_left-bottom-text'><Link to={`league/${data.league.id}/round/4`}>
+                <div className='hs_left-bottom-text'><Link to={`league/${data.league.id}/finished`}>
                     <div><span className='text11-white'>Check the bet</span></div>
                 </Link></div>
             </div>
@@ -44,12 +44,12 @@ class Home_screen extends React.Component {
         else return <div className='last-week'/>
     };
 
-    handleCurrentMatchWeek = (data) => {
+    handleUpcoming = (data) => {
         return <div className='current-week'>
             <div className='hs_right-box'>
                 <div><span className='text11-white'>Matchweek {data.round  ? (parseInt(data.round.order) + 1) : 'unknown'}</span></div>
                 <div className='hs_left-middle-text'><span className='text11-white'>{data.round ? data.round.start_date : 'Unknown start date'}</span></div>
-                <div className='hs_left-bottom-text'><Link to={`league/${data.league.id}/round/4`}>
+                <div className='hs_left-bottom-text'><Link to={`league/${data.league.id}`}>
                     <div><span className='text11-white'>Create bet</span></div>
                 </Link></div>
             </div>
@@ -61,11 +61,11 @@ class Home_screen extends React.Component {
             if (!data.round) data.round = null;
             return <div className='favourite-league' key={data.id + '_'}>
                 <div className='favourite-league-container'>
-                    {this.handlePreviousMatchWeek(data)}
+                    {this.handleFinished(data)}
                     <div className='logo'><img className='league-logo'  src={'./assets/images/Logos/' + data.league.logo} alt=''/><br/>
                         <div className='hs_league-name'><span className='text11'>{data.league.name}</span></div>
                     </div>
-                    {this.handleCurrentMatchWeek(data)}
+                    {this.handleUpcoming(data)}
                 </div>
             </div>
         })}</>
