@@ -29,7 +29,6 @@ class MatchShort extends React.Component {
     };
 
     parseTipGame2Row1 = () => {
-        console.log('a')
         if(this.props.match.ticket.game2_tip == '2' || this.props.match.ticket.game2_tip == '1' || this.props.match.ticket.game2_tip == '3') return '0-';
     };
 
@@ -43,7 +42,7 @@ class MatchShort extends React.Component {
     parseTipGame4 = () => {
         let tip = this.props.match.ticket.game4_tip.toUpperCase();
         tip.split('');
-        return tip[0] + '/' + tip[1];
+        return tip[0] + '-' + tip[1];
     };
 
     handleBidField = () => {

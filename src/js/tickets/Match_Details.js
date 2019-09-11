@@ -12,6 +12,7 @@ class Match_Details extends React.Component {
         };
         this.sharedObj = props.sharedObj;
         this.fixtureId = props.match.params.fixtureid;
+
     }
 
     componentDidMount() {
@@ -21,6 +22,7 @@ class Match_Details extends React.Component {
     getFixtureById(){
         this.sharedObj.apiHelper.fixture.getByID(this.fixtureId,localStorage.getItem('user_id'),(res) => {
             this.sharedObj.headerInstance.setItemRight('options');
+            if(res.ticket) res.ticket = res.ticket['0'];
             this.setState({realData:res,loaded:true})
         });
     };
@@ -37,9 +39,10 @@ class Match_Details extends React.Component {
             let id = this.state.realData.ticket['id'];
 
             if (className !== 'bid-field bided') {
+                let previous_bid_score = this.state.realData.ticket[game + '_odd'];
                 data[game + '_tip'] = tip;
                 data[game + '_odd'] = this.state.realData[game + '_' + tip];
-                data['bid_score'] = parseFloat(data['bid_score']) + parseFloat(data[game + '_odd']);
+                if(data[game + '_odd'] > 0) data['bid_score'] = parseFloat(data['bid_score']) - parseFloat(previous_bid_score) + parseFloat(data[game + '_odd']);
             } else {
                 data[game + '_tip'] = null;
                 data['bid_score'] = parseFloat(data['bid_score']) - parseFloat(data[game + '_odd']);
@@ -61,6 +64,7 @@ class Match_Details extends React.Component {
         else {
             let ticket = this.handleReturnTicket();
             ticket.fixture_id = this.state.realData.id;
+            ticket.league_id = this.state.realData.league.id;
             ticket[game + '_tip'] = tip;
             ticket[game + '_odd'] = this.state.realData[game + '_' + tip];
             ticket['bid_score'] = ticket[game + '_odd'];
@@ -71,6 +75,7 @@ class Match_Details extends React.Component {
     handleReturnTicket = () => {
         let ticket = {
             user_id: localStorage.getItem('user_id'),
+            league_id: null,
             fixture_id: null,
             game1_tip: null,
             game1_odd: 0,
@@ -209,8 +214,8 @@ class Match_Details extends React.Component {
                     </div>
                 </div>
                 <div className='md_bid-box'>
-                    {this.handleBidType('YES', 'game3', 'gg', 'bid-field')}
-                    {this.handleBidType('NO', 'game3', 'gg3p', 'bid-field')}
+                    {this.handleBidType('GG', 'game3', 'gg', 'bid-field')}
+                    {this.handleBidType('GG3+', 'game3', 'gg3p', 'bid-field')}
                 </div>
             </div>
             <div className={this.state.realData.game4_11 ? 'ht-ft-result-field' : 'hidden'}>
