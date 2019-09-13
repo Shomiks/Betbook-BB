@@ -104,7 +104,6 @@ class Profile_Tickets extends React.Component {
                                 <Link to={`/search`}><div className='search'/></Link>
                             </div>
                             <div className='pt_country'><span className='text11-white'>Germany</span></div>
-                            <div className='pt_image-field'><img src='./assets/images/profile_picture.png' alt=''/></div>
                         </div>
                     </div>
                     <div className='scrolable-bids-field'>
