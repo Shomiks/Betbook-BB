@@ -28,6 +28,10 @@ class MatchShort extends React.Component {
         }
     };
 
+    renderDate = () => {
+      console.log(this.props.match.date.split('-')[2])
+    };
+
     parseTipGame2Row1 = () => {
         if(this.props.match.ticket.game2_tip == '2' || this.props.match.ticket.game2_tip == '1' || this.props.match.ticket.game2_tip == '3') return '0-';
     };
@@ -50,18 +54,18 @@ class MatchShort extends React.Component {
         return <div className={this.props.match.ticket ? 'ms-central-field' : 'ms-central-field yellow'}>
             <div className='ms-teams-field'>
                <div className='ms_homeField'>
-                   <img className='logo' src={'./assets/images/Teams/'+this.props.match.team_home.logo} onError={() => this.handleImgError(this.props.match.team_home)}/>
+                   <img className='logo' src={'./assets/images/Teams/'+this.props.match.team_home.logo} onError={() => this.handleImgError(this.props.match.team_home)} alt=''/>
                    <div className='ms_hometeam-text'><span className='text11-white'>{this.props.match.team_home.name}</span></div>
                </div>
 
                 <div className='ms_resultField'>
                     <span className={this.props.match.result && this.props.match.result.is_finished == 0 ? 'text15-yellow' : 'text15-white'}>{this.props.match.result ? this.props.match.result.ft_home_goals : ''}</span>
-                    <div className='ms_date'><span className='text11-white'> {!this.props.match.result ? this.props.match.date : ':'} </span></div>
+                    <div className='ms_date'><span className='text11-white'> {!this.props.match.result ? this.renderDate() : ':'} </span></div>
                     <span className={this.props.match.result && this.props.match.result.is_finished == 0 ? 'text15-yellow' : 'text15-white'}>{this.props.match.result ? this.props.match.result.ft_away_goals : ''}</span>
             </div>
                 <div className='ms_awayField'>
                     <div className='ms_awayteam-text'><span className='text11-white'>{this.props.match.team_away.name}</span></div>
-                    <img className='logo' src={'./assets/images/Teams/'+this.props.match.team_away.logo} onError={() => this.handleImgError(this.props.match.team_away)}/>
+                    <img className='logo' src={'./assets/images/Teams/'+this.props.match.team_away.logo} onError={() => this.handleImgError(this.props.match.team_away)} alt=''/>
                 </div>
             </div>
                 <div className='ms-under-teams-field'>
@@ -69,7 +73,7 @@ class MatchShort extends React.Component {
                         : (
                         <div className='ms_bid-field'>
                         <div className={'ms_bid-box' + this.handleStateField(1)}>
-                        <div className='ms_game-field'><span className='text11-grey'>{this.props.match.ticket.game1_tip}</span></div>
+                        <div className='ms_game-field'><span className='text11-grey'>{this.props.match.ticket.game1_tip ? this.props.match.ticket.game1_tip.toUpperCase() : ''}</span></div>
                         <div className='ms_odd-field'><span className='text11-white'>{this.props.match.ticket.game1_odd}</span></div>
                         </div>
                         <div className={'ms_bid-box' + this.handleStateField(2)}>

@@ -17,8 +17,13 @@ class User_Favourite_Leagues extends React.Component {
         this.countryId = props.match.params.countryid;
     }
 
+
     componentDidMount = () => {
         this.getAllLeagues();
+        setTimeout(()=>{
+            this.sharedObj.footerInstance.setActive('star');
+            },1
+        )
     };
 
     addCheckboxState = (res) => {
@@ -29,10 +34,10 @@ class User_Favourite_Leagues extends React.Component {
     };
 
     getAllLeagues = () => {
-        this.sharedObj.apiHelper.home(localStorage.getItem('user_id'),(res) => {
+        this.sharedObj.apiHelper.home.get_favourites(localStorage.getItem('user_id'),(res) => {
             this.addCheckboxState(res);
             this.sharedObj.headerInstance.setTitle('Favourite Leagues');
-            this.sharedObj.footerInstance.setActive('star');
+
             this.setState({loaded:true});
         });
     };

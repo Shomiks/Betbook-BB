@@ -15,7 +15,6 @@ class Settings extends React.Component {
         setTimeout(() => {
             this.sharedObj.headerInstance.setTitle('Settings')
         },1)
-
     }
 
     render() {
@@ -29,7 +28,6 @@ class Settings extends React.Component {
                             <div className='down-text'><span className='text17-white'>alex_shultz</span></div>
                         </div>
                         <div className='right-box'>
-                            <div className='edit-text'><span className='text11-grey'>Edit</span></div>
                             <div className='chevron-field'/>
                         </div>
                     </div>
@@ -39,8 +37,7 @@ class Settings extends React.Component {
                             <div className='down-text'><span className='text17-white'>Alexander Shultz</span></div>
                         </div>
                         <div className='right-box'>
-                            <div className='edit-text'><span className='text11-grey'>Edit</span></div>
-                            <div className='chevron-field'></div>
+                            <div className='chevron-field'/>
                         </div>
                     </div>
                     <div className='settings-box'>
@@ -50,8 +47,7 @@ class Settings extends React.Component {
                             <div className='down-text'><span className='text17-white'>England</span></div>
                         </div>
                         <div className='right-box'>
-                            <div className='edit-text'><span className='text11-grey'>Edit</span></div>
-                            <div className='chevron-field'></div>
+                            <div className='chevron-field'/>
                         </div>
                     </div>
                     <div className='settings-box'>
@@ -60,8 +56,7 @@ class Settings extends React.Component {
                             <div className='down-text'><span className='text17-white'>Chelsea</span></div>
                         </div>
                         <div className='right-box'>
-                            <div className='edit-text'><span className='text11-grey'>Edit</span></div>
-                            <div className='chevron-field'></div>
+                            <div className='chevron-field'/>
                         </div>
                     </div>
                     <div className='settings-box'>
@@ -70,31 +65,7 @@ class Settings extends React.Component {
                             <div className='down-text'><span className='text17-white'>alex1999@gmail.com</span></div>
                         </div>
                         <div className='right-box'>
-                            <div className='edit-text'><span className='text11-grey'>Edit</span></div>
-                            <div className='chevron-field'></div>
-                        </div>
-                    </div>
-                    <div className='settings-box'>
-                        <div className='left-box'>
-                            <div className='up-text'><span className='text11-grey'>Password</span></div>
-                            <div className='down-text'><span className='text17-white'>*********</span></div>
-                        </div>
-                        <div className='right-box'>
-                            <div className='edit-text'><span className='text11-grey'>Edit</span></div>
-                            <div className='chevron-field'></div>
-                        </div>
-                    </div>
-                    <div className='settings-box'>
-                        <div className='left-box'>
-                            <div className='down-text'><span className='text17-white'>Public profile</span></div>
-                        </div>
-                        <div className='right-box'>
-                            <div className='switch-box'>
-                                <label className="switch">
-                                    <input type="checkbox"></input>
-                                        <span className="slider round"></span>
-                                </label>
-                            </div>
+                            <div className='chevron-field'/>
                         </div>
                     </div>
                     <div className='settings-box'>
@@ -102,7 +73,7 @@ class Settings extends React.Component {
                             <Link to={`/login`}><div className='down-text'><span className='text17-red' onClick={()=> localStorage.clear()}>Logout</span></div></Link>
                         </div>
                         <div className='right-box'>
-                            <div className='chevron-field-red'></div>
+                            <div className='chevron-field-red'/>
                         </div>
                     </div>
                 </div>

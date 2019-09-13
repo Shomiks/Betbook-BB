@@ -16,11 +16,26 @@ class APIHelper extends React.Component {
     };
 
     register = {
-        register : (username, password, email, country_id, team_id, callBack) => {
+        favourite_team_leagues: (user_id,league_id) => {
+            let data = {
+                user_id: user_id,
+                league_id: league_id
+            };
+            fetch(`http://192.168.8.113/index.php/api/user_favourite_league/`, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(res => res.json())
+        },
+        register : (username, password, email, user_fullname, country_id, team_id, callBack) => {
             let data = {
                 username: username,
                 email: email,
                 password: password,
+                full_name: user_fullname,
                 country_id: country_id,
                 team_id: team_id
             };
@@ -96,7 +111,6 @@ class APIHelper extends React.Component {
                 })
         },
         getByID: (league_id,user_id, callBack) => {
-            console.log(league_id,user_id)
             fetch(`http://192.168.8.113/index.php/api/league/?league_id=` + league_id + '&user_id=' + user_id)
                 .then(res => res.json())
                 .then(res => {
@@ -158,13 +172,22 @@ class APIHelper extends React.Component {
         }
     };
 
-    home = (user_id,callBack) => {
+    home = {
+    get_favourites : (user_id,callBack) => {
         fetch(`http://192.168.8.113/index.php/api/user_favourite_league/?user_id=` + user_id)
             .then(res => res.json())
             .then(res => {
                 let leagues = Object.values(res);
                 callBack(leagues)
             })
+    },
+        get_userinfo : (user_id,callBack) => {
+            fetch(`http://192.168.8.113/index.php/api/user/?user_id=` + user_id)
+                .then(res => res.json())
+                .then(res => {
+                    callBack(res)
+                })
+        }
     };
 
     bids = {
@@ -224,6 +247,24 @@ class APIHelper extends React.Component {
         })
                 .then(res => res.json())
      }
+    };
+
+    statistics = {
+        profileStats : (user_id, callBack) => {
+            fetch(`http://192.168.8.113/index.php/api/user_statistic/?user_id=` + user_id)
+                .then(res => res.json())
+                .then(res => {
+                    console.log(res);
+                    callBack(res)
+                })
+        },
+        gameStatistics : (game, user_id, callBack) => {
+            fetch(`http://192.168.8.113/index.php/api/user_statistic/?user_id=` + user_id + '&game=' + game)
+                .then(res => res.json())
+                .then(res => {
+                    callBack(Object.values(res))
+                })
+        }
     }
 }
 

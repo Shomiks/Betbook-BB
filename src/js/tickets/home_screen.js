@@ -10,7 +10,8 @@ class Home_screen extends React.Component {
 
         this.state = {
             realData: null,
-            loaded: false
+            loaded: false,
+            username:null
         };
         this.sharedObj = props.sharedObj;
     }
@@ -18,6 +19,9 @@ class Home_screen extends React.Component {
     componentDidMount = () => {
         this.getUserFavorites();
         this.getUsername();
+        setTimeout(() => {
+            this.sharedObj.footerInstance.setActive('timeline');
+        },1)
     };
 
     getUsername = () => {
@@ -25,9 +29,16 @@ class Home_screen extends React.Component {
     };
 
     getUserFavorites = () => {
-        this.sharedObj.apiHelper.home(localStorage.getItem('user_id'), (res) => {
+        this.sharedObj.apiHelper.settings.getUserCountryAndClubByID(localStorage.getItem('user_id'),(res)=>{
+            let user_info = {
+                username:res[3],
+                full_name:res[2]
+            };
+            this.sharedObj.userInstance = user_info;
+        this.setState({username:res[3]})
+        });
+        this.sharedObj.apiHelper.home.get_favourites(localStorage.getItem('user_id'), (res) => {
             this.setState({realData: res, loaded: true});
-            this.sharedObj.footerInstance.setActive('timeline');
         });
     };
 
@@ -36,7 +47,7 @@ class Home_screen extends React.Component {
             <div className='hs_left-box'>
                 <div><span className='text11-white'>Matchweek {data.round ? data.round.order : 'unknown'}</span></div>
                 <div className='hs_left-middle-text'><span className='text11-white'>Success Rate xx%</span></div>
-                <div className='hs_left-bottom-text'><Link to={`league/${data.league.id}/finished`}>
+                <div className='hs_left-bottom-text'><Link to={`finished/league/${data.league.id}`}>
                     <div><span className='text11-white'>Check the bet</span></div>
                 </Link></div>
             </div>
@@ -90,7 +101,7 @@ class Home_screen extends React.Component {
                             {this.handleFavouriteLeagues()}</>
                         :
                         <>
-                            <div className='text17-white'>Welcome {this.state.real}!</div>
+                            <div className='text17-white'>Welcome {this.state.username}!</div>
                             {this.handleFirstTimeLogin()}</>
                     }
                 </div>
