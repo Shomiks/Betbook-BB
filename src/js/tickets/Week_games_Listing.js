@@ -11,52 +11,77 @@ class Week_games_Listing extends React.Component {
 
         this.state = {
             realData: [],
-            loaded: false
+            loaded: false,
+            game:null
         };
         this.sharedObj = props.sharedObj;
         this.leagudId = props.match.params.leagueid;
     }
 
     componentDidMount() {
-        if(window.location.hash.split('/')[3] != null){
-            this.getAllFixturesFinished();
-        }
-        else {
-            this.getAllFixtures();
+        if ((window.location.hash.includes('game'))) {
+            this.setState({game:window.location.hash.split('/')[2]});
+            this.getGameWonStatistics();
+
+        } else {
+            if (window.location.hash.split('/')[3] != null) {
+                this.getAllFixturesFinished();
+            } else {
+                this.getAllFixtures();
+            }
         }
     }
 
     getAllFixtures(){
         this.sharedObj.apiHelper.leagues.getByID(this.leagudId,localStorage.getItem('user_id'),(res) =>{
-            this.sharedObj.headerInstance.setItemRight('calendar');
             this.sharedObj.footerInstance.setActive('ball');
             this.setState({realData:res,loaded:true})});
     }
 
     getAllFixturesFinished(){
         this.sharedObj.apiHelper.leagues.getByIDFinished(this.leagudId,localStorage.getItem('user_id'),1,(res) =>{
-            this.sharedObj.headerInstance.setItemRight('calendar');
             this.sharedObj.footerInstance.setActive('ball');
             this.setState({realData:res,loaded:true})});
     }
 
+    getGameWonStatistics(){
+        this.sharedObj.apiHelper.statistics.gameStatistics(window.location.hash.split('/')[2],localStorage.getItem('user_id'),(res)=> {
+            res.forEach(fixture => {
+                fixture['ticket'] = fixture['ticket']['0']
+            });
+            this.setState({realData: res, loaded:true})
+        })
+    }
+
     renderGames = () => {
-        this.sharedObj.headerInstance.setTitle(this.state.realData.league.name);
-        if(this.state.realData.fixtures)
+
+        if(this.state.realData.fixtures) {
+            this.sharedObj.headerInstance.setTitle(this.state.realData.league.name);
             return <>
-            <div className='game-week'><span className='text11-grey'>Matchweek {this.state.realData.league.round ? (parseInt(this.state.realData.league.round.order) + 1) : 'unknown'}</span></div>
-            {this.state.realData.fixtures.map((fixture) => <Link to={`/fixture/${fixture.id}`} key={fixture.id}> <MatchShort  match={fixture}/></Link>)}
-                </>
+                {this.state.realData.fixtures ? this.state.realData.fixtures.map((fixture) => <Link to={`/fixture/${fixture.id}`} key={fixture.id}>
+                    <MatchShort match={fixture}/></Link>) : null}
+            </>
+        }
+        else{
+            if(this.state.game == 1) this.sharedObj.headerInstance.setTitle('Match Outcome Bids');
+            else if(this.state.game == 2) this.sharedObj.headerInstance.setTitle('Total Goals Bids');
+            else if(this.state.game == 3) this.sharedObj.headerInstance.setTitle('Both Teams To Score Bids');
+            else this.sharedObj.headerInstance.setTitle('Half Time/Full Time Bids');
+
+            return <>{this.state.realData.fixtures ? this.state.realData.fixtures.map((fixture) => <Link to={`/fixture/${fixture.id}`} key={fixture.id}>
+                <MatchShort match={fixture}/></Link>) : null}</>
+        }
     };
 
     render() {
 
-        console.log(this.state.realData)
+
+        console.log(this.state.realData);
 
         if(this.state.loaded) return (
             <div className='betbook_screen'>
                 <div className='main-content'>
-                    {this.state.loaded ? this.renderGames() : <div>Loading ... </div>}
+                    {this.renderGames()}
                 </div>
             </div>
         );

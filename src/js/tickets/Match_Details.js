@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../../src/style/betbook/matchdetails.scss';
 import '../../../src/style/app.scss';
+import Loader from "../components/loader";
 class Match_Details extends React.Component {
 
     constructor(props) {
@@ -21,6 +22,7 @@ class Match_Details extends React.Component {
 
     getFixtureById(){
         this.sharedObj.apiHelper.fixture.getByID(this.fixtureId,localStorage.getItem('user_id'),(res) => {
+            console.log(res)
             this.sharedObj.headerInstance.setItemRight('options');
             if(res.ticket) res.ticket = res.ticket['0'];
             this.setState({realData:res,loaded:true})
@@ -158,13 +160,18 @@ class Match_Details extends React.Component {
             </>
     };
 
+    handleImgError = (team) => {
+        team.logo = 'alternative-logo.png';
+        this.forceUpdate();
+    };
+
+
     renderMatchDetails = () => {
         return <div className='match-details-field'>
             <div className='md_league-week-details'><span className='text11-grey'>{this.state.realData.date}</span></div>
             <div className='md_league_match_fixture'>
                 <div className='md_home-team-field'>
-                    {this.state.realData.team_home.logo ? <img className='logo' src={'./assets/images/Teams/'+this.state.realData.team_home.logo}/> : <img className='logo' src={'../assets/images/alternative-logo.png'}/>}
-
+                    <img className='logo' src={'./assets/images/Teams/'+this.state.realData.team_home.logo} onError={() => this.handleImgError(this.state.realData.team_home)}/>
                     <div className='home-text-field'><span className='text18-white'>{this.state.realData.team_home.name}</span>
                     </div>
                 </div>
@@ -172,7 +179,7 @@ class Match_Details extends React.Component {
                     {this.state.realData.result ? this.renderResult() : null}
                 </div>
                 <div className='md_away-team-field'>
-                    {this.state.realData.team_away.logo ? <img className='logo' src={'./assets/images/Teams/'+this.state.realData.team_away.logo} /> : <img className='logo' src={'./assets/images/alternative-logo.png'} alt=''/>}
+                    <img className='logo' src={'./assets/images/Teams/'+this.state.realData.team_away.logo} onError={() => this.handleImgError(this.state.realData.team_away)}/>
                     <div className='home-text-field'><span className='text18-white'>{this.state.realData.team_away.name}</span></div>
                 </div>
             </div>
@@ -181,10 +188,10 @@ class Match_Details extends React.Component {
 
     renderBidFieldDetails = () => {
         return <div className='scrolable-bids-field'>
-            <div className='md_match-details-container'>
+            <div className={this.state.realData.result ? 'md_match-details-container' : 'hidden'}>
                 <div className='md_line'/>
                 <div className='md_match-details-box'>
-                    <span className='text12-yellow'>Match details</span>
+                    <span className='text12-yellow'>Match Details</span>
                 </div>
                 <div className='md_line'/>
             </div>
@@ -279,9 +286,8 @@ class Match_Details extends React.Component {
     };
 
     render() {
-        console.log(this.state.realData.team_away ? this.state.realData.team_away.logo : 'jebi se')
 
-        return <>{this.state.loaded == true ? this.renderStateCompopnent() : <div/>}</>
+        return <>{this.state.loaded == true ? this.renderStateCompopnent() : <Loader/>}</>
     }
 }
 

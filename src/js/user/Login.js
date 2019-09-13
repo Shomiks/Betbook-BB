@@ -24,7 +24,6 @@ class Login extends React.Component {
             localStorage.setItem('user_id',res.id);
                 if (res) {
                     this.setState({loggedIn:true});
-                    alert("WELCOME AMIGO!");
                 }
                     else{
                        alert('wrong username/password!');

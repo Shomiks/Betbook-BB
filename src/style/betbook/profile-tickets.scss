@@ -101,7 +101,9 @@
     position: relative;
     background-color: #151516;
 
+
     .ft_text_position {
+      z-index: 1;
       position: relative;
       text-align: center;
     }
@@ -140,7 +142,7 @@
     height: 114px;
   }
 
-  .both-teams-goals-statistics-field {
+  .both-team-goal-statistics-field {
     height: 114px;
   }
 
@@ -157,6 +159,7 @@
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     background: linear-gradient(180deg, #FFAC3A 0%, #EB670C 100%), #ED8035;
+    z-index: 2;
   }
 
 
@@ -167,11 +170,6 @@
     margin-top: 17px;
 
     .pt_up-text {
-      position: relative;
-      display: block;
-    }
-
-    pt_down-number {
       position: relative;
       display: block;
     }

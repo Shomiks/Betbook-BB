@@ -16,11 +16,26 @@ class APIHelper extends React.Component {
     };
 
     register = {
-        register : (username, password, email, country_id, team_id, callBack) => {
+        favourite_team_leagues: (user_id,league_id) => {
+            let data = {
+                user_id: user_id,
+                league_id: league_id
+            };
+            fetch(`http://192.168.8.113/index.php/api/user_favourite_league/`, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(res => res.json())
+        },
+        register : (username, password, email, user_fullname, country_id, team_id, callBack) => {
             let data = {
                 username: username,
                 email: email,
                 password: password,
+                full_name: user_fullname,
                 country_id: country_id,
                 team_id: team_id
             };
@@ -44,16 +59,6 @@ class APIHelper extends React.Component {
     };
 
     settings = {
-        getSettings: (callBack) => {
-            setTimeout(() => {
-                callBack({firstname: 'teeeeest'});
-            }, timeoutInterval);
-        },
-        setSettings: (username, email, callBack) => {
-            setTimeout(() => {
-                callBack({success: true});
-            }, timeoutInterval);
-        },
         getUserCountryAndClubByID: (id,callBack) => {
             fetch(`http://192.168.8.113/index.php/api/user/?id=` + id)
                 .then(res => res.json())
@@ -106,21 +111,15 @@ class APIHelper extends React.Component {
                 })
         },
         getByID: (league_id,user_id, callBack) => {
-            console.log(league_id,user_id)
             fetch(`http://192.168.8.113/index.php/api/league/?league_id=` + league_id + '&user_id=' + user_id)
                 .then(res => res.json())
                 .then(res => {
-                    console.log('a')
-                    console.log(res)
-
                     const userBidsIndex = {};
-
                     if(res.userBids && res.userBids.length){
                         res.userBids.forEach(ub => {
                             userBidsIndex[ub.fixture_id] = ub;
                         })
                     }
-
                     if(res.fixtures && res.fixtures.length){
                         res.fixtures.forEach(fixture => {
                             if(userBidsIndex[fixture.id]){
@@ -131,12 +130,10 @@ class APIHelper extends React.Component {
                             }
                         })
                     }
-
                     callBack(res)
                 })
         },
         getByIDFinished: (league_id,user_id,finished, callBack) => {
-            console.log(league_id, user_id)
             fetch(`http://192.168.8.113/index.php/api/league/?league_id=` + league_id + '&user_id=' + user_id + '&finished=' + finished)
                 .then(res => res.json())
                 .then(res => {
@@ -158,30 +155,10 @@ class APIHelper extends React.Component {
                             }
                         })
                     }
-
                     callBack(res)
                 })
         }
     };
-
-    // rounds = {
-    //     getCurrentByLeagueID: (league_id,callBack) => {
-    //         fetch(`http://192.168.8.113/index.php/api/round/?league_id=` + league_id)
-    //             .then(res => res.json())
-    //             .then(res => {
-    //                 let rounds = Object.values(res);
-    //                 callBack(rounds)
-    //             })
-    //     },
-    //     getByID: (round_id,callBack) => {
-    //         fetch(`http://192.168.8.113/index.php/api/round/?id=` + round_id)
-    //             .then(res => res.json())
-    //             .then(res => {
-    //                 let data = Object.values(res);
-    //                 callBack(data)
-    //             })
-    //     }
-    // };
 
     fixture = {
         getByID: (id,user_id, callBack) => {
@@ -195,19 +172,26 @@ class APIHelper extends React.Component {
         }
     };
 
-    home = (user_id,callBack) => {
+    home = {
+    get_favourites : (user_id,callBack) => {
         fetch(`http://192.168.8.113/index.php/api/user_favourite_league/?user_id=` + user_id)
             .then(res => res.json())
             .then(res => {
                 let leagues = Object.values(res);
                 callBack(leagues)
             })
+    },
+        get_userinfo : (user_id,callBack) => {
+            fetch(`http://192.168.8.113/index.php/api/user/?user_id=` + user_id)
+                .then(res => res.json())
+                .then(res => {
+                    callBack(res)
+                })
+        }
     };
 
     bids = {
         updateFixtureBids : (id,data) => {
-            console.log('a')
-            console.log(data.updated.ticket)
             fetch(`http://192.168.8.113/index.php/api/user_fixture_bid/` + id, {
                 method: 'PUT',
                 body: JSON.stringify(data.updated.ticket),
@@ -218,7 +202,6 @@ class APIHelper extends React.Component {
                 .then(res => res.json())
         },
         createFixtureBids: (data,callBack) => {
-            console.log(data.ticket)
             fetch(`http://192.168.8.113/index.php/api/user_fixture_bid/`, {
                 method: 'POST',
                 body: JSON.stringify(data.ticket),
@@ -264,6 +247,24 @@ class APIHelper extends React.Component {
         })
                 .then(res => res.json())
      }
+    };
+
+    statistics = {
+        profileStats : (user_id, callBack) => {
+            fetch(`http://192.168.8.113/index.php/api/user_statistic/?user_id=` + user_id)
+                .then(res => res.json())
+                .then(res => {
+                    console.log(res);
+                    callBack(res)
+                })
+        },
+        gameStatistics : (game, user_id, callBack) => {
+            fetch(`http://192.168.8.113/index.php/api/user_statistic/?user_id=` + user_id + '&game=' + game)
+                .then(res => res.json())
+                .then(res => {
+                    callBack(Object.values(res))
+                })
+        }
     }
 }
 

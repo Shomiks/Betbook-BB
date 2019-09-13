@@ -23,6 +23,7 @@ class Register extends React.Component {
             club_selected: false,
             clubs_fetched: false,
             registered: false,
+            user_fullname:'',
             countries: [],
             country_clubs: [],
             login:false
@@ -43,7 +44,11 @@ class Register extends React.Component {
     };
 
     handleChangeEmail = (e) => {
-        this.setState({email: e.target.value})
+        this.setState({email: e.target.value});
+    };
+
+    handleChangeFullName = (e) => {
+        this.setState({user_fullname:e.target.value});
     };
 
     validateEmail = (email) => {
@@ -101,9 +106,9 @@ class Register extends React.Component {
     };
 
     handleRegisterStepTwo = () => {
-        this.sharedObj.apiHelper.register.register(this.state.username,this.state.password,this.state.email,this.state.country_id,this.state.team_id,(id)=>{
-            console.log('a')
+        this.sharedObj.apiHelper.register.register(this.state.username,this.state.password,this.state.email,this.state.user_fullname,this.state.country_id,this.state.team_id,(id)=>{
             localStorage.setItem('user_id', id);
+            this.sharedObj.apiHelper.favourites.update(this.state.country_id,this.state.team_id,id);
         });
         this.setState({login:true});
     };
@@ -136,10 +141,11 @@ class Register extends React.Component {
 
     render() {
 
+        console.log(this.state.sharedObj);
+
         if (this.state.loaded) {
 
             if (this.state.login) {
-                alert('WELCOME AMIGO');
                 return <Redirect to='/home'/>
             }
 
@@ -148,18 +154,22 @@ class Register extends React.Component {
                         <div className='betbook-logo-box'><img src='./assets/images/betbook---logo.png' alt=''/></div>
 
                     <div className='register-container'>
-                        <div className={this.state.favourites ? 'hidden' : 'bs-user-container'}>
-                            <div className='bs-username-text'><span className='text15-white'>Username</span></div>
+                        <div className='bs-user-container'>
+                            <div className='bs-username-text'>{this.state.favourites ?
+                                <span className='text15-white'>Your name</span> :
+                                <span className='text15-white'>Username</span>}
+                            </div>
                             <input
                                 className={this.state.validUsername ? 'bs-username-box' : 'bs-username-box bs-username-box-error'}
-                                type='text' value={this.state.username} onChange={this.handleChangeUsername}/>
+                                type='text' value={this.state.favourites ? this.state.user_fullname : this.state.username} onChange={this.state.favourites ? this.handleChangeFullName : this.handleChangeUsername}/>
                         </div>
 
 
                         <div className='bs-email-container'>
                             <div className='bs-email-text'>{this.state.favourites ?
                                 <span className='text15-white'>Select your favourite national team</span> :
-                                <span className='text15-white'>Email</span>}</div>
+                                <span className='text15-white'>Email</span>}
+                            </div>
 
                             {this.state.favourites ? <select className='bs-email-box' value={this.state.country_id} onChange={this.handleCountryChange}>
                                     <option selected='selected' className={this.state.team_id != false ? 'hidden' : ''}>Tap to select</option>

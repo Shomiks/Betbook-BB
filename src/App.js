@@ -30,7 +30,8 @@ class App extends React.Component {
 
         this.state = {
             hash: window.location.hash,
-            loaded: false
+            loaded: false,
+            authenticated: false
         };
 
         this.sharedObject = {};
@@ -42,9 +43,14 @@ class App extends React.Component {
         this.sharedObject = {
             apiHelper: new APIHelper(),
             headerInstance: null,
-            footerInstance: null
+            footerInstance: null,
+            userInstance:null
         };
-        this.setState({loaded: true})
+
+        var userid = localStorage.getItem('user_id');
+        var authenticated = userid != null;
+
+        this.setState({loaded: true, authenticated})
     }
 
     onHashChange = () => {
@@ -52,12 +58,12 @@ class App extends React.Component {
     };
 
     render() {
+        this.state.authenticated = localStorage.getItem('user_id') != null;
+
         if (this.state.loaded) {
-            return (
-                <div className='App'>
-
+            if(this.state.authenticated) {
+                return (<div className='App'>
                     <HashRouter>
-
                         {(window.location.hash == '#/login' || window.location.hash == '#/register' || window.location.hash == '#/forgot-password' || window.location.hash == '#/loading'
                             || window.location.hash == '#/welcome' || window.location.hash == '#/home' || window.location.hash == '#/profile' || window.location.hash == '#/favorite-club')
                             ? <div/> : <Header ref={(instance) => {
@@ -89,7 +95,7 @@ class App extends React.Component {
 
                         <Route path="/league/:leagueid"
                                render={(props) => (<Week_games_Listing sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/league/:leagueid/finished"
+                        <Route path="/finished/league/:leagueid"
                                render={(props) => (<Week_games_Listing sharedObj={this.sharedObject} {...props}/>)}/>
 
                         <Route path="/fixture/:fixtureid"
@@ -98,20 +104,28 @@ class App extends React.Component {
                                render={(props) => (<LeaderBoards sharedObj={this.sharedObject} {...props}/>)}/>
                         <Route path="/profile"
                                render={(props) => (<Profile_Tickets sharedObj={this.sharedObject} {...props}/>)}/>
+                        <Route path="/game/:gameid"
+                               render={(props) => (<Week_games_Listing sharedObj={this.sharedObject} {...props}/>)}/>
                         <Route path="/settings"
                                render={(props) => (<Settings sharedObj={this.sharedObject} {...props}/>)}/>
                         <Route path="/search" render={(props) => (<Search sharedObj={this.sharedObject} {...props}/>)}/>
                         <Route path="/edit" render={(props) => (<Edit sharedObj={this.sharedObject} {...props}/>)}/>
-
                         {(window.location.hash == '#/login' || window.location.hash == '#/register' || window.location.hash == '#/forgot-password' || window.location.hash == '#/loading' || window.location.hash == '#/welcome'
                             || window.location.hash == '#/favorite-club')
                             ? <div/> : <Footer ref={(instance) => {
                                 this.sharedObject.footerInstance = instance
                             }}/>}
                     </HashRouter>
-                </div>
-
-            );
+                </div>);
+            }
+            else{
+                return (<div className='App'>
+                    <HashRouter>
+                        <Route path="/register" render={(props) => (<Register sharedObj={this.sharedObject} {...props}/>)}/>
+                        <Route path="/" render={(props) => (<Login sharedObj={this.sharedObject} {...props}  />)}/>
+                    </HashRouter>
+                </div>);
+            }
         } else {
             return <Loader/>
         }
