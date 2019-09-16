@@ -1,27 +1,46 @@
-import React from 'react'
+class APIHelper {
+    userInfo = null;
+    apiUrl = 'http://192.168.8.113';
 
-const timeoutInterval = 0;
+    constructor(){
 
-class APIHelper extends React.Component {
-    constructor(props) {
-        super(props);
     }
 
     login = (username, password,login, callBack) => {
-        fetch(`http://192.168.8.113/index.php/api/user/?login=` + login + `&username=` + username + '&password=' + password)
+        fetch(this.apiUrl + `/index.php/api/user/?login=` + login + `&username=` + username + '&password=' + password)
             .then(res => res.json())
             .then(res => {
                 callBack(res);
             })
     };
 
-    register = {
+    user = {
+        getUser: (user_id, callBack) => {
+            fetch(this.apiUrl + `/index.php/api/user/?id=` + user_id, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+                .then(res => res.json())
+                .then(res => {
+                    if(res){
+                        this.userInfo = {
+                            country:res[1],
+                            club:res[0],
+                            username:res[3],
+                            name:res[2]
+                        };
+                    }
+                    callBack(res)
+                })
+        },
         favourite_team_leagues: (user_id,league_id) => {
             let data = {
                 user_id: user_id,
                 league_id: league_id
             };
-            fetch(`http://192.168.8.113/index.php/api/user_favourite_league/`, {
+            fetch(this.apiUrl + `/index.php/api/user_favourite_league/`, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
@@ -39,7 +58,7 @@ class APIHelper extends React.Component {
                 country_id: country_id,
                 team_id: team_id
             };
-            fetch(`http://192.168.8.113/index.php/api/user/`, {
+            fetch(this.apiUrl + `/index.php/api/user/`, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
@@ -50,7 +69,7 @@ class APIHelper extends React.Component {
                 .then(res => callBack(res))
         },
         validateRegister: (username, email, callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/user/?username=` + username + `&email=` + email)
+            fetch(this.apiUrl + `/index.php/api/user/?username=` + username + `&email=` + email)
                 .then(res => res.json())
                 .then(res => {
                       callBack(res);
@@ -60,18 +79,19 @@ class APIHelper extends React.Component {
 
     settings = {
         getUserCountryAndClubByID: (id,callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/user/?id=` + id)
+            fetch(this.apiUrl + `/index.php/api/user/?id=` + id)
                 .then(res => res.json())
                 .then(res => {
                     callBack(res);
                 })
         },
-        updateCountryAndTeam: (user_id, country_id, team_id) =>{
+        updateInfo: (user_id, country_id, team_id, name) =>{
            let data = {
                 country_id: country_id,
-                team_id: team_id
+                team_id: team_id,
+                full_name:name
             };
-            fetch(`http://192.168.8.113/index.php/api/user/` + user_id,{
+            fetch(this.apiUrl + `/index.php/api/user/` + user_id,{
                 method: 'PUT',
                 body: JSON.stringify(data),
                 headers: {
@@ -79,12 +99,13 @@ class APIHelper extends React.Component {
                 }
             })
                 .then(res => res.json())
+                .then(res => console.log(res))
         }
     };
 
     teams = {
         getByCountryId : (country_id, callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/team/?country_id=` + country_id)
+            fetch(this.apiUrl + `/index.php/api/team/?country_id=` + country_id)
                 .then(res => res.json())
                 .then(res => {
                     callBack(res);
@@ -94,7 +115,7 @@ class APIHelper extends React.Component {
 
     countries = {
         getAll: (callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/country`)
+            fetch(this.apiUrl + `/index.php/api/country`)
                 .then(res => res.json())
                 .then(res => {
                     callBack(res)
@@ -104,14 +125,14 @@ class APIHelper extends React.Component {
 
     leagues = {
         getAll: (country_id, callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/country/?country_id=` + country_id)
+            fetch(this.apiUrl + `/index.php/api/country/?country_id=` + country_id)
                 .then(res => res.json())
                 .then(res => {
                     callBack(res)
                 })
         },
         getByID: (league_id,user_id, callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/league/?league_id=` + league_id + '&user_id=' + user_id)
+            fetch(this.apiUrl + `/index.php/api/league/?league_id=` + league_id + '&user_id=' + user_id)
                 .then(res => res.json())
                 .then(res => {
                     const userBidsIndex = {};
@@ -134,7 +155,7 @@ class APIHelper extends React.Component {
                 })
         },
         getByIDFinished: (league_id,user_id,finished, callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/league/?league_id=` + league_id + '&user_id=' + user_id + '&finished=' + finished)
+            fetch(this.apiUrl + `/index.php/api/league/?league_id=` + league_id + '&user_id=' + user_id + '&finished=' + finished)
                 .then(res => res.json())
                 .then(res => {
 
@@ -162,7 +183,7 @@ class APIHelper extends React.Component {
 
     fixture = {
         getByID: (id,user_id, callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/fixture/?id=` + id + '&user_id=' + user_id)
+            fetch(this.apiUrl + `/index.php/api/fixture/?id=` + id + '&user_id=' + user_id)
                 .then(res => res.json())
                 .then(res => {
                     let result = res;
@@ -174,25 +195,18 @@ class APIHelper extends React.Component {
 
     home = {
     get_favourites : (user_id,callBack) => {
-        fetch(`http://192.168.8.113/index.php/api/user_favourite_league/?user_id=` + user_id)
+        fetch(this.apiUrl + `/index.php/api/user_favourite_league/?user_id=` + user_id)
             .then(res => res.json())
             .then(res => {
                 let leagues = Object.values(res);
                 callBack(leagues)
             })
-    },
-        get_userinfo : (user_id,callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/user/?user_id=` + user_id)
-                .then(res => res.json())
-                .then(res => {
-                    callBack(res)
-                })
-        }
+     }
     };
 
     bids = {
         updateFixtureBids : (id,data) => {
-            fetch(`http://192.168.8.113/index.php/api/user_fixture_bid/` + id, {
+            fetch(this.apiUrl + `/index.php/api/user_fixture_bid/` + id, {
                 method: 'PUT',
                 body: JSON.stringify(data.updated.ticket),
                 headers: {
@@ -202,7 +216,7 @@ class APIHelper extends React.Component {
                 .then(res => res.json())
         },
         createFixtureBids: (data,callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/user_fixture_bid/`, {
+            fetch(this.apiUrl + `/index.php/api/user_fixture_bid/`, {
                 method: 'POST',
                 body: JSON.stringify(data.ticket),
                 headers: {
@@ -213,7 +227,7 @@ class APIHelper extends React.Component {
                 .then(res => callBack(res))
         },
         deleteFixtureBid: (id) => {
-            fetch(`http://192.168.8.113/index.php/api/user_fixture_bid/` + id, {
+            fetch(this.apiUrl + `/index.php/api/user_fixture_bid/` + id, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
@@ -229,7 +243,7 @@ class APIHelper extends React.Component {
                 user_id: user_id,
                 league_id: league_id
             };
-            fetch(`http://192.168.8.113/index.php/api/user_favourite_league/`, {
+            fetch(this.apiUrl + `/index.php/api/user_favourite_league/`, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
@@ -239,7 +253,7 @@ class APIHelper extends React.Component {
                 .then(res => res.json())
         },
         delete: (id) => {
-            fetch(`http://192.168.8.113/index.php/api/user_favourite_league/` + id, {
+            fetch(this.apiUrl + `/index.php/api/user_favourite_league/` + id, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
@@ -251,7 +265,7 @@ class APIHelper extends React.Component {
 
     statistics = {
         profileStats : (user_id, callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/user_statistic/?user_id=` + user_id)
+            fetch(this.apiUrl + `/index.php/api/user_statistic/?user_id=` + user_id)
                 .then(res => res.json())
                 .then(res => {
                     console.log(res);
@@ -259,7 +273,7 @@ class APIHelper extends React.Component {
                 })
         },
         gameStatistics : (game, user_id, callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/user_statistic/?user_id=` + user_id + '&game=' + game)
+            fetch(this.apiUrl + `/index.php/api/user_statistic/?user_id=` + user_id + '&game=' + game)
                 .then(res => res.json())
                 .then(res => {
                     callBack(Object.values(res))
@@ -268,4 +282,4 @@ class APIHelper extends React.Component {
     }
 }
 
-export default APIHelper
+window.apiHelper = new APIHelper();

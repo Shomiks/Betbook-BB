@@ -6,7 +6,6 @@ import Week_games_Listing from "./js/tickets/Week_games_Listing";
 import Home_screen from "./js/tickets/home_screen";
 import Competition_Listing from "./js/tickets/Competition_Listing";
 import {Route, HashRouter} from "react-router-dom";
-import APIHelper from "./js/data/apihelper";
 import Match_Details from "./js/tickets/Match_Details";
 import Footer from "./js/components/footer";
 import LeaderBoards from "./js/tickets/LeaderBoards";
@@ -22,6 +21,8 @@ import FavoriteClub from "./js/user/FavoriteClub";
 import User_Favourite_Leagues from "./js/user/User_Favourite_Leagues";
 import Edit from "./js/user/Edit";
 import Loader from "./js/components/loader";
+
+require("./js/data/apihelper");
 
 class App extends React.Component {
 
@@ -41,16 +42,19 @@ class App extends React.Component {
 
     componentDidMount() {
         this.sharedObject = {
-            apiHelper: new APIHelper(),
+            apiHelper: window.apiHelper,
             headerInstance: null,
             footerInstance: null,
-            userInstance:null
         };
 
         var userid = localStorage.getItem('user_id');
         var authenticated = userid != null;
 
-        this.setState({loaded: true, authenticated})
+        if(userid){
+            this.sharedObject.apiHelper.user.getUser(userid, () => {
+                this.setState({loaded: true, authenticated});
+            })
+        }
     }
 
     onHashChange = () => {
@@ -64,7 +68,7 @@ class App extends React.Component {
             if(this.state.authenticated) {
                 return (<div className='App'>
                     <HashRouter>
-                        {(window.location.hash == '#/login' || window.location.hash == '#/register' || window.location.hash == '#/forgot-password' || window.location.hash == '#/loading'
+                        {(window.location.hash == '#/login' || window.location.hash == '#/user' || window.location.hash == '#/forgot-password' || window.location.hash == '#/loading'
                             || window.location.hash == '#/welcome' || window.location.hash == '#/home' || window.location.hash == '#/profile' || window.location.hash == '#/favorite-club')
                             ? <div/> : <Header ref={(instance) => {
                                 this.sharedObject.headerInstance = instance
@@ -110,7 +114,7 @@ class App extends React.Component {
                                render={(props) => (<Settings sharedObj={this.sharedObject} {...props}/>)}/>
                         <Route path="/search" render={(props) => (<Search sharedObj={this.sharedObject} {...props}/>)}/>
                         <Route path="/edit" render={(props) => (<Edit sharedObj={this.sharedObject} {...props}/>)}/>
-                        {(window.location.hash == '#/login' || window.location.hash == '#/register' || window.location.hash == '#/forgot-password' || window.location.hash == '#/loading' || window.location.hash == '#/welcome'
+                        {(window.location.hash == '#/login' || window.location.hash == '#/user' || window.location.hash == '#/forgot-password' || window.location.hash == '#/loading' || window.location.hash == '#/welcome'
                             || window.location.hash == '#/favorite-club')
                             ? <div/> : <Footer ref={(instance) => {
                                 this.sharedObject.footerInstance = instance

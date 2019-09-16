@@ -18,25 +18,15 @@ class Home_screen extends React.Component {
 
     componentDidMount = () => {
         this.getUserFavorites();
-        this.getUsername();
         setTimeout(() => {
             this.sharedObj.footerInstance.setActive('timeline');
-        },1)
-    };
-
-    getUsername = () => {
-
+        },1);
+        this.sharedObj.apiHelper.user.getUser(localStorage.getItem('user_id'),(res) => {
+            this.setState({username: window.apiHelper.userInfo['username']})
+        })
     };
 
     getUserFavorites = () => {
-        this.sharedObj.apiHelper.settings.getUserCountryAndClubByID(localStorage.getItem('user_id'),(res)=>{
-            let user_info = {
-                username:res[3],
-                full_name:res[2]
-            };
-            this.sharedObj.userInstance = user_info;
-        this.setState({username:res[3]})
-        });
         this.sharedObj.apiHelper.home.get_favourites(localStorage.getItem('user_id'), (res) => {
             this.setState({realData: res, loaded: true});
         });

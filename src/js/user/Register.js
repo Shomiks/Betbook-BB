@@ -63,7 +63,7 @@ class Register extends React.Component {
                 alert('invalid email!');
                 this.setState({validEmail: false})
             } else {
-                this.sharedObj.apiHelper.register.validateRegister(this.state.username, this.state.email, (result) => {
+                this.sharedObj.apiHelper.user.validateRegister(this.state.username, this.state.email, (result) => {
                     this.setState({validEmail:false});
                     if (result == 'empty_user') {
                         alert('empty username!');
@@ -106,7 +106,7 @@ class Register extends React.Component {
     };
 
     handleRegisterStepTwo = () => {
-        this.sharedObj.apiHelper.register.register(this.state.username,this.state.password,this.state.email,this.state.user_fullname,this.state.country_id,this.state.team_id,(id)=>{
+        this.sharedObj.apiHelper.user.register(this.state.username,this.state.password,this.state.email,this.state.user_fullname,this.state.country_id,this.state.team_id,(id)=>{
             localStorage.setItem('user_id', id);
             this.sharedObj.apiHelper.favourites.update(this.state.country_id,this.state.team_id,id);
         });

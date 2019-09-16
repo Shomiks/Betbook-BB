@@ -61,24 +61,24 @@ class Profile_Tickets extends React.Component {
             statisticsCalculated.game2_avg = (res.game2_sum / res.game2_total_win).toFixed(2);
             statisticsCalculated.game2_success = (res.game2_total_win / res.game2_total).toFixed(2) * 100 + '%';
             statisticsCalculated.game3_avg = (res.game3_sum / res.game3_total_win).toFixed(2);
-            statisticsCalculated.game3_success = (res.game3_total_win / res.game3_total_win).toFixed(2) * 100 + '%';
+            statisticsCalculated.game3_success = (res.game3_total_win / res.game3_total).toFixed(2) * 100 + '%';
             statisticsCalculated.game4_avg = (res.game4_sum / res.game4_total_win).toFixed(2);
             statisticsCalculated.game4_success = (res.game4_total_win / res.game4_total).toFixed(2) * 100 + '%';
         }
 
-        if(res.game1_total == 0){
+        if(res.game1_total == 0 || res.game1_total_win == 0){
             statisticsCalculated.game1_avg = '-';
             statisticsCalculated.game1_success = '-';
         }
-        if(res.game2_total == 0){
+        if(res.game2_total == 0 || res.game2_total_win == 0){
             statisticsCalculated.game2_avg = '-';
             statisticsCalculated.game2_success = '-';
         }
-        if(res.game3_total == 0){
+        if(res.game3_total == 0 || res.game3_total_win == 0){
             statisticsCalculated.game3_avg = '-';
             statisticsCalculated.game3_success = '-';
         }
-        if(res.game4_total == 0){
+        if(res.game4_total == 0 || res.game4_total_win == 0){
             statisticsCalculated.game4_avg = '-';
             statisticsCalculated.game4_success = '-';
         }
@@ -100,11 +100,10 @@ class Profile_Tickets extends React.Component {
                         <div className='pt_header-central-field'>
                             <div className='first-row'>
                                 <Link to={`/settings`}><div className='settings'/></Link>
-                            <div className='pt_member-name'><span className='text18-white'>Alexander Shultz</span></div>
+                            <div className='pt_member-name'><span className='text18-white'>{window.apiHelper.userInfo['name']}</span></div>
                                 <Link to={`/search`}><div className='search'/></Link>
                             </div>
-                            <div className='pt_country'><span className='text11-white'>Germany</span></div>
-                            <div className='pt_image-field'><img src='./assets/images/profile_picture.png' alt=''/></div>
+                            <div className='pt_country'><span className='text11-white'>{window.apiHelper.userInfo.country['name']}</span></div>
                         </div>
                     </div>
                     <div className='scrolable-bids-field'>

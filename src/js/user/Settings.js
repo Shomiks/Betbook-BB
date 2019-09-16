@@ -21,59 +21,38 @@ class Settings extends React.Component {
 
         return (<div className='betbook-screen'>
                 <div className='main-container'>
-                    <div className='personal-info'><span className='text11-grey'>Personal info</span><Link to={`/edit`}><button>EDIT</button></Link></div>
+                    <Link to={`/edit`}> <div className='personal-info'><span className='text11-grey'>Personal info</span>
+                        <div className='right-box'>Edit<div className='chevron-field'/>  </div>
+                    </div></Link>
+
                     <div className='settings-box'>
                         <div className='left-box'>
                             <div className='up-text'><span className='text11-grey'>Username</span></div>
-                            <div className='down-text'><span className='text17-white'>alex_shultz</span></div>
-                        </div>
-                        <div className='right-box'>
-                            <div className='chevron-field'/>
+                            <div className='down-text'><span className='text17-white'>{window.apiHelper.userInfo['username']}</span></div>
                         </div>
                     </div>
                     <div className='settings-box'>
                         <div className='left-box'>
                             <div className='up-text'><span className='text11-grey'>Name * (optional)</span></div>
-                            <div className='down-text'><span className='text17-white'>Alexander Shultz</span></div>
-                        </div>
-                        <div className='right-box'>
-                            <div className='chevron-field'/>
+                            <div className='down-text'><span className='text17-white'>{window.apiHelper.userInfo['name']}</span></div>
                         </div>
                     </div>
                     <div className='settings-box'>
                         <div className='left-box'>
                             <div className='up-text'><span className='text11-grey'>Favorite national selection</span>
                             </div>
-                            <div className='down-text'><span className='text17-white'>England</span></div>
-                        </div>
-                        <div className='right-box'>
-                            <div className='chevron-field'/>
+                            <div className='down-text'><span className='text17-white'>{window.apiHelper.userInfo['country'].name}</span></div>
                         </div>
                     </div>
                     <div className='settings-box'>
                         <div className='left-box'>
                             <div className='up-text'><span className='text11-grey'>Favorite club</span></div>
-                            <div className='down-text'><span className='text17-white'>Chelsea</span></div>
-                        </div>
-                        <div className='right-box'>
-                            <div className='chevron-field'/>
-                        </div>
-                    </div>
-                    <div className='settings-box'>
-                        <div className='left-box'>
-                            <div className='up-text'><span className='text11-grey'>Email</span></div>
-                            <div className='down-text'><span className='text17-white'>alex1999@gmail.com</span></div>
-                        </div>
-                        <div className='right-box'>
-                            <div className='chevron-field'/>
+                            <div className='down-text'><span className='text17-white'>{window.apiHelper.userInfo['club'].name}</span></div>
                         </div>
                     </div>
                     <div className='settings-box'>
                         <div className='left-box'>
                             <Link to={`/login`}><div className='down-text'><span className='text17-red' onClick={()=> localStorage.clear()}>Logout</span></div></Link>
-                        </div>
-                        <div className='right-box'>
-                            <div className='chevron-field-red'/>
                         </div>
                     </div>
                 </div>
