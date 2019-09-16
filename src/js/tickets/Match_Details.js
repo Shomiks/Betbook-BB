@@ -22,7 +22,7 @@ class Match_Details extends React.Component {
 
     getFixtureById(){
         this.sharedObj.apiHelper.fixture.getByID(this.fixtureId,localStorage.getItem('user_id'),(res) => {
-            this.sharedObj.headerInstance.setItemRight('options');
+            // this.sharedObj.headerInstance.setItemRight('options');
             if(res.ticket) res.ticket = res.ticket['0'];
             this.setState({realData:res,loaded:true})
         });
