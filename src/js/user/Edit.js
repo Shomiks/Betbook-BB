@@ -65,8 +65,6 @@ class Register extends React.Component {
 
              return (<div className='betbook-screen-login'>
                     <div className='main-container'>
-                        <div className='betbook-logo-box'><img src='./assets/images/betbook---logo.png' alt=''/></div>
-
                         <div className='register-container'>
                             <div className='bs-user-container'>
                                 <div className='bs-username-text'><span className='text15-white'>Your name</span></div>

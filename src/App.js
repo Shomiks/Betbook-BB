@@ -52,9 +52,10 @@ class App extends React.Component {
 
         if(userid){
             this.sharedObject.apiHelper.user.getUser(userid, () => {
-                this.setState({loaded: true, authenticated});
+                this.setState({authenticated});
             })
         }
+        this.setState({loaded:true});
     }
 
     onHashChange = () => {

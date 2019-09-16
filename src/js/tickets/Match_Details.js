@@ -17,12 +17,16 @@ class Match_Details extends React.Component {
     }
 
     componentDidMount() {
+        setTimeout(()=>{
+            this.sharedObj.headerInstance.setItemRight('options');
+            this.sharedObj.footerInstance.setActive('ball');
+        },1);
         this.getFixtureById();
     };
 
     getFixtureById(){
         this.sharedObj.apiHelper.fixture.getByID(this.fixtureId,localStorage.getItem('user_id'),(res) => {
-            this.sharedObj.headerInstance.setItemRight('options');
+
             if(res.ticket) res.ticket = res.ticket['0'];
             this.setState({realData:res,loaded:true})
         });
@@ -260,7 +264,9 @@ class Match_Details extends React.Component {
 
 
     renderStateCompopnent = () => {
-        // this.sharedObj.headerInstance.setTitle(this.state.realData.round.name);
+
+        this.sharedObj.headerInstance.setTitle(this.state.realData.league.name);
+
 
         let classState ='betbook_screen';
 
