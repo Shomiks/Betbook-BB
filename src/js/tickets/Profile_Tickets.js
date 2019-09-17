@@ -96,6 +96,16 @@ class Profile_Tickets extends React.Component {
 
        if(this.state.loaded) return (
             <div className='betbook_context'>
+                    <div className='pt_header-field'>
+                        <div className='pt_header-central-field'>
+                            <div className='first-row'>
+                                <Link to={`/settings`}><div className='settings'/></Link>
+                            <div className='pt_member-name'><span className='text18-white'>{window.apiHelper.userInfo ? window.apiHelper.userInfo['name'] : ''}</span></div>
+                                <Link to={`/search`}><div className='search'/></Link>
+                            </div>
+                            <div className='pt_country'><span className='text11-white'>{window.apiHelper.userInfo ? window.apiHelper.userInfo.country['name'] : ''}</span></div>
+                        </div>
+                    </div>
                     <div className='scrolable-bids-field'>
                         <div className='full-time-statistics-field'>
                             <div className='main-titlle-field'>

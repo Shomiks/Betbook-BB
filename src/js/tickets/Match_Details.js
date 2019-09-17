@@ -17,7 +17,6 @@ class Match_Details extends React.Component {
 
     componentDidMount() {
         setTimeout(()=>{
-            this.sharedObj.headerInstance.setItemRight('options');
             this.sharedObj.footerInstance.setActive('ball');
         },1);
         this.getFixtureById();

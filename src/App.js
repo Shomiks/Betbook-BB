@@ -72,7 +72,7 @@ class App extends React.Component {
                 return (<div className='App'>
                     <HashRouter>
                         {(window.location.hash == '#/login' || window.location.hash == '#/user' || window.location.hash == '#/forgot-password' || window.location.hash == '#/loading'
-                            || window.location.hash == '#/welcome' || window.location.hash == '#/home' || window.location.hash == '#/favorite-club')
+                            || window.location.hash == '#/welcome' || window.location.hash == '#/home' || window.location.hash == '#/favorite-club' || window.location.hash == '#/register')
                             ? <div/> : <Header ref={(instance) => {
                                 this.sharedObject.headerInstance = instance
                             }}/>}
@@ -117,8 +117,8 @@ class App extends React.Component {
                                render={(props) => (<Settings sharedObj={this.sharedObject} {...props}/>)}/>
                         <Route path="/search" render={(props) => (<Search sharedObj={this.sharedObject} {...props}/>)}/>
                         <Route path="/edit" render={(props) => (<Edit sharedObj={this.sharedObject} {...props}/>)}/>
-                        {(window.location.hash == '#/login' || window.location.hash == '#/user' || window.location.hash == '#/forgot-password' || window.location.hash == '#/loading' || window.location.hash == '#/welcome'
-                            || window.location.hash == '#/favorite-club')
+                        {(window.location.hash == '#/login' || window.location.hash == '#/user' || window.location.hash == '#/forgot-password' || window.location.hash == '#/loading'
+                            || window.location.hash == '#/welcome' || window.location.hash == '#/favorite-club' || window.location.hash == '#/register')
                             ? <div/> : <Footer ref={(instance) => {
                                 this.sharedObject.footerInstance = instance
                             }}/>}

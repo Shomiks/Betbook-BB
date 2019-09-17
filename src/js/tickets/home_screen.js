@@ -45,11 +45,19 @@ class Home_screen extends React.Component {
         else return <div className='last-week'/>
     };
 
+    renderDate = (data) => {
+        let Datefields = data.round.start_date.split(' ')[0].split('-');
+        let Timefields = data.round.start_date.split(' ')[1].split(':');
+        let year = Datefields[0];
+
+        return( Datefields[1] + '/' + Datefields[2] + '/' + year + ' ' + Timefields[0] + ':' +  Timefields[1]);
+    };
+
     handleUpcoming = (data) => {
         return <div className='current-week'>
             <div className='hs_right-box'>
                 <div><span className='text11-white'>Matchweek {data.round  ? (parseInt(data.round.order) + 1) : 'unknown'}</span></div>
-                <div className='hs_left-middle-text'><span className='text11-white'>{data.round ? data.round.start_date : 'Unknown start date'}</span></div>
+                <div className='hs_left-middle-text'><span className='text11-white'>{data.round ? this.renderDate(data) : 'Unknown start date'}</span></div>
                 <div className='hs_left-bottom-text'><Link to={`league/${data.league.id}`}>
                     <div><span className='text11-white'>Create bet</span></div>
                 </Link></div>
