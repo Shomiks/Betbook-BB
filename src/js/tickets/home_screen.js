@@ -82,7 +82,7 @@ class Home_screen extends React.Component {
     render() {
 
         if (this.state.loaded) return (
-            <div className='betbook_screen'>
+            <div className='betbook_screen' style={{padding: '60px 0'}}>
                 <div className='betbook-logo'/>
                 <div className='main-content'>
                     {this.state.realData.length ?

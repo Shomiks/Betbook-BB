@@ -10,11 +10,6 @@
   align-items: center;
   z-index:3;
 
-  .active {
-    background-color: orangered;
-  }
-
-
   .ft_home-field {
     position: relative;
     width: 25%;
@@ -154,6 +149,10 @@
 
     .profile {
       margin-top: 14px;
+
+    }
+    &:active {
+      background-color: #f68c25;
     }
   }
 
