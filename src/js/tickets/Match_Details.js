@@ -52,14 +52,12 @@ class Match_Details extends React.Component {
                 data['bid_score'] = (parseFloat(data['bid_score']) - parseFloat(data[game + '_odd'])).toFixed(2);
                 data[game + '_odd'] = 0;
                 if(this.checkIfUnbided()) {
-                    console.log('a')
                     this.sharedObj.apiHelper.bids.deleteFixtureBid(this.state.realData.ticket.id);
                     updated['ticket'] = null;
                     this.setState({realData: updated});
                     return;
                 }
             }
-
             updated['ticket'] = data;
             this.setState({realData: updated});
                 // this.sharedObj.apiHelper.favourites.update(localStorage.getItem('user_id'),this.state.realData.league.id);
@@ -178,10 +176,18 @@ class Match_Details extends React.Component {
         this.forceUpdate();
     };
 
+    renderDate = () => {
+        let Datefields = this.state.realData.date.split(' ')[0].split('-');
+        let Timefields = this.state.realData.date.split(' ')[1].split(':')
+        let year = Datefields[0].substring(2,Datefields[0].length);
+
+        return( Datefields[1] + '/' + Datefields[2] + '/' + year + ' ' + Timefields[0] + ':' +  Timefields[1]);
+    };
+
 
     renderMatchDetails = () => {
         return <div className='match-details-field'>
-            <div className='md_league-week-details'><span className='text11-grey'>{this.state.realData.date}</span></div>
+            <div className='md_league-week-details'><span className='text11-grey'>{this.renderDate()}</span></div>
             <div className='md_league_match_fixture'>
                 <div className='md_home-team-field'>
                     <img className='logo' src={'./assets/images/Teams/'+this.state.realData.team_home.logo} onError={() => this.handleImgError(this.state.realData.team_home)}/>
@@ -301,8 +307,6 @@ class Match_Details extends React.Component {
     };
 
     render() {
-
-       if(this.state.loaded) console.log( this.state.realData.ticket)
 
         return <>{this.state.loaded == true ? this.renderStateCompopnent() : <Loader/>}</>
     }

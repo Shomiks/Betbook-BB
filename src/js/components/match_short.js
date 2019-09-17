@@ -30,7 +30,7 @@ class MatchShort extends React.Component {
 
     renderDate = () => {
         let Datefields = this.props.match.date.split(' ')[0].split('-');
-        let Timefields = this.props.match.date.split(' ')[1].split(':')
+        let Timefields = this.props.match.date.split(' ')[1].split(':');
         let year = Datefields[0].substring(2,Datefields[0].length);
 
         return( Datefields[1] + '/' + Datefields[2] + '/' + year + ' ' + Timefields[0] + ':' +  Timefields[1]);
