@@ -1,7 +1,5 @@
 import React from 'react';
 
-import {Link} from "react-router-dom";
-
 class Search extends React.Component {
 
     constructor(props) {
@@ -17,15 +15,11 @@ class Search extends React.Component {
         },1)
     }
 
-
     render() {
 
         return <div className='betbook-screen'>
-                <div className='main-container'>
-
-                </div>
+                <div className='main-container'/>
             </div>
-
     }
 }
 

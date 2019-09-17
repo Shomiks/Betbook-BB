@@ -13,7 +13,6 @@ class Match_Details extends React.Component {
         };
         this.sharedObj = props.sharedObj;
         this.fixtureId = props.match.params.fixtureid;
-
     }
 
     componentDidMount() {
@@ -43,16 +42,17 @@ class Match_Details extends React.Component {
             let updated = this.state.realData;
             let id = this.state.realData.ticket['id'];
 
-            if (className !== 'bid-field bided') {
+            if (!className.includes('bided no-opacity')) {
                 let previous_bid_score = this.state.realData.ticket[game + '_odd'];
                 data[game + '_tip'] = tip;
                 data[game + '_odd'] = this.state.realData[game + '_' + tip];
-                if(data[game + '_odd'] > 0) data['bid_score'] = parseFloat(data['bid_score']) - parseFloat(previous_bid_score) + parseFloat(data[game + '_odd']);
+                if(data[game + '_odd'] > 0) data['bid_score'] = (parseFloat(data['bid_score']) - parseFloat(previous_bid_score) + parseFloat(data[game + '_odd'])).toFixed(2);
             } else {
                 data[game + '_tip'] = null;
-                data['bid_score'] = parseFloat(data['bid_score']) - parseFloat(data[game + '_odd']);
+                data['bid_score'] = (parseFloat(data['bid_score']) - parseFloat(data[game + '_odd'])).toFixed(2);
                 data[game + '_odd'] = 0;
                 if(this.checkIfUnbided()) {
+                    console.log('a')
                     this.sharedObj.apiHelper.bids.deleteFixtureBid(this.state.realData.ticket.id);
                     updated['ticket'] = null;
                     this.setState({realData: updated});
@@ -62,7 +62,7 @@ class Match_Details extends React.Component {
 
             updated['ticket'] = data;
             this.setState({realData: updated});
-            // this.sharedObj.apiHelper.favourites.update(localStorage.getItem('user_id'),this.state.realData.league.id);
+                // this.sharedObj.apiHelper.favourites.update(localStorage.getItem('user_id'),this.state.realData.league.id);
             this.sharedObj.apiHelper.bids.updateFixtureBids(id, {updated});
         }
 
@@ -112,14 +112,14 @@ class Match_Details extends React.Component {
     };
 
     handleBidState = (game,tip,bidfield) => {
-        let className = bidfield;
+        let className = bidfield + ' ' + game;
 
         if (this.state.realData.result && this.state.realData.result[game + '_' + tip] == 1) {
             className += ' won';
         }
         if (this.state.realData.ticket) {
             if (this.state.realData.ticket[game + '_tip'] == tip) {
-                className += ' bided';
+                className += ' bided' + ' ' + 'no-opacity';
             }
 
             if (this.state.realData.ticket[game + '_tip'] == tip && this.state.realData.result) {
@@ -130,7 +130,17 @@ class Match_Details extends React.Component {
                 }
             }
         }
-        return className;
+        if(!className.includes('bided')){
+            if(className.includes(game)){
+                if(this.state.realData.ticket){
+                    if(this.state.realData.ticket[game + '_tip']){
+                        return className + ' ' + 'opacity';
+                    }
+                }
+            }
+        }
+        return className
+
     };
 
     handleBidType = (label, game, tip, bidfield) => {
@@ -291,6 +301,8 @@ class Match_Details extends React.Component {
     };
 
     render() {
+
+       if(this.state.loaded) console.log( this.state.realData.ticket)
 
         return <>{this.state.loaded == true ? this.renderStateCompopnent() : <Loader/>}</>
     }

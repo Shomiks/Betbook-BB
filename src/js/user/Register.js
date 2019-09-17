@@ -106,9 +106,11 @@ class Register extends React.Component {
     };
 
     handleRegisterStepTwo = () => {
-        this.sharedObj.apiHelper.user.register(this.state.username,this.state.password,this.state.email,this.state.user_fullname,this.state.country_id,this.state.team_id,(id)=>{
-            localStorage.setItem('user_id', id);
-            this.sharedObj.apiHelper.favourites.update(this.state.country_id,this.state.team_id,id);
+        this.sharedObj.apiHelper.user.register(this.state.username,this.state.password,this.state.email,this.state.user_fullname,this.state.country_id,this.state.team_id,(res)=>{
+            localStorage.setItem('user_id', res[0]);
+            res[1].forEach(league_id => {
+                this.sharedObj.apiHelper.user.favourite_team_leagues(res[0],league_id);
+            })
         });
         this.setState({login:true});
     };
@@ -140,8 +142,6 @@ class Register extends React.Component {
     };
 
     render() {
-
-        console.log(this.state.sharedObj);
 
         if (this.state.loaded) {
 

@@ -440,6 +440,7 @@
         }
 
         .bs-create-account-box {
+          cursor: pointer;
           position: relative;
           display: block;
           height: 50px;
@@ -448,7 +449,6 @@
           border-radius: 25px;
           margin-top: 55px;
           margin-bottom: 25px;
-          cursor: pointer;
 
           &:focus {
             outline: none;

@@ -49,6 +49,7 @@ class Week_games_Listing extends React.Component {
                 league: res.league
             };
 
+            if(res.fixtures)
             res.fixtures.forEach(fixture => {
                 res.userBids.forEach(userbid => {
                     if(fixture.id == userbid.fixture_id){

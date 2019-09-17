@@ -48,6 +48,7 @@ class APIHelper {
                 }
             })
                 .then(res => res.json())
+                .then(res => console.log(res))
         },
         register : (username, password, email, user_fullname, country_id, team_id, callBack) => {
             let data = {
@@ -66,7 +67,9 @@ class APIHelper {
                 }
             })
                 .then(res => res.json())
-                .then(res => callBack(res))
+                .then(res => {
+                    callBack(res)
+                });
         },
         validateRegister: (username, email, callBack) => {
             fetch(this.apiUrl + `/index.php/api/user/?username=` + username + `&email=` + email)
@@ -115,6 +118,13 @@ class APIHelper {
 
     countries = {
         getAll: (callBack) => {
+            fetch(this.apiUrl + `/index.php/api/country/?select=1`)
+                .then(res => res.json())
+                .then(res => {
+                    callBack(res)
+                })
+        },
+        getAllCurrent: (callBack) => {
             fetch(this.apiUrl + `/index.php/api/country`)
                 .then(res => res.json())
                 .then(res => {

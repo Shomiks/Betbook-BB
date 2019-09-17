@@ -23,7 +23,7 @@ class Competition_Listing extends React.Component {
     }
 
     getAllCountries() {
-        this.sharedObj.apiHelper.countries.getAll((res) =>{
+        this.sharedObj.apiHelper.countries.getAllCurrent((res) =>{
             this.setState({realData: res, loaded: true});
             this.sharedObj.headerInstance.setTitle('Countries');
 
