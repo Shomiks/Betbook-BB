@@ -1,6 +1,6 @@
 class APIHelper {
     userInfo = null;
-    apiUrl = 'http://192.168.8.113';
+    apiUrl = 'http://bb.nix.mk';
 
     constructor(){
 
@@ -81,13 +81,6 @@ class APIHelper {
     };
 
     settings = {
-        getUserCountryAndClubByID: (id,callBack) => {
-            fetch(this.apiUrl + `/index.php/api/User/?id=` + id)
-                .then(res => res.json())
-                .then(res => {
-                    callBack(res);
-                })
-        },
         updateInfo: (user_id, country_id, team_id, name) =>{
            let data = {
                 country_id: country_id,
@@ -197,7 +190,6 @@ class APIHelper {
                 .then(res => res.json())
                 .then(res => {
                     let result = res;
-                    console.log(result)
                     callBack(result)
                 })
         }
