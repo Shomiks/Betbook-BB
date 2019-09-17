@@ -19,7 +19,7 @@ class Home_Listing extends React.Component {
   render() {
 
     return (
-        <div className='betbook_screen'>
+        <div className='betbook_screen' style={{paddingBottom: '60px'}}>
           <Header competition={true} title='Competition'/>
           <div className='main-content-1'>
             <div className='competition-title-field'><span className='text18'> International Competitions </span>

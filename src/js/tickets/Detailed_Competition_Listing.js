@@ -36,7 +36,7 @@ class Detailed_Competition_Listing extends React.Component {
 
         if (this.state.loaded) return (
             <div className='betbook_screen'>
-                <div className='main-content'>
+                <div className='main-content' style={{paddingBottom: '60px'}}>
                     <div className='leagues-container'>
                         {this.state.realData.leagues.map((data) => <Link to={`/league/${data.id}`} key={data.id + '_'}><div  className='league-field'>
                             <div className='logo-container'>
