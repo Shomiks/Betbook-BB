@@ -1,120 +1,133 @@
-.betbook-logo {
-  background-image: url("assets/images/logo.png");
-  background-repeat: no-repeat;
-  height: 60px;
-  width: 210px;
-  position: relative;
-  margin: 0 auto;
-}
-
-.welcome-text {
-  height: 30px;
-  font-size: 20px;
-  color: #FFFFFF;
-  margin: 25px 0;
-  font-family: 'SF Display';
-}
-
-.main-content {
-  position: relative;
+.App {
   overflow: hidden;
-  padding-bottom: 60px;
 
-  .text17-white{
-    margin-top:40px;
-  }
-
-
-  .favourite-league {
+  .betbook_screen {
+    height: 100%;
     width: 100%;
-
-
-
-    .favourite-league-container {
-      display: flex;
-      height: 120px;
-
-      .hs_league-name {
-        height: 32px;
-        width: 70px;
-        margin: 0 auto;
-      }
-
-    }
-    .last-week {
-      width: 50%;
-      background: linear-gradient(179.51deg, #156993 0.8%, #49B4E7 99.49%);
-    }
-
-    .logo {
-      position: absolute;
-      display: block;
-      left: 50%;
-      margin-left: -50px;
-      background-image: url("../betbook/assets/images/logo_bg.svg");
-      width: 100px;
-      height: 120px;
-
-
-      .league-logo {
-        height: 42px;
-        width: 60px;
-        margin-top: 10px;
-        object-fit: contain;
-      }
-    }
-  }
-
-  .hs_left-box {
     position: relative;
-    padding: 21px 69px 29px 14px;
-
-    .hs_left-middle-text {
-      margin-top: 5px;
-    }
-
-    .hs_left-bottom-text {
-      margin-top: 12px;
-
-      .text11-white {
-        text-transform: uppercase;
-      }
-    }
-  }
-
-  .hs_right-box {
-    position: relative;
-    padding: 21px 30px 18px 57px;
-
-    .hs_left-middle-text {
-      margin-top: 5px;
-    }
-
-    .hs_left-bottom-text {
-      margin-top: 12px;
-
-      .text11-white {
-        text-transform: uppercase;
-      }
-    }
-  }
-
-  .current-week {
-    width: 50%;
+    text-align: center;
     display: block;
-    background: linear-gradient(179.51deg, #EC6A0E 0.8%, #FEA938 99.49%);
+    overflow: scroll;
+    padding: 60px 0;
 
+    .betbook-logo {
+      background-image: url("assets/images/logo.png");
+      background-repeat: no-repeat;
+      height: 60px;
+      width: 210px;
+      position: relative;
+      margin: 0 auto;
+    }
+
+    .welcome-text {
+      height: 30px;
+      font-size: 20px;
+      color: #FFFFFF;
+      margin: 25px 0;
+      font-family: 'SF Display';
+    }
+
+    .main-content {
+      position: relative;
+      overflow: hidden;
+
+      .text17-white {
+        margin-top: 40px;
+      }
+
+
+      .favourite-league {
+        width: 100%;
+
+
+        .favourite-league-container {
+          display: flex;
+          height: 120px;
+
+          .hs_league-name {
+            height: 32px;
+            width: 70px;
+            margin: 0 auto;
+          }
+
+        }
+
+        .last-week {
+          width: 50%;
+          background: linear-gradient(179.51deg, #156993 0.8%, #49B4E7 99.49%);
+        }
+
+        .logo {
+          position: absolute;
+          display: block;
+          left: 50%;
+          margin-left: -50px;
+          background-image: url("../betbook/assets/images/logo_bg.svg");
+          width: 100px;
+          height: 120px;
+
+
+          .league-logo {
+            height: 42px;
+            width: 60px;
+            margin-top: 10px;
+            object-fit: contain;
+          }
+        }
+      }
+
+      .hs_left-box {
+        position: relative;
+        padding: 21px 69px 29px 14px;
+
+        .hs_left-middle-text {
+          margin-top: 5px;
+        }
+
+        .hs_left-bottom-text {
+          margin-top: 12px;
+
+          .text11-white {
+            text-transform: uppercase;
+          }
+        }
+      }
+
+      .hs_right-box {
+        position: relative;
+        padding: 21px 30px 18px 57px;
+
+        .hs_left-middle-text {
+          margin-top: 5px;
+        }
+
+        .hs_left-bottom-text {
+          margin-top: 12px;
+
+          .text11-white {
+            text-transform: uppercase;
+          }
+        }
+      }
+
+      .current-week {
+        width: 50%;
+        display: block;
+        background: linear-gradient(179.51deg, #EC6A0E 0.8%, #FEA938 99.49%);
+
+      }
+    }
+
+
+    .hs_select-box {
+      height: 120px;
+      width: 250px;
+      position: fixed;
+      left: 50%;
+      margin-left: -125px;
+      top: 50%;
+      margin-top: -60px;
+    }
   }
-}
-
-
-.hs_select-box {
-  height: 120px;
-  width: 250px;
-  position: fixed;
-  left: 50%;
-  margin-left: -125px;
-  top: 50%;
-  margin-top: -60px;
 }
 
