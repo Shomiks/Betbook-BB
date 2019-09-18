@@ -1,13 +1,13 @@
 class APIHelper {
     userInfo = null;
-    apiUrl = 'http://192.168.8.113';
+    apiUrl = 'http://bb.nix.mk';
 
     constructor(){
 
     }
 
     login = (username, password,login, callBack) => {
-        fetch(this.apiUrl + `/index.php/api/user/?login=` + login + `&username=` + username + '&password=' + password)
+        fetch(this.apiUrl + `/index.php/api/User/?login=` + login + `&username=` + username + '&password=' + password)
             .then(res => res.json())
             .then(res => {
                 callBack(res);
@@ -16,7 +16,7 @@ class APIHelper {
 
     user = {
         getUser: (user_id, callBack) => {
-            fetch(this.apiUrl + `/index.php/api/user/?id=` + user_id, {
+            fetch(this.apiUrl + `/index.php/api/User/?id=` + user_id, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ class APIHelper {
                 user_id: user_id,
                 league_id: league_id
             };
-            fetch(this.apiUrl + `/index.php/api/user_favourite_league/`, {
+            fetch(this.apiUrl + `/index.php/api/User_Favourite_League/`, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
@@ -48,6 +48,7 @@ class APIHelper {
                 }
             })
                 .then(res => res.json())
+                .then(res => console.log(res))
         },
         register : (username, password, email, user_fullname, country_id, team_id, callBack) => {
             let data = {
@@ -58,7 +59,7 @@ class APIHelper {
                 country_id: country_id,
                 team_id: team_id
             };
-            fetch(this.apiUrl + `/index.php/api/user/`, {
+            fetch(this.apiUrl + `/index.php/api/User/`, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
@@ -66,10 +67,12 @@ class APIHelper {
                 }
             })
                 .then(res => res.json())
-                .then(res => callBack(res))
+                .then(res => {
+                    callBack(res)
+                });
         },
         validateRegister: (username, email, callBack) => {
-            fetch(this.apiUrl + `/index.php/api/user/?username=` + username + `&email=` + email)
+            fetch(this.apiUrl + `/index.php/api/User/?username=` + username + `&email=` + email)
                 .then(res => res.json())
                 .then(res => {
                       callBack(res);
@@ -78,20 +81,13 @@ class APIHelper {
     };
 
     settings = {
-        getUserCountryAndClubByID: (id,callBack) => {
-            fetch(this.apiUrl + `/index.php/api/user/?id=` + id)
-                .then(res => res.json())
-                .then(res => {
-                    callBack(res);
-                })
-        },
         updateInfo: (user_id, country_id, team_id, name) =>{
            let data = {
                 country_id: country_id,
                 team_id: team_id,
                 full_name:name
             };
-            fetch(this.apiUrl + `/index.php/api/user/` + user_id,{
+            fetch(this.apiUrl + `/index.php/api/User/` + user_id,{
                 method: 'PUT',
                 body: JSON.stringify(data),
                 headers: {
@@ -105,7 +101,7 @@ class APIHelper {
 
     teams = {
         getByCountryId : (country_id, callBack) => {
-            fetch(this.apiUrl + `/index.php/api/team/?country_id=` + country_id)
+            fetch(this.apiUrl + `/index.php/api/Team/?country_id=` + country_id)
                 .then(res => res.json())
                 .then(res => {
                     callBack(res);
@@ -115,7 +111,14 @@ class APIHelper {
 
     countries = {
         getAll: (callBack) => {
-            fetch(this.apiUrl + `/index.php/api/country`)
+            fetch(this.apiUrl + `/index.php/api/Country/?select=1`)
+                .then(res => res.json())
+                .then(res => {
+                    callBack(res)
+                })
+        },
+        getAllCurrent: (callBack) => {
+            fetch(this.apiUrl + `/index.php/api/Country`)
                 .then(res => res.json())
                 .then(res => {
                     callBack(res)
@@ -125,14 +128,14 @@ class APIHelper {
 
     leagues = {
         getAll: (country_id, callBack) => {
-            fetch(this.apiUrl + `/index.php/api/country/?country_id=` + country_id)
+            fetch(this.apiUrl + `/index.php/api/Country/?country_id=` + country_id)
                 .then(res => res.json())
                 .then(res => {
                     callBack(res)
                 })
         },
         getByID: (league_id,user_id, callBack) => {
-            fetch(this.apiUrl + `/index.php/api/league/?league_id=` + league_id + '&user_id=' + user_id)
+            fetch(this.apiUrl + `/index.php/api/League/?league_id=` + league_id + '&user_id=' + user_id)
                 .then(res => res.json())
                 .then(res => {
                     const userBidsIndex = {};
@@ -155,7 +158,7 @@ class APIHelper {
                 })
         },
         getByIDFinished: (league_id,user_id,finished, callBack) => {
-            fetch(this.apiUrl + `/index.php/api/league/?league_id=` + league_id + '&user_id=' + user_id + '&finished=' + finished)
+            fetch(this.apiUrl + `/index.php/api/League/?league_id=` + league_id + '&user_id=' + user_id + '&finished=' + finished)
                 .then(res => res.json())
                 .then(res => {
 
@@ -183,11 +186,10 @@ class APIHelper {
 
     fixture = {
         getByID: (id,user_id, callBack) => {
-            fetch(this.apiUrl + `/index.php/api/fixture/?id=` + id + '&user_id=' + user_id)
+            fetch(this.apiUrl + `/index.php/api/Fixture/?id=` + id + '&user_id=' + user_id)
                 .then(res => res.json())
                 .then(res => {
                     let result = res;
-                    console.log(result)
                     callBack(result)
                 })
         }
@@ -195,7 +197,7 @@ class APIHelper {
 
     home = {
     get_favourites : (user_id,callBack) => {
-        fetch(this.apiUrl + `/index.php/api/user_favourite_league/?user_id=` + user_id)
+        fetch(this.apiUrl + `/index.php/api/User_Favourite_League/?user_id=` + user_id)
             .then(res => res.json())
             .then(res => {
                 let leagues = Object.values(res);
@@ -206,7 +208,7 @@ class APIHelper {
 
     bids = {
         updateFixtureBids : (id,data) => {
-            fetch(this.apiUrl + `/index.php/api/user_fixture_bid/` + id, {
+            fetch(this.apiUrl + `/index.php/api/User_Fixture_Bid/` + id, {
                 method: 'PUT',
                 body: JSON.stringify(data.updated.ticket),
                 headers: {
@@ -216,7 +218,7 @@ class APIHelper {
                 .then(res => res.json())
         },
         createFixtureBids: (data,callBack) => {
-            fetch(this.apiUrl + `/index.php/api/user_fixture_bid/`, {
+            fetch(this.apiUrl + `/index.php/api/User_Fixture_Bid/`, {
                 method: 'POST',
                 body: JSON.stringify(data.ticket),
                 headers: {
@@ -227,7 +229,7 @@ class APIHelper {
                 .then(res => callBack(res))
         },
         deleteFixtureBid: (id) => {
-            fetch(this.apiUrl + `/index.php/api/user_fixture_bid/` + id, {
+            fetch(this.apiUrl + `/index.php/api/User_Fixture_Bid/` + id, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
@@ -243,7 +245,7 @@ class APIHelper {
                 user_id: user_id,
                 league_id: league_id
             };
-            fetch(this.apiUrl + `/index.php/api/user_favourite_league/`, {
+            fetch(this.apiUrl + `/index.php/api/User_Favourite_League/`, {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
@@ -253,7 +255,7 @@ class APIHelper {
                 .then(res => res.json())
         },
         delete: (id) => {
-            fetch(this.apiUrl + `/index.php/api/user_favourite_league/` + id, {
+            fetch(this.apiUrl + `/index.php/api/User_Favourite_League/` + id, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
@@ -265,7 +267,7 @@ class APIHelper {
 
     statistics = {
         profileStats : (user_id, callBack) => {
-            fetch(this.apiUrl + `/index.php/api/user_statistic/?user_id=` + user_id)
+            fetch(this.apiUrl + `/index.php/api/User_Statistic/?user_id=` + user_id)
                 .then(res => res.json())
                 .then(res => {
                     console.log(res);
@@ -273,7 +275,7 @@ class APIHelper {
                 })
         },
         gameStatistics : (game, user_id, callBack) => {
-            fetch(this.apiUrl + `/index.php/api/user_statistic/?user_id=` + user_id + '&game=' + game)
+            fetch(this.apiUrl + `/index.php/api/User_Statistic/?user_id=` + user_id + '&game=' + game)
                 .then(res => res.json())
                 .then(res => {
                     callBack(Object.values(res))

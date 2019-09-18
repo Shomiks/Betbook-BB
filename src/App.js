@@ -47,15 +47,17 @@ class App extends React.Component {
             footerInstance: null,
         };
 
-        var userid = localStorage.getItem('user_id');
-        var authenticated = userid != null;
+        const userid = localStorage.getItem('user_id');
+        const authenticated = userid != null;
 
         if(userid){
             this.sharedObject.apiHelper.user.getUser(userid, () => {
-                this.setState({authenticated});
+                this.setState({authenticated, loaded:true});
             })
         }
-        this.setState({loaded:true})
+        else{
+            this.setState({loaded:true, authenticated});
+        }
     }
 
     onHashChange = () => {
@@ -63,7 +65,6 @@ class App extends React.Component {
     };
 
     render() {
-        console.log(document.body.clientHeight - 120)
         this.state.authenticated = localStorage.getItem('user_id') != null;
 
         if (this.state.loaded) {
@@ -71,7 +72,7 @@ class App extends React.Component {
                 return (<div className='App'>
                     <HashRouter>
                         {(window.location.hash == '#/login' || window.location.hash == '#/user' || window.location.hash == '#/forgot-password' || window.location.hash == '#/loading'
-                            || window.location.hash == '#/welcome' || window.location.hash == '#/home' || window.location.hash == '#/profile' || window.location.hash == '#/register')
+                            || window.location.hash == '#/welcome' || window.location.hash == '#/home' || window.location.hash == '#/favorite-club' || window.location.hash == '#/register')
                             ? <div/> : <Header ref={(instance) => {
                                 this.sharedObject.headerInstance = instance
                             }}/>}
@@ -117,7 +118,7 @@ class App extends React.Component {
                         <Route path="/search" render={(props) => (<Search sharedObj={this.sharedObject} {...props}/>)}/>
                         <Route path="/edit" render={(props) => (<Edit sharedObj={this.sharedObject} {...props}/>)}/>
                         {(window.location.hash == '#/login' || window.location.hash == '#/user' || window.location.hash == '#/forgot-password' || window.location.hash == '#/loading'
-                            || window.location.hash == '#/welcome' || window.location.hash == '#/register')
+                            || window.location.hash == '#/welcome' || window.location.hash == '#/favorite-club' || window.location.hash == '#/register')
                             ? <div/> : <Footer ref={(instance) => {
                                 this.sharedObject.footerInstance = instance
                             }}/>}
@@ -127,8 +128,9 @@ class App extends React.Component {
             else{
                 return (<div className='App'>
                     <HashRouter>
-                        <Route path="/register" render={(props) => (<Register sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/" render={(props) => (<Login sharedObj={this.sharedObject} {...props}  />)}/>
+                        {window.location.hash != '#/register' ? <Route path="/" render={(props) => (<Login sharedObj={this.sharedObject} {...props}  />)}/> :
+                            <Route path="/register" render={(props) => (<Register sharedObj={this.sharedObject} {...props}/>)}/>}
+
                     </HashRouter>
                 </div>);
             }

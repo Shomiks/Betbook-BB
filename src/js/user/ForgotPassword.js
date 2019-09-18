@@ -14,7 +14,6 @@ class ForgotPassword extends React.Component {
 
     render() {
 
-
         return <div className='betbook-screen-login'>
             <div className='main-container'>
                 <div className='betbook-logo-box'><img src='./assets/images/betbook---logo.png'></img></div>
@@ -40,8 +39,6 @@ class ForgotPassword extends React.Component {
                         </div>
                     </>
                 }
-
-
             </div>
         </div>
 

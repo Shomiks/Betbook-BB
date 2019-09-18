@@ -31,48 +31,35 @@
     }
 
     .flag-container {
+      display: flex;
       width: 85px;
-      padding: 22px 10px 14px 5px;
+      justify-content: center;
+      align-items: center;
 
       .flag {
-        width: 50px;
+        width: 75%;
         border-radius: 50%;
-        position: relative;
       }
     }
 
     .country-info {
-      position: relative;
-      display: block;
-      height:80px;
-      width:200px;
+      text-align: left;
+      margin: auto 0;
 
       .leagues-info {
-        display: block;
-        position: absolute;
-        left: 0;
-        top: 11px;
+        padding-bottom: 10%;
 
         .text11-grey{
           left:0;
         }
-
       }
-
       .dataname-info {
-        display: flex;
-        position: absolute;
-        left: 0;
-        top: 32px;
-        height: auto;
-        width: 200px;
+        padding-bottom: 10%;
+
       }
 
       .number-matches-info {
-        display: block;
-        position: absolute;
-        left: 0;
-        bottom: 11px;
+
       }
     }
 

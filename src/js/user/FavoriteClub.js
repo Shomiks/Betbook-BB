@@ -12,7 +12,7 @@ class FavoriteClub extends React.Component {
         this.state = {}
     }
 
-    render() {///11/35
+    render() {
 
         return (<div className='betbook-screen-login'>
                 <div className='main-container'>

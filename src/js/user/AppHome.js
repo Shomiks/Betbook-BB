@@ -9,10 +9,10 @@ class AppHome extends React.Component {
         this.state = {}
     }
 
-    render() {///7/35
+    render() {
 
         return (<div className='betbook-screen-login'>
-                <div className='betbook-logo-box'><img src='./assets/images/betbook---logo.png'></img></div>
+                <div className='betbook-logo-box'><img src='./assets/images/betbook---logo.png'/></div>
                 <div className='main-container'>
                     <div className='bs-create-account-box'><span className='text18-white'>Create Account</span></div>
                     <div className='bs-i-already-have-an-account-box'><span className='text14-white'>I already have an account.</span>

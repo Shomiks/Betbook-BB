@@ -13,7 +13,8 @@ class Settings extends React.Component {
 
     componentDidMount() {
         setTimeout(() => {
-            this.sharedObj.headerInstance.setTitle('Settings')
+            this.sharedObj.headerInstance.setTitle('Settings');
+            this.sharedObj.footerInstance.setActive('profile');
         },1)
     }
 
