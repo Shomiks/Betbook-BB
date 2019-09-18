@@ -282,7 +282,6 @@ class Match_Details extends React.Component {
 
         this.sharedObj.headerInstance.setTitle(this.state.realData.league.name);
 
-
         let classState ='betbook_screen';
 
         if(this.state.realData.result){
