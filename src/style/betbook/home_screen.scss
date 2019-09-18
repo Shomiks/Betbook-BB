@@ -1,5 +1,6 @@
 .App {
-  padding: 70px 0;
+  padding:60px 0;
+  //overflow: hidden;
 
   .betbook_screen {
     height: 100%;
@@ -68,7 +69,7 @@
 
 
           .league-logo {
-            width: 60px;
+            width: 50px;
             margin-top: 10px;
             object-fit: contain;
           }

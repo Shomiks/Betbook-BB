@@ -35,7 +35,7 @@ class Home_screen extends React.Component {
     handleFinished = (data) => {
         if (data.round ? (data.round.order != 0) : (0)) return <div className='last-week'>
             <div className='hs_left-box'>
-                <div><span className='text11-white'>Matchweek {data.round ? data.round.order : 'unknown'}</span></div>
+                {/*<div><span className='text11-white'>Matchweek {data.round ? data.round.order : 'unknown'}</span></div>*/}
                 <div className='hs_left-middle-text'><span className='text11-white'>Success Rate xx%</span></div>
                 <div className='hs_left-bottom-text'><Link to={`finished/league/${data.league.id}`}>
                     <div><span className='text11-white'>Check the bet</span></div>
@@ -50,13 +50,13 @@ class Home_screen extends React.Component {
         let Timefields = data.round.start_date.split(' ')[1].split(':');
         let year = Datefields[0];
 
-        return( Datefields[1] + '/' + Datefields[2] + '/' + year + ' ' + Timefields[0] + ':' +  Timefields[1]);
+        return( Datefields[2] + '/' + Datefields[1] + '/' + year + ' ' + Timefields[0] + ':' +  Timefields[1]);
     };
 
     handleUpcoming = (data) => {
         return <div className='current-week'>
             <div className='hs_right-box'>
-                <div><span className='text11-white'>Matchweek {data.round  ? (parseInt(data.round.order) + 1) : 'unknown'}</span></div>
+                {/*<div><span className='text11-white'>Matchweek {data.round  ? (parseInt(data.round.order) + 1) : 'unknown'}</span></div>*/}
                 <div className='hs_left-middle-text'><span className='text11-white'>{data.round ? this.renderDate(data) : 'Unknown start date'}</span></div>
                 <div className='hs_left-bottom-text'><Link to={`league/${data.league.id}`}>
                     <div><span className='text11-white'>Create bet</span></div>
@@ -89,8 +89,10 @@ class Home_screen extends React.Component {
 
     render() {
 
+        console.log(this.state.realData)
+
         if (this.state.loaded) return (
-            <div className='betbook_screen' style={{padding: '60px 0'}}>
+            <div className='betbook_screen'>
                 <div className='betbook-logo'/>
                 <div className='main-content'>
                     {this.state.realData.length ?

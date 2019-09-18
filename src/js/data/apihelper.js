@@ -1,6 +1,6 @@
 class APIHelper {
     userInfo = null;
-    apiUrl = 'http://bb.nix.mk';
+    apiUrl = 'http://192.168.8.113';
 
     constructor(){
 

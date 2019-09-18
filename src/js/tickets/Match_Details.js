@@ -180,7 +180,7 @@ class Match_Details extends React.Component {
         let Timefields = this.state.realData.date.split(' ')[1].split(':')
         let year = Datefields[0].substring(2,Datefields[0].length);
 
-        return( Datefields[1] + '/' + Datefields[2] + '/' + year + ' ' + Timefields[0] + ':' +  Timefields[1]);
+        return( Datefields[2] + '/' + Datefields[1] + '/' + year + ' ' + Timefields[0] + ':' +  Timefields[1]);
     };
 
 
