@@ -1,6 +1,7 @@
 import React from 'react'
 import '../../style/betbook/home_screen.scss'
 import {Link} from "react-router-dom";
+import Loader from "../components/loader";
 
 class Home_screen extends React.Component {
 
@@ -9,60 +10,105 @@ class Home_screen extends React.Component {
 
         this.state = {
             realData: null,
-            loaded:false
+            loaded: false,
+            username:null
         };
         this.sharedObj = props.sharedObj;
     }
 
-    componentDidMount() {
-        this.sharedObj.headerInstance.setTitle('My Leagues');
+    componentDidMount = () => {
         this.getUserFavorites();
-    }
+        setTimeout(() => {
+            this.sharedObj.footerInstance.setActive('timeline');
+        },1);
+        this.sharedObj.apiHelper.user.getUser(localStorage.getItem('user_id'),(res) => {
+            this.setState({username: window.apiHelper.userInfo['username']})
+        })
+    };
 
-    getUserFavorites(){
-        this.sharedObj.apiHelper.home(1,(res) => {
-            this.setState({realData:res,loaded:true})
+    getUserFavorites = () => {
+        this.sharedObj.apiHelper.home.get_favourites(localStorage.getItem('user_id'), (res) => {
+            this.setState({realData: res, loaded: true});
         });
-    }
+    };
 
-    handlePreviousMatchWeek(data){
-        if(data.round.order > 0) return  <div className='last-week'>
-            <div>Matchweek {data.round.order}</div>
-            <div>Success Rate xx%</div>
-            <div> <Link to = {`league/${data.league.id}/round/${data.round.order}`}><button>Check the bet</button></Link></div>
+    handleFinished = (data) => {
+        if (data.round ? (data.round.order != 0) : (0)) return <div className='last-week'>
+            <div className='hs_left-box'>
+                <div><span className='text11-white'>Matchweek {data.round ? data.round.order : 'unknown'}</span></div>
+                <div className='hs_left-middle-text'><span className='text11-white'>Success Rate xx%</span></div>
+                <div className='hs_left-bottom-text'><Link to={`finished/league/${data.league.id}`}>
+                    <div><span className='text11-white'>Check the bet</span></div>
+                </Link></div>
+            </div>
         </div>;
-        return <div className='last-week'/>
-    }
+        else return <div className='last-week'/>
+    };
 
-    handleCurrentMatchWeek(data){
-        let matchweek = parseInt(data.round.order) + 1;
+    renderDate = (data) => {
+        let Datefields = data.round.start_date.split(' ')[0].split('-');
+        let Timefields = data.round.start_date.split(' ')[1].split(':');
+        let year = Datefields[0];
+
+        return( Datefields[1] + '/' + Datefields[2] + '/' + year + ' ' + Timefields[0] + ':' +  Timefields[1]);
+    };
+
+    handleUpcoming = (data) => {
         return <div className='current-week'>
-            <div>Matchweek {matchweek}</div>
-            <div>Start of the week</div>
-            <div> <Link to = {`league/${data.league.id}/round/${matchweek}`}><button>Create bet</button></Link></div>
+            <div className='hs_right-box'>
+                <div><span className='text11-white'>Matchweek {data.round  ? (parseInt(data.round.order) + 1) : 'unknown'}</span></div>
+                <div className='hs_left-middle-text'><span className='text11-white'>{data.round ? this.renderDate(data) : 'Unknown start date'}</span></div>
+                <div className='hs_left-bottom-text'><Link to={`league/${data.league.id}`}>
+                    <div><span className='text11-white'>Create bet</span></div>
+                </Link></div>
+            </div>
         </div>
-    }
+    };
+
+    handleFavouriteLeagues = () => {
+        return <>{this.state.realData.map(data => {
+            if (!data.round) data.round = null;
+            return <div className='favourite-league' key={data.id + '_'}>
+                <div className='favourite-league-container'>
+                    {this.handleFinished(data)}
+                    <div className='logo'><img className='league-logo' src={'./assets/images/Logos/'+data.league.logo+''}  alt=''/>
+                        <div className='hs_league-name'><span className='text11'>{data.league.name}</span></div>
+                    </div>
+                    {this.handleUpcoming(data)}
+                </div>
+            </div>
+        })}</>
+    };
+
+
+    handleFirstTimeLogin = () => {
+        return <><Link to={`/countries`}>
+            <div className='hs_select-box'><span className='text26-white'>Select your favourite leagues and start your journey</span></div>
+        </Link></>
+    };
 
     render() {
 
-        if(this.state.loaded) return (
-                <div className='betbook_screen'>
-                    <div className='main-content'>
-                        {this.state.realData.map(data => {
-                            if(!data.round) data.round=null;
-                            return <div className='favourite-league' key={data.id + '_'}>
-                                <div className='favourite-league-container'>
-                                    {this.handlePreviousMatchWeek(data)}
-                                <div className='logo'><img className='league-logo' src ={'./assets/images/Logos/'+ data.league.logo}/><br/><span>{data.league.name}</span></div>
-                                    {this.handleCurrentMatchWeek(data)}
-                            </div>
-                            </div>
-                        })}
-                    </div>
+        if (this.state.loaded) return (
+            <div className='betbook_screen' style={{padding: '60px 0'}}>
+                <div className='betbook-logo'/>
+                <div className='main-content'>
+                    {this.state.realData.length ?
+                        <>
+                            <div className='welcome-text'> My Leagues</div>
+                            {this.handleFavouriteLeagues()}</>
+                        :
+                        <>
+                            <div className='text17-white'>Welcome {this.state.username}!</div>
+                            {this.handleFirstTimeLogin()}</>
+                    }
                 </div>
-            );
-        else return <div>Loading...</div>
+            </div>
+        );
+        else {
+            return <Loader/>
         }
+    }
 }
 
 export default Home_screen;

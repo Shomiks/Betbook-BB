@@ -75,13 +75,20 @@ html, body {
 }
 
 .App {
-  padding: 0;
   margin: 0;
   display: block;
   position: relative;
   height: 100%;
   width: 100%;
-  overflow: scroll;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.text6-white {
+  color: #FFF;
+  font-family: "SF Display";
+  font-size: 6px;
+  font-weight: 500;
 }
 
 .text10 {
@@ -91,8 +98,22 @@ html, body {
   font-weight: 500;
 }
 
+.text10-white {
+  color: #FFF;
+  font-family: "SF Display";
+  font-size: 10px;
+  font-weight: 500;
+}
+
 .text11-grey {
   color: #999;
+  font-family: "SF Display";
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.text11 {
+  color: #151516;
   font-family: "SF Display";
   font-size: 11px;
   font-weight: 500;
@@ -119,7 +140,7 @@ html, body {
   font-size: 12px;
   font-weight: 500;
 
-  &.ht-result{
+  &.ht-result {
     font-size: 15px;
     letter-spacing: 10px;
     opacity: 0.6;
@@ -129,6 +150,13 @@ html, body {
 
 .text12-grey {
   color: #999999;
+  font-family: "SF Display";
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.text12-yellow {
+  color: #FFAC3A;
   font-family: "SF Display";
   font-size: 12px;
   font-weight: 500;
@@ -152,6 +180,14 @@ html, body {
   color: #FFAC3A;
   font-family: "SF Display";
   font-size: 15px;
+  font-weight: 500;
+  margin: 15px;
+}
+
+.text16-yellow {
+  color: #FFAC3A;
+  font-family: "SF Display";
+  font-size: 16px;
   font-weight: 500;
 }
 
@@ -185,6 +221,13 @@ html, body {
   font-weight: 500;
 }
 
+.text17-red {
+  color: #BA4343;
+  font-family: "SF Display";
+  font-size: 17px;
+  font-weight: 500;
+}
+
 .text18 {
   color: #0A0A0A;
   font-family: "SF Display";
@@ -202,11 +245,43 @@ html, body {
   overflow: hidden;
   text-overflow: ellipsis;
 
-  &.result{
+  &.result {
     letter-spacing: 10px;
     line-height: inherit;
-    font-size: 21px;
     white-space: nowrap;
+  }
+
+}
+
+.text21-yellow {
+  color: #FFAC3A;
+  font-family: "SF Display";
+  font-size: 21px;
+  font-weight: 500;
+
+  &.result {
+    line-height: inherit;
+    white-space: nowrap;
+
+    .separator-ft {
+      margin: 20px;
+    }
+  }
+}
+
+.text16-yellow {
+  color: #FFAC3A;
+  font-family: "SF Display";
+  font-size: 16px;
+  font-weight: 500;
+
+  &.result {
+    line-height: inherit;
+    white-space: nowrap;
+
+    .separator-ht {
+      margin: 15px;
+    }
   }
 }
 
@@ -217,29 +292,11 @@ html, body {
   font-weight: 500;
 }
 
-@media only screen and (max-width: 950px) {
-  #root {
-    .App {
-      .containerImage {
-        display: none;
-      }
-
-      .containerContent {
-        width: 100%;
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 435px) {
-  .bid-field {
-    height: 36px;
-    width: 70px;
-    border: 1px solid #2A2A2B;
-    border-radius: 20px;
-    display: inline-block;
-    background-color: #212122;
-  }
+.text26-white {
+  color: #FFF;
+  font-family: "SF Display";
+  font-size: 26px;
+  font-weight: 500;
 }
 
 .hide {
@@ -248,4 +305,8 @@ html, body {
 
 .text14-white {
   color: #FFF;
+}
+
+div {
+  -webkit-tap-highlight-color: transparent
 }

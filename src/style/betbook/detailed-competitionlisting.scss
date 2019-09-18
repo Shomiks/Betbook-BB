@@ -1,6 +1,6 @@
 .leagues-container {
-
-  margin-top: 50px;
+  overflow: hidden;
+  padding-bottom: 60px;
 
   .league-field {
     border: 1px solid #2A2A2B;
@@ -11,25 +11,39 @@
     display: flex;
     background-color: #1F2022;
 
-    .league-info {
+    .leagues-info {
       position: relative;
       display: block;
 
-      .leagues-info {
-        display: block;
-        position: absolute;
+      .league-name {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        position: relative;
+
+
+        .text18-white {
+          font-size: 16px;
+          position: relative;
+          line-height: 2.7;
+        }
+      }
+
+      .league-info {
+        padding-top: 13px;
+        display: flex;
         left: 0;
-        top: 11px;
-        width: 57px;
+        align-items: center;
+        color: white;
+        font-family: "SF Display";
 
       }
 
       .dataname-info {
-        display: block;
+        white-space: nowrap;
         position: absolute;
         left: 0;
         top: 32px;
-
       }
 
       .number-matches-info {
@@ -37,7 +51,30 @@
         position: absolute;
         left: 0;
         bottom: 11px;
-        width: 64px;
+      }
+    }
+
+    .league_favorite_action {
+      right: 25px;
+      position: absolute;
+      padding-top: 25px;
+      cursor: pointer;
+      display: flex;
+
+      .league_favorite_action_label.MuiFormControlLabel-root {
+        margin-right: 0px;
+        margin-left: 0px;;
+      }
+
+      .star {
+        &_checked {
+          svg {
+            path {
+              fill: #f68c25;
+              stroke: #f68c25;
+            }
+          }
+        }
       }
     }
 

@@ -8,250 +8,152 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  z-index:3;
+
+  .ft_home-field {
+    position: relative;
+    width: 25%;
 
 
-  .timeline {
-    background-image: url("../assets/images/timeline_dark.PNG");
-    background-size: cover;
-    width: 41px;
-    height: 37px;
+    .timeline {
+      background-image: url("../assets/images/timeline.svg");
+      background-size: cover;
+      height: 24px;
+      width: 19px;
+      margin: 0 auto;
 
+
+      .text10-white {
+        line-height: 7;
+      }
+    }
   }
 
-  .ball {
-    background-image: url("../assets/images/ball_dark.PNG");
-    background-size: cover;
-    width: 44px;
-    height: 38px;
+  .ft_countries-field {
+    position: relative;
+    width: 25%;
+
+    .ball {
+      background-image: url("../assets/images/ball.svg");
+      background-size: cover;
+      height: 25px;
+      width: 25px;
+      margin: 0 auto;
+
+
+      .text10-white {
+        line-height: 7;
+      }
+    }
   }
 
-  .star {
-    background-image: url("../assets/images/star_dark_footer.PNG");
-    background-size: cover;
-    height: 30px;
-    width: 32px;
+  .ft_star-field {
+    position: relative;
+    width: 25%;
+
+    .star {
+      background-image: url("../assets/images/star_final.svg");
+      background-size: cover;
+      height: 25px;
+      width: 25px;
+      margin: 0 auto;
+
+
+      .text10-white {
+        line-height: 7;
+      }
+    }
   }
 
-  .profile {
-    background-image: url("../assets/images/profile_dark.PNG");
-    background-size: cover;
-    height: 38px;
-    width: 39px;
+  .ft_profile-field {
+    position: relative;
+    width: 25%;
+
+    .profile {
+      background-image: url("../assets/images/profile_final.svg");
+      background-size: cover;
+      height: 25px;
+      width: 25px;
+      margin: 0 auto;
+
+
+      .text10-white {
+        line-height: 7;
+      }
+    }
   }
 
+  .active {
+    height: 80px;
+    background: linear-gradient(180deg, #FFAB39 0%, rgba(255, 255, 255, 0) 100%), #E86107;
+    box-shadow: 0 0 20px #000000;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 
-}
-
-.bet-slip-field-blue {
-  position: fixed;
-  bottom: 0;
-  margin-bottom: 50px;
-  height: 60px;
-  width: 100%;
-  background-color: #2F8FBD;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-
-  .bet-slip-left {
-    position: absolute;
-    left: 15%;
-    margin-top: 20px;
-
-
-    .bet-text-field {
-      position: relative;
-      display: inline-block;
-      height: 20px;
-      width: 55px;
+    a {
+      text-decoration: none;
     }
 
+    .ball {
+      margin-top: 14px;
+    }
 
-    .white-circle {
-      position: relative;
-      display: inline-block;
-      height: 20px;
-      width: 20px;
-      background-color: #FFF;
-      border-radius: 10px;
+    .star {
+      margin-top: 14px;
 
-      .number-played-games-field {
+      .center-text {
         position: relative;
-        margin-left: 10px;
+        display: block;
+        left: 50%;
+        margin-left: -20px;
+      }
+    }
 
+  }
 
-        .text14-white {
-          color: #FFF;
-        }
+  .active-timeline {
+    height: 80px;
+    background: linear-gradient(180deg, #FFAB39 0%, rgba(255, 255, 255, 0) 100%), #E86107;
+    box-shadow: 0 0 20px #000000;
+    border-top-right-radius: 10px;
+
+    a {
+      text-decoration: none;
+    }
+
+    .ball {
+      margin-top: 14px;
+    }
+
+    .timeline {
+      margin-top: 14px;
+
+      .center-text {
+        position: relative;
+        display: block;
+        left: 50%;
+        margin-left: -14px;
       }
     }
   }
 
-  .text14-footer {
-    color: #2F8FBD;
-    font-family: "SF Display";
-    font-size: 13px;
-    font-weight: 500;
-  }
+  .active-profile {
+    height: 80px;
+    background: linear-gradient(180deg, #FFAB39 0%, rgba(255, 255, 255, 0) 100%), #E86107;
+    box-shadow: 0 0 20px #000000;
+    border-top-left-radius: 10px;
 
-  .text14-white {
-    color: #FFF;
-    font-family: "SF Display";
-    font-size: 14px;
-    font-weight: 500;
-  }
-
-
-  .bet-slip-right {
-
-    position: absolute;
-    right: 15%;
-    margin-top: 15px;
-
-
-    .multiple-field {
-      display: block;
-
-      .text14-white {
-        color: #FFF;
-        font-family: "SF Display";
-        font-size: 12px;
-        font-weight: 400;
-      }
+    a {
+      text-decoration: none;
     }
 
-    .sum-field {
-      display: block;
+    .profile {
+      margin-top: 14px;
+
     }
-  }
-}
-
-.bet-slip-field-grey {
-  position: fixed;
-  bottom: 0;
-  margin-bottom: 50px;
-  height: 60px;
-  width: 100%;
-  background-color: gray;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-
-  .bet-slip-left-middle {
-    position: absolute;
-    left: 50%;
-    margin-top: 20px;
-    margin-left: -50px;
-
-
-    .bet-text-field {
-      position: relative;
-      display: inline-block;
-      height: 20px;
-      width: 100px;
+    &:active {
+      background-color: #f68c25;
     }
-
-
-  }
-
-  .text14-footer {
-    color: #2F8FBD;
-    font-family: "SF Display";
-    font-size: 13px;
-    font-weight: 500;
-  }
-
-  .text14-white {
-    color: #FFF;
-    font-family: "SF Display";
-    font-size: 14px;
-    font-weight: 500;
-  }
-
-
-}
-
-.bet-slip-field-red {
-  position: fixed;
-  bottom: 0;
-  margin-bottom: 50px;
-  height: 60px;
-  width: 100%;
-  background-color: #EC3B51;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-
-  .bet-slip-left-middle {
-    position: absolute;
-    left: 50%;
-    margin-top: 20px;
-    margin-left: -50px;
-
-
-    .bet-text-field {
-      position: relative;
-      display: inline-block;
-      height: 20px;
-      width: 100px;
-    }
-
-
-  }
-
-  .text14-footer {
-    color: #2F8FBD;
-    font-family: "SF Display";
-    font-size: 13px;
-    font-weight: 500;
-  }
-
-  .text14-white {
-    color: #FFF;
-    font-family: "SF Display";
-    font-size: 14px;
-    font-weight: 500;
-  }
-
-
-}
-
-.bet-slip-field-green{
-  position: fixed;
-  bottom: 0;
-  margin-bottom: 50px;
-  height: 60px;
-  width: 100%;
-  background-color: #7ED321;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-
-  .bet-slip-left-middle {
-    position: absolute;
-    left: 50%;
-    margin-top: 20px;
-    margin-left: -50px;
-
-
-    .bet-text-field {
-      position: relative;
-      display: inline-block;
-      height: 20px;
-      width: 100px;
-    }
-
-
-  }
-
-  .text14-footer {
-    color: #2F8FBD;
-    font-family: "SF Display";
-    font-size: 13px;
-    font-weight: 500;
-  }
-
-  .text14-white {
-    color: #FFF;
-    font-family: "SF Display";
-    font-size: 14px;
-    font-weight: 500;
   }
 
 

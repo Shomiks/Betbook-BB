@@ -4,13 +4,12 @@
   position: relative;
   text-align: center;
   display: block;
+  margin-top:60px;
 
   .main-content {
     position: relative;
-    padding-top: 10px;
     overflow: scroll;
-    margin-bottom: 4px;
-    padding-bottom: 50px;
+    padding-bottom: 60px;
 
 
     .match-field {
@@ -27,18 +26,12 @@
         width: 40%;
         height: 100%;
       }
-
-      .week-field {
-
-      }
     }
     .game-week{
-      .text14 {
-        color: #FFF;
-        font-family: "SF Display";
-        font-size: 14px;
-        font-weight: 500;
-      }
+      margin-top: 10px;
+      text-align: left;
+      padding-left: 15px;
+
     }
   }
 }

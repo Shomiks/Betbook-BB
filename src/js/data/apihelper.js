@@ -1,115 +1,214 @@
-import React from 'react'
+class APIHelper {
+    userInfo = null;
+    apiUrl = 'http://bb.nix.mk';
 
-const timeoutInterval = 0;
+    constructor(){
 
-class APIHelper extends React.Component {
-    constructor(props) {
-        super(props);
     }
 
-    login = (username, password, callBack) => {
-        setTimeout(() => {
-            callBack({success: true});
-        }, timeoutInterval);
-    }
+    login = (username, password,login, callBack) => {
+        fetch(this.apiUrl + `/index.php/api/User/?login=` + login + `&username=` + username + '&password=' + password)
+            .then(res => res.json())
+            .then(res => {
+                callBack(res);
+            })
+    };
 
-    register = (username, password, email, callBack) => {
-        setTimeout(() => {
-            callBack({success: true});
-        }, timeoutInterval);
-    }
+    user = {
+        getUser: (user_id, callBack) => {
+            fetch(this.apiUrl + `/index.php/api/User/?id=` + user_id, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+                .then(res => res.json())
+                .then(res => {
+                    if(res){
+                        this.userInfo = {
+                            country:res[1],
+                            club:res[0],
+                            username:res[3],
+                            name:res[2]
+                        };
+                    }
+                    callBack(res)
+                })
+        },
+        favourite_team_leagues: (user_id,league_id) => {
+            let data = {
+                user_id: user_id,
+                league_id: league_id
+            };
+            fetch(this.apiUrl + `/index.php/api/User_Favourite_League/`, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(res => res.json())
+                .then(res => console.log(res))
+        },
+        register : (username, password, email, user_fullname, country_id, team_id, callBack) => {
+            let data = {
+                username: username,
+                email: email,
+                password: password,
+                full_name: user_fullname,
+                country_id: country_id,
+                team_id: team_id
+            };
+            fetch(this.apiUrl + `/index.php/api/User/`, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+                .then(res => res.json())
+                .then(res => {
+                    callBack(res)
+                });
+        },
+        validateRegister: (username, email, callBack) => {
+            fetch(this.apiUrl + `/index.php/api/User/?username=` + username + `&email=` + email)
+                .then(res => res.json())
+                .then(res => {
+                      callBack(res);
+                })
+        }
+    };
 
     settings = {
-        getSettings: (callBack) => {
-            setTimeout(() => {
-                callBack({firstname: 'teeeeest'});
-            }, timeoutInterval);
-        },
-        setSettings: (username, email, callBack) => {
-            setTimeout(() => {
-                callBack({success: true});
-            }, timeoutInterval);
+        updateInfo: (user_id, country_id, team_id, name) =>{
+           let data = {
+                country_id: country_id,
+                team_id: team_id,
+                full_name:name
+            };
+            fetch(this.apiUrl + `/index.php/api/User/` + user_id,{
+                method: 'PUT',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(res => res.json())
+                .then(res => console.log(res))
         }
-    }
+    };
+
+    teams = {
+        getByCountryId : (country_id, callBack) => {
+            fetch(this.apiUrl + `/index.php/api/Team/?country_id=` + country_id)
+                .then(res => res.json())
+                .then(res => {
+                    callBack(res);
+                })
+        }
+    };
 
     countries = {
         getAll: (callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/country`)
+            fetch(this.apiUrl + `/index.php/api/Country/?select=1`)
                 .then(res => res.json())
                 .then(res => {
-                    let countries = Object.values(res);
-                    callBack(countries)
-                })
-        }
-    }
-
-    leagues = {
-        getAll: (country_id, callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/league/?country_id=` + country_id)
-                .then(res => res.json())
-                .then(res => {
-                    let leagues = Object.values(res);
-                    callBack(leagues)
+                    callBack(res)
                 })
         },
-        getByID: (league_id, callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/league/` + league_id)
-                .then(res => res.json())
-                .then(res => {
-                    if(res) {
-                        if(res['0'].matches) {
-                            let matches = Object.values(res['0'].matches);
-                            res['0'].matches = matches;
-                            callBack(res['0'])
-                        }
-                        else callBack(res['0'])
-                    }
-                })
-        }
-    }
-
-    rounds = {
-        getCurrentByLeagueID: (league_id,callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/round/?league_id=` + league_id)
-                .then(res => res.json())
-                .then(res => {
-                    let rounds = Object.values(res);
-                    callBack(rounds)
-                })
-        },
-        getByID: (round_id,callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/round/?id=` + round_id)
-                .then(res => res.json())
-                .then(res => {
-                    let data = Object.values(res);
-                    callBack(data)
-                })
-        }
-    }
-
-    fixture = {
-        getByID: (id, callBack) => {
-            fetch(`http://192.168.8.113/index.php/api/fixture/?id=` + id)
+        getAllCurrent: (callBack) => {
+            fetch(this.apiUrl + `/index.php/api/Country`)
                 .then(res => res.json())
                 .then(res => {
                     callBack(res)
                 })
         }
-    }
+    };
 
-    home = (user_id,callBack) => {
-        fetch(`http://192.168.8.113/index.php/api/user_favourite_league/?user_id=` + user_id)
+    leagues = {
+        getAll: (country_id, callBack) => {
+            fetch(this.apiUrl + `/index.php/api/Country/?country_id=` + country_id)
+                .then(res => res.json())
+                .then(res => {
+                    callBack(res)
+                })
+        },
+        getByID: (league_id,user_id, callBack) => {
+            fetch(this.apiUrl + `/index.php/api/League/?league_id=` + league_id + '&user_id=' + user_id)
+                .then(res => res.json())
+                .then(res => {
+                    const userBidsIndex = {};
+                    if(res.userBids && res.userBids.length){
+                        res.userBids.forEach(ub => {
+                            userBidsIndex[ub.fixture_id] = ub;
+                        })
+                    }
+                    if(res.fixtures && res.fixtures.length){
+                        res.fixtures.forEach(fixture => {
+                            if(userBidsIndex[fixture.id]){
+                                fixture.ticket = userBidsIndex[fixture.id];
+                            }
+                            else{
+                                fixture.ticket = null;
+                            }
+                        })
+                    }
+                    callBack(res)
+                })
+        },
+        getByIDFinished: (league_id,user_id,finished, callBack) => {
+            fetch(this.apiUrl + `/index.php/api/League/?league_id=` + league_id + '&user_id=' + user_id + '&finished=' + finished)
+                .then(res => res.json())
+                .then(res => {
+
+                    const userBidsIndex = {};
+
+                    if (res.userBids && res.userBids.length) {
+                        res.userBids.forEach(ub => {
+                            userBidsIndex[ub.fixture_id] = ub;
+                        })
+                    }
+
+                    if (res.fixtures && res.fixtures.length) {
+                        res.fixtures.forEach(fixture => {
+                            if (userBidsIndex[fixture.id]) {
+                                fixture.ticket = userBidsIndex[fixture.id];
+                            } else {
+                                fixture.ticket = null;
+                            }
+                        })
+                    }
+                    callBack(res)
+                })
+        }
+    };
+
+    fixture = {
+        getByID: (id,user_id, callBack) => {
+            fetch(this.apiUrl + `/index.php/api/Fixture/?id=` + id + '&user_id=' + user_id)
+                .then(res => res.json())
+                .then(res => {
+                    let result = res;
+                    callBack(result)
+                })
+        }
+    };
+
+    home = {
+    get_favourites : (user_id,callBack) => {
+        fetch(this.apiUrl + `/index.php/api/User_Favourite_League/?user_id=` + user_id)
             .then(res => res.json())
             .then(res => {
                 let leagues = Object.values(res);
                 callBack(leagues)
             })
-    }
+     }
+    };
 
     bids = {
-        updateFixtureBids : (id,data,callBack) => {
-            console.log(data.updated.ticket)
-            fetch(`http://192.168.8.113/index.php/api/user_fixture_bid/` + id, {
+        updateFixtureBids : (id,data) => {
+            fetch(this.apiUrl + `/index.php/api/User_Fixture_Bid/` + id, {
                 method: 'PUT',
                 body: JSON.stringify(data.updated.ticket),
                 headers: {
@@ -118,17 +217,71 @@ class APIHelper extends React.Component {
             })
                 .then(res => res.json())
         },
-        // createFixtureBids: () => {
-        //     fetch(`http://192.168.8.113/index.php/api/user_fixture_bid/`, {
-        //         method: 'POST',
-        //         body: JSON.stringify(data.updated.ticket),
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         }
-        //     })
-        //         .then(res => res.json())
-        // }
+        createFixtureBids: (data,callBack) => {
+            fetch(this.apiUrl + `/index.php/api/User_Fixture_Bid/`, {
+                method: 'POST',
+                body: JSON.stringify(data.ticket),
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+                .then(res => res.json())
+                .then(res => callBack(res))
+        },
+        deleteFixtureBid: (id) => {
+            fetch(this.apiUrl + `/index.php/api/User_Fixture_Bid/` + id, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(res => res.json())
+         }
+    };
+
+    favourites = {
+        update: (user_id,league_id) => {
+            let data = {
+                user_id: user_id,
+                league_id: league_id
+            };
+            fetch(this.apiUrl + `/index.php/api/User_Favourite_League/`, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(res => res.json())
+        },
+        delete: (id) => {
+            fetch(this.apiUrl + `/index.php/api/User_Favourite_League/` + id, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+        })
+                .then(res => res.json())
+     }
+    };
+
+    statistics = {
+        profileStats : (user_id, callBack) => {
+            fetch(this.apiUrl + `/index.php/api/User_Statistic/?user_id=` + user_id)
+                .then(res => res.json())
+                .then(res => {
+                    console.log(res);
+                    callBack(res)
+                })
+        },
+        gameStatistics : (game, user_id, callBack) => {
+            fetch(this.apiUrl + `/index.php/api/User_Statistic/?user_id=` + user_id + '&game=' + game)
+                .then(res => res.json())
+                .then(res => {
+                    callBack(Object.values(res))
+                })
+        }
     }
 }
 
-export default APIHelper
+window.apiHelper = new APIHelper();

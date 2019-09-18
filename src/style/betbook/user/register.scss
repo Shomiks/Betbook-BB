@@ -1,194 +1,541 @@
-.betbook-screen-login {
-  height: 100%;
-  width: 100%;
-  position: relative;
-  display: block;
-  background: linear-gradient(to bottom, #131313 0%, #1c1c1c 0%, #111111 0%, #000000 0%, #2c2c2c 0%, #111111 0%, #000000 0%, #2b2b2b 1%, #111111 1%, #898989 99%, #666666 100%, #4c4c4c 100%);
-  text-align: center;
+.App {
+  padding: 0;
+  overflow: auto;
 
-
-  .betbook-logo-box {
-    position: absolute;
-    top: 196px;
-    left: 50%;
-    margin-left: -87px;
+  a{
+    text-decoration: none;
   }
 
-  .main-container {
-    position: absolute;
+  .betbook-screen-login {
     height: 100%;
     width: 100%;
-    bottom: 81px;
+    position: relative;
+    display: block;
+    text-align: center;
+    min-width: 360px;
+    min-height: 550px;
 
-    .bs-user-container {
-      height: 80px;
-      width: 305px;
+
+    .betbook-logo-box {
+      padding-top: 110px;
       position: absolute;
-      bottom: 0;
-      margin-bottom: 340px;
-      left: 50%;
-      margin-left: -152.5px;
+      height: 100%;
+      padding-bottom: 480px;
+      box-sizing: border-box;
+      width: 100%;
 
-      .bs-username-text {
-        margin-bottom: 11px;
+      img{
+        max-height: 59px;
+        height: 100%;
+      }
+    }
+
+    .main-container {
+      position: relative;
+      height: 100%;
+      width: 100%;
+
+      .register-container {
+        height: 335px;
+        width: 305px;
+        position: absolute;
+        bottom: 110px;
+        left: 50%;
+        margin-left: -152.5px;
+
+        .bs-user-container {
+          height: 80px;
+          width: 305px;
+          position: relative;
+
+
+          .bs-username-text {
+            margin-bottom: 11px;
+          }
+
+          .bs-username-box {
+            height: 40px;
+            width: 305px;
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+            border: 1px solid #FFFFFF;
+            box-sizing: border-box;
+            border-radius: 25px;
+            padding-left: 20px;
+            font-family: SF Display;
+            font-size: 15px;
+            color: #2A2A2B;
+
+            &:focus {
+              outline: none;
+              border-color: #f68c25;
+            }
+          }
+
+          .bs-username-box-error {
+            height: 40px;
+            width: 309px;
+            background: linear-gradient(0deg, rgba(186, 67, 67, 0.5), rgba(186, 67, 67, 0.5));
+            border: 1px solid #BA4343;
+            box-sizing: border-box;
+            border-radius: 25px;
+            color: #FFF;
+          }
+        }
+        .bs-email-container {
+          height: 80px;
+          width: 305px;
+          position: relative;
+
+          .bs-email-text {
+            margin-bottom: 11px;
+          }
+
+          .bs-email-box {
+            height: 40px;
+            width: 305px;
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+            border: 1px solid #FFFFFF;
+            box-sizing: border-box;
+            border-radius: 25px;
+            padding-left: 20px;
+            font-family: SF Display;
+            font-size: 15px;
+            color: #2A2A2B;
+
+            &:focus {
+              outline: none;
+              border-color: #f68c25;
+            }
+          }
+
+          .bs-email-box-error {
+            height: 40px;
+            width: 309px;
+            background: linear-gradient(0deg, rgba(186, 67, 67, 0.5), rgba(186, 67, 67, 0.5));
+            border: 1px solid #BA4343;
+            box-sizing: border-box;
+            border-radius: 25px;
+            color: #FFF;
+
+            &:focus {
+              outline: none;
+              border-color: #f68c25;
+            }
+          }
+        }
+
+        .bs-password-container {
+          height: 80px;
+          width: 305px;
+          position: relative;
+
+          .bs-password-text {
+            margin-bottom: 11px;
+          }
+
+          .bs-password-box {
+            height: 40px;
+            width: 305px;
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+            border: 1px solid #FFFFFF;
+            box-sizing: border-box;
+            border-radius: 25px;
+            padding-left: 20px;
+            font-family: SF Display;
+            font-size: 15px;
+            color: #2A2A2B;
+
+            &:focus {
+              outline: none;
+              border-color: #f68c25;
+            }
+          }
+
+          .bs-password-box-error {
+            height: 40px;
+            width: 309px;
+            background: linear-gradient(0deg, rgba(186, 67, 67, 0.5), rgba(186, 67, 67, 0.5));
+            border: 1px solid #BA4343;
+            box-sizing: border-box;
+            border-radius: 25px;
+            color: #FFF;
+
+            &:focus {
+              outline: none;
+              border-color: #f68c25;
+            }
+          }
+
+          .bs-text-under-password {
+            margin-top: 24px;
+          }
+        }
+
+        .bs-create-account-box {
+          position: relative;
+          display: block;
+          height: 50px;
+          width: 305px;
+          background: linear-gradient(180deg, #FEA938 0%, rgba(255, 171, 58, 0) 100%), #EA6309;
+          border-radius: 25px;
+          margin-top: 55px;
+          margin-bottom: 25px;
+
+          &:focus {
+            outline: none;
+            border-color: #f68c25;
+          }
+
+
+          .text18-white {
+            line-height: 2.8;
+          }
+        }
+
+        .bs-signin-box {
+          position: relative;
+          height: 40px;
+          width: 225px;
+          border: 1px solid #FFFFFF;
+          box-sizing: border-box;
+          border-radius: 25px;
+
+          .text15-white {
+            line-height: 2.6;
+          }
+        }
+
+        .bs-i-already-have-an-account-box {
+          position: relative;
+          display: block;
+          height: 40px;
+          width: 200px;
+          border-radius: 25px;
+          border: 1px solid white;
+          margin: 0 auto;
+
+          &:focus {
+            outline: none;
+            border-color: #f68c25;
+          }
+        }
+
+
+        .sent-email-box {
+          height: 124px;
+          width: 180px;
+          position: relative;
+          margin: 0 auto;
+
+          .text17-white {
+            line-height: 31px;
+          }
+        }
+      }
+      .bs-email-container-forgot-password{
+        height: 80px;
+        width: 305px;
+        position: relative;
+
+        .bs-email-text {
+          margin-bottom: 11px;
+        }
+
+        .bs-text-under-password {
+          margin-top: 24px;
+        }
+
+        .bs-email-box {
+          height: 40px;
+          width: 305px;
+          background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+          border: 1px solid #FFFFFF;
+          box-sizing: border-box;
+          border-radius: 25px;
+          padding-left: 20px;
+          font-family: SF Display;
+          font-size: 15px;
+          color: #2A2A2B;
+
+          &:focus {
+            outline: none;
+            border-color: #f68c25;
+          }
+        }
       }
 
+      .login-container {
+        height: 335px;
+        width: 305px;
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        margin-left: -152.5px;
+
+        .bs-user-container {
+          height: 80px;
+          width: 305px;
+          position: relative;
+
+
+          .bs-username-text {
+            margin-bottom: 11px;
+          }
+
+          .bs-username-box {
+            height: 40px;
+            width: 305px;
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+            border: 1px solid #FFFFFF;
+            box-sizing: border-box;
+            border-radius: 25px;
+            padding-left: 20px;
+            font-family: SF Display;
+            font-size: 15px;
+            color: #2A2A2B;
+
+            &:focus {
+              outline: none;
+              border-color: #1E8FE1;
+            }
+          }
+
+          .bs-username-box-error {
+            height: 40px;
+            width: 309px;
+            background: linear-gradient(0deg, rgba(186, 67, 67, 0.5), rgba(186, 67, 67, 0.5));
+            border: 1px solid #BA4343;
+            box-sizing: border-box;
+            border-radius: 25px;
+            color: #FFF;
+          }
+
+        }
+
+        .bs-email-container-forgot-password {
+          height: 80px;
+          width: 305px;
+          position: relative;
+
+          .bs-email-text {
+            margin-bottom: 11px;
+          }
+
+          .bs-text-under-password {
+            margin-top: 24px;
+          }
+
+          .bs-email-box {
+            height: 40px;
+            width: 305px;
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+            border: 1px solid #FFFFFF;
+            box-sizing: border-box;
+            border-radius: 25px;
+            padding-left: 20px;
+            font-family: SF Display;
+            font-size: 15px;
+            color: #2A2A2B;
+
+            &:focus {
+              outline: none;
+              border-color: #f68c25;
+            }
+          }
+        }
+
+        .bs-email-container {
+          height: 80px;
+          width: 305px;
+          position: relative;
+
+          .bs-email-text {
+            margin-bottom: 11px;
+          }
+
+          .bs-email-box {
+            height: 40px;
+            width: 305px;
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+            border: 1px solid #FFFFFF;
+            box-sizing: border-box;
+            border-radius: 25px;
+            padding-left: 20px;
+            font-family: SF Display;
+            font-size: 15px;
+            color: #2A2A2B;
+
+            &:focus {
+              outline: none;
+              border-color: #f68c25;
+            }
+          }
+
+          .bs-email-box-error {
+            height: 40px;
+            width: 309px;
+            background: linear-gradient(0deg, rgba(186, 67, 67, 0.5), rgba(186, 67, 67, 0.5));
+            border: 1px solid #BA4343;
+            box-sizing: border-box;
+            border-radius: 25px;
+            color: #FFF;
+
+            &:focus {
+              outline: none;
+              border-color: #f68c25;
+            }
+          }
+        }
+
+        .bs-password-container {
+          height: 80px;
+          width: 305px;
+          position: relative;
+
+          .bs-password-text {
+            margin-bottom: 11px;
+          }
+
+          .bs-password-box {
+            height: 40px;
+            width: 305px;
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+            border: 1px solid #FFFFFF;
+            box-sizing: border-box;
+            border-radius: 25px;
+            padding-left: 20px;
+            font-family: SF Display;
+            font-size: 15px;
+            color: #2A2A2B;
+
+            &:focus {
+              outline: none;
+              border-color: #f68c25;
+            }
+          }
+
+          .bs-password-box-error {
+            height: 40px;
+            width: 309px;
+            background: linear-gradient(0deg, rgba(186, 67, 67, 0.5), rgba(186, 67, 67, 0.5));
+            border: 1px solid #BA4343;
+            box-sizing: border-box;
+            border-radius: 25px;
+            color: #FFF;
+
+            &:focus {
+              outline: none;
+              border-color: #f68c25;
+            }
+          }
+
+          .bs-text-under-password {
+            margin-top: 24px;
+          }
+        }
+
+        .bs-create-account-box {
+          cursor: pointer;
+          position: relative;
+          display: block;
+          height: 50px;
+          width: 305px;
+          background: linear-gradient(180deg, #FEA938 0%, rgba(255, 171, 58, 0) 100%), #EA6309;
+          border-radius: 25px;
+          margin-top: 55px;
+          margin-bottom: 25px;
+
+          &:focus {
+            outline: none;
+            border-color: #f68c25;
+          }
+
+
+          .text18-white {
+            line-height: 2.8;
+          }
+        }
+
+        .bs-signin-box {
+          position: relative;
+          height: 40px;
+          width: 225px;
+          border: 1px solid #FFFFFF;
+          box-sizing: border-box;
+          border-radius: 25px;
+
+          .text15-white {
+            line-height: 2.6;
+          }
+        }
+
+        .bs-i-already-have-an-account-box {
+          position: relative;
+          display: block;
+          height: 40px;
+          width: 200px;
+          border-radius: 25px;
+          border: 1px solid white;
+          margin: 0 auto;
+          cursor: pointer;
+
+          &:focus {
+            outline: none;
+            border-color: #f68c25;
+          }
+        }
+
+
+        .sent-email-box {
+          height: 124px;
+          width: 180px;
+          position: relative;
+          margin: 0 auto;
+
+          .text17-white {
+            line-height: 31px;
+          }
+        }
+      }
+    }
+
+  }
+
+
+  @media only screen and (max-height: 650px) {
+        .betbook-logo-box {
+          padding-top: 50px !important;
+        }
+  }
+
+
+  .hidden {
+    display: none;
+  }
+}
+
+
+@media only screen and (max-width: 359px) {
+  #root {
+    .App {
       .bs-username-box {
-        height: 40px;
-        width: 305px;
-        background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
-        border: 1px solid #FFFFFF;
-        box-sizing: border-box;
-        border-radius: 25px;
-        padding-left: 20px;
-        font-family: SF Display;
-        font-size: 15px;
-        color: #2A2A2B;
-      }
-    }
-
-
-    .bs-email-container-forgot-password {
-      height: 80px;
-      width: 305px;
-      position: absolute;
-      bottom: 0;
-      margin-bottom: 180px;
-      left: 50%;
-      margin-left: -152.5px;
-
-      .bs-email-text {
-        margin-bottom: 11px;
-      }
-
-      .bs-text-under-password {
-        margin-top: 24px;
-      }
-
-      .bs-email-box {
-        height: 40px;
-        width: 305px;
-        background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
-        border: 1px solid #FFFFFF;
-        box-sizing: border-box;
-        border-radius: 25px;
-        padding-left: 20px;
-        font-family: SF Display;
-        font-size: 15px;
-        color: #2A2A2B;
-      }
-    }
-
-    .bs-email-container {
-      height: 80px;
-      width: 305px;
-      position: absolute;
-      bottom: 0;
-      margin-bottom: 260px;
-      left: 50%;
-      margin-left: -152.5px;
-
-      .bs-email-text {
-        margin-bottom: 11px;
-      }
-
-      .bs-email-box {
-        height: 40px;
-        width: 305px;
-        background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
-        border: 1px solid #FFFFFF;
-        box-sizing: border-box;
-        border-radius: 25px;
-        padding-left: 20px;
-        font-family: SF Display;
-        font-size: 15px;
-        color: #2A2A2B;
-      }
-    }
-
-    .bs-password-container {
-      height: 80px;
-      width: 305px;
-      position: absolute;
-      bottom: 0;
-      margin-bottom: 180px;
-      left: 50%;
-      margin-left: -152.5px;
-
-      .bs-password-text {
-        margin-bottom: 11px;
-      }
-
-      .bs-password-box {
-        height: 40px;
-        width: 305px;
-        background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
-        border: 1px solid #FFFFFF;
-        box-sizing: border-box;
-        border-radius: 25px;
-        padding-left: 20px;
-        font-family: SF Display;
-        font-size: 15px;
-        color: #2A2A2B;
-      }
-
-      .bs-text-under-password {
-        margin-top: 24px;
-      }
-    }
-
-    .bs-create-account-box {
-      position: absolute;
-      display: block;
-      height: 50px;
-      width: 305px;
-      bottom: 0;
-      margin-bottom: 64px;
-      background: linear-gradient(180deg, #FEA938 0%, rgba(255, 171, 58, 0) 100%), #EA6309;
-      border-radius: 25px;
-      left: 50%;
-      margin-left: -152.5px;
-    }
-
-    .bs-i-already-have-an-account-box {
-      position: absolute;
-      display: block;
-      height: 40px;
-      width: 200px;
-      bottom: 0;
-      border-radius: 25px;
-      border: 1px solid white;
-      left: 50%;
-      margin-left: -100px;
-    }
-  }
-
-}
-
-
-@media only screen and (max-height: 675px) {
-  #root {
-    .App {
-      .betbook-logo-box {
-        top: 105px;
-      }
-
-      .main-container {
-        height: 100%;
+        max-width: 80%;
+        position: absolute;
+        left: 50%;
+        margin-left: -40%;
       }
     }
   }
 }
 
-@media only screen and (max-height: 580px) {
+@media only screen and (max-width: 345px) {
   #root {
     .App {
-      .betbook-logo-box {
-        display: none;
-      }
-
-      .main-container {
-        height: 100%;
+      .bs-username-box {
+        width: 70%;
+        position: absolute;
+        left: 50%;
+        margin-left: -35%;
       }
     }
   }

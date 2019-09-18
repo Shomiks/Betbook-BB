@@ -10,10 +10,11 @@
     top: 0;
     margin-top: 115px;
     left: 50%;
-    margin-left: -87px;
+    margin-left: -98px;
+
   }
 
-  .bs-user-container {
+  .bs-username-container {
     height: 80px;
     width: 305px;
     position: absolute;
@@ -86,6 +87,7 @@
 
     .bs-text-under-password {
       margin-top: 24px;
+      outline: none;
     }
   }
 
