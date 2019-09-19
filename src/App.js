@@ -83,7 +83,8 @@ class App extends React.Component {
                                render={(props) => (<Register sharedObj={this.sharedObject} {...props}/>)}/>
                         <Route path="/favorite-club"
                                render={(props) => (<FavoriteClub sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/login" render={(props) => (<Login sharedObj={this.sharedObject} {...props}  />)}/>
+                        <Route path="/login"
+                               render={(props) => (<Login sharedObj={this.sharedObject} {...props}  />)}/>
                         <Route path="/forgot-password"
                                render={(props) => (<ForgotPassword sharedObj={this.sharedObject} {...props}/>)}/>
                         <Route path="/welcome"

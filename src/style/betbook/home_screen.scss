@@ -69,7 +69,8 @@
 
 
           .league-logo {
-            width: 50px;
+            max-width: 70px;
+            max-height: 50px;
             margin-top: 10px;
             object-fit: contain;
           }

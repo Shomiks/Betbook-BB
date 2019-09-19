@@ -18,7 +18,8 @@ class Match_Details extends React.Component {
     componentDidMount() {
         setTimeout(()=>{
             this.sharedObj.footerInstance.setActive('ball');
-        },1);
+
+        },4);
         this.getFixtureById();
     };
 
@@ -110,6 +111,7 @@ class Match_Details extends React.Component {
 
     handleBidState = (game,tip,bidfield) => {
         let className = bidfield + ' ' + game;
+        if(!this.state.realData[game + '_' + tip]) className += ' hidden';
 
         if (this.state.realData.result && this.state.realData.result[game + '_' + tip] == 1) {
             className += ' won';
@@ -137,7 +139,6 @@ class Match_Details extends React.Component {
             }
         }
         return className
-
     };
 
     handleBidType = (label, game, tip, bidfield) => {
@@ -305,6 +306,8 @@ class Match_Details extends React.Component {
     };
 
     render() {
+
+        console.log(this.state.realData)
 
         return <>{this.state.loaded == true ? this.renderStateCompopnent() : <Loader/>}</>
     }
