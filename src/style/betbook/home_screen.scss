@@ -56,6 +56,10 @@
         .last-week {
           width: 50%;
           background: linear-gradient(179.51deg, #156993 0.8%, #49B4E7 99.49%);
+
+          &:active {
+            filter: brightness(120%);
+          }
         }
 
         .logo {
@@ -79,7 +83,7 @@
 
       .hs_left-box {
         position: relative;
-        padding: 21px 69px 29px 14px;
+        padding: 21px 69px 20px 14px;
 
         .hs_left-middle-text {
           margin-top: 5px;
@@ -96,7 +100,8 @@
 
       .hs_right-box {
         position: relative;
-        padding: 21px 30px 18px 57px;
+        padding: 21px 20px 18px 57px;
+
 
         .hs_left-middle-text {
           margin-top: 5px;
@@ -113,9 +118,11 @@
 
       .current-week {
         width: 50%;
-        display: block;
         background: linear-gradient(179.51deg, #EC6A0E 0.8%, #FEA938 99.49%);
 
+        &:active {
+          filter: brightness(120%);
+        }
       }
     }
 

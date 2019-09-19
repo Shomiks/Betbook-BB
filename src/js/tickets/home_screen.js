@@ -11,7 +11,7 @@ class Home_screen extends React.Component {
         this.state = {
             realData: null,
             loaded: false,
-            username:null
+            username: null
         };
         this.sharedObj = props.sharedObj;
     }
@@ -20,8 +20,8 @@ class Home_screen extends React.Component {
         this.getUserFavorites();
         setTimeout(() => {
             this.sharedObj.footerInstance.setActive('timeline');
-        },1);
-        this.sharedObj.apiHelper.user.getUser(localStorage.getItem('user_id'),(res) => {
+        }, 1);
+        this.sharedObj.apiHelper.user.getUser(localStorage.getItem('user_id'), (res) => {
             this.setState({username: window.apiHelper.userInfo['username']})
         })
     };
@@ -33,15 +33,15 @@ class Home_screen extends React.Component {
     };
 
     handleFinished = (data) => {
-            if(1) return <div className='last-week'>
-            <div className='hs_left-box'>
-                {/*<div><span className='text11-white'>Matchweek {data.round ? data.round.order : 'unknown'}</span></div>*/}
-                <div className='hs_left-middle-text'><span className='text11-white'>Success Rate xx%</span></div>
-                <div className='hs_left-bottom-text'><Link to={`finished/league/${data.league.id}`}>
-                    <div><span className='text11-white'>Check the bet</span></div>
-                </Link></div>
+        if (1) return <Link to={`finished/league/${data.league.id}`} className='last-week'>
+                <div className='hs_left-box'>
+                    {/*<div><span className='text11-white'>Matchweek {data.round ? data.round.order : 'unknown'}</span></div>*/}
+                    <div className='hs_left-middle-text'><span className='text11-white'>Success Rate xx%</span></div>
+                    <div className='hs_left-bottom-text'>
+                        <div><span className='text11-white'>Check the bet</span></div>
+                    </div>
             </div>
-        </div>;
+        </Link>;
         else return <div className='last-week'/>
     };
 
@@ -54,15 +54,15 @@ class Home_screen extends React.Component {
     // };
 
     handleUpcoming = (data) => {
-        return <div className='current-week'>
+        return <Link to={`league/${data.league.id}`} className='current-week'>
             <div className='hs_right-box'>
                 {/*<div><span className='text11-white'>Matchweek {data.round  ? (parseInt(data.round.order) + 1) : 'unknown'}</span></div>*/}
                 <div className='hs_left-middle-text'><span className='text11-white'>Gameweek start date</span></div>
-                <div className='hs_left-bottom-text'><Link to={`league/${data.league.id}`}>
-                    <div><span className='text11-white'>Create bet</span></div>
-                </Link></div>
+                <div className='hs_left-bottom-text'>
+                    <div>< span className='text11-white'>Create bet</span></div>
+                </div>
             </div>
-        </div>
+        </Link>
     };
 
     handleFavouriteLeagues = () => {
@@ -71,10 +71,11 @@ class Home_screen extends React.Component {
             return <div className='favourite-league' key={data.id + '_'}>
                 <div className='favourite-league-container'>
                     {this.handleFinished(data)}
-                    <div className='logo'><img className='league-logo' src={'./assets/images/Logos/'+data.league.logo+''}  alt=''/>
+                    {this.handleUpcoming(data)}
+                    <div className='logo'><img className='league-logo'
+                                               src={'./assets/images/Logos/' + data.league.logo + ''} alt=''/>
                         <div className='hs_league-name'><span className='text11'>{data.league.name}</span></div>
                     </div>
-                    {this.handleUpcoming(data)}
                 </div>
             </div>
         })}</>
@@ -83,7 +84,8 @@ class Home_screen extends React.Component {
 
     handleFirstTimeLogin = () => {
         return <><Link to={`/countries`}>
-            <div className='hs_select-box'><span className='text26-white'>Select your favourite leagues and start your journey</span></div>
+            <div className='hs_select-box'><span className='text26-white'>Select your favourite leagues and start your journey</span>
+            </div>
         </Link></>
     };
 
