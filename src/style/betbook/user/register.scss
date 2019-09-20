@@ -18,7 +18,8 @@ div, span, p {
     text-align: center;
     min-width: 360px;
     min-height: 550px;
-
+    background-image: url("../assets/images/action-athletes-audience.png");
+    background-size: cover;
 
     .betbook-logo-box {
       padding-top: 110px;
@@ -38,6 +39,8 @@ div, span, p {
       position: relative;
       height: 100%;
       width: 100%;
+      background-image: url("../assets/images/background-reg-login.png");
+      background-size: cover;
 
       .register-container {
         height: 335px;
@@ -75,7 +78,7 @@ div, span, p {
 
             &:focus {
               outline: none;
-              filter: brightness(120%);
+              filter: brightness(150%);
               border-color: #f68c25;
             }
           }
@@ -119,7 +122,7 @@ div, span, p {
 
             &:focus {
               outline: none;
-              filter: brightness(140%);
+              filter: brightness(150%);
               border-color: #f68c25;
             }
           }
@@ -138,7 +141,7 @@ div, span, p {
 
             &:focus {
               outline: none;
-              filter: brightness(140%);
+              filter: brightness(150%);
               border-color: #f68c25;
             }
           }
@@ -170,7 +173,7 @@ div, span, p {
 
             &:focus {
               outline: none;
-              filter: brightness(140%);
+              filter: brightness(150%);
               border-color: #f68c25;
             }
           }
@@ -188,7 +191,7 @@ div, span, p {
             }
             &:focus {
               outline: none;
-              filter: brightness(140%);
+              filter: brightness(150%);
               border-color: #f68c25;
             }
           }
@@ -207,13 +210,14 @@ div, span, p {
           border-radius: 25px;
           margin-top: 55px;
           margin-bottom: 25px;
+          cursor: pointer;
           &:active {
             filter: brightness(120%);
           }
 
           &:focus {
             outline: none;
-            filter: brightness(140%);
+            filter: brightness(150%);
             border-color: #f68c25;
           }
 
@@ -248,11 +252,12 @@ div, span, p {
           margin: 0 auto;
           &:active {
             filter: brightness(120%);
+            background-color: #1F2022;
           }
           &:focus {
             outline: none;
             filter: brightness(140%);
-            border-color: #f68c25;
+            background-color: #1F2022;
           }
         }
 
@@ -268,6 +273,7 @@ div, span, p {
           }
         }
       }
+
       .bs-email-container-forgot-password{
         height: 80px;
         width: 305px;
@@ -337,7 +343,7 @@ div, span, p {
             }
             &:focus {
               outline: none;
-              filter: brightness(140%);
+              filter: brightness(150%);
               border-color: #f68c25;
             }
           }
@@ -383,7 +389,7 @@ div, span, p {
             }
             &:focus {
               outline: none;
-              filter: brightness(140%);
+              filter: brightness(150%);
               border-color: #f68c25;
             }
           }
@@ -414,7 +420,7 @@ div, span, p {
             }
             &:focus {
               outline: none;
-              filter: brightness(140%);
+              filter: brightness(150%);
               border-color: #f68c25;
             }
           }
@@ -432,7 +438,7 @@ div, span, p {
             }
             &:focus {
               outline: none;
-              filter: brightness(140%);
+              filter: brightness(150%);
               border-color: #f68c25;
             }
           }
@@ -463,7 +469,7 @@ div, span, p {
             }
             &:focus {
               outline: none;
-              filter: brightness(140%);
+              filter: brightness(150%);
               border-color: #f68c25;
             }
           }
@@ -481,7 +487,7 @@ div, span, p {
             }
             &:focus {
               outline: none;
-              filter: brightness(140%);
+              filter: brightness(150%);
               border-color: #f68c25;
             }
           }
@@ -506,7 +512,7 @@ div, span, p {
           }
           &:focus {
             outline: none;
-            filter: brightness(140%);
+            filter: brightness(150%);
             border-color: #f68c25;
           }
 
@@ -523,6 +529,7 @@ div, span, p {
           border: 1px solid #FFFFFF;
           box-sizing: border-box;
           border-radius: 25px;
+          cursor: pointer;
 
           .text15-white {
             line-height: 2.6;
@@ -540,11 +547,12 @@ div, span, p {
           cursor: pointer;
           &:active {
             filter: brightness(120%);
+            background-color: #1F2022;
           }
           &:focus {
             outline: none;
-            filter: brightness(140%);
-            border-color: #f68c25;
+            filter: brightness(150%);
+            background-color: #1F2022;
           }
         }
 
@@ -574,32 +582,5 @@ div, span, p {
 
   .hidden {
     display: none;
-  }
-}
-
-
-@media only screen and (max-width: 359px) {
-  #root {
-    .App {
-      .bs-username-box {
-        max-width: 80%;
-        position: absolute;
-        left: 50%;
-        margin-left: -40%;
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 345px) {
-  #root {
-    .App {
-      .bs-username-box {
-        width: 70%;
-        position: absolute;
-        left: 50%;
-        margin-left: -35%;
-      }
-    }
   }
 }

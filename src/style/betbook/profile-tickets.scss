@@ -33,6 +33,16 @@
           width: 23px;
           background-image: url("assets/images/settings---final.svg");
           background-repeat: no-repeat;
+          &:active {
+            filter: brightness(120%);
+          }
+
+          &:focus {
+            outline: none;
+            filter: brightness(120%);
+            border-color: #f68c25;
+          }
+
         }
 
         .search {
@@ -42,6 +52,16 @@
           background-image: url("assets/images/search---final.svg");
           background-repeat: no-repeat;
           background-size: cover;
+          &:active {
+            filter: brightness(120%);
+          }
+
+          &:focus {
+            outline: none;
+            filter: brightness(120%);
+            border-color: #f68c25;
+          }
+
         }
       }
 
@@ -50,6 +70,7 @@
         padding-top: 10px;
         width: 100%;
         text-align: center;
+
 
         .text18-white {
           color: #FFF;

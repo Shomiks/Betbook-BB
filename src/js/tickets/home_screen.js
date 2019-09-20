@@ -78,6 +78,7 @@ class Home_screen extends React.Component {
                     </div>
                 </div>
             </div>
+
         })}</>
     };
 

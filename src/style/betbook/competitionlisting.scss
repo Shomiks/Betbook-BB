@@ -2,20 +2,20 @@
 .countries-container {
   overflow: scroll;
 
-  .favourites{
+  .favourites {
     margin-top: 10px;
-    height:20px;
+    height: 20px;
     text-align: left;
     padding-left: 15px;
 
-    &.text11-grey{
+    &.text11-grey {
       color: #999;
       font-family: "SF Display";
       font-size: 11px;
       font-weight: 500;
-  }
+    }
 
-}
+  }
 
   .country-field {
     border: 1px solid #2A2A2B;
@@ -23,6 +23,16 @@
     vertical-align: middle;
     display: flex;
     background-color: #1F2022;
+
+    &:active {
+      filter: brightness(120%);
+    }
+
+    &:focus {
+      outline: none;
+      filter: brightness(120%);
+      border-color: #f68c25;
+    }
 
     .text18 {
       text-align: center;
@@ -46,22 +56,24 @@
       margin: auto 0;
 
       .leagues-info {
-        padding-bottom: 10%;
 
-        .text11-grey{
-          left:0;
+        .text11-grey {
+          left: 0;
         }
       }
+
       .dataname-info {
-        padding-bottom: 10%;
-
+        //padding: 3% 0;
+        .text15-white {
+          line-height: 0.5;
+        }
       }
 
-      .number-matches-info {
+        .number-matches-info {
 
+        }
       }
+
+
     }
-
-
   }
-}
