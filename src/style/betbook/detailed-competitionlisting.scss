@@ -11,8 +11,8 @@
     background-color: #1F2022;
 
     .leagues-info {
-      position: relative;
-      display: block;
+    margin: auto 0;
+    text-align: left;
 
       .league-name {
         margin-top: 20px;
@@ -27,29 +27,12 @@
           line-height: 2.7;
         }
       }
-
-      .league-info {
-        padding-top: 13px;
-        display: flex;
-        left: 0;
-        align-items: center;
-        color: white;
-        font-family: "SF Display";
-
-      }
-
       .dataname-info {
-        white-space: nowrap;
-        position: absolute;
-        left: 0;
-        top: 32px;
+          display:block;
       }
 
       .number-matches-info {
-        display: block;
-        position: absolute;
-        left: 0;
-        bottom: 11px;
+        display:block;
       }
     }
 

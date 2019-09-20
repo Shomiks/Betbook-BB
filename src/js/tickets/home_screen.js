@@ -35,7 +35,6 @@ class Home_screen extends React.Component {
     handleFinished = (data) => {
         if (1) return <Link to={`finished/league/${data.league.id}`} className='last-week'>
                 <div className='hs_left-box'>
-                    {/*<div><span className='text11-white'>Matchweek {data.round ? data.round.order : 'unknown'}</span></div>*/}
                     <div className='hs_left-middle-text'><span className='text11-white'>Success Rate xx%</span></div>
                     <div className='hs_left-bottom-text'>
                         <div><span className='text11-white'>Check the bet</span></div>
@@ -56,7 +55,6 @@ class Home_screen extends React.Component {
     handleUpcoming = (data) => {
         return <Link to={`league/${data.league.id}`} className='current-week'>
             <div className='hs_right-box'>
-                {/*<div><span className='text11-white'>Matchweek {data.round  ? (parseInt(data.round.order) + 1) : 'unknown'}</span></div>*/}
                 <div className='hs_left-middle-text'><span className='text11-white'>Gameweek start date</span></div>
                 <div className='hs_left-bottom-text'>
                     <div>< span className='text11-white'>Create bet</span></div>
