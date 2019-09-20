@@ -25,6 +25,13 @@ class Competition_Listing extends React.Component {
 
     getAllCountries() {
         this.sharedObj.apiHelper.countries.getAllCurrent((res) =>{
+            res.forEach((country,i) => {
+                if(country.name == 'World'){
+                    res.splice(i,1);
+                    res.unshift(country);
+                }
+            });
+
             this.setState({realData: res, loaded: true});
      })
     }

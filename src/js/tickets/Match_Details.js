@@ -130,6 +130,9 @@ class Match_Details extends React.Component {
             }
         }
         if(!className.includes('bided')){
+            if(this.state.realData.result){
+               return className += ' opacity'
+            }
             if(className.includes(game)){
                 if(this.state.realData.ticket){
                     if(this.state.realData.ticket[game + '_tip']){

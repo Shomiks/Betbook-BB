@@ -71,7 +71,7 @@ class App extends React.Component {
             if(this.state.authenticated) {
                 return (<div className='App'>
                     <HashRouter>
-                        {(window.location.hash == '#/login' || window.location.hash == '#/user' || window.location.hash == '#/forgot-password' || window.location.hash == '#/loading'
+                        {(window.location.hash == '#/login' || window.location.hash == '#/user' || window.location.hash == '#/forgot-password' || window.location.hash == '#/loading' || window.location.hash == '#/'
                             || window.location.hash == '#/welcome' || window.location.hash == '#/home' || window.location.hash == '#/favorite-club' || window.location.hash == '#/register')
                             ? <div/> : <Header ref={(instance) => {
                                 this.sharedObject.headerInstance = instance
