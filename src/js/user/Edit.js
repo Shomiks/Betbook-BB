@@ -26,22 +26,25 @@ class Register extends React.Component {
             this.sharedObj.headerInstance.setTitle('Edit profile')
         },1);
         this.getAllCountries();
-        this.setState({user: window.apiHelper.userInfo.name, country_id: window.apiHelper.userInfo.country.id, team_id: window.apiHelper.userInfo.club.id})
     }
 
     handleChangeFullName = (e) => {
         this.setState({user:e.target.value});
-
     };
 
     getAllCountries = () => {
         this.sharedObj.apiHelper.countries.getAll((res) => {
-            this.setState({countries: res,loaded:true})
+            res.forEach((country,i) => {
+                if(country.name == 'World') res.splice(i,1);
+            });
+            this.getAllCLubsByCountryId(window.apiHelper.userInfo.country.id);
+            this.setState({countries: res,user: window.apiHelper.userInfo.name, country_id: window.apiHelper.userInfo.country.id, team_id: window.apiHelper.userInfo.club.id,loaded:true})
         })
     };
 
     getAllCLubsByCountryId = (country_id) => {
-        this.sharedObj.apiHelper.teams.getByCountryId(country_id,res => {
+
+        this.sharedObj.apiHelper.teams.getByCountryId(country_id,(res) => {
             this.setState({country_clubs: res,clubs_fetched:true});
         })
     };
@@ -57,12 +60,17 @@ class Register extends React.Component {
     };
 
     handleSave = () => {
-      this.sharedObj.apiHelper.settings.updateInfo(localStorage.getItem('user_id'),this.state.country_id, this.state.team_id, this.state.user);
-      alert("Successfully!")
+      this.sharedObj.apiHelper.settings.updateInfo(localStorage.getItem('user_id'),this.state.country_id, this.state.team_id, this.state.user, () => {
+          this.sharedObj.apiHelper.user.getUser(localStorage.getItem('user_id'), (res) => {
+              alert('successful');
+          });
+      });
+
     };
 
-
     render() {
+
+        console.log(this.state)
 
         if (this.state.loaded) {
 
@@ -80,9 +88,8 @@ class Register extends React.Component {
                                 <div className='bs-email-text'>
                                     <span className='text15-white'>Select your favourite national team</span>
                                 </div>
-                                <select className='bs-email-box' value={this.state.country_id} onChange={this.handleCountryChange} defaultValue={window.apiHelper.userInfo.country.name}>
-                                    <option selected="selected">{window.apiHelper.userInfo.country.name}</option>
-                                        {this.state.countries.map(country => <option value ={country.id} key ={country.name + country.id}>{country.name}</option>)}
+                                <select className='bs-email-box' value={this.state.country_id} onChange={this.handleCountryChange}>
+                                        {this.state.countries.map(country => <option value ={country.id} key ={'c_option_'+ country.id}>{country.name}</option>)}
                                 </select>
                             </div>
 
@@ -90,9 +97,8 @@ class Register extends React.Component {
                                 <div className='bs-password-text'>
                                     <span className='text15-white'>Select your favourite club</span>
                                 </div>
-                                <select className='bs-password-box' value={this.state.team_id} onChange={this.handleClubChange} defaultValue={window.apiHelper.userInfo.club.name}>
-                                    <option selected="selected">{window.apiHelper.userInfo.club.name}</option>
-                                        {this.state.country_clubs.length > 0 ? this.state.country_clubs.map(club => <option value ={club.id} key ={club.name + club.id}>{club.name}</option>) : ''}
+                                <select className='bs-password-box' value={this.state.team_id} onChange={this.handleClubChange}>
+                                    {this.state.country_clubs.map(club => <option value ={club.id} key ={'option_' + club.id}>{club.name}</option>)}
                                 </select>
                             </div>
 

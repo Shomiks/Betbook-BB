@@ -81,12 +81,13 @@ class APIHelper {
     };
 
     settings = {
-        updateInfo: (user_id, country_id, team_id, name) =>{
+        updateInfo: (user_id, country_id, team_id, name,callBack) =>{
            let data = {
                 country_id: country_id,
                 team_id: team_id,
                 full_name:name
             };
+           console.log(team_id)
             fetch(this.apiUrl + `/index.php/api/user/` + user_id,{
                 method: 'PUT',
                 body: JSON.stringify(data),
@@ -95,7 +96,7 @@ class APIHelper {
                 }
             })
                 .then(res => res.json())
-                .then(res => console.log(res))
+                .then(res => callBack())
         }
     };
 
@@ -157,11 +158,10 @@ class APIHelper {
                     callBack(res)
                 })
         },
-        getByIDFinished: (league_id,user_id,finished, callBack) => {
+        getByIDBided: (league_id,user_id,finished, callBack) => {
             fetch(this.apiUrl + `/index.php/api/league/?league_id=` + league_id + '&user_id=' + user_id + '&finished=' + finished)
                 .then(res => res.json())
                 .then(res => {
-
                     const userBidsIndex = {};
 
                     if (res.userBids && res.userBids.length) {
