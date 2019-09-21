@@ -43,8 +43,8 @@ class Detailed_Competition_Listing extends React.Component {
                                 <img className='logo' src={'./assets/images/Logos/'+data.logo} onError={() => this.handleImgError(data) } />
                             </div>
                             <div className='leagues-info'>
-                            <div className='dataname-info'><span className='text15-white'>{data.name}</span></div>
-                            <div className='number-matches-info'><span className='text11-grey'>{data.fixtures_count} matches</span></div>
+                            <div className='dataname-info'><span className='text18-white'>{data.name}</span></div>
+                            <div className='number-matches-info'><span className='text13-grey'>{data.fixtures_count} matches</span></div>
                             </div>
                         </div></Link>)}
                     </div>

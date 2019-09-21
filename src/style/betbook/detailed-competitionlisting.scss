@@ -11,24 +11,13 @@
     background-color: #1F2022;
 
     .leagues-info {
+    padding-left:10px;
     margin: auto 0;
     text-align: left;
 
-      .league-name {
-        margin-top: 20px;
-        display: flex;
-        align-items: center;
-        position: relative;
-
-
-        .text18-white {
-          font-size: 16px;
-          position: relative;
-          line-height: 2.7;
-        }
-      }
       .dataname-info {
           display:block;
+
       }
 
       .number-matches-info {
