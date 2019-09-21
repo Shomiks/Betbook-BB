@@ -2,6 +2,7 @@ import React from 'react';
 import '../../../src/style/betbook/user/register.scss'
 import '../../../src/style/app.scss'
 import {Link, Redirect} from "react-router-dom";
+import Loader from "../components/loader";
 
 class Register extends React.Component {
 
@@ -211,7 +212,7 @@ class Register extends React.Component {
                     </div>
                 </div>
             )
-        } else return <div>Loading...</div>
+        } else return <Loader/>
     }
 }
 export default Register;

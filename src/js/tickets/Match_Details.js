@@ -130,12 +130,13 @@ class Match_Details extends React.Component {
             }
         }
         if(!className.includes('bided')){
-            if(this.state.realData.result){
+            if(this.state.realData.result && this.state.realData.result.is_finished == 1){
                return className += ' opacity'
             }
             if(className.includes(game)){
                 if(this.state.realData.ticket){
                     if(this.state.realData.ticket[game + '_tip']){
+                        console.log('a')
                         return className + ' ' + 'opacity';
                     }
                 }
@@ -148,7 +149,7 @@ class Match_Details extends React.Component {
 
         let className = this.handleBidState(game,tip,bidfield);
 
-        return <div className={className} onClick = {!this.state.realData.result ? () => this.handleBidClick(game,tip,className) : () =>{}}>
+        return <div className={className} onClick = {!this.state.realData.result || this.state.realData.result.is_finished == 0 ? () => this.handleBidClick(game,tip,className) : () =>{}}>
             <div className='game-bid-align'>
             <div className='game-text'><span className='text11-grey'>{label}</span></div>
             <div className='bid-text'><span className='text15-white'>{this.state.realData[game + '_' + tip]}</span></div>

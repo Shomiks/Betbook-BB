@@ -31,7 +31,6 @@ class Competition_Listing extends React.Component {
                     res.unshift(country);
                 }
             });
-
             this.setState({realData: res, loaded: true});
      })
     }
