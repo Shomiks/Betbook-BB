@@ -1,6 +1,5 @@
 .leagues-container {
   overflow: hidden;
-  padding-bottom: 60px;
 
   .league-field {
     border: 1px solid #2A2A2B;
@@ -12,45 +11,17 @@
     background-color: #1F2022;
 
     .leagues-info {
-      position: relative;
-      display: block;
-
-      .league-name {
-        margin-top: 20px;
-        display: flex;
-        align-items: center;
-        position: relative;
-
-
-        .text18-white {
-          font-size: 16px;
-          position: relative;
-          line-height: 2.7;
-        }
-      }
-
-      .league-info {
-        padding-top: 13px;
-        display: flex;
-        left: 0;
-        align-items: center;
-        color: white;
-        font-family: "SF Display";
-
-      }
+    padding-left:10px;
+    margin: auto 0;
+    text-align: left;
 
       .dataname-info {
-        white-space: nowrap;
-        position: absolute;
-        left: 0;
-        top: 32px;
+          display:block;
+
       }
 
       .number-matches-info {
-        display: block;
-        position: absolute;
-        left: 0;
-        bottom: 11px;
+        display:block;
       }
     }
 
@@ -86,6 +57,7 @@
     .logo-container {
       position: relative;
       width: 85px;
+      background: linear-gradient(to right, #ffffff 0%,#1F2022 100%);
 
       .logo {
         width: 60px;

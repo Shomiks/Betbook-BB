@@ -16,7 +16,7 @@ class Header extends React.Component{
     return <>
       <div className='chevron_header' onClick={() =>window.history.back()}/>
       <div className='sport'>
-        <div className='text_align'><span className='text17-white'>{this.state.title}</span></div>
+        <div className='text_align'><span className='text20-white'>{this.state.title}</span></div>
       </div>
       <div className={this.state.currentItemRight}/>
       </>

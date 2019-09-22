@@ -25,7 +25,7 @@ class Week_games_Listing extends React.Component {
 
         } else {
             if (window.location.hash.split('/')[3] != null) {
-                this.getAllFixturesFinished();
+                this.getAllFixturesBided();
             } else {
                 this.getAllFixtures();
             }
@@ -38,10 +38,10 @@ class Week_games_Listing extends React.Component {
             this.setState({realData:res,loaded:true})});
     }
 
-    getAllFixturesFinished(){
+    getAllFixturesBided(){
         let finished = 0;
         if(window.location.hash.split('/')[1] == 'finished') finished = 1;
-        this.sharedObj.apiHelper.leagues.getByIDFinished(this.leagudId,localStorage.getItem('user_id'),finished,(res) =>{
+        this.sharedObj.apiHelper.leagues.getByIDBided(this.leagudId,localStorage.getItem('user_id'),finished,(res) =>{
 
             let data = {
                 fixtures: [],
@@ -51,6 +51,7 @@ class Week_games_Listing extends React.Component {
 
             if(res.fixtures)
             res.fixtures.forEach(fixture => {
+                if(res.userBids)
                 res.userBids.forEach(userbid => {
                     if(fixture.id == userbid.fixture_id){
                         data.fixtures.push(fixture);
@@ -94,7 +95,6 @@ class Week_games_Listing extends React.Component {
                     <MatchShort match={fixture}/></Link>)}
             </>
         }
-
         else {
             this.sharedObj.headerInstance.setTitle(this.state.realData.league.name);
         }

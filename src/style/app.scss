@@ -240,8 +240,6 @@ html, body {
   font-family: "SF Display";
   font-size: 18px;
   font-weight: 500;
-  line-height: 1.5;
-  display: inline-block;
   overflow: hidden;
   text-overflow: ellipsis;
 
@@ -296,6 +294,20 @@ html, body {
   color: #FFF;
   font-family: "SF Display";
   font-size: 26px;
+  font-weight: 500;
+}
+
+.text20-white {
+  color: #FFF;
+  font-family: "SF Display";
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.text13-grey {
+  color: #999999;
+  font-family: "SF Display";
+  font-size: 13px;
   font-weight: 500;
 }
 

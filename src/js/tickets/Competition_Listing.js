@@ -25,6 +25,12 @@ class Competition_Listing extends React.Component {
 
     getAllCountries() {
         this.sharedObj.apiHelper.countries.getAllCurrent((res) =>{
+            res.forEach((country,i) => {
+                if(country.name == 'World'){
+                    res.splice(i,1);
+                    res.unshift(country);
+                }
+            });
             this.setState({realData: res, loaded: true});
      })
     }
@@ -36,11 +42,11 @@ class Competition_Listing extends React.Component {
                 <div className='main-content'>
                     <div className='countries-container'>
                         {this.state.realData.map((data) => <Link to={`country/${data.id}`} key={data.id + data.name}>
-                            <div className='country-field' style={{height:(document.body.clientHeight-120)/5}}>
+                            <div className='country-field' style={{height:(document.body.clientHeight-120)/6 - 3}}>
                                 <div className='flag-container'><img className='flag' src={data.flag ? './assets/images/Countries/'+data.flag : './assets/images/alternative-logo.png'} alt=''/></div>
                                 <div className='country-info'>
                                     <div className='leagues-info'><span className='text11-grey'>{data.leagues_count} Leagues</span></div>
-                                    <div className='dataname-info'><span className='text15-white'>{data.name}</span></div>
+                                    <div className='dataname-info'><span className='text18-white'>{data.name}</span></div>
                                     <div className='number-matches-info'><span className='text11-grey'>{data.fixtures_count} Matches</span></div>
                                 </div>
                             </div>

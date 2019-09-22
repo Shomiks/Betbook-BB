@@ -1,6 +1,5 @@
 .betbook-context {
-  padding: 0 15px 30px;
-  margin-bottom: 60px;
+  overflow: scroll;
 
   .betbook_screen {
     height: 100%;
@@ -207,6 +206,10 @@
 
 .hidden {
   display: none;
+}
+
+.ht-ft-result-field{
+  margin-bottom: 20px;
 }
 
 .opacity{

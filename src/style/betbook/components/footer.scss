@@ -89,6 +89,9 @@
     box-shadow: 0 0 20px #000000;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    &:active {
+      filter: brightness(120%);
+    }
 
     a {
       text-decoration: none;
@@ -116,6 +119,9 @@
     background: linear-gradient(180deg, #FFAB39 0%, rgba(255, 255, 255, 0) 100%), #E86107;
     box-shadow: 0 0 20px #000000;
     border-top-right-radius: 10px;
+    &:active {
+      filter: brightness(120%);
+    }
 
     a {
       text-decoration: none;
@@ -142,6 +148,9 @@
     background: linear-gradient(180deg, #FFAB39 0%, rgba(255, 255, 255, 0) 100%), #E86107;
     box-shadow: 0 0 20px #000000;
     border-top-left-radius: 10px;
+    &:active {
+      filter: brightness(120%);
+    }
 
     a {
       text-decoration: none;

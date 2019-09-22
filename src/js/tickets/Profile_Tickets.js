@@ -52,18 +52,18 @@ class Profile_Tickets extends React.Component {
             game4_total : 0
             };
             res = statistics;
-            this.setState({statistics:res})
+            this.setState({statistics:res});
         }
 
         else {
             statisticsCalculated.game1_avg = (res.game1_sum / res.game1_total_win).toFixed(2);
-            statisticsCalculated.game1_success = (res.game1_total_win / res.game1_total).toFixed(2) * 100 + '%';
+            statisticsCalculated.game1_success = ((res.game1_total_win / res.game1_total) * 100).toFixed(1) + '%';
             statisticsCalculated.game2_avg = (res.game2_sum / res.game2_total_win).toFixed(2);
-            statisticsCalculated.game2_success = (res.game2_total_win / res.game2_total).toFixed(2) * 100 + '%';
+            statisticsCalculated.game2_success = ((res.game2_total_win / res.game2_total) * 100).toFixed(1) + '%';
             statisticsCalculated.game3_avg = (res.game3_sum / res.game3_total_win).toFixed(2);
-            statisticsCalculated.game3_success = (res.game3_total_win / res.game3_total).toFixed(2) * 100 + '%';
+            statisticsCalculated.game3_success = ((res.game3_total_win / res.game3_total) * 100).toFixed(1) + '%';
             statisticsCalculated.game4_avg = (res.game4_sum / res.game4_total_win).toFixed(2);
-            statisticsCalculated.game4_success = (res.game4_total_win / res.game4_total).toFixed(2) * 100 + '%';
+            statisticsCalculated.game4_success = ((res.game4_total_win / res.game4_total) * 100).toFixed(1) + '%';
         }
 
         if(res.game1_total == 0 || res.game1_total_win == 0){

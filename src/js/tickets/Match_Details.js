@@ -18,7 +18,8 @@ class Match_Details extends React.Component {
     componentDidMount() {
         setTimeout(()=>{
             this.sharedObj.footerInstance.setActive('ball');
-        },1);
+
+        },4);
         this.getFixtureById();
     };
 
@@ -110,6 +111,7 @@ class Match_Details extends React.Component {
 
     handleBidState = (game,tip,bidfield) => {
         let className = bidfield + ' ' + game;
+        if(!this.state.realData[game + '_' + tip]) className += ' hidden';
 
         if (this.state.realData.result && this.state.realData.result[game + '_' + tip] == 1) {
             className += ' won';
@@ -128,23 +130,26 @@ class Match_Details extends React.Component {
             }
         }
         if(!className.includes('bided')){
+            if(this.state.realData.result && this.state.realData.result.is_finished == 1){
+               return className += ' opacity'
+            }
             if(className.includes(game)){
                 if(this.state.realData.ticket){
                     if(this.state.realData.ticket[game + '_tip']){
+                        console.log('a')
                         return className + ' ' + 'opacity';
                     }
                 }
             }
         }
         return className
-
     };
 
     handleBidType = (label, game, tip, bidfield) => {
 
         let className = this.handleBidState(game,tip,bidfield);
 
-        return <div className={className} onClick = {!this.state.realData.result ? () => this.handleBidClick(game,tip,className) : () =>{}}>
+        return <div className={className} onClick = {!this.state.realData.result || this.state.realData.result.is_finished == 0 ? () => this.handleBidClick(game,tip,className) : () =>{}}>
             <div className='game-bid-align'>
             <div className='game-text'><span className='text11-grey'>{label}</span></div>
             <div className='bid-text'><span className='text15-white'>{this.state.realData[game + '_' + tip]}</span></div>
@@ -180,7 +185,7 @@ class Match_Details extends React.Component {
         let Timefields = this.state.realData.date.split(' ')[1].split(':')
         let year = Datefields[0].substring(2,Datefields[0].length);
 
-        return( Datefields[1] + '/' + Datefields[2] + '/' + year + ' ' + Timefields[0] + ':' +  Timefields[1]);
+        return( Datefields[2] + '/' + Datefields[1] + '/' + year + ' ' + Timefields[0] + ':' +  Timefields[1]);
     };
 
 
@@ -282,7 +287,6 @@ class Match_Details extends React.Component {
 
         this.sharedObj.headerInstance.setTitle(this.state.realData.league.name);
 
-
         let classState ='betbook_screen';
 
         if(this.state.realData.result){
@@ -306,6 +310,8 @@ class Match_Details extends React.Component {
     };
 
     render() {
+
+        console.log(this.state.realData)
 
         return <>{this.state.loaded == true ? this.renderStateCompopnent() : <Loader/>}</>
     }
