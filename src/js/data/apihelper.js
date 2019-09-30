@@ -77,6 +77,13 @@ class APIHelper {
                 .then(res => {
                       callBack(res);
                 })
+        },
+        getAllUsers : (callBack) => {
+            fetch(this.apiUrl + `/index.php/api/user/?get_all=1 `)
+                .then(res => res.json())
+                .then(res => {
+                    callBack(res);
+                })
         }
     };
 
@@ -87,7 +94,6 @@ class APIHelper {
                 team_id: team_id,
                 full_name:name
             };
-           console.log(team_id)
             fetch(this.apiUrl + `/index.php/api/user/` + user_id,{
                 method: 'PUT',
                 body: JSON.stringify(data),
@@ -271,7 +277,6 @@ class APIHelper {
             fetch(this.apiUrl + `/index.php/api/user_statistic/?user_id=` + user_id)
                 .then(res => res.json())
                 .then(res => {
-                    console.log(res);
                     callBack(res)
                 })
         },

@@ -45,9 +45,9 @@ class Competition_Listing extends React.Component {
                             <div className='country-field' style={{height:(document.body.clientHeight-120)/6 - 3}}>
                                 <div className='flag-container'><img className='flag' src={data.flag ? './assets/images/Countries/'+data.flag : './assets/images/alternative-logo.png'} alt=''/></div>
                                 <div className='country-info'>
-                                    <div className='leagues-info'><span className='text11-grey'>{data.leagues_count} Leagues</span></div>
+                                    <div className='leagues-info'><span className='text11-grey'>{data.leagues_count} {data.leagues_count == 1 ? 'League' : 'Leagues'}</span></div>
                                     <div className='dataname-info'><span className='text18-white'>{data.name}</span></div>
-                                    <div className='number-matches-info'><span className='text11-grey'>{data.fixtures_count} Matches</span></div>
+                                    <div className='number-matches-info'><span className='text11-grey'>{data.fixtures_count} {data.fixtures_count == 1 ? 'Match' : 'Matches'}</span></div>
                                 </div>
                             </div>
                         </Link>)}

@@ -5,7 +5,7 @@ import Header from './js/components/header';
 import Week_games_Listing from "./js/tickets/Week_games_Listing";
 import Home_screen from "./js/tickets/home_screen";
 import Competition_Listing from "./js/tickets/Competition_Listing";
-import {Route, HashRouter} from "react-router-dom";
+import {Route, HashRouter, Redirect} from "react-router-dom";
 import Match_Details from "./js/tickets/Match_Details";
 import Footer from "./js/components/footer";
 import LeaderBoards from "./js/tickets/LeaderBoards";
@@ -49,6 +49,7 @@ class App extends React.Component {
 
         const userid = localStorage.getItem('user_id');
         const authenticated = userid != null;
+        console.log(authenticated)
 
         if(userid){
             this.sharedObject.apiHelper.user.getUser(userid, () => {
@@ -71,8 +72,12 @@ class App extends React.Component {
             if(this.state.authenticated) {
                 return (<div className='App'>
                     <HashRouter>
+
+                        {window.location.hash == '#/login' || window.location.hash == '#/register' ? <Redirect to='/home'/> : ''}
+
                         {(window.location.hash == '#/login' || window.location.hash == '#/user' || window.location.hash == '#/forgot-password' || window.location.hash == '#/loading' || window.location.hash == '#/'
-                            || window.location.hash == '#/welcome' || window.location.hash == '#/home' || window.location.hash == '#/favorite-club' || window.location.hash == '#/register')
+                            || window.location.hash == '#/welcome' || window.location.hash == '#/home' || window.location.hash == '#/favorite-club' || window.location.hash == '#/register'
+                            || window.location.hash == '#/profile' || window.location.hash.includes('#/user/'))
                             ? <div/> : <Header ref={(instance) => {
                                 this.sharedObject.headerInstance = instance
                             }}/>}
@@ -117,7 +122,10 @@ class App extends React.Component {
                         <Route path="/settings"
                                render={(props) => (<Settings sharedObj={this.sharedObject} {...props}/>)}/>
                         <Route path="/search" render={(props) => (<Search sharedObj={this.sharedObject} {...props}/>)}/>
+                        <Route path="/user/:userid" render={(props) => (<Profile_Tickets sharedObj={this.sharedObject} {...props}/>)}/>
                         <Route path="/edit" render={(props) => (<Edit sharedObj={this.sharedObject} {...props}/>)}/>
+
+
                         {(window.location.hash == '#/login' || window.location.hash == '#/user' || window.location.hash == '#/forgot-password' || window.location.hash == '#/loading'
                             || window.location.hash == '#/welcome' || window.location.hash == '#/favorite-club' || window.location.hash == '#/register')
                             ? <div/> : <Footer ref={(instance) => {
@@ -127,13 +135,13 @@ class App extends React.Component {
                 </div>);
             }
             else{
-                return (<div className='App'>
+                return (
                     <HashRouter>
                         {window.location.hash != '#/register' ? <Route path="/" render={(props) => (<Login sharedObj={this.sharedObject} {...props}  />)}/> :
                             <Route path="/register" render={(props) => (<Register sharedObj={this.sharedObject} {...props}/>)}/>}
 
                     </HashRouter>
-                </div>);
+                );
             }
         } else {
             return <Loader/>

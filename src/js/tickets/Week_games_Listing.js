@@ -12,7 +12,8 @@ class Week_games_Listing extends React.Component {
         this.state = {
             realData: [],
             loaded: false,
-            game:null
+            game:null,
+            ...props.user
         };
         this.sharedObj = props.sharedObj;
         this.leagudId = props.match.params.leagueid;

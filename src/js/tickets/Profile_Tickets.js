@@ -13,7 +13,8 @@ class Profile_Tickets extends React.Component {
             statistics: null,
             statisticsCalculated:null,
             calculated:false,
-            loaded:false
+            loaded:false,
+            user:false
         };
         this.sharedObj = props.sharedObj
     }
@@ -23,12 +24,17 @@ class Profile_Tickets extends React.Component {
             this.sharedObj.footerInstance.setActive('profile');
         },1);
 
-        this.sharedObj.apiHelper.statistics.profileStats(localStorage.getItem('user_id'),(res) => {
-            this.setState({statistics:res[0]});
-            this.setState({statisticsCalculated:this.calculateStatistics(res[0])}, ()=>{
-                this.setState({loaded:true})
+        let user = false;
+        const state = window.location.hash.split('/')[1] == 'user' ? window.location.hash.split('/')[2] : localStorage.getItem('user_id');
+        if(state == localStorage.getItem('user_id')) user = true;
+
+
+            this.sharedObj.apiHelper.statistics.profileStats(state,(res) => {
+                this.setState({statistics:res[0],statisticsCalculated:this.calculateStatistics(res[0])}, () => {
+                    console.log(res)
+                    this.setState({loaded:true,user})
+                });
             });
-        });
     };
 
     calculateStatistics = (res) => {
@@ -87,7 +93,7 @@ class Profile_Tickets extends React.Component {
     };
 
     seeBets = (game) => {
-       if(this.state.statistics.game1_total > 0) return <div className='pt_yellow-bet-box' ><Link to={`/game/` + game}><span className='text11-white'>See bets>></span></Link>
+       if(this.state.statistics && this.state.statistics.game1_total > 0) return <div className='pt_yellow-bet-box' ><Link to={`/game/` + game} user={game}><span className='text11-white'>See bets>></span></Link>
         </div>;
         else return null
     };
@@ -100,10 +106,10 @@ class Profile_Tickets extends React.Component {
                         <div className='pt_header-central-field'>
                             <div className='first-row'>
                                 <Link to={`/settings`}><div className='settings'/></Link>
-                            <div className='pt_member-name'><span className='text18-white'>{window.apiHelper.userInfo ? window.apiHelper.userInfo['name'] : ''}</span></div>
+                            <div className='pt_member-name'><span className='text18-white'>{this.state.user ? window.apiHelper.userInfo['name'] : 'user'}</span></div>
                                 <Link to={`/search`}><div className='search'/></Link>
                             </div>
-                            <div className='pt_country'><span className='text11-white'>{window.apiHelper.userInfo ? window.apiHelper.userInfo.country['name'] : ''}</span></div>
+                            <div className='pt_country'><span className='text11-white'>{this.state.user ? window.apiHelper.userInfo.country['name'] : 'user_country'}</span></div>
                         </div>
                     </div>
                     <div className='scrolable-bids-field'>
@@ -119,7 +125,7 @@ class Profile_Tickets extends React.Component {
                             <div className='pt_box'>
                                 <div className='pt_left-box'>
                                     <div className='pt_up-text'><span className='text12-grey'>No. of bets</span></div>
-                                    <div className='pt_down-number'><span className='text26-white'>{this.state.statistics.game1_total != 0 ? this.state.statistics.game1_total : '-'}</span></div>
+                                    <div className='pt_down-number'><span className='text26-white'>{this.state.statistics && this.state.statistics.game1_total != 0 ? this.state.statistics.game1_total : '-'}</span></div>
                                 </div>
                                 <div className='pt_central-box'>
                                     <div className='pt_up-text'><span className='text12-grey'>Avg. odd</span></div>
@@ -142,7 +148,7 @@ class Profile_Tickets extends React.Component {
                             <div className='pt_box'>
                                 <div className='pt_left-box'>
                                     <div className='pt_up-text'><span className='text12-grey'>No. of bets</span></div>
-                                    <div className='pt_down-number'><span className='text26-white'>{this.state.statistics.game2_total != 0 ? this.state.statistics.game2_total : '-'}</span></div>
+                                    <div className='pt_down-number'><span className='text26-white'>{this.state.statistics && this.state.statistics.game2_total != 0 ? this.state.statistics.game2_total : '-'}</span></div>
                                 </div>
                                 <div className='pt_central-box'>
                                     <div className='pt_up-text'><span className='text12-grey'>Avg. odd</span></div>
@@ -165,7 +171,7 @@ class Profile_Tickets extends React.Component {
                             <div className='pt_box'>
                                 <div className='pt_left-box'>
                                     <div className='pt_up-text'><span className='text12-grey'>No. of bets</span></div>
-                                    <div className='pt_down-number'><span className='text26-white'>{this.state.statistics.game3_total != 0 ? this.state.statistics.game3_total : '-'}</span></div>
+                                    <div className='pt_down-number'><span className='text26-white'>{this.state.statistics && this.state.statistics.game3_total != 0 ? this.state.statistics.game3_total : '-'}</span></div>
                                 </div>
                                 <div className='pt_central-box'>
                                     <div className='pt_up-text'><span className='text12-grey'>Avg. odd</span></div>
@@ -188,7 +194,7 @@ class Profile_Tickets extends React.Component {
                             <div className='pt_box'>
                                 <div className='pt_left-box'>
                                     <div className='pt_up-text'><span className='text12-grey'>No. of bets</span></div>
-                                    <div className='pt_down-number'><span className='text26-white'>{this.state.statistics.game4_total != 0 ? this.state.statistics.game4_total : '-'}</span></div>
+                                    <div className='pt_down-number'><span className='text26-white'>{this.state.statistics && this.state.statistics.game4_total != 0 ? this.state.statistics.game4_total : '-'}</span></div>
                                 </div>
                                 <div className='pt_central-box'>
                                     <div className='pt_up-text'><span className='text12-grey'>Avg. odd</span></div>
