@@ -2,7 +2,7 @@ import React from 'react';
 import '../../../src/style/betbook/user/register.scss'
 import '../../../src/style/app.scss'
 import {Link, Redirect} from "react-router-dom";
-import Loader from "../components/loader";
+import Loader from "../components/Loader";
 
 class Register extends React.Component {
 
@@ -147,6 +147,7 @@ class Register extends React.Component {
         if (this.state.loaded) {
 
             if (this.state.login) {
+                window.location.hash = 'home';
                 return <Redirect to='/home'/>
             }
 

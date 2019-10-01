@@ -1,6 +1,6 @@
 import React from 'react';
-import ProfileShort from "../components/profileshort";
-import Loader from "../components/loader";
+import Profile_Short from "../components/Profile_Short";
+import Loader from "../components/Loader";
 import {Link} from "react-router-dom";
 
 
@@ -13,6 +13,7 @@ class Search extends React.Component {
             users:[],
             loaded: false
         };
+        console.log(this.state.users);
         this.sharedObj = props.sharedObj;
     }
 
@@ -43,7 +44,7 @@ class Search extends React.Component {
             return <div className='betbook-screen'>
                 <div className='main-container'/>
                 {this.state.users.map(user => {
-                    return <><Link to = {`/user/${user.id}`}><ProfileShort user={user} key={user.id}/></Link></>
+                    return <><Link to = {`/user/${user.id}`}><Profile_Short key={user.id} user={user}/></Link></>
                 })}
             </div>
         }

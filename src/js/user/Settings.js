@@ -35,7 +35,7 @@ class Settings extends React.Component {
                     <div className='settings-box'>
                         <div className='settings-text'>
                             <div className='up-text'><span className='text11-grey'>Name * (optional)</span></div>
-                            <div className='down-text'><span className='text17-white'>{window.apiHelper.userInfo['name']}</span></div>
+                            <div className='down-text'><span className='text17-white'>{window.apiHelper.userInfo['full_name']}</span></div>
                         </div>
                     </div>
                     <div className='settings-box'>
@@ -48,7 +48,7 @@ class Settings extends React.Component {
                     <div className='settings-box'>
                         <div className='settings-text'>
                             <div className='up-text'><span className='text11-grey'>Favorite club</span></div>
-                            <div className='down-text'><span className='text17-white'>{window.apiHelper.userInfo['club'].name}</span></div>
+                            <div className='down-text'><span className='text17-white'>{window.apiHelper.userInfo['team'].name}</span></div>
                         </div>
                     </div>
                     <Link to={`/login`}> <div className='settings-box'>

@@ -25,12 +25,8 @@ class APIHelper {
                 .then(res => res.json())
                 .then(res => {
                     if(res){
-                        this.userInfo = {
-                            country:res[1],
-                            club:res[0],
-                            username:res[3],
-                            name:res[2]
-                        };
+                        console.log(res)
+                        this.userInfo = res;
                     }
                     callBack(res)
                 })
@@ -79,7 +75,7 @@ class APIHelper {
                 })
         },
         getAllUsers : (callBack) => {
-            fetch(this.apiUrl + `/index.php/api/user/?get_all=1 `)
+            fetch(this.apiUrl + `/index.php/api/user/?get_all=1`)
                 .then(res => res.json())
                 .then(res => {
                     callBack(res);
@@ -161,6 +157,7 @@ class APIHelper {
                             }
                         })
                     }
+                    console.log(res)
                     callBack(res)
                 })
         },
@@ -185,6 +182,7 @@ class APIHelper {
                             }
                         })
                     }
+                    console.log(res)
                     callBack(res)
                 })
         }

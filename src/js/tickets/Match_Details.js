@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../../src/style/betbook/matchdetails.scss';
 import '../../../src/style/app.scss';
-import Loader from "../components/loader";
+import Loader from "../components/Loader";
 class Match_Details extends React.Component {
 
     constructor(props) {
@@ -136,7 +136,6 @@ class Match_Details extends React.Component {
             if(className.includes(game)){
                 if(this.state.realData.ticket){
                     if(this.state.realData.ticket[game + '_tip']){
-                        console.log('a')
                         return className + ' ' + 'opacity';
                     }
                 }
@@ -310,8 +309,6 @@ class Match_Details extends React.Component {
     };
 
     render() {
-
-        console.log(this.state.realData)
 
         return <>{this.state.loaded == true ? this.renderStateCompopnent() : <Loader/>}</>
     }

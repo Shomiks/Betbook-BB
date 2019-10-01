@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../../src/style/betbook/user/register.scss'
 import '../../../src/style/app.scss'
-import Loader from "../components/loader";
+import Loader from "../components/Loader";
 
 class Register extends React.Component {
 
@@ -15,7 +15,7 @@ class Register extends React.Component {
             team_id: null,
             clubs_fetched: false,
             countries: [],
-            country_clubs: []
+            country_clubs: [],
         };
         this.sharedObj = props.sharedObj;
     }
@@ -38,7 +38,7 @@ class Register extends React.Component {
                 if(country.name == 'World') res.splice(i,1);
             });
             this.getAllCLubsByCountryId(window.apiHelper.userInfo.country.id);
-            this.setState({countries: res,user: window.apiHelper.userInfo.name, country_id: window.apiHelper.userInfo.country.id, team_id: window.apiHelper.userInfo.club.id,loaded:true})
+            this.setState({countries: res,user: window.apiHelper.userInfo.full_name, country_id: window.apiHelper.userInfo.country.id, team_id: window.apiHelper.userInfo.team.id,loaded:true})
         })
     };
 
