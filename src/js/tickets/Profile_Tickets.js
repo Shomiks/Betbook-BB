@@ -108,9 +108,13 @@ class Profile_Tickets extends React.Component {
                 <div className='pt_header-field'>
                     <div className='pt_header-central-field'>
                         <div className='first-row'>
-                            <Link to={`/settings`}>
+                            {this.props.match.params.userid ?
+                                <div className='chevron_header' onClick={() =>window.history.back()}/>
+                                :
+                                <Link to={`/settings`}>
                                 <div className='settings'/>
                             </Link>
+                            }
                             <div className='pt_member-name'><span
                                 className='text18-white'>{this.state.statistics.full_name ? this.state.statistics.full_name : window.apiHelper.userInfo.username}</span></div>
                             <Link to={`/search`}>

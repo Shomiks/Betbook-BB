@@ -19,6 +19,18 @@
     background: linear-gradient(to bottom, #7db9e8 0%, #1e5799 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7db9e8', endColorstr='#1e5799', GradientType=0); /* IE6-9 */
 
+    .chevron_header {
+      background-size: cover;
+      background-image: url("./assets/images/arrow_left_dark.PNG");
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+
+      &:active {
+        filter: brightness(120%);
+      }
+    }
+
     .pt_header-central-field {
       position: relative;
 
