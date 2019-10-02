@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../style/betbook/components/footer.scss';
+import '../../../style/components/menus/footer.scss';
 import {Link} from "react-router-dom";
 
  class Footer extends React.Component {

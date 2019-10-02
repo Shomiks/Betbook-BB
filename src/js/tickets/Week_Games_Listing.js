@@ -1,8 +1,8 @@
 import React from 'react';
-import MatchShort from '../components/Match_Short';
+import MatchShort from '../components/objectcontrols/Match_Short';
 import {Link} from "react-router-dom";
 import '../../style/betbook/week-games.scss';
-import Loader from "../components/Loader";
+import Loader from "../components/other/Loader";
 
 class Week_Games_Listing extends React.Component {
 

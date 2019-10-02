@@ -2,7 +2,7 @@ import React from 'react';
 import '../../../src/style/betbook/user/register.scss'
 import '../../../src/style/app.scss'
 import {Link, Redirect} from "react-router-dom";
-import Loader from "../components/Loader";
+import Loader from "../components/other/Loader";
 
 class Register extends React.Component {
 

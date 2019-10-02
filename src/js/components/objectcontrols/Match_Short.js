@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../style/betbook/components/match_short.scss';
+import '../../../style/components/objectcontrols/match_short.scss';
 
 class MatchShort extends React.Component {
 
