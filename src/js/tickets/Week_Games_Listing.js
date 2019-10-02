@@ -23,7 +23,7 @@ class Week_Games_Listing extends React.Component {
     }
 
     getAllFixtures(){
-        this.sharedObj.apiHelper.leagues.getByID(this.leagudId,localStorage.getItem('user_id'),(res) =>{
+        this.sharedObj.apiHelper.leagues.getByID(this.leagudId,window.apiHelper.userInfo.id,(res) =>{
             this.sharedObj.footerInstance.setActive('ball');
             this.setState({realData:res,loaded:true})});
     }
@@ -45,7 +45,6 @@ class Week_Games_Listing extends React.Component {
                 </div>
             </div>
         );
-
         else {
             return <Loader/>
         }

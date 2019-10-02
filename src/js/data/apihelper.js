@@ -2,9 +2,7 @@ class APIHelper {
     userInfo = null;
     apiUrl = 'http://192.168.8.113';
 
-    constructor(){
-
-    }
+    constructor(){}
 
     login = (username, password,login, callBack) => {
         fetch(this.apiUrl + `/index.php/api/user/?login=` + login + `&username=` + username + '&password=' + password)
@@ -25,7 +23,6 @@ class APIHelper {
                 .then(res => res.json())
                 .then(res => {
                     if(res){
-                        console.log(res)
                         this.userInfo = res;
                     }
                     callBack(res)
@@ -44,7 +41,6 @@ class APIHelper {
                 }
             })
                 .then(res => res.json())
-                .then(res => console.log(res))
         },
         register : (username, password, email, user_fullname, country_id, team_id, callBack) => {
             let data = {
@@ -65,6 +61,7 @@ class APIHelper {
                 .then(res => res.json())
                 .then(res => {
                     callBack(res)
+                    console.log(res)
                 });
         },
         validateRegister: (username, email, callBack) => {
@@ -121,7 +118,7 @@ class APIHelper {
                 })
         },
         getAllCurrent: (callBack) => {
-            fetch(this.apiUrl + `/index.php/api/country`)
+                fetch(this.apiUrl + `/index.php/api/country`)
                 .then(res => res.json())
                 .then(res => {
                     callBack(res)
@@ -157,7 +154,6 @@ class APIHelper {
                             }
                         })
                     }
-                    console.log(res)
                     callBack(res)
                 })
         },
@@ -194,6 +190,7 @@ class APIHelper {
                 .then(res => res.json())
                 .then(res => {
                     let result = res;
+                    console.log(result)
                     callBack(result)
                 })
         }

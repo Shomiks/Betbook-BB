@@ -29,7 +29,7 @@ class Search extends React.Component {
         if(this.sharedObj.apiHelper){
             this.sharedObj.apiHelper.user.getAllUsers((res) => {
                 res.forEach((profile,i) => {
-                    if(profile.id == localStorage.getItem('user_id')){
+                    if(profile.id == window.apiHelper.userInfo.id){
                         res.splice(i,1);
                     }
                 });

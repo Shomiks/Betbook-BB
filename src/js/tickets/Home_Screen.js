@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../style/betbook/home_screen.scss'
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import Loader from "../components/Loader";
 
 class Home_Screen extends React.Component {
@@ -24,11 +24,11 @@ class Home_Screen extends React.Component {
     };
 
     getUserFavorites = () => {
-        this.sharedObj.apiHelper.home.get_favourites(localStorage.getItem('user_id'), (res) => {
-            this.sharedObj.apiHelper.user.getUser(localStorage.getItem('user_id'), () => {
-                this.setState({username: window.apiHelper.userInfo['username'],realData : res, loaded:true})
-            })
-        });
+        if(window.apiHelper.userInfo) {
+            this.sharedObj.apiHelper.home.get_favourites(window.apiHelper.userInfo.id, (res) => {
+                this.setState({username: window.apiHelper.userInfo['username'], realData: res, loaded: true})
+            });
+        }
     };
 
     handleFinished = (data) => {

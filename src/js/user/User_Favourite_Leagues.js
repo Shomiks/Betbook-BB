@@ -34,7 +34,7 @@ class User_Favourite_Leagues extends React.Component {
     };
 
     getAllLeagues = () => {
-        this.sharedObj.apiHelper.home.get_favourites(localStorage.getItem('user_id'),(res) => {
+        this.sharedObj.apiHelper.home.get_favourites(window.apiHelper.userInfo.id,(res) => {
             this.addCheckboxState(res);
             this.sharedObj.headerInstance.setTitle('Favourite Leagues');
 
@@ -58,7 +58,7 @@ class User_Favourite_Leagues extends React.Component {
         this.setState({remove:update},() => {
             console.log(this.state.remove)
         });
-        this.sharedObj.apiHelper.favourites.update(localStorage.getItem('user_id'),data.league.id);
+        this.sharedObj.apiHelper.favourites.update(window.apiHelper.userInfo.id,data.league.id);
     };
 
     handleFirstTimeLogin = () => {

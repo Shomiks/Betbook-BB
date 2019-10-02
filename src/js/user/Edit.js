@@ -43,7 +43,6 @@ class Register extends React.Component {
     };
 
     getAllCLubsByCountryId = (country_id) => {
-
         this.sharedObj.apiHelper.teams.getByCountryId(country_id,(res) => {
             this.setState({country_clubs: res,clubs_fetched:true});
         })
@@ -60,8 +59,8 @@ class Register extends React.Component {
     };
 
     handleSave = () => {
-      this.sharedObj.apiHelper.settings.updateInfo(localStorage.getItem('user_id'),this.state.country_id, this.state.team_id, this.state.user, () => {
-          this.sharedObj.apiHelper.user.getUser(localStorage.getItem('user_id'), (res) => {
+      this.sharedObj.apiHelper.settings.updateInfo(window.apiHelper.userInfo.id,this.state.country_id, this.state.team_id, this.state.user, () => {
+          this.sharedObj.apiHelper.user.getUser(window.apiHelper.userInfo.id, (res) => {
               alert('successful');
           });
       });
@@ -69,8 +68,6 @@ class Register extends React.Component {
     };
 
     render() {
-
-        console.log(this.state)
 
         if (this.state.loaded) {
 

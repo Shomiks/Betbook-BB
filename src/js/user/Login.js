@@ -48,7 +48,8 @@ class Login extends React.Component {
     render() {
 
         if(this.state.loggedIn){
-            return <Redirect to='/home'/>
+            window.location.hash = '/home';
+            window.location.reload();
         }
 
         return (<div className='betbook-screen-login'>

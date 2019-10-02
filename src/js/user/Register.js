@@ -110,7 +110,8 @@ class Register extends React.Component {
         this.sharedObj.apiHelper.user.register(this.state.username,this.state.password,this.state.email,this.state.user_fullname,this.state.country_id,this.state.team_id,(res)=>{
             localStorage.setItem('user_id', res[0]);
             res[1].forEach(league_id => {
-                this.sharedObj.apiHelper.user.favourite_team_leagues(res[0],league_id);
+                if(league_id != []){
+                    this.sharedObj.apiHelper.user.favourite_team_leagues(res[0],league_id);}
             })
         });
         this.setState({login:true});
@@ -145,10 +146,8 @@ class Register extends React.Component {
     render() {
 
         if (this.state.loaded) {
-
             if (this.state.login) {
-                window.location.hash = 'home';
-                return <Redirect to='/home'/>
+                window.location.reload();
             }
 
             else return (<div className='betbook-screen-login'>
@@ -166,7 +165,6 @@ class Register extends React.Component {
                                 type='text' value={this.state.favourites ? this.state.user_fullname : this.state.username} onChange={this.state.favourites ? this.handleChangeFullName : this.handleChangeUsername}/>
                         </div>
 
-
                         <div className='bs-email-container'>
                             <div className='bs-email-text'>{this.state.favourites ?
                                 <span className='text15-white'>Select your favourite national team</span> :
@@ -182,7 +180,6 @@ class Register extends React.Component {
                                     value={this.state.email} onChange={this.handleChangeEmail} type='email'/></>
                             }
                         </div>
-
 
                         <div className={this.state.country_id || !this.state.favourites ? 'bs-password-container' : 'bs-password-container hidden'}>
                             <div className='bs-password-text'>{this.state.favourites ?
@@ -200,7 +197,6 @@ class Register extends React.Component {
 
                             <div className='bs-text-under-password'><span className='text11-white'>By procceding further I agree with general terms & conditions. </span></div>
                         </div>
-
 
                         <div className='bs-create-account-box'
                              onClick={!this.state.favourites ? () => this.handleRegisterStepOne() : (this.state.registered ? () => this.handleRegisterStepTwo() : ()=>this.handleError())}>

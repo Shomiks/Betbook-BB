@@ -7,7 +7,9 @@ class Settings extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {};
+        this.state = {
+            logout:false
+        };
         this.sharedObj = props.sharedObj
     }
 
@@ -17,6 +19,12 @@ class Settings extends React.Component {
             this.sharedObj.footerInstance.setActive('profile');
         },1)
     }
+
+    handleLogout = () => {
+        localStorage.clear();
+        this.sharedObj.apiHelper.userInfo = null;
+        this.setState({logout: true})
+    };
 
     render() {
 
@@ -51,9 +59,9 @@ class Settings extends React.Component {
                             <div className='down-text'><span className='text17-white'>{window.apiHelper.userInfo['team'].name}</span></div>
                         </div>
                     </div>
-                    <Link to={`/login`}> <div className='settings-box'>
+                    <Link to={`/login`}> <div className='settings-box' onClick={()=> this.handleLogout()}>
                         <div className='settings-text'>
-                           <span className='text17-red' onClick={()=> localStorage.clear()}>Logout</span>
+                           <span className='text17-red'>Logout</span>
                         </div>
                         </div>
                     </Link>

@@ -26,7 +26,6 @@ class User_Game_Bids extends React.Component {
     }
 
     getGameWonStatistics(){
-
         this.sharedObj.apiHelper.statistics.gameStatistics(this.state.game,this.state.user,(res)=> {
             this.sharedObj.footerInstance.setActive('profile');
             this.setState({realData: this.destructObject(res), loaded:true});
@@ -45,7 +44,6 @@ class User_Game_Bids extends React.Component {
     };
 
     renderGames = () => {
-
             if(this.state.game == 1) this.sharedObj.headerInstance.setTitle('Match Outcome Bids');
             else if(this.state.game == 2) this.sharedObj.headerInstance.setTitle('Total Goals Bids');
             else if(this.state.game == 3) this.sharedObj.headerInstance.setTitle('Both Teams To Score Bids');

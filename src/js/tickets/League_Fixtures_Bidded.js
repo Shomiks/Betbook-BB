@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import '../../style/betbook/week-games.scss';
 import Loader from "../components/Loader";
 
-class League_Fixtures extends React.Component {
+class League_Fixtures_Bidded extends React.Component {
 
     constructor(props) {
         super(props);
@@ -22,15 +22,12 @@ class League_Fixtures extends React.Component {
             }
 
     getAllFixturesBided(){
-        let finished = 1;
-
-        this.sharedObj.apiHelper.leagues.getByIDBided(this.leagudId,localStorage.getItem('user_id'),finished,(res) =>{
+        this.sharedObj.apiHelper.leagues.getByIDBided(this.leagudId,window.apiHelper.userInfo.id,1,(res) =>{
             let data = {
                 fixtures: [],
                 userBids: [],
                 league: res.league
             };
-            console.log(res)
             if(res.fixtures)
                 res.fixtures.forEach(fixture => {
                     if(res.userBids)
@@ -46,7 +43,6 @@ class League_Fixtures extends React.Component {
     }
 
     renderGames = () => {
-
             this.sharedObj.headerInstance.setTitle(this.state.realData.league.name);
             return <>
                 {this.state.realData.fixtures.map((fixture) => <Link to={`/fixture/${fixture.id}`} key={fixture.id}>
@@ -70,4 +66,4 @@ class League_Fixtures extends React.Component {
     }
 }
 
-export default League_Fixtures;
+export default League_Fixtures_Bidded;

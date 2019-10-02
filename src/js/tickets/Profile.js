@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import Loader from "../components/Loader";
 
 
-class Profile_Tickets extends React.Component {
+class Profile extends React.Component {
 
     constructor(props) {
         super(props);
@@ -101,6 +101,39 @@ class Profile_Tickets extends React.Component {
         else return null
     };
 
+    renderFields = (fieldName, game) => {
+        return <div className={fieldName}>
+            <div className='main-title-field'>
+                {this.seeBets()}
+                <div className='ft_text_position'><span className='text12-grey'>Match Outcome</span>
+                    <div className='game-underline'/>
+                </div>
+            </div>
+            <Link to={this.state.statistics && this.state.statistics.game1_total != 0 ? `/game/` + game + '/' + this.state.userid : null}>
+                <div className='pt_box'>
+                    <div className='pt_left-box'>
+                        <div className='pt_up-text'><span className='text12-grey'>No. of bets</span></div>
+                        <div className='pt_down-number'><span
+                            className='text26-white'>{this.state.statistics && this.state.statistics.game1_total != 0 ? this.state.statistics.game1_total : '-'}</span>
+                        </div>
+                    </div>
+                    <div className='pt_central-box'>
+                        <div className='pt_up-text'><span className='text12-grey'>Avg. odd</span></div>
+                        <div className='pt_down-number'><span
+                            className='text26-white'>{this.state.statisticsCalculated.game1_avg}</span>
+                        </div>
+                    </div>
+                    <div className='pt_right-box'>
+                        <div className='pt_up-text'><span className='text12-grey'>Success rate</span></div>
+                        <div className='pt_down-number'><span
+                            className='text26-white'>{this.state.statisticsCalculated.game1_success}</span>
+                        </div>
+                    </div>
+                </div>
+            </Link>
+        </div>
+    }
+
     render() {
 
         if (this.state.loaded) return (
@@ -112,8 +145,8 @@ class Profile_Tickets extends React.Component {
                                 <div className='chevron_header' onClick={() =>window.history.back()}/>
                                 :
                                 <Link to={`/settings`}>
-                                <div className='settings'/>
-                            </Link>
+                                    <div className='settings'/>
+                                </Link>
                             }
                             <div className='pt_member-name'><span
                                 className='text18-white'>{this.state.statistics.full_name}</span></div>
@@ -126,36 +159,7 @@ class Profile_Tickets extends React.Component {
                     </div>
                 </div>
                 <div className='scrolable-bids-field'>
-                    <div className='full-time-statistics-field'>
-                        <div className='main-title-field'>
-                            {this.seeBets()}
-                            <div className='ft_text_position'><span className='text12-grey'>Match Outcome</span>
-                                <div className='game-underline'/>
-                            </div>
-                        </div>
-                        <Link to={this.state.statistics && this.state.statistics.game1_total != 0 ? `/game/1/` + this.state.userid : null}>
-                            <div className='pt_box'>
-                                <div className='pt_left-box'>
-                                    <div className='pt_up-text'><span className='text12-grey'>No. of bets</span></div>
-                                    <div className='pt_down-number'><span
-                                        className='text26-white'>{this.state.statistics && this.state.statistics.game1_total != 0 ? this.state.statistics.game1_total : '-'}</span>
-                                    </div>
-                                </div>
-                                <div className='pt_central-box'>
-                                    <div className='pt_up-text'><span className='text12-grey'>Avg. odd</span></div>
-                                    <div className='pt_down-number'><span
-                                        className='text26-white'>{this.state.statisticsCalculated.game1_avg}</span>
-                                    </div>
-                                </div>
-                                <div className='pt_right-box'>
-                                    <div className='pt_up-text'><span className='text12-grey'>Success rate</span></div>
-                                    <div className='pt_down-number'><span
-                                        className='text26-white'>{this.state.statisticsCalculated.game1_success}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </Link>
-                    </div>
+                    {this.renderFields('full-time-statistics-field')}
                     <div className='match-goals-statistics-field'>
                         <div className='main-title-field'>
                             {this.seeBets()}
@@ -258,4 +262,4 @@ class Profile_Tickets extends React.Component {
     }
 }
 
-export default Profile_Tickets;
+export default Profile;

@@ -24,8 +24,7 @@ class Match_Details extends React.Component {
     };
 
     getFixtureById(){
-        this.sharedObj.apiHelper.fixture.getByID(this.fixtureId,localStorage.getItem('user_id'),(res) => {
-
+        this.sharedObj.apiHelper.fixture.getByID(this.fixtureId,window.apiHelper.userInfo.id,(res) => {
             if(res.ticket) res.ticket = res.ticket['0'];
             this.setState({realData:res,loaded:true})
         });
@@ -77,7 +76,7 @@ class Match_Details extends React.Component {
 
     handleReturnTicket = () => {
         let ticket = {
-            user_id: localStorage.getItem('user_id'),
+            user_id: window.apiHelper.userInfo.id,
             league_id: null,
             fixture_id: null,
             game1_tip: null,
@@ -96,7 +95,7 @@ class Match_Details extends React.Component {
 
     handleCreateTicket = (ticket) => {
 
-        this.sharedObj.apiHelper.favourites.update(localStorage.getItem('user_id'), this.state.realData.league.id,);
+        this.sharedObj.apiHelper.favourites.update(window.apiHelper.userInfo.id, this.state.realData.league.id,);
         this.sharedObj.apiHelper.bids.createFixtureBids({ticket},(id) => {
             ticket['id'] = id;
 
