@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../../src/style/betbook/profile-tickets.scss';
 import {Link} from "react-router-dom";
-import Loader from "../components/Loader";
+import Loader from "../components/other/Loader";
 
 
 class Profile extends React.Component {
@@ -102,10 +102,15 @@ class Profile extends React.Component {
     };
 
     renderFields = (fieldName, game) => {
+        let gameName = null;
+        if(game == 1) gameName = 'Match Outcome';
+        else if (game == 2) gameName = 'Total Goals';
+        else if (game == 3) gameName = 'Both Teams Goals';
+        else gameName = 'Halftime/Fulltime';
         return <div className={fieldName}>
             <div className='main-title-field'>
                 {this.seeBets()}
-                <div className='ft_text_position'><span className='text12-grey'>Match Outcome</span>
+                <div className='ft_text_position'><span className='text12-grey'>{gameName}</span>
                     <div className='game-underline'/>
                 </div>
             </div>
@@ -114,145 +119,58 @@ class Profile extends React.Component {
                     <div className='pt_left-box'>
                         <div className='pt_up-text'><span className='text12-grey'>No. of bets</span></div>
                         <div className='pt_down-number'><span
-                            className='text26-white'>{this.state.statistics && this.state.statistics.game1_total != 0 ? this.state.statistics.game1_total : '-'}</span>
+                            className='text26-white'>{this.state.statistics && this.state.statistics['game' + game + '_total'] != 0 ? this.state.statistics['game' + game + '_total'] : '-'}</span>
                         </div>
                     </div>
                     <div className='pt_central-box'>
                         <div className='pt_up-text'><span className='text12-grey'>Avg. odd</span></div>
                         <div className='pt_down-number'><span
-                            className='text26-white'>{this.state.statisticsCalculated.game1_avg}</span>
+                            className='text26-white'>{this.state.statisticsCalculated['game' + game + '_avg']}</span>
                         </div>
                     </div>
                     <div className='pt_right-box'>
                         <div className='pt_up-text'><span className='text12-grey'>Success rate</span></div>
                         <div className='pt_down-number'><span
-                            className='text26-white'>{this.state.statisticsCalculated.game1_success}</span>
+                            className='text26-white'>{this.state.statisticsCalculated['game' + game + '_success']}</span>
                         </div>
                     </div>
                 </div>
             </Link>
         </div>
-    }
+    };
+    renderHeader = () => {
+        return <div className='pt_header-field'>
+            <div className='pt_header-central-field'>
+                <div className='first-row'>
+                    {this.props.match.params.userid ?
+                        <div className='chevron_header' onClick={() =>window.history.back()}/>
+                        :
+                        <Link to={`/settings`}>
+                            <div className='settings'/>
+                        </Link>
+                    }
+                    <div className='pt_member-name'><span
+                        className='text18-white'>{this.state.statistics.full_name}</span></div>
+                    <Link to={`/search`}>
+                        <div className='search'/>
+                    </Link>
+                </div>
+                <div className='pt_country'><span
+                    className='text11-white'>{this.state.statistics.country}</span></div>
+            </div>
+        </div>
+    };
 
     render() {
 
         if (this.state.loaded) return (
             <div className='betbook_context'>
-                <div className='pt_header-field'>
-                    <div className='pt_header-central-field'>
-                        <div className='first-row'>
-                            {this.props.match.params.userid ?
-                                <div className='chevron_header' onClick={() =>window.history.back()}/>
-                                :
-                                <Link to={`/settings`}>
-                                    <div className='settings'/>
-                                </Link>
-                            }
-                            <div className='pt_member-name'><span
-                                className='text18-white'>{this.state.statistics.full_name}</span></div>
-                            <Link to={`/search`}>
-                                <div className='search'/>
-                            </Link>
-                        </div>
-                        <div className='pt_country'><span
-                            className='text11-white'>{this.state.statistics.country}</span></div>
-                    </div>
-                </div>
+                {this.renderHeader()}
                 <div className='scrolable-bids-field'>
-                    {this.renderFields('full-time-statistics-field')}
-                    <div className='match-goals-statistics-field'>
-                        <div className='main-title-field'>
-                            {this.seeBets()}
-                            <div className='ft_text_position'><span className='text12-grey'>Over/Under</span>
-                                <div className='game-underline'/>
-                            </div>
-
-                        </div>
-                        <Link to={this.state.statistics && this.state.statistics.game2_total != 0 ? `/game/2/` + this.state.userid : null}>
-                            <div className='pt_box'>
-                                <div className='pt_left-box'>
-                                    <div className='pt_up-text'><span className='text12-grey'>No. of bets</span></div>
-                                    <div className='pt_down-number'><span
-                                        className='text26-white'>{this.state.statistics && this.state.statistics.game2_total != 0 ? this.state.statistics.game2_total : '-'}</span>
-                                    </div>
-                                </div>
-                                <div className='pt_central-box'>
-                                    <div className='pt_up-text'><span className='text12-grey'>Avg. odd</span></div>
-                                    <div className='pt_down-number'><span
-                                        className='text26-white'>{this.state.statisticsCalculated.game2_avg}</span>
-                                    </div>
-                                </div>
-                                <div className='pt_right-box'>
-                                    <div className='pt_up-text'><span className='text12-grey'>Success rate</span></div>
-                                    <div className='pt_down-number'><span
-                                        className='text26-white'>{this.state.statisticsCalculated.game2_success}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </Link>
-                    </div>
-                    <div className='both-team-goal-statistics-field'>
-                        <div className='main-title-field'>
-                            {this.seeBets()}
-                            <div className='ft_text_position'><span className='text12-grey'>Both Teams To Score</span>
-                                <div className='game-underline'/>
-                            </div>
-
-                        </div>
-                        <Link to={this.state.statistics && this.state.statistics.game3_total != 0 ? `/game/3/` + this.state.userid : null}>
-                            <div className='pt_box'>
-                                <div className='pt_left-box'>
-                                    <div className='pt_up-text'><span className='text12-grey'>No. of bets</span></div>
-                                    <div className='pt_down-number'><span
-                                        className='text26-white'>{this.state.statistics && this.state.statistics.game3_total != 0 ? this.state.statistics.game3_total : '-'}</span>
-                                    </div>
-                                </div>
-                                <div className='pt_central-box'>
-                                    <div className='pt_up-text'><span className='text12-grey'>Avg. odd</span></div>
-                                    <div className='pt_down-number'><span
-                                        className='text26-white'>{this.state.statisticsCalculated.game3_avg}</span>
-                                    </div>
-                                </div>
-                                <div className='pt_right-box'>
-                                    <div className='pt_up-text'><span className='text12-grey'>Success rate</span></div>
-                                    <div className='pt_down-number'><span
-                                        className='text26-white'>{this.state.statisticsCalculated.game3_success}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </Link>
-                    </div>
-                    <div className='ht-ft-statistics-field'>
-                        <div className='main-title-field'>
-                            {this.seeBets()}
-                            <div className='ft_text_position'><span className='text12-grey'>Half Time/Full Time</span>
-                                <div className='game-underline'/>
-                            </div>
-
-                        </div>
-                        <Link to={this.state.statistics && this.state.statistics.game4_total != 0 ? `/game/4/` + this.state.userid : null}>
-                            <div className='pt_box'>
-                                <div className='pt_left-box'>
-                                    <div className='pt_up-text'><span className='text12-grey'>No. of bets</span></div>
-                                    <div className='pt_down-number'><span
-                                        className='text26-white'>{this.state.statistics && this.state.statistics.game4_total != 0 ? this.state.statistics.game4_total : '-'}</span>
-                                    </div>
-                                </div>
-                                <div className='pt_central-box'>
-                                    <div className='pt_up-text'><span className='text12-grey'>Avg. odd</span></div>
-                                    <div className='pt_down-number'><span
-                                        className='text26-white'>{this.state.statisticsCalculated.game4_avg}</span>
-                                    </div>
-                                </div>
-                                <div className='pt_right-box'>
-                                    <div className='pt_up-text'><span className='text12-grey'>Success rate</span></div>
-                                    <div className='pt_down-number'><span
-                                        className='text26-white'>{this.state.statisticsCalculated.game4_success}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </Link>
-                    </div>
+                    {this.renderFields('full-time-statistics-field', 1)}
+                    {this.renderFields('match-goals-statistics-field', 2)}
+                    {this.renderFields('both-team-goal-statistics-field', 3)}
+                    {this.renderFields('ht-ft-statistics-field', 4)}
                 </div>
             </div>
         );

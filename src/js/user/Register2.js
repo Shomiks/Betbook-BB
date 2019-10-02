@@ -4,7 +4,7 @@ import '../../../src/style/app.scss'
 import {Link, Redirect} from "react-router-dom";
 import Loader from "../components/other/Loader";
 
-class Register extends React.Component {
+class Register2 extends React.Component {
 
     constructor(props) {
         super(props);
@@ -22,6 +22,7 @@ class Register extends React.Component {
             favourites: false,
             country_selected: false,
             club_selected: false,
+            clubs_fetched: false,
             registered: false,
             user_fullname:'',
             countries: [],
@@ -124,13 +125,13 @@ class Register extends React.Component {
 
     getAllCLubsByCountryId = (country_id) => {
         this.sharedObj.apiHelper.teams.getByCountryId(country_id,res => {
-            this.setState({country_clubs: res});
+            this.setState({country_clubs: res,clubs_fetched:true});
         })
     };
 
     handleCountryChange = (event) => {
-      this.setState({country_id:event.target.value});
-      this.getAllCLubsByCountryId(event.target.value);
+        this.setState({country_id:event.target.value});
+        this.getAllCLubsByCountryId(event.target.value);
     };
 
     handleClubChange = (event) => {
@@ -153,62 +154,62 @@ class Register extends React.Component {
                     <div className='main-container'>
                         <div className='betbook-logo-box'><img src='./assets/images/betbook---logo.png' alt=''/></div>
 
-                    <div className='register-container'>
-                        <div className='bs-user-container'>
-                            <div className='bs-username-text'>{this.state.favourites ?
-                                <span className='text15-white'>Your name</span> :
-                                <span className='text15-white'>Username</span>}
-                            </div>
-                            <input
-                                className={this.state.validUsername ? 'bs-username-box' : 'bs-username-box bs-username-box-error'}
-                                type='text' value={this.state.favourites ? this.state.user_fullname : this.state.username} onChange={this.state.favourites ? this.handleChangeFullName : this.handleChangeUsername}/>
-                        </div>
-
-                        <div className='bs-email-container'>
-                            <div className='bs-email-text'>{this.state.favourites ?
-                                <span className='text15-white'>Select your favourite national team</span> :
-                                <span className='text15-white'>Email</span>}
+                        <div className='register-container'>
+                            <div className='bs-user-container'>
+                                <div className='bs-username-text'>{this.state.favourites ?
+                                    <span className='text15-white'>Your name</span> :
+                                    <span className='text15-white'>Username</span>}
+                                </div>
+                                <input
+                                    className={this.state.validUsername ? 'bs-username-box' : 'bs-username-box bs-username-box-error'}
+                                    type='text' value={this.state.favourites ? this.state.user_fullname : this.state.username} onChange={this.state.favourites ? this.handleChangeFullName : this.handleChangeUsername}/>
                             </div>
 
-                            {this.state.favourites ? <select className='bs-email-box' value={this.state.country_id} onChange={this.handleCountryChange}>
-                                    <option selected='selected' className={this.state.team_id != false ? 'hidden' : ''}>Tap to select</option>
-                                    {this.state.countries.map(country => <option value ={country.id} key ={country.name + country.id}>{country.name}</option>)}
-                                </select>
-                                : <><input
-                                    className={this.state.validEmail ? 'bs-email-box' : 'bs-email-box bs-email-box-error'}
-                                    value={this.state.email} onChange={this.handleChangeEmail} type='email'/></>
-                            }
-                        </div>
+                            <div className='bs-email-container'>
+                                <div className='bs-email-text'>{this.state.favourites ?
+                                    <span className='text15-white'>Select your favourite national team</span> :
+                                    <span className='text15-white'>Email</span>}
+                                </div>
 
-                        <div className={this.state.country_id || !this.state.favourites ? 'bs-password-container' : 'bs-password-container hidden'}>
-                            <div className='bs-password-text'>{this.state.favourites ?
-                                <span className='text15-white'>Select your favourite club</span> :
-                                <span className='text15-white'>Password</span>}</div>
-
-                            {this.state.favourites ? <select className='bs-password-box' value={this.state.team_id} onChange={this.handleClubChange}>
-                                    <option selected='selected' className={this.state.team_id != false ? 'hidden' : ''}>Tap to select</option>
-                                    {this.state.country_clubs.length > 0 ? this.state.country_clubs.map(club => <option value ={club.id} key ={club.name + club.id}>{club.name}</option>) : ''}
-                                </select>
-                                : <><input
-                                    className={this.state.validPassword ? 'bs-password-box' : 'bs-password-box bs-password-box-error'}
-                                    type='password' value={this.state.password}
-                                    onChange={this.handleChangePassword}/></>}
-
-                            <div className='bs-text-under-password'><span className='text11-white'>By procceding further I agree with general terms & conditions. </span></div>
-                        </div>
-
-                        <div className='bs-create-account-box'
-                             onClick={!this.state.favourites ? () => this.handleRegisterStepOne() : (this.state.registered ? () => this.handleRegisterStepTwo() : ()=>this.handleError())}>
-                            <span className='text18-white'>Continue</span></div>
-                        <Link to={`/login`}>
-                            <div className='bs-i-already-have-an-account-box'><span className='text14-white'>I already have an account.</span>
+                                {this.state.favourites ? <select className='bs-email-box' value={this.state.country_id} onChange={this.handleCountryChange}>
+                                        <option selected='selected' className={this.state.team_id != false ? 'hidden' : ''}>Tap to select</option>
+                                        {this.state.countries.map(country => <option value ={country.id} key ={country.name + country.id}>{country.name}</option>)}
+                                    </select>
+                                    : <><input
+                                        className={this.state.validEmail ? 'bs-email-box' : 'bs-email-box bs-email-box-error'}
+                                        value={this.state.email} onChange={this.handleChangeEmail} type='email'/></>
+                                }
                             </div>
-                        </Link>
-                    </div>
+
+                            <div className={this.state.country_id || !this.state.favourites ? 'bs-password-container' : 'bs-password-container hidden'}>
+                                <div className='bs-password-text'>{this.state.favourites ?
+                                    <span className='text15-white'>Select your favourite club</span> :
+                                    <span className='text15-white'>Password</span>}</div>
+
+                                {this.state.favourites ? <select className='bs-password-box' value={this.state.team_id} onChange={this.handleClubChange}>
+                                        <option selected='selected' className={this.state.team_id != false ? 'hidden' : ''}>Tap to select</option>
+                                        {this.state.country_clubs.length > 0 ? this.state.country_clubs.map(club => <option value ={club.id} key ={club.name + club.id}>{club.name}</option>) : ''}
+                                    </select>
+                                    : <><input
+                                        className={this.state.validPassword ? 'bs-password-box' : 'bs-password-box bs-password-box-error'}
+                                        type='password' value={this.state.password}
+                                        onChange={this.handleChangePassword}/></>}
+
+                                <div className='bs-text-under-password'><span className='text11-white'>By procceding further I agree with general terms & conditions. </span></div>
+                            </div>
+
+                            <div className='bs-create-account-box'
+                                 onClick={!this.state.favourites ? () => this.handleRegisterStepOne() : (this.state.registered ? () => this.handleRegisterStepTwo() : ()=>this.handleError())}>
+                                <span className='text18-white'>Continue</span></div>
+                            <Link to={`/login`}>
+                                <div className='bs-i-already-have-an-account-box'><span className='text14-white'>I already have an account.</span>
+                                </div>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             )
         } else return <Loader/>
     }
 }
-export default Register;
+export default Register2;

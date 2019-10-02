@@ -12,16 +12,17 @@ import Leader_Boards from "./js/tickets/Leader_Boards";
 import Detailed_Competition_Listing from "./js/tickets/Detailed_Competition_Listing";
 import Register from "./js/user/Register";
 import Forgot_Password from "./js/user/Forgot_Password";
-import Profile_Tickets from "./js/tickets/Profile_Tickets";
 import Search from "./js/user/Search";
 import Settings from "./js/user/Settings";
 import User_Favourite_Leagues from "./js/user/User_Favourite_Leagues";
 import Edit from "./js/user/Edit";
 import Loader from "./js/components/other/Loader";
-import League_Fixtures from "./js/tickets/League_Fixtures";
+// import League_Fixtures from "./js/tickets/League_Fixtures";
 import League_Fixtures_Bidded from "./js/tickets/League_Fixtures_Bidded";
 import User_Game_Bids from "./js/tickets/User_Game_Bids";
 import Profile from "./js/tickets/Profile";
+import FavouriteTeam from "./js/user/FavouriteTeam";
+import Register2 from "./js/user/Register2";
 
 
 require("./js/data/apihelper");
@@ -94,7 +95,7 @@ class App extends React.Component {
                         <Route path="/game/:gameid/:userid" render={(props) => (<User_Game_Bids sharedObj={this.sharedObject} {...props}/>)}/>
                         <Route path="/settings" render={(props) => (<Settings sharedObj={this.sharedObject} {...props}/>)}/>
                         <Route path="/search" render={(props) => (<Search sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/user/:userid" render={(props) => (<Profile_Tickets sharedObj={this.sharedObject} {...props}/>)}/>
+                        <Route path="/user/:userid" render={(props) => (<Profile sharedObj={this.sharedObject} {...props}/>)}/>
                         <Route path="/edit" render={(props) => (<Edit sharedObj={this.sharedObject} {...props}/>)}/>
 
                         {(window.location.hash == '#/login' || window.location.hash == '#/forgot-password' || window.location.hash == '#/welcome' || window.location.hash == '#/register')
@@ -106,7 +107,7 @@ class App extends React.Component {
                 return (
                     <HashRouter>
                         {window.location.hash != '#/register' ? <Route path="/" render={(props) => (<Login sharedObj={this.sharedObject} {...props}  />)}/> :
-                            <Route path="/register" render={(props) => (<Register sharedObj={this.sharedObject} {...props}/>)}/>}
+                            <Route path="/register" render={(props) => (<Register2 sharedObj={this.sharedObject} {...props}/>)}/>}
                     </HashRouter>
                 );
             }

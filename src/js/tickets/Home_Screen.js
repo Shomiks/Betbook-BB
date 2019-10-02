@@ -1,7 +1,8 @@
 import React from 'react'
 import '../../style/betbook/home_screen.scss'
 import {Link, Redirect} from "react-router-dom";
-import Loader from "../components/Loader";
+import Loader from "../components/other/Loader";
+
 
 class Home_Screen extends React.Component {
 
@@ -42,14 +43,6 @@ class Home_Screen extends React.Component {
         </Link>;
         else return <div className='last-week'/>
     };
-
-    // renderDate = (data) => {
-    //     let Datefields = data.round.start_date.split(' ')[0].split('-');
-    //     let Timefields = data.round.start_date.split(' ')[1].split(':');
-    //     let year = Datefields[0];
-    //
-    //     return( Datefields[2] + '/' + Datefields[1] + '/' + year + ' ' + Timefields[0] + ':' +  Timefields[1]);
-    // };
 
     handleUpcoming = (data) => {
         return <Link to={`league/${data.league.id}`} className='current-week'>
