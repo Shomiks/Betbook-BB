@@ -1,7 +1,11 @@
 import React from 'react';
 import '../../../src/style/app.scss'
 import '../../../src/style/betbook/user/register.scss'
-import {Link,Redirect} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
+import BB_TextField from "../components/controls/BB_TextField";
+import MainContainer from "../components/containers/MainContainer";
+import BB_Logo from "../components/other/BB_Logo";
+import BottomContainer from "../components/containers/BottomContainer";
 
 class Login extends React.Component {
 
@@ -13,26 +17,24 @@ class Login extends React.Component {
             password: '',
             validName: true,
             validPassword: true,
-            loggedIn:false
+            loggedIn: false
         };
         this.sharedObj = props.sharedObj;
     }
 
     handleLogin = () => {
-        if(this.state.username!='' && this.state.password!=''){
-        this.sharedObj.apiHelper.login(this.state.username,this.state.password,1,(res) => {
-            localStorage.setItem('user_id',res.id);
+        if (this.state.username != '' && this.state.password != '') {
+            this.sharedObj.apiHelper.login(this.state.username, this.state.password, 1, (res) => {
+                localStorage.setItem('user_id', res.id);
                 if (res) {
-                    this.setState({loggedIn:true});
+                    this.setState({loggedIn: true});
+                } else {
+                    alert('wrong username/password!');
+                    this.setState({validName: false, validPassword: false});
                 }
-                    else{
-                       alert('wrong username/password!');
-                        this.setState({validName: false, validPassword: false});
-                        }
-                })
-        }
-            else {
-                alert('username and password cannot be empty!');
+            })
+        } else {
+            alert('username and password cannot be empty!');
             this.setState({validName: false, validPassword: false});
         }
     };
@@ -47,29 +49,29 @@ class Login extends React.Component {
 
     render() {
 
-        if(this.state.loggedIn){
+        if (this.state.loggedIn) {
             return <Redirect to='/home'/>
         }
 
-        return (<div className='betbook-screen-login'>
-                <div className='main-container'>
-                    <div className='betbook-logo-box'><img src='./assets/images/betbook---logo.png' alt=''/></div>
-                    <div className='login-container'>
-                        <div className='bs-email-container'>
-                        <div className='bs-email-text'><span className='text15-white'>Username</span></div>
-                        <input className={this.state.validPassword ? 'bs-email-box' : 'bs-email-box bs-email-box-error'} type='username' value={this.state.username} onChange={this.handleChangeUsername}/>
-                    </div>
-                    <div className='bs-password-container'>
-                        <div className='bs-password-text'><span className='text15-white'>Password</span></div>
-                        <input className={this.state.validPassword ? 'bs-password-box' : 'bs-password-box bs-password-box-error'} type='password' value={this.state.password} onChange={this.handleChangePassword}/>
-                        <Link to={`/forgot-password`}><div className='bs-text-under-password'><span className='text11-white'>I forgot my password. </span></div></Link>
-                    </div>
-                    <div className='bs-create-account-box' onClick={() => this.handleLogin()}><span className='text18-white'>Sign in</span></div>
-                    <Link to={`/register`}><div className='bs-i-already-have-an-account-box'><span className='text14-white'>I don't have an account.</span>
-                    </div></Link>
-                    </div>
-                </div>
-            </div>
+        return (<MainContainer>
+                <BB_Logo/>
+                    <BottomContainer>
+                        <BB_TextField type='username' value={this.state.username} onChange={this.handleChangeUsername}
+                                      label='Username' error={this.state.validPassword == false}/>
+                        <BB_TextField type='username' value={this.state.password} onChange={this.handleChangePassword}
+                                      label='Password' error={this.state.validPassword == false}/>
+                        <Link to={`/forgot-password`}>
+                            <div className='bs-text-under-password'><span className='text11-white'>I forgot my password. </span>
+                            </div>
+                        </Link>
+                        <div className='bs-create-account-box' onClick={this.handleLogin}><span
+                            className='text18-white'>Sign in</span></div>
+                        <Link to={`/register`}>
+                            <div className='bs-i-already-have-an-account-box'><span className='text14-white'>I don't have an account.</span>
+                            </div>
+                        </Link>
+                    </BottomContainer>
+                </MainContainer>
         )
     }
 }

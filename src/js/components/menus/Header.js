@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../style/betbook/components/header.scss'
+import '../../../style/components/menus/header.scss'
 import {Link} from "react-router-dom";
 
 class Header extends React.Component{

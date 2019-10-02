@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../../src/style/app.scss'
 import '../../../src/style/betbook/leaderboards.scss'
-import Profile_Short from "../components/Profile_Short";
+import Profile_Short from "../components/objectcontrols/Profile_Short";
 
 class Leader_Boards extends React.Component {
 

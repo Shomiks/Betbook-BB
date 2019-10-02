@@ -1,13 +1,13 @@
 import React from 'react';
 import Login from './js/user/Login'
 import './style/app.scss'
-import Header from './js/components/Header';
+import Header from './js/components/menus/Header';
 import Week_Games_Listing from "./js/tickets/Week_Games_Listing";
 import Home_Screen from "./js/tickets/Home_Screen";
 import Competition_Listing from "./js/tickets/Competition_Listing";
 import {Route, HashRouter, Redirect} from "react-router-dom";
 import Match_Details from "./js/tickets/Match_Details";
-import Footer from "./js/components/Footer";
+import Footer from "./js/components/menus/Footer";
 import Leader_Boards from "./js/tickets/Leader_Boards";
 import Detailed_Competition_Listing from "./js/tickets/Detailed_Competition_Listing";
 import Register from "./js/user/Register";
@@ -17,7 +17,7 @@ import Search from "./js/user/Search";
 import Settings from "./js/user/Settings";
 import User_Favourite_Leagues from "./js/user/User_Favourite_Leagues";
 import Edit from "./js/user/Edit";
-import Loader from "./js/components/Loader";
+import Loader from "./js/components/other/Loader";
 import League_Fixtures from "./js/tickets/League_Fixtures";
 import User_Game_Bids from "./js/tickets/User_Game_Bids";
 

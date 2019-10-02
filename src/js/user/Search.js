@@ -1,6 +1,6 @@
 import React from 'react';
-import Profile_Short from "../components/Profile_Short";
-import Loader from "../components/Loader";
+import Profile_Short from "../components/objectcontrols/Profile_Short";
+import Loader from "../components/other/Loader";
 import {Link} from "react-router-dom";
 
 

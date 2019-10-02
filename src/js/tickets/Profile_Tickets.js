@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../../src/style/betbook/profile-tickets.scss';
 import {Link} from "react-router-dom";
-import Loader from "../components/Loader";
+import Loader from "../components/other/Loader";
 
 
 class Profile_Tickets extends React.Component {

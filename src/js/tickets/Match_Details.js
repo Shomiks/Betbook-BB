@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../../src/style/betbook/matchdetails.scss';
 import '../../../src/style/app.scss';
-import Loader from "../components/Loader";
+import Loader from "../components/other/Loader";
 class Match_Details extends React.Component {
 
     constructor(props) {

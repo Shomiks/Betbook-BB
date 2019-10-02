@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../../src/style/betbook/detailed-competitionlisting.scss';
 import {Link} from "react-router-dom";
-import Loader from "../components/Loader";
+import Loader from "../components/other/Loader";
 
 class User_Favourite_Leagues extends React.Component {
 
