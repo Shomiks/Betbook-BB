@@ -8,7 +8,7 @@ function BB_Button(props) {
         inputCssClass = "bs-email-box bs-email-box-error";
     }
 
-    return <div className='bs-create-account-box' onClick={props.handleLogin}>
+    return <div className='bs-create-account-box' onClick={props.onClick}>
         <div className='bs-email-text'><span className='text18-white'>{props.label}</span></div>
     </div>
 }

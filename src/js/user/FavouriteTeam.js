@@ -5,6 +5,7 @@ import {Link, Redirect} from "react-router-dom";
 import Loader from "../components/other/Loader";
 import BB_ButtonLink from "../components/controls/BB_ButtonLink";
 import BB_TextField from "../components/controls/BB_TextField";
+import BB_Select from "../components/controls/BB_Select";
 
 class FavouriteTeam extends React.Component {
 
@@ -77,10 +78,7 @@ class FavouriteTeam extends React.Component {
 
                             <div className='bs-email-container'>
                                 <div className='bs-email-text'>{<span className='text15-white'>Select your favourite national team</span>}</div>
-                                {<select className='bs-email-box' value={this.state.country_id} onChange={this.handleCountryChange}>
-                                        <option selected='selected' className={this.state.team_id != false ? 'hidden' : ''}>Tap to select</option>
-                                        {this.state.countries.map(country => <option value ={country.id} key ={country.name + country.id}>{country.name}</option>)}
-                                    </select>}
+                                <BB_Select options={this.state.countries.map(country => {return {value: country.id, label: country.name}})}  />
                             </div>
 
 
