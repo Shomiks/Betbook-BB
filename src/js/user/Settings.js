@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import '../../../src/style/betbook/user/settings.scss'
+import FullContainer from "../components/containers/FullContainer";
 
 class Settings extends React.Component {
 
@@ -10,25 +11,18 @@ class Settings extends React.Component {
         this.state = {
             logout:false
         };
-        this.sharedObj = props.sharedObj
-    }
-
-    componentDidMount() {
-        setTimeout(() => {
-            this.sharedObj.headerInstance.setTitle('Settings');
-            this.sharedObj.footerInstance.setActive('profile');
-        },1)
     }
 
     handleLogout = () => {
         localStorage.clear();
-        this.sharedObj.apiHelper.userInfo = null;
+        window.apiHelper.userInfo = null;
         this.setState({logout: true})
     };
 
     render() {
 
-        return (<div className='betbook-screen'>
+        return (<FullContainer footerProps={{activeItem: 'profile'}} headerProps={{title: 'Settings'}}>
+                <div className='betbook-context'>
                 <div className='main-container'>
                     <Link to={`/edit`}> <div className='personal-info'><span className='text11-grey'>Personal info</span>
                         <span className='edit'> Edit</span></div>
@@ -66,7 +60,8 @@ class Settings extends React.Component {
                         </div>
                     </Link>
                 </div>
-            </div>
+                </div>
+            </FullContainer>
         )
     }
 }

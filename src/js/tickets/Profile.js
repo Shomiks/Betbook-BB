@@ -2,6 +2,8 @@ import React from 'react';
 import '../../../src/style/betbook/profile-tickets.scss';
 import {Link} from "react-router-dom";
 import Loader from "../components/other/Loader";
+import FooterContainer from "../components/containers/FooterContainer";
+import FullContainer from "../components/containers/FullContainer";
 
 
 class Profile extends React.Component {
@@ -16,16 +18,10 @@ class Profile extends React.Component {
             loaded: false,
             userid: props.match.params.userid ? props.match.params.userid : window.apiHelper.userInfo.id
         };
-
-        this.sharedObj = props.sharedObj
     }
 
     componentDidMount = () => {
-        setTimeout(() => {
-            this.sharedObj.footerInstance.setActive('profile');
-        }, 1);
-
-        this.sharedObj.apiHelper.statistics.profileStats(this.state.userid, (res) => {
+           window.apiHelper.statistics.profileStats(this.state.userid, (res) => {
             this.calculateStatistics(res[0]);
         });
     };
@@ -164,7 +160,8 @@ class Profile extends React.Component {
     render() {
 
         if (this.state.loaded) return (
-            <div className='betbook_context'>
+            <FooterContainer  footerProps={{activeItem: 'profile'}}>
+                <div className='betbook_context'>
                 {this.renderHeader()}
                 <div className='scrolable-bids-field'>
                     {this.renderFields('full-time-statistics-field', 1)}
@@ -172,7 +169,8 @@ class Profile extends React.Component {
                     {this.renderFields('both-team-goal-statistics-field', 3)}
                     {this.renderFields('ht-ft-statistics-field', 4)}
                 </div>
-            </div>
+                </div>
+            </FooterContainer>
         );
         else {
             return <Loader/>

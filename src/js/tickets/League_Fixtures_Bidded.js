@@ -3,6 +3,7 @@ import MatchShort from '../components/objectcontrols/Match_Short';
 import {Link} from "react-router-dom";
 import '../../style/betbook/week-games.scss';
 import Loader from "../components/other/Loader";
+import FullContainer from "../components/containers/FullContainer";
 
 class League_Fixtures_Bidded extends React.Component {
 
@@ -13,7 +14,6 @@ class League_Fixtures_Bidded extends React.Component {
             realData: [],
             loaded: false
         };
-        this.sharedObj = props.sharedObj;
         this.leagudId = props.match.params.leagueid;
     }
 
@@ -22,7 +22,7 @@ class League_Fixtures_Bidded extends React.Component {
             }
 
     getAllFixturesBided(){
-        this.sharedObj.apiHelper.leagues.getByIDBided(this.leagudId,window.apiHelper.userInfo.id,1,(res) =>{
+        window.apiHelper.leagues.getByIDBided(this.leagudId,window.apiHelper.userInfo.id,1,(res) =>{
             let data = {
                 fixtures: [],
                 userBids: [],
@@ -38,12 +38,10 @@ class League_Fixtures_Bidded extends React.Component {
                             }
                         })
                 });
-            this.sharedObj.footerInstance.setActive('ball');
             this.setState({realData:data,loaded:true})});
     }
 
     renderGames = () => {
-            this.sharedObj.headerInstance.setTitle(this.state.realData.league.name);
             return <>
                 {this.state.realData.fixtures.map((fixture) => <Link to={`/fixture/${fixture.id}`} key={fixture.id}>
                     <MatchShort match={fixture}/></Link>)}
@@ -53,11 +51,11 @@ class League_Fixtures_Bidded extends React.Component {
     render() {
 
         if(this.state.loaded) return (
-            <div className='betbook_screen'>
+           <FullContainer  footerProps={{activeItem: 'ball'}} headerProps={{title: this.state.realData.league.name}}>
                 <div className='main-content'>
                     {this.renderGames()}
                 </div>
-            </div>
+           </FullContainer>
         );
 
         else {

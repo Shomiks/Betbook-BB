@@ -61,7 +61,6 @@ class APIHelper {
                 .then(res => res.json())
                 .then(res => {
                     callBack(res)
-                    console.log(res)
                 });
         },
         validateRegister: (username, email, callBack) => {
@@ -95,7 +94,6 @@ class APIHelper {
                 }
             })
                 .then(res => res.json())
-                .then(res => callBack())
         }
     };
 
@@ -178,7 +176,6 @@ class APIHelper {
                             }
                         })
                     }
-                    console.log(res)
                     callBack(res)
                 })
         }
@@ -190,7 +187,6 @@ class APIHelper {
                 .then(res => res.json())
                 .then(res => {
                     let result = res;
-                    console.log(result)
                     callBack(result)
                 })
         }
@@ -219,7 +215,6 @@ class APIHelper {
                 .then(res => res.json())
         },
         createFixtureBids: (data,callBack) => {
-            console.log(data)
             fetch(this.apiUrl + `/index.php/api/user_fixture_bid/`, {
                 method: 'POST',
                 body: JSON.stringify(data.ticket),

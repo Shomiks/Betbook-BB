@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../../style/components/menus/header.scss'
-import {Link} from "react-router-dom";
 
 class Header extends React.Component{
   constructor(props){
@@ -8,7 +7,7 @@ class Header extends React.Component{
     this.state = {
       title: props.title,
       competition: props.competition,
-      currentItemRight: null
+      currentItemRight: props.itemRight ? props.itemRight : null
     }
   }
 
@@ -20,15 +19,15 @@ class Header extends React.Component{
       </div>
       <div className={this.state.currentItemRight}/>
       </>
-  }
+  };
 
   setTitle = (title) => {
     this.setState({title:title})
-  }
+  };
 
   setItemRight = (item) => {
     this.setState({currentItemRight: item})
-  }
+  };
 
   render() {
     return <div className='rectangle_header'>

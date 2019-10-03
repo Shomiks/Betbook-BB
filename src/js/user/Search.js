@@ -2,8 +2,7 @@ import React from 'react';
 import Profile_Short from "../components/objectcontrols/Profile_Short";
 import Loader from "../components/other/Loader";
 import {Link} from "react-router-dom";
-
-
+import FullContainer from "../components/containers/FullContainer";
 
 class Search extends React.Component {
 
@@ -13,21 +12,15 @@ class Search extends React.Component {
             users:[],
             loaded: false
         };
-        console.log(this.state.users);
-        this.sharedObj = props.sharedObj;
     }
 
     componentDidMount() {
-        setTimeout(() => {
-            this.sharedObj.headerInstance.setTitle('Search for users');
-            this.sharedObj.footerInstance.setActive('profile');
-        },1);
-        this.getAllUsers();
+              this.getAllUsers();
     }
 
     getAllUsers = () => {
-        if(this.sharedObj.apiHelper){
-            this.sharedObj.apiHelper.user.getAllUsers((res) => {
+        if(window.apiHelper){
+            window.apiHelper.user.getAllUsers((res) => {
                 res.forEach((profile,i) => {
                     if(profile.id == window.apiHelper.userInfo.id){
                         res.splice(i,1);
@@ -41,12 +34,12 @@ class Search extends React.Component {
     render() {
 
         if (this.state.loaded) {
-            return <div className='betbook-screen'>
+            return <FullContainer footerProps={{activeItem: 'profile'}} headerProps={{title: 'Search for users'}}>
                 <div className='main-container'/>
                 {this.state.users.map(user => {
                     return <><Link to = {`/user/${user.id}`}><Profile_Short key={user.id} user={user}/></Link></>
                 })}
-            </div>
+            </FullContainer>
         }
         else return <Loader/>
     }

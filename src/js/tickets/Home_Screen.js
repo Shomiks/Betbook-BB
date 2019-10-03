@@ -2,7 +2,7 @@ import React from 'react'
 import '../../style/betbook/home_screen.scss'
 import {Link, Redirect} from "react-router-dom";
 import Loader from "../components/other/Loader";
-
+import FooterContainer from "../components/containers/FooterContainer";
 
 class Home_Screen extends React.Component {
 
@@ -19,14 +19,11 @@ class Home_Screen extends React.Component {
 
     componentDidMount = () => {
         this.getUserFavorites();
-        setTimeout(() => {
-            this.sharedObj.footerInstance.setActive('timeline');
-        }, 1);
     };
 
     getUserFavorites = () => {
-        if(window.apiHelper.userInfo) {
-            this.sharedObj.apiHelper.home.get_favourites(window.apiHelper.userInfo.id, (res) => {
+        if (window.apiHelper.userInfo) {
+            window.apiHelper.home.get_favourites(window.apiHelper.userInfo.id, (res) => {
                 this.setState({username: window.apiHelper.userInfo['username'], realData: res, loaded: true})
             });
         }
@@ -34,11 +31,11 @@ class Home_Screen extends React.Component {
 
     handleFinished = (data) => {
         if (1) return <Link to={`finished/league/${data.league.id}`} className='last-week'>
-                <div className='hs_left-box'>
-                    <div className='hs_left-middle-text'><span className='text11-white'>Success Rate xx%</span></div>
-                    <div className='hs_left-bottom-text'>
-                        <div><span className='text11-white'>Check the bet</span></div>
-                    </div>
+            <div className='hs_left-box'>
+                <div className='hs_left-middle-text'><span className='text11-white'>Success Rate xx%</span></div>
+                <div className='hs_left-bottom-text'>
+                    <div><span className='text11-white'>Check the bet</span></div>
+                </div>
             </div>
         </Link>;
         else return <div className='last-week'/>
@@ -81,9 +78,8 @@ class Home_Screen extends React.Component {
     };
 
     render() {
-
         if (this.state.loaded) return (
-            <div className='betbook_screen'>
+            <FooterContainer footerProps={{activeItem: 'timeline'}}>
                 <div className='betbook-logo'/>
                 <div className='main-content'>
                     {this.state.realData.length ?
@@ -96,7 +92,7 @@ class Home_Screen extends React.Component {
                             {this.handleFirstTimeLogin()}</>
                     }
                 </div>
-            </div>
+            </FooterContainer>
         );
         else {
             return <Loader/>

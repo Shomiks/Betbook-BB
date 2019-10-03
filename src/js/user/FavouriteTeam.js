@@ -3,6 +3,7 @@ import '../../../src/style/betbook/user/register.scss'
 import '../../../src/style/app.scss'
 import {Link, Redirect} from "react-router-dom";
 import Loader from "../components/other/Loader";
+import BB_ButtonLink from "../components/controls/BB_ButtonLink";
 
 class FavouriteTeam extends React.Component {
 
@@ -10,18 +11,15 @@ class FavouriteTeam extends React.Component {
         super(props);
 
         this.state = {
-            loaded:false,
+            loaded:true,
             country_id: null,
             team_id: null,
-            country_selected: false,
-            club_selected: false,
             registered: false,
             user_fullname:'',
             countries: [],
             country_clubs: [],
-            login:false
+            step2:false
         };
-        this.sharedObj = props.sharedObj;
     }
 
     componentDidMount() {
@@ -32,26 +30,25 @@ class FavouriteTeam extends React.Component {
         this.setState({user_fullname:e.target.value});
     };
 
-
     handleRegisterStepTwo = () => {
-        this.sharedObj.apiHelper.user.register(this.state.username,this.state.password,this.state.email,this.state.user_fullname,this.state.country_id,this.state.team_id,(res)=>{
+        window.apiHelper.user.register(this.state.username,this.state.password,this.state.email,this.state.user_fullname,this.state.country_id,this.state.team_id,(res)=>{
             localStorage.setItem('user_id', res[0]);
             res[1].forEach(league_id => {
                 if(league_id != []){
-                    this.sharedObj.apiHelper.user.favourite_team_leagues(res[0],league_id);}
+                    window.apiHelper.user.favourite_team_leagues(res[0],league_id);}
             })
         });
-        this.setState({login:true});
+        this.setState({step2:true});
     };
 
     getAllCountries = () => {
-        this.sharedObj.apiHelper.countries.getAll((res) => {
+        window.apiHelper.countries.getAll((res) => {
             this.setState({countries: res,loaded:true})
         })
     };
 
     getAllCLubsByCountryId = (country_id) => {
-        this.sharedObj.apiHelper.teams.getByCountryId(country_id,res => {
+        window.apiHelper.teams.getByCountryId(country_id,res => {
             this.setState({country_clubs: res});
         })
     };
@@ -71,21 +68,11 @@ class FavouriteTeam extends React.Component {
     };
 
     render() {
-
         if (this.state.loaded) {
-            if (this.state.login) {
-                window.location.reload();
-            }
 
-            else return (<div className='betbook-screen-login'>
-                    <div className='main-container'>
-                        <div className='betbook-logo-box'><img src='./assets/images/betbook---logo.png' alt=''/></div>
-
-                        <div className='register-container'>
-                            <div className='bs-user-container'>
-                                <div className='bs-username-text'>{<span className='text15-white'>Your name</span>}</div>
-                                <input className='bs-username-box' type='text' value={this.state.user_fullname} onChange={this.handleChangeFullName}/>
-                            </div>
+            return (
+                        <>
+                            <BB_ButtonLink label = 'Your name' value={this.state.user_fullname} onChange={this.handleChangeFullName} error={this.state.validUsername==''}/>
 
                             <div className='bs-email-container'>
                                 <div className='bs-email-text'>{<span className='text15-white'>Select your favourite national team</span>}</div>
@@ -94,6 +81,8 @@ class FavouriteTeam extends React.Component {
                                         {this.state.countries.map(country => <option value ={country.id} key ={country.name + country.id}>{country.name}</option>)}
                                     </select>}
                             </div>
+
+
 
                             <div className={this.state.country_id ? 'bs-password-container' : 'bs-password-container hidden'}>
                                 <div className='bs-password-text'>{
@@ -112,9 +101,7 @@ class FavouriteTeam extends React.Component {
                                 <div className='bs-i-already-have-an-account-box'><span className='text14-white'>I already have an account.</span>
                                 </div>
                             </Link>
-                        </div>
-                    </div>
-                </div>
+                       </>
             )
         } else return <Loader/>
     }

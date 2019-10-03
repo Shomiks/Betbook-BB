@@ -1,8 +1,9 @@
 import React from 'react';
 import '../../../src/style/betbook/user/register.scss'
 import '../../../src/style/app.scss'
-import {Link, Redirect} from "react-router-dom";
 import Loader from "../components/other/Loader";
+import BB_ButtonLink from "../components/controls/BB_ButtonLink";
+import {Link} from "react-router-dom";
 
 class UserData extends React.Component {
 
@@ -10,20 +11,15 @@ class UserData extends React.Component {
         super(props);
 
         this.state = {
-            loaded:false,
+            loaded:true,
             username: '',
             password: '',
             email: '',
             validUsername: true,
             validPassword: true,
             validEmail: true,
-            login:false
+            step1:false
         };
-        this.sharedObj = props.sharedObj;
-    }
-
-    componentDidMount() {
-
     }
 
     handleChangeUsername = (e) => {
@@ -50,7 +46,7 @@ class UserData extends React.Component {
                 alert('invalid email!');
                 this.setState({validEmail: false})
             } else {
-                this.sharedObj.apiHelper.user.validateRegister(this.state.username, this.state.email, (result) => {
+                window.apiHelper.user.validateRegister(this.state.username, this.state.email, (result) => {
                     this.setState({validEmail:false});
                     if (result == 'empty_user') {
                         alert('empty username!');
@@ -89,45 +85,25 @@ class UserData extends React.Component {
                 alert('Empty username and password!');
                 this.setState({validUsername:false, validPassword:false});
             }
+            this.setState({step1:true});
         }
     };
 
     render() {
 
         if (this.state.loaded) {
-            if (this.state.login) {
-                window.location.reload();
-            }
+            return (<>
+                            <BB_ButtonLink label = 'Username' value={this.state.username} onChange={this.handleChangeUsername} error={this.state.validUsername==false}/>
+                            <BB_ButtonLink label = 'Email' value={this.state.email} onChange={this.handleChangeEmail} error={this.state.validEmail==false}/>
+                            <BB_ButtonLink label = 'Password' value={this.state.password} onChange={this.handleChangePassword} error={this.state.validPassword==false}/>
+                            <div className='bs-text-under-password'><span className='text11-white'>By proceeding further I agree with general terms & conditions. </span></div>
 
-            else return (<div className='betbook-screen-login'>
-                    <div className='main-container'>
-                        <div className='betbook-logo-box'><img src='./assets/images/betbook---logo.png' alt=''/></div>
-
-                        <div className='register-container'>
-
-                            <div className='bs-user-container'>
-                                <div className='bs-username-text'>{<span className='text15-white'>Your name</span>}</div>
-                                <input
-                                    className={this.state.validUsername ? 'bs-username-box' : 'bs-username-box bs-username-box-error'}
-                                    type='text' value={this.state.username} onChange={this.handleChangeUsername}/>
-                            </div>
-
-                            <div className='bs-email-container'>
-                                <div className='bs-email-text'>{<span className='text15-white'>Email</span>}</div>
-                                {<><input
-                                        className={this.state.validEmail ? 'bs-email-box' : 'bs-email-box bs-email-box-error'}
-                                        value={this.state.email} onChange={this.handleChangeEmail} type='email'/></>
-                                }</div>
-
-                            <div className='bs-password-container'>
-                                <div className='bs-password-text'>{<span className='text15-white'>Password</span>}</div>
-                                {<><input
-                                        className={this.state.validPassword ? 'bs-password-box' : 'bs-password-box bs-password-box-error'}
-                                        value={this.state.password} onChange={this.handleChangePassword} type='password' /></>}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        <div className='bs-create-account-box' onClick={this.handleRegisterStepOne}>
+                            <span className='text18-white'>Continue</span></div>
+                        <Link to={`/login`}>
+                            <div className='bs-i-already-have-an-account-box'><span className='text14-white'>I already have an account.</span></div>
+                        </Link>
+                        </>
             )
         } else return <Loader/>
     }

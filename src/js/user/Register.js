@@ -3,6 +3,7 @@ import '../../../src/style/betbook/user/register.scss'
 import '../../../src/style/app.scss'
 import {Link, Redirect} from "react-router-dom";
 import Loader from "../components/other/Loader";
+import BB_Logo from "../components/other/BB_Logo";
 
 class Register extends React.Component {
 
@@ -151,7 +152,7 @@ class Register extends React.Component {
 
             else return (<div className='betbook-screen-login'>
                     <div className='main-container'>
-                        <div className='betbook-logo-box'><img src='./assets/images/betbook---logo.png' alt=''/></div>
+                        <BB_Logo/>
 
                     <div className='register-container'>
                         <div className='bs-user-container'>

@@ -25,8 +25,8 @@ class Login extends React.Component {
     handleLogin = () => {
         if (this.state.username != '' && this.state.password != '') {
             this.sharedObj.apiHelper.login(this.state.username, this.state.password, 1, (res) => {
-                localStorage.setItem('user_id', res.id);
                 if (res) {
+                    localStorage.setItem('user_id', res.id);
                     this.setState({loggedIn: true});
                 } else {
                     alert('wrong username/password!');
@@ -57,13 +57,12 @@ class Login extends React.Component {
         return (<MainContainer>
                 <BB_Logo/>
                     <BottomContainer>
-                        <BB_TextField type='username' value={this.state.username} onChange={this.handleChangeUsername}
+                        <BB_TextField value={this.state.username} onChange={this.handleChangeUsername}
                                       label='Username' error={this.state.validPassword == false}/>
-                        <BB_TextField type='username' value={this.state.password} onChange={this.handleChangePassword}
+                        <BB_TextField value={this.state.password} onChange={this.handleChangePassword}
                                       label='Password' error={this.state.validPassword == false}/>
                         <Link to={`/forgot-password`}>
-                            <div className='bs-text-under-password'><span className='text11-white'>I forgot my password. </span>
-                            </div>
+                            <div className='bs-text-under-password'><span className='text11-white'>I forgot my password.</span></div>
                         </Link>
                         <div className='bs-create-account-box' onClick={this.handleLogin}><span
                             className='text18-white'>Sign in</span></div>
