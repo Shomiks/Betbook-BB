@@ -5,7 +5,6 @@ import {Link, Redirect} from "react-router-dom";
 import Loader from "../components/other/Loader";
 import BB_Logo from "../components/other/BB_Logo";
 import MainContainer from "../components/containers/MainContainer";
-import BB_Logo from "../components/other/BB_Logo";
 import BottomContainer from "../components/containers/BottomContainer";
 import BB_TextField from "../components/controls/BB_TextField";
 

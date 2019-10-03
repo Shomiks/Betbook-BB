@@ -4,6 +4,7 @@ import '../../../src/style/app.scss'
 import {Link, Redirect} from "react-router-dom";
 import Loader from "../components/other/Loader";
 import BB_ButtonLink from "../components/controls/BB_ButtonLink";
+import BB_TextField from "../components/controls/BB_TextField";
 
 class FavouriteTeam extends React.Component {
 
@@ -72,7 +73,7 @@ class FavouriteTeam extends React.Component {
 
             return (
                         <>
-                            <BB_ButtonLink label = 'Your name' value={this.state.user_fullname} onChange={this.handleChangeFullName} error={this.state.validUsername==''}/>
+                            <BB_TextField label = 'Your name' value={this.state.user_fullname} onChange={this.handleChangeFullName} error={this.state.validUsername==''}/>
 
                             <div className='bs-email-container'>
                                 <div className='bs-email-text'>{<span className='text15-white'>Select your favourite national team</span>}</div>
@@ -84,10 +85,10 @@ class FavouriteTeam extends React.Component {
 
 
 
-                            <div className={this.state.country_id ? 'bs-password-container' : 'bs-password-container hidden'}>
-                                <div className='bs-password-text'>{
+                            <div className={this.state.country_id ? 'bs-email-container' : 'bs-email-container hidden'}>
+                                <div className='bs-email-text'>{
                                     <span className='text15-white'>Select your favourite club</span>}</div>
-                                {<select className='bs-password-box' value={this.state.team_id} onChange={this.handleClubChange}>
+                                {<select className='bs-email-box' value={this.state.team_id} onChange={this.handleClubChange}>
                                         <option selected='selected' className={this.state.team_id != false ? 'hidden' : ''}>Tap to select</option>
                                         {this.state.country_clubs.length > 0 ? this.state.country_clubs.map(club => <option value ={club.id} key ={club.name + club.id}>{club.name}</option>) : ''}
                                     </select>}
