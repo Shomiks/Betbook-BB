@@ -12,14 +12,14 @@ class UserData extends React.Component {
         super(props);
 
         this.state = {
-            loaded:true,
+            loaded: true,
             username: '',
             password: '',
             email: '',
             validUsername: true,
             validPassword: true,
             validEmail: true,
-            step1:false
+            step1: false
         };
     }
 
@@ -48,7 +48,7 @@ class UserData extends React.Component {
                 this.setState({validEmail: false})
             } else {
                 window.apiHelper.user.validateRegister(this.state.username, this.state.email, (result) => {
-                    this.setState({validEmail:false});
+                    this.setState({validEmail: false});
                     if (result == 'empty_user') {
                         alert('empty username!');
                     } else if (result == 'empty_email') {
@@ -58,35 +58,35 @@ class UserData extends React.Component {
                     } else if (result[0] == false && result[1] != false) {
                         alert('email already taken!');
                     } else if (result[0] != false && result[1] == false) {
-                        this.setState({validEmail: true,validUsername:false});
+                        this.setState({validEmail: true, validUsername: false});
                         alert('username already taken!');
                     } else if (result[0] && result[1]) {
-                        this.setState({validEmail: false,validUsername:false});
+                        this.setState({validEmail: false, validUsername: false});
                         alert('email and username already taken!');
-                    } else if (!result[0] && !result[1]){
-                        this.setState({favourites: true,validEmail:true});
-                    }
-                    else alert ('bad');
+                    } else if (!result[0] && !result[1]) {
+                        this.setState({favourites: true, validEmail: true});
+                    } else alert('bad');
                 })
 
             }
         } else {
-            if(this.state.email == ''){
-                this.setState({validEmail:false});
+            if (this.state.email == '') {
+                this.setState({validEmail: false});
+                alert('empty email!');
             }
-            if(this.state.username == '' && this.state.password != ''){
+            else if (this.state.username == '' && this.state.password != '') {
                 alert('Empty username!');
                 this.setState({validUsername: false});
             }
-            if(this.state.username != '' && this.state.password == ''){
+            else if (this.state.username != '' && this.state.password == '') {
                 alert('Empty password!');
-                this.setState({validPassword: false,validEmail:false});
+                this.setState({validPassword: false, validEmail: false});
             }
-            if(this.state.username == '' && this.state.password == ''){
+            else if (this.state.username == '' && this.state.password == '') {
                 alert('Empty username and password!');
-                this.setState({validUsername:false, validPassword:false});
+                this.setState({validUsername: false, validPassword: false});
             }
-            this.setState({step1:true});
+           else this.props.onComplete();
         }
     };
 
@@ -94,19 +94,21 @@ class UserData extends React.Component {
 
         if (this.state.loaded) {
             return (<>
-                            <BB_TextField label = 'Username' value={this.state.username} onChange={this.handleChangeUsername} error={this.state.validUsername==false}/>
-                            <BB_TextField label = 'Email' value={this.state.email} onChange={this.handleChangeEmail} error={this.state.validEmail==false}/>
-                            <BB_TextField label = 'Password' value={this.state.password} onChange={this.handleChangePassword} error={this.state.validPassword==false}/>
-                            <div className='bs-text-under-password'><span className='text11-white'>By proceeding further I agree with general terms & conditions. </span></div>
-
-                        <div className='bs-create-account-box' onClick={this.handleRegisterStepOne}>
-                            <span className='text18-white'>Continue</span></div>
-                        <Link to={`/login`}>
-                            <div className='bs-i-already-have-an-account-box'><span className='text14-white'>I already have an account.</span></div>
-                        </Link>
-                        </>
+                    <BB_TextField label='Username' value={this.state.username} onChange={this.handleChangeUsername}
+                                  error={this.state.validUsername == false}/>
+                    <BB_TextField label='Email' value={this.state.email} onChange={this.handleChangeEmail}
+                                  error={this.state.validEmail == false}/>
+                    <BB_TextField label='Password' value={this.state.password} onChange={this.handleChangePassword}
+                                  error={this.state.validPassword == false}/>
+                    <BB_ButtonLink location='forgot-password' size='small' type='normal'
+                                   text='By proceeding further I agree with general terms & conditions.'/>
+                    <div className='bs-create-account-box' onClick={this.handleRegisterStepOne}>
+                        <span className='text18-white'>Continue</span></div>
+                    <BB_ButtonLink location='login' size='medium' type='outlined' text='I already have an account.'/>
+                </>
             )
         } else return <Loader/>
     }
 }
+
 export default UserData;

@@ -98,10 +98,7 @@ class FavouriteTeam extends React.Component {
                             <div className='bs-create-account-box'
                                  onClick={this.state.registered ? () => this.handleRegisterStepTwo() : ()=>this.handleError()}>
                                 <span className='text18-white'>Continue</span></div>
-                            <Link to={`/login`}>
-                                <div className='bs-i-already-have-an-account-box'><span className='text14-white'>I already have an account.</span>
-                                </div>
-                            </Link>
+                            <BB_ButtonLink location='login' size='medium' type='outlined' text='I already have an account.'/>
                        </>
             )
         } else return <Loader/>
