@@ -1,7 +1,6 @@
 import React from 'react';
 import '../../../src/style/betbook/user/register.scss'
 import '../../../src/style/app.scss'
-import {Link, Redirect} from "react-router-dom";
 import Loader from "../components/other/Loader";
 import BB_ButtonLink from "../components/controls/BB_ButtonLink";
 import BB_TextField from "../components/controls/BB_TextField";
@@ -55,9 +54,10 @@ class FavouriteTeam extends React.Component {
         })
     };
 
-    handleCountryChange = (event) => {
-        this.setState({country_id:event.target.value});
-        this.getAllCLubsByCountryId(event.target.value);
+    handleCountryChange = (e) => {
+        console.log(e.target.value)
+        this.setState({country_id:e.target.value});
+        this.getAllCLubsByCountryId(e.target.value);
     };
 
     handleClubChange = (event) => {
@@ -70,32 +70,23 @@ class FavouriteTeam extends React.Component {
     };
 
     render() {
+
         if (this.state.loaded) {
 
             return (
                         <>
-                            <BB_TextField label = 'Your name' value={this.state.user_fullname} onChange={this.handleChangeFullName} error={this.state.validUsername==''}/>
+                            <BB_TextField label = 'Your name' value={this.state.user_fullname} onChange={this.handleChangeFullName} error={this.state.user_fullname == ''}/>
+                            <BB_Select options={this.state.countries.map(country => {return {value: country.id, label: country.name, key: country.id}})}
+                                       text='Select your favourite national team' onChange={this.handleCountryChange}/>
+                            <BB_Select options={this.state.country_clubs.map(club => {return {value: club.id, label: club.name, key: club.id}})}
+                                       text='Select your favourite club' onChange={this.handleClubChange} error={this.state.country_clubs.length == 0} club='hidden'/>
 
-                            <div className='bs-email-container'>
-                                <div className='bs-email-text'>{<span className='text15-white'>Select your favourite national team</span>}</div>
-                                <BB_Select options={this.state.countries.map(country => {return {value: country.id, label: country.name}})}  />
-                            </div>
-
-
-
-                            <div className={this.state.country_id ? 'bs-email-container' : 'bs-email-container hidden'}>
-                                <div className='bs-email-text'>{
-                                    <span className='text15-white'>Select your favourite club</span>}</div>
-                                {<select className='bs-email-box' value={this.state.team_id} onChange={this.handleClubChange}>
-                                        <option selected='selected' className={this.state.team_id != false ? 'hidden' : ''}>Tap to select</option>
-                                        {this.state.country_clubs.length > 0 ? this.state.country_clubs.map(club => <option value ={club.id} key ={club.name + club.id}>{club.name}</option>) : ''}
-                                    </select>}
-                                    <div className='bs-text-under-password'><span className='text11-white'>By procceding further I agree with general terms & conditions. </span></div>
-                            </div>
+                            <BB_ButtonLink size='small' type='normal' text='By proceeding further I agree with general terms & conditions.'/>
 
                             <div className='bs-create-account-box'
                                  onClick={this.state.registered ? () => this.handleRegisterStepTwo() : ()=>this.handleError()}>
                                 <span className='text18-white'>Continue</span></div>
+
                             <BB_ButtonLink location='login' size='medium' type='outlined' text='I already have an account.'/>
                        </>
             )

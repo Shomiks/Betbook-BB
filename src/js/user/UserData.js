@@ -95,11 +95,11 @@ class UserData extends React.Component {
         if (this.state.loaded) {
             return (<>
                     <BB_TextField label='Username' value={this.state.username} onChange={this.handleChangeUsername}
-                                  error={this.state.validUsername == false}/>
+                                  error={this.state.validUsername == false || this.state.username == ''}/>
                     <BB_TextField label='Email' value={this.state.email} onChange={this.handleChangeEmail}
-                                  error={this.state.validEmail == false}/>
+                                  error={this.state.validEmail == false || this.state.email == ''}/>
                     <BB_TextField label='Password' value={this.state.password} onChange={this.handleChangePassword}
-                                  error={this.state.validPassword == false}/>
+                                  error={this.state.validPassword == false || this.state.password == ''}/>
                     <BB_ButtonLink location='forgot-password' size='small' type='normal'
                                    text='By proceeding further I agree with general terms & conditions.'/>
                     <div className='bs-create-account-box' onClick={this.handleRegisterStepOne}>
