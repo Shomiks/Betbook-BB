@@ -4,6 +4,7 @@ import '../../../src/style/app.scss'
 import Loader from "../components/other/Loader";
 import BB_ButtonLink from "../components/controls/BB_ButtonLink";
 import {Link} from "react-router-dom";
+import BB_TextField from "../components/controls/BB_TextField";
 
 class UserData extends React.Component {
 
@@ -93,9 +94,9 @@ class UserData extends React.Component {
 
         if (this.state.loaded) {
             return (<>
-                            <BB_ButtonLink label = 'Username' value={this.state.username} onChange={this.handleChangeUsername} error={this.state.validUsername==false}/>
-                            <BB_ButtonLink label = 'Email' value={this.state.email} onChange={this.handleChangeEmail} error={this.state.validEmail==false}/>
-                            <BB_ButtonLink label = 'Password' value={this.state.password} onChange={this.handleChangePassword} error={this.state.validPassword==false}/>
+                            <BB_TextField label = 'Username' value={this.state.username} onChange={this.handleChangeUsername} error={this.state.validUsername==false}/>
+                            <BB_TextField label = 'Email' value={this.state.email} onChange={this.handleChangeEmail} error={this.state.validEmail==false}/>
+                            <BB_TextField label = 'Password' value={this.state.password} onChange={this.handleChangePassword} error={this.state.validPassword==false}/>
                             <div className='bs-text-under-password'><span className='text11-white'>By proceeding further I agree with general terms & conditions. </span></div>
 
                         <div className='bs-create-account-box' onClick={this.handleRegisterStepOne}>
