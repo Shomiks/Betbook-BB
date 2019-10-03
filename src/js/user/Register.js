@@ -7,6 +7,8 @@ import MainContainer from "../components/containers/MainContainer";
 import BB_Logo from "../components/other/BB_Logo";
 import BottomContainer from "../components/containers/BottomContainer";
 import BB_TextField from "../components/controls/BB_TextField";
+import BB_ButtonLink from "../components/controls/BB_ButtonLink";
+import BB_Button from "../components/controls/BB_Button";
 
 class Register extends React.Component {
 
@@ -164,12 +166,9 @@ class Register extends React.Component {
                                       label='Email' error={this.state.validPassword == false}/>
                         <BB_TextField type='username' value={this.state.password} onChange={this.handleChangePassword}
                                       label='Password' error={this.state.validPassword == false}/>
-                        <div className='bs-create-account-box' onClick={!this.state.favourites ? () => this.handleRegisterStepOne() : (this.state.registered ? () => this.handleRegisterStepTwo() : ()=>this.handleError())}>
-                            <span className='text18-white'>Continue</span></div>
-                        <Link to={`/login`}>
-                            <div className='bs-i-already-have-an-account-box'><span className='text14-white'>I already have an account.</span>
-                            </div>
-                        </Link>
+                        <span className='text11-white'>By procceding further I agree with general terms & conditions. </span>
+                        <BB_Button label='Continue'/>
+                        <BB_ButtonLink location='login' size='medium' type='outlined' text='I already have an account.' />
                     </BottomContainer>
                 </MainContainer>
             )
@@ -177,3 +176,6 @@ class Register extends React.Component {
     }
 }
 export default Register;
+
+// <div className='bs-create-account-box' onClick={!this.state.favourites ? () => this.handleRegisterStepOne() : (this.state.registered ? () => this.handleRegisterStepTwo() : ()=>this.handleError())}>
+// <span className='text18-white'>Continue</span></div>
