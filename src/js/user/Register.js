@@ -3,12 +3,6 @@ import '../../../src/style/betbook/user/register.scss'
 import '../../../src/style/app.scss'
 import {Link, Redirect} from "react-router-dom";
 import Loader from "../components/other/Loader";
-import BB_Logo from "../components/other/BB_Logo";
-import MainContainer from "../components/containers/MainContainer";
-import BottomContainer from "../components/containers/BottomContainer";
-import BB_TextField from "../components/controls/BB_TextField";
-import BB_ButtonLink from "../components/controls/BB_ButtonLink";
-import BB_Button from "../components/controls/BB_Button";
 
 class Register extends React.Component {
 
@@ -116,8 +110,7 @@ class Register extends React.Component {
         this.sharedObj.apiHelper.user.register(this.state.username,this.state.password,this.state.email,this.state.user_fullname,this.state.country_id,this.state.team_id,(res)=>{
             localStorage.setItem('user_id', res[0]);
             res[1].forEach(league_id => {
-                if(league_id != []){
-                    this.sharedObj.apiHelper.user.favourite_team_leagues(res[0],league_id);}
+                this.sharedObj.apiHelper.user.favourite_team_leagues(res[0],league_id);
             })
         });
         this.setState({login:true});
@@ -131,7 +124,7 @@ class Register extends React.Component {
 
     getAllCLubsByCountryId = (country_id) => {
         this.sharedObj.apiHelper.teams.getByCountryId(country_id,res => {
-            this.setState({country_clubs: res});
+            this.setState({country_clubs: res,clubs_fetched:true});
         })
     };
 
@@ -152,29 +145,75 @@ class Register extends React.Component {
     render() {
 
         if (this.state.loaded) {
+
             if (this.state.login) {
-                window.location.reload();
+                window.location.hash = 'home';
+                return <Redirect to='/home'/>
             }
 
-            else return (<MainContainer>
-                    <BB_Logo/>
-                    <BottomContainer>
-                        <BB_TextField type='username' value={this.state.username} onChange={this.handleChangeUsername}
-                                      label='Username' error={this.state.validPassword == false}/>
-                        <BB_TextField type='email' value={this.state.email} onChange={this.handleChangeEmail}
-                                      label='Email' error={this.state.validPassword == false}/>
-                        <BB_TextField type='username' value={this.state.password} onChange={this.handleChangePassword}
-                                      label='Password' error={this.state.validPassword == false}/>
-                        <span className='text11-white'>By procceding further I agree with general terms & conditions. </span>
-                        <BB_Button label='Continue'/>
-                        <BB_ButtonLink location='login' size='medium' type='outlined' text='I already have an account.' />
-                    </BottomContainer>
-                </MainContainer>
+            else return (<div className='betbook-screen-login'>
+                    <div className='main-container'>
+                        <div className='betbook-logo-box'><img src='./assets/images/betbook---logo.png' alt=''/></div>
+
+                    <div className='register-container'>
+                        <div className='bs-user-container'>
+                            <div className='bs-username-text'>{this.state.favourites ?
+                                <span className='text15-white'>Your name</span> :
+                                <span className='text15-white'>Username</span>}
+                            </div>
+                            <input
+                                className={this.state.validUsername ? 'bs-username-box' : 'bs-username-box bs-username-box-error'}
+                                type='text' value={this.state.favourites ? this.state.user_fullname : this.state.username} onChange={this.state.favourites ? this.handleChangeFullName : this.handleChangeUsername}/>
+                        </div>
+
+
+                        <div className='bs-email-container'>
+                            <div className='bs-email-text'>{this.state.favourites ?
+                                <span className='text15-white'>Select your favourite national team</span> :
+                                <span className='text15-white'>Email</span>}
+                            </div>
+
+                            {this.state.favourites ? <select className='bs-email-box' value={this.state.country_id} onChange={this.handleCountryChange}>
+                                    <option selected='selected' className={this.state.team_id != false ? 'hidden' : ''}>Tap to select</option>
+                                    {this.state.countries.map(country => <option value ={country.id} key ={country.name + country.id}>{country.name}</option>)}
+                                </select>
+                                : <><input
+                                    className={this.state.validEmail ? 'bs-email-box' : 'bs-email-box bs-email-box-error'}
+                                    value={this.state.email} onChange={this.handleChangeEmail} type='email'/></>
+                            }
+                        </div>
+
+
+                        <div className={this.state.country_id || !this.state.favourites ? 'bs-password-container' : 'bs-password-container hidden'}>
+                            <div className='bs-password-text'>{this.state.favourites ?
+                                <span className='text15-white'>Select your favourite club</span> :
+                                <span className='text15-white'>Password</span>}</div>
+
+                            {this.state.favourites ? <select className='bs-password-box' value={this.state.team_id} onChange={this.handleClubChange}>
+                                    <option selected='selected' className={this.state.team_id != false ? 'hidden' : ''}>Tap to select</option>
+                                    {this.state.country_clubs.length > 0 ? this.state.country_clubs.map(club => <option value ={club.id} key ={club.name + club.id}>{club.name}</option>) : ''}
+                                </select>
+                                : <><input
+                                    className={this.state.validPassword ? 'bs-password-box' : 'bs-password-box bs-password-box-error'}
+                                    type='password' value={this.state.password}
+                                    onChange={this.handleChangePassword}/></>}
+
+                            <div className='bs-text-under-password'><span className='text11-white'>By procceding further I agree with general terms & conditions. </span></div>
+                        </div>
+
+
+                        <div className='bs-create-account-box'
+                             onClick={!this.state.favourites ? () => this.handleRegisterStepOne() : (this.state.registered ? () => this.handleRegisterStepTwo() : ()=>this.handleError())}>
+                            <span className='text18-white'>Continue</span></div>
+                        <Link to={`/login`}>
+                            <div className='bs-i-already-have-an-account-box'><span className='text14-white'>I already have an account.</span>
+                            </div>
+                        </Link>
+                    </div>
+                    </div>
+                </div>
             )
         } else return <Loader/>
     }
 }
 export default Register;
-
-// <div className='bs-create-account-box' onClick={!this.state.favourites ? () => this.handleRegisterStepOne() : (this.state.registered ? () => this.handleRegisterStepTwo() : ()=>this.handleError())}>
-// <span className='text18-white'>Continue</span></div>
