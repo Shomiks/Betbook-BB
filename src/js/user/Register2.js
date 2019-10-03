@@ -1,7 +1,6 @@
 import React from 'react';
 import '../../../src/style/betbook/user/register.scss'
 import '../../../src/style/app.scss'
-import {Link, Redirect} from "react-router-dom";
 import UserData from "./UserData";
 import FavouriteTeam from "./FavouriteTeam";
 import BB_Logo from "../components/other/BB_Logo";
@@ -26,7 +25,6 @@ class Register2 extends React.Component {
     handleStep1UserDataOnComplete = () => {
         this.setState({step: 2});
     };
-
 
     render() {
 
