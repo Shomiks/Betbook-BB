@@ -6,6 +6,9 @@ import BB_TextField from "../components/controls/BB_TextField";
 import MainContainer from "../components/containers/MainContainer";
 import BB_Logo from "../components/other/BB_Logo";
 import BottomContainer from "../components/containers/BottomContainer";
+import BB_ButtonLink from "../components/controls/BB_ButtonLink";
+import BB_ButtonLink from "../components/controls/BB_ButtonLink";
+import BB_Button from "../components/controls/BB_Button";
 
 class Login extends React.Component {
 
@@ -25,8 +28,8 @@ class Login extends React.Component {
     handleLogin = () => {
         if (this.state.username != '' && this.state.password != '') {
             this.sharedObj.apiHelper.login(this.state.username, this.state.password, 1, (res) => {
+                localStorage.setItem('user_id', res.id);
                 if (res) {
-                    localStorage.setItem('user_id', res.id);
                     this.setState({loggedIn: true});
                 } else {
                     alert('wrong username/password!');
@@ -49,28 +52,24 @@ class Login extends React.Component {
 
     render() {
 
-        if(this.state.loggedIn){
-            window.location.hash = '/home';
-            window.location.reload();
+        if (this.state.loggedIn) {
+            return <Redirect to='/home'/>
         }
 
         return (<MainContainer>
                 <BB_Logo/>
-                    <BottomContainer>
-                        <BB_TextField value={this.state.username} onChange={this.handleChangeUsername}
-                                      label='Username' error={this.state.validPassword == false}/>
-                        <BB_TextField value={this.state.password} onChange={this.handleChangePassword}
-                                      label='Password' error={this.state.validPassword == false}/>
-                        <Link to={`/forgot-password`}>
-                            <div className='bs-text-under-password'><span className='text11-white'>I forgot my password.</span></div>
-                        </Link>
-                        <div className='bs-create-account-box' onClick={this.handleLogin}><span
-                            className='text18-white'>Sign in</span></div>
-                        <Link to={`/register`}>
-                            <div className='bs-i-already-have-an-account-box'><span className='text14-white'>I don't have an account.</span>
-                            </div>
-                        </Link>
-                    </BottomContainer>
+                <BottomContainer>
+                    <BB_TextField type='username' value={this.state.username} onChange={this.handleChangeUsername}
+                                  label='Username' error={this.state.validPassword == false}/>
+                    <BB_TextField type='username' value={this.state.password} onChange={this.handleChangePassword}
+                                  label='Password' error={this.state.validPassword == false}/>
+                    <BB_ButtonLink location='forgot-password' size='small' type='normal' text='I forgot my password.' />
+                    <BB_Button label='Sign in'/>
+                    <BB_ButtonLink location='register' size='medium' type='outlined' text='I dont have an account.' />
+                        <BB_ButtonLink location='forgot-password' size='small' type='normal' text='I forgot my password.' />
+                        <BB_Button label='Sign in'/>
+                        <BB_ButtonLink location='register' size='medium' type='outlined' text='I dont have an account.' />
+                </BottomContainer>
                 </MainContainer>
         )
     }

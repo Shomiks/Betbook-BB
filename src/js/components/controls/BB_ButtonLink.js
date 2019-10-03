@@ -3,15 +3,14 @@ import {Link, Redirect} from "react-router-dom";
 
 function BB_ButtonLink(props) {
 
-    let inputCssClass = "bs-email-box";
-    if(props.error){
-        inputCssClass = "bs-email-box bs-email-box-error";
+    let inputCssClass = "bb_button_link";
+    if (props.type) {
+        inputCssClass = "normal outlined";
     }
 
-    return <div className='bs-email-container'>
-            <div className='bs-email-text'><span className='text15-white'>{props.label}</span></div>
-            <input className={inputCssClass} type='username' value={props.value} onChange={props.onChange}/>
-        </div>
+    return <Link to={props.location}><div className={'bb_button_link ' + props.type} onClick={props.handleLogin}>
+        <div className={'bs-email-text'}><span className={props.size}>{props.text}</span></div>
+    </div></Link>
 }
 
 export default BB_ButtonLink;

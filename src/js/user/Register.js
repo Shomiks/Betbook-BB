@@ -4,6 +4,10 @@ import '../../../src/style/app.scss'
 import {Link, Redirect} from "react-router-dom";
 import Loader from "../components/other/Loader";
 import BB_Logo from "../components/other/BB_Logo";
+import MainContainer from "../components/containers/MainContainer";
+import BB_Logo from "../components/other/BB_Logo";
+import BottomContainer from "../components/containers/BottomContainer";
+import BB_TextField from "../components/controls/BB_TextField";
 
 class Register extends React.Component {
 
@@ -23,6 +27,7 @@ class Register extends React.Component {
             favourites: false,
             country_selected: false,
             club_selected: false,
+            clubs_fetched: false,
             registered: false,
             user_fullname:'',
             countries: [],
@@ -150,64 +155,23 @@ class Register extends React.Component {
                 window.location.reload();
             }
 
-            else return (<div className='betbook-screen-login'>
-                    <div className='main-container'>
-                        <BB_Logo/>
-
-                    <div className='register-container'>
-                        <div className='bs-user-container'>
-                            <div className='bs-username-text'>{this.state.favourites ?
-                                <span className='text15-white'>Your name</span> :
-                                <span className='text15-white'>Username</span>}
-                            </div>
-                            <input
-                                className={this.state.validUsername ? 'bs-username-box' : 'bs-username-box bs-username-box-error'}
-                                type='text' value={this.state.favourites ? this.state.user_fullname : this.state.username} onChange={this.state.favourites ? this.handleChangeFullName : this.handleChangeUsername}/>
-                        </div>
-
-                        <div className='bs-email-container'>
-                            <div className='bs-email-text'>{this.state.favourites ?
-                                <span className='text15-white'>Select your favourite national team</span> :
-                                <span className='text15-white'>Email</span>}
-                            </div>
-
-                            {this.state.favourites ? <select className='bs-email-box' value={this.state.country_id} onChange={this.handleCountryChange}>
-                                    <option selected='selected' className={this.state.team_id != false ? 'hidden' : ''}>Tap to select</option>
-                                    {this.state.countries.map(country => <option value ={country.id} key ={country.name + country.id}>{country.name}</option>)}
-                                </select>
-                                : <><input
-                                    className={this.state.validEmail ? 'bs-email-box' : 'bs-email-box bs-email-box-error'}
-                                    value={this.state.email} onChange={this.handleChangeEmail} type='email'/></>
-                            }
-                        </div>
-
-                        <div className={this.state.country_id || !this.state.favourites ? 'bs-password-container' : 'bs-password-container hidden'}>
-                            <div className='bs-password-text'>{this.state.favourites ?
-                                <span className='text15-white'>Select your favourite club</span> :
-                                <span className='text15-white'>Password</span>}</div>
-
-                            {this.state.favourites ? <select className='bs-password-box' value={this.state.team_id} onChange={this.handleClubChange}>
-                                    <option selected='selected' className={this.state.team_id != false ? 'hidden' : ''}>Tap to select</option>
-                                    {this.state.country_clubs.length > 0 ? this.state.country_clubs.map(club => <option value ={club.id} key ={club.name + club.id}>{club.name}</option>) : ''}
-                                </select>
-                                : <><input
-                                    className={this.state.validPassword ? 'bs-password-box' : 'bs-password-box bs-password-box-error'}
-                                    type='password' value={this.state.password}
-                                    onChange={this.handleChangePassword}/></>}
-
-                            <div className='bs-text-under-password'><span className='text11-white'>By procceding further I agree with general terms & conditions. </span></div>
-                        </div>
-
-                        <div className='bs-create-account-box'
-                             onClick={!this.state.favourites ? () => this.handleRegisterStepOne() : (this.state.registered ? () => this.handleRegisterStepTwo() : ()=>this.handleError())}>
+            else return (<MainContainer>
+                    <BB_Logo/>
+                    <BottomContainer>
+                        <BB_TextField type='username' value={this.state.username} onChange={this.handleChangeUsername}
+                                      label='Username' error={this.state.validPassword == false}/>
+                        <BB_TextField type='email' value={this.state.email} onChange={this.handleChangeEmail}
+                                      label='Email' error={this.state.validPassword == false}/>
+                        <BB_TextField type='username' value={this.state.password} onChange={this.handleChangePassword}
+                                      label='Password' error={this.state.validPassword == false}/>
+                        <div className='bs-create-account-box' onClick={!this.state.favourites ? () => this.handleRegisterStepOne() : (this.state.registered ? () => this.handleRegisterStepTwo() : ()=>this.handleError())}>
                             <span className='text18-white'>Continue</span></div>
                         <Link to={`/login`}>
                             <div className='bs-i-already-have-an-account-box'><span className='text14-white'>I already have an account.</span>
                             </div>
                         </Link>
-                    </div>
-                    </div>
-                </div>
+                    </BottomContainer>
+                </MainContainer>
             )
         } else return <Loader/>
     }
