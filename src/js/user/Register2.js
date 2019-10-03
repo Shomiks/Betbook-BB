@@ -6,6 +6,8 @@ import UserData from "./UserData";
 import FavouriteTeam from "./FavouriteTeam";
 import BB_Logo from "../components/other/BB_Logo";
 import MainContainer from "../components/containers/MainContainer";
+import BottomContainer from "../components/containers/BottomContainer";
+import BB_Button from "../components/controls/BB_Button";
 
 class Register2 extends React.Component {
 
@@ -22,9 +24,9 @@ class Register2 extends React.Component {
             return (
                    <MainContainer>
                         <BB_Logo/>
-                        <div className='register-container'>
+                       <BottomContainer>
                             {this.state.step == 1 ? <UserData/> : <FavouriteTeam/>}
-                        </div>
+                       </BottomContainer>
                    </MainContainer>
             )
     }

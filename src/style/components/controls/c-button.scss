@@ -1,0 +1,22 @@
+.c-button {
+  cursor: pointer;
+  position: relative;
+  display: block;
+  height: 50px;
+  width: 305px;
+  background: linear-gradient(180deg, #FEA938 0%, rgba(255, 171, 58, 0) 100%), #EA6309;
+  border-radius: 25px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  line-height: 2.8;
+
+  &:active {
+    filter: brightness(120%);
+  }
+
+  &:focus {
+    outline: none;
+    filter: brightness(150%);
+    border-color: #f68c25;
+  }
+}

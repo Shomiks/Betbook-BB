@@ -75,14 +75,10 @@ class FavouriteTeam extends React.Component {
             return (
                         <>
                             <BB_TextField label = 'Your name' value={this.state.user_fullname} onChange={this.handleChangeFullName} error={this.state.validUsername==''}/>
-
                             <div className='bs-email-container'>
                                 <div className='bs-email-text'>{<span className='text15-white'>Select your favourite national team</span>}</div>
                                 <BB_Select options={this.state.countries.map(country => {return {value: country.id, label: country.name}})}  />
                             </div>
-
-
-
                             <div className={this.state.country_id ? 'bs-email-container' : 'bs-email-container hidden'}>
                                 <div className='bs-email-text'>{
                                     <span className='text15-white'>Select your favourite club</span>}</div>
@@ -92,7 +88,6 @@ class FavouriteTeam extends React.Component {
                                     </select>}
                                     <div className='bs-text-under-password'><span className='text11-white'>By procceding further I agree with general terms & conditions. </span></div>
                             </div>
-
                             <div className='bs-create-account-box'
                                  onClick={this.state.registered ? () => this.handleRegisterStepTwo() : ()=>this.handleError()}>
                                 <span className='text18-white'>Continue</span></div>

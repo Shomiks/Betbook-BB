@@ -65,7 +65,6 @@ class Login extends React.Component {
                     <BB_ButtonLink location='forgot-password' size='small' type='normal' text='I forgot my password.' />
                     <BB_Button label='Sign in'/>
                     <BB_ButtonLink location='register' size='medium' type='outlined' text='I dont have an account.' />
-
                 </BottomContainer>
                 </MainContainer>
         )

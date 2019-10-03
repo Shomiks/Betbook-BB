@@ -17,20 +17,6 @@ a{
   background-image: url("../assets/images/action-athletes-audience.png");
   background-size: cover;
 
-  .betbook-logo-box {
-    padding-top: 110px;
-    position: absolute;
-    height: 100%;
-    padding-bottom: 480px;
-    box-sizing: border-box;
-    width: 100%;
-
-    img{
-      max-height: 59px;
-      height: 100%;
-    }
-  }
-
   .main-container {
     position: relative;
     height: 100%;
@@ -81,40 +67,10 @@ a{
       }
     }
 
-    .login-container {
-      height: 335px;
-      width: 305px;
-      position: absolute;
-      bottom: 30px;
-      left: 50%;
-      margin-left: -152.5px;
-    }
+
   }
 
-  .outlined {
-    border: 1px solid #FFF;
-    height: 40px;
-    width: 225px;
-    border-radius: 25px;
-    line-height: 2.5;
-  }
 
-  .bb_button_link {
-    position: relative;
-    margin: 0 auto;
-  }
-
-  .small {
-    color: #FFF;
-    font-size: 11px;
-    font-family: "SF Display", serif;
-  }
-
-  .medium {
-    color: #FFF;
-    font-size: 15px;
-    font-family: "SF Display", serif;
-  }
 }
 
 @media only screen and (max-height: 650px) {
@@ -128,77 +84,54 @@ a{
   display: none;
 }
 
-.bs-email-container {
-  height: 80px;
-  width: 305px;
-  position: relative;
-
-  .bs-email-text {
-    margin-bottom: 11px;
-  }
-
-  .bs-email-box {
-    height: 40px;
-    width: 305px;
-    background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
-    border: 1px solid #FFFFFF;
-    box-sizing: border-box;
-    border-radius: 25px;
-    padding-left: 20px;
-    font-family: SF Display, serif;
-    font-size: 15px;
-    color: #2A2A2B;
-    &:active {
-      filter: brightness(120%);
-    }
-    &:focus {
-      outline: none;
-      filter: brightness(110%);
-      border-color: #f68c25;
-    }
-  }
-
-  .bs-email-box-error {
-    height: 40px;
-    width: 309px;
-    background: linear-gradient(0deg, rgba(186, 67, 67, 0.5), rgba(186, 67, 67, 0.5));
-    border: 1px solid #BA4343;
-    box-sizing: border-box;
-    border-radius: 25px;
-    color: #FFF;
-    &:active {
-      filter: brightness(120%);
-    }
-    &:focus {
-      outline: none;
-      filter: brightness(150%);
-      border-color: #f68c25;
-    }
-  }
-}
-
-
-.bs-create-account-box {
-  cursor: pointer;
-  position: relative;
-  display: block;
-  height: 50px;
-  width: 305px;
-  background: linear-gradient(180deg, #FEA938 0%, rgba(255, 171, 58, 0) 100%), #EA6309;
-  border-radius: 25px;
-  margin-top: 55px;
-  margin-bottom: 25px;
-  &:active {
-    filter: brightness(120%);
-  }
-  &:focus {
-    outline: none;
-    filter: brightness(150%);
-    border-color: #f68c25;
-  }
+//.bs-email-container {
+//  height: 80px;
+//  width: 305px;
+//  position: relative;
+//
+//  .bs-email-text {
+//    margin-bottom: 11px;
+//  }
+//
+//  .bs-email-box {
+//    height: 40px;
+//    width: 305px;
+//    background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
+//    border: 1px solid #FFFFFF;
+//    box-sizing: border-box;
+//    border-radius: 25px;
+//    padding-left: 20px;
+//    font-family: SF Display, serif;
+//    font-size: 15px;
+//    color: #2A2A2B;
+//    &:active {
+//      filter: brightness(120%);
+//    }
+//    &:focus {
+//      outline: none;
+//      filter: brightness(110%);
+//      border-color: #f68c25;
+//    }
+//  }
+//
+//  .bs-email-box-error {
+//    height: 40px;
+//    width: 309px;
+//    background: linear-gradient(0deg, rgba(186, 67, 67, 0.5), rgba(186, 67, 67, 0.5));
+//    border: 1px solid #BA4343;
+//    box-sizing: border-box;
+//    border-radius: 25px;
+//    color: #FFF;
+//    &:active {
+//      filter: brightness(120%);
+//    }
+//    &:focus {
+//      outline: none;
+//      filter: brightness(150%);
+//      border-color: #f68c25;
+//    }
+//  }
+//}
 
 
-  .text18-white {
-    line-height: 2.8;
-  }
-}
+
