@@ -93,6 +93,7 @@ class UserData extends React.Component {
     render() {
 
         if (this.state.loaded) {
+            console.log(this.state.validUsername)
             return (<>
                     <BB_TextField label='Username' value={this.state.username} onChange={this.handleChangeUsername}
                                   error={this.state.validUsername == false || this.state.username == ''}/>
