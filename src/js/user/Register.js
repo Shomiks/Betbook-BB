@@ -154,7 +154,6 @@ class Register extends React.Component {
             else return (<div className='betbook-screen-login'>
                     <div className='main-container'>
                         <div className='betbook-logo-box'><img src='./assets/images/betbook---logo.png' alt=''/></div>
-
                     <div className='register-container'>
                         <div className='bs-user-container'>
                             <div className='bs-username-text'>{this.state.favourites ?
@@ -165,8 +164,6 @@ class Register extends React.Component {
                                 className={this.state.validUsername ? 'bs-username-box' : 'bs-username-box bs-username-box-error'}
                                 type='text' value={this.state.favourites ? this.state.user_fullname : this.state.username} onChange={this.state.favourites ? this.handleChangeFullName : this.handleChangeUsername}/>
                         </div>
-
-
                         <div className='bs-email-container'>
                             <div className='bs-email-text'>{this.state.favourites ?
                                 <span className='text15-white'>Select your favourite national team</span> :

@@ -6,6 +6,8 @@ import BB_TextField from "../components/controls/BB_TextField";
 import MainContainer from "../components/containers/MainContainer";
 import BB_Logo from "../components/other/BB_Logo";
 import BottomContainer from "../components/containers/BottomContainer";
+import BB_ButtonLink from "../components/controls/BB_ButtonLink";
+import BB_Button from "../components/controls/BB_Button";
 
 class Login extends React.Component {
 
@@ -60,16 +62,9 @@ class Login extends React.Component {
                                       label='Username' error={this.state.validPassword == false}/>
                         <BB_TextField type='username' value={this.state.password} onChange={this.handleChangePassword}
                                       label='Password' error={this.state.validPassword == false}/>
-                        <Link to={`/forgot-password`}>
-                            <div className='bs-text-under-password'><span className='text11-white'>I forgot my password. </span>
-                            </div>
-                        </Link>
-                        <div className='bs-create-account-box' onClick={this.handleLogin}><span
-                            className='text18-white'>Sign in</span></div>
-                        <Link to={`/register`}>
-                            <div className='bs-i-already-have-an-account-box'><span className='text14-white'>I don't have an account.</span>
-                            </div>
-                        </Link>
+                        <Link to={`/forgot-password`}><BB_ButtonLink size='small' type='normal' text='I forgot my password.' /></Link>
+                        <BB_Button label='Sign in'/>
+                        <Link to={'/register'}> <BB_ButtonLink size='medium' type='outlined' text='I dont have an account.' /></Link>
                     </BottomContainer>
                 </MainContainer>
         )
