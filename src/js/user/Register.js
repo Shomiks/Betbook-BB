@@ -3,8 +3,8 @@ import '../../../src/style/betbook/user/register.scss'
 import '../../../src/style/app.scss'
 import {Link, Redirect} from "react-router-dom";
 import Loader from "../components/other/Loader";
-import MainContainer from "../components/containers/MainContainer";
 import BB_Logo from "../components/other/BB_Logo";
+import MainContainer from "../components/containers/MainContainer";
 import BottomContainer from "../components/containers/BottomContainer";
 import BB_TextField from "../components/controls/BB_TextField";
 import BB_ButtonLink from "../components/controls/BB_ButtonLink";
@@ -116,7 +116,8 @@ class Register extends React.Component {
         this.sharedObj.apiHelper.user.register(this.state.username,this.state.password,this.state.email,this.state.user_fullname,this.state.country_id,this.state.team_id,(res)=>{
             localStorage.setItem('user_id', res[0]);
             res[1].forEach(league_id => {
-                this.sharedObj.apiHelper.user.favourite_team_leagues(res[0],league_id);
+                if(league_id != []){
+                    this.sharedObj.apiHelper.user.favourite_team_leagues(res[0],league_id);}
             })
         });
         this.setState({login:true});
@@ -130,7 +131,7 @@ class Register extends React.Component {
 
     getAllCLubsByCountryId = (country_id) => {
         this.sharedObj.apiHelper.teams.getByCountryId(country_id,res => {
-            this.setState({country_clubs: res,clubs_fetched:true});
+            this.setState({country_clubs: res});
         })
     };
 
@@ -151,10 +152,8 @@ class Register extends React.Component {
     render() {
 
         if (this.state.loaded) {
-
             if (this.state.login) {
-                window.location.hash = 'home';
-                return <Redirect to='/home'/>
+                window.location.reload();
             }
 
             else return (<MainContainer>

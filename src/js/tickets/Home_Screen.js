@@ -1,7 +1,8 @@
 import React from 'react'
 import '../../style/betbook/home_screen.scss'
-import {Link} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
 import Loader from "../components/other/Loader";
+import FooterContainer from "../components/containers/FooterContainer";
 
 class Home_Screen extends React.Component {
 
@@ -18,38 +19,27 @@ class Home_Screen extends React.Component {
 
     componentDidMount = () => {
         this.getUserFavorites();
-        setTimeout(() => {
-            this.sharedObj.footerInstance.setActive('timeline');
-        }, 1);
     };
 
     getUserFavorites = () => {
-        this.sharedObj.apiHelper.home.get_favourites(localStorage.getItem('user_id'), (res) => {
-            this.sharedObj.apiHelper.user.getUser(localStorage.getItem('user_id'), () => {
-                this.setState({username: window.apiHelper.userInfo['username'],realData : res, loaded:true})
-            })
-        });
+        if (window.apiHelper.userInfo) {
+            window.apiHelper.home.get_favourites(window.apiHelper.userInfo.id, (res) => {
+                this.setState({username: window.apiHelper.userInfo['username'], realData: res, loaded: true})
+            });
+        }
     };
 
     handleFinished = (data) => {
         if (1) return <Link to={`finished/league/${data.league.id}`} className='last-week'>
-                <div className='hs_left-box'>
-                    <div className='hs_left-middle-text'><span className='text11-white'>Success Rate xx%</span></div>
-                    <div className='hs_left-bottom-text'>
-                        <div><span className='text11-white'>Check the bet</span></div>
-                    </div>
+            <div className='hs_left-box'>
+                <div className='hs_left-middle-text'><span className='text11-white'>Success Rate xx%</span></div>
+                <div className='hs_left-bottom-text'>
+                    <div><span className='text11-white'>Check the bet</span></div>
+                </div>
             </div>
         </Link>;
         else return <div className='last-week'/>
     };
-
-    // renderDate = (data) => {
-    //     let Datefields = data.round.start_date.split(' ')[0].split('-');
-    //     let Timefields = data.round.start_date.split(' ')[1].split(':');
-    //     let year = Datefields[0];
-    //
-    //     return( Datefields[2] + '/' + Datefields[1] + '/' + year + ' ' + Timefields[0] + ':' +  Timefields[1]);
-    // };
 
     handleUpcoming = (data) => {
         return <Link to={`league/${data.league.id}`} className='current-week'>
@@ -88,9 +78,8 @@ class Home_Screen extends React.Component {
     };
 
     render() {
-
         if (this.state.loaded) return (
-            <div className='betbook_screen'>
+            <FooterContainer footerProps={{activeItem: 'timeline'}}>
                 <div className='betbook-logo'/>
                 <div className='main-content'>
                     {this.state.realData.length ?
@@ -103,7 +92,7 @@ class Home_Screen extends React.Component {
                             {this.handleFirstTimeLogin()}</>
                     }
                 </div>
-            </div>
+            </FooterContainer>
         );
         else {
             return <Loader/>

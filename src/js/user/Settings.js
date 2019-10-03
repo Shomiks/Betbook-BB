@@ -1,26 +1,28 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import '../../../src/style/betbook/user/settings.scss'
+import FullContainer from "../components/containers/FullContainer";
 
 class Settings extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {};
-        this.sharedObj = props.sharedObj
+        this.state = {
+            logout:false
+        };
     }
 
-    componentDidMount() {
-        setTimeout(() => {
-            this.sharedObj.headerInstance.setTitle('Settings');
-            this.sharedObj.footerInstance.setActive('profile');
-        },1)
-    }
+    handleLogout = () => {
+        localStorage.clear();
+        window.apiHelper.userInfo = null;
+        this.setState({logout: true})
+    };
 
     render() {
 
-        return (<div className='betbook-screen'>
+        return (<FullContainer footerProps={{activeItem: 'profile'}} headerProps={{title: 'Settings'}}>
+                <div className='betbook-context'>
                 <div className='main-container'>
                     <Link to={`/edit`}> <div className='personal-info'><span className='text11-grey'>Personal info</span>
                         <span className='edit'> Edit</span></div>
@@ -51,14 +53,15 @@ class Settings extends React.Component {
                             <div className='down-text'><span className='text17-white'>{window.apiHelper.userInfo['team'].name}</span></div>
                         </div>
                     </div>
-                    <Link to={`/login`}> <div className='settings-box'>
+                    <Link to={`/login`}> <div className='settings-box' onClick={()=> this.handleLogout()}>
                         <div className='settings-text'>
-                           <span className='text17-red' onClick={()=> localStorage.clear()}>Logout</span>
+                           <span className='text17-red'>Logout</span>
                         </div>
                         </div>
                     </Link>
                 </div>
-            </div>
+                </div>
+            </FullContainer>
         )
     }
 }

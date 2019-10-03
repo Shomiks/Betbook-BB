@@ -2,6 +2,7 @@ import React from 'react';
 import '../../../src/style/betbook/detailed-competitionlisting.scss';
 import {Link} from "react-router-dom";
 import Loader from "../components/other/Loader";
+import FullContainer from "../components/containers/FullContainer";
 
 class Detailed_Competition_Listing extends React.Component {
 
@@ -11,7 +12,6 @@ class Detailed_Competition_Listing extends React.Component {
             realData: [],
             loaded: false
         };
-        this.sharedObj = props.sharedObj;
         this.countryId = props.match.params.countryid;
     }
 
@@ -20,10 +20,8 @@ class Detailed_Competition_Listing extends React.Component {
     }
 
     getAllLeagues(){
-        this.sharedObj.apiHelper.leagues.getAll(this.countryId,(res) => {
+        window.apiHelper.leagues.getAll(this.countryId,(res) => {
             this.setState({realData: res, loaded: true});
-            this.sharedObj.headerInstance.setTitle(this.state.realData.name);
-            this.sharedObj.footerInstance.setActive('ball');
         });
     }
 
@@ -35,7 +33,7 @@ class Detailed_Competition_Listing extends React.Component {
     render() {
 
         if (this.state.loaded) return (
-            <div className='betbook_screen'>
+            <FullContainer  footerProps={{activeItem: 'ball'}} headerProps={{title:this.state.realData.name}}>
                 <div className='main-content'>
                     <div className='leagues-container'>
                         {this.state.realData.leagues.map((data) => <Link to={`/league/${data.id}`} key={data.id + '_'}><div  className='league-field'>
@@ -49,7 +47,7 @@ class Detailed_Competition_Listing extends React.Component {
                         </div></Link>)}
                     </div>
                 </div>
-            </div>
+            </FullContainer>
         );
         else {
             return <Loader/>

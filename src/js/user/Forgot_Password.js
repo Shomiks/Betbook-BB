@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../../src/style/app.scss'
 import '../../../src/style/betbook/user/register.scss'
+import BB_Logo from "../components/other/BB_Logo";
 
 class Forgot_Password extends React.Component {
 
@@ -16,12 +17,12 @@ class Forgot_Password extends React.Component {
 
         return <div className='betbook-screen-login'>
             <div className='main-container'>
-                <div className='betbook-logo-box'><img src='./assets/images/betbook---logo.png'></img></div>
+                <div className='betbook-logo-box'><BB_Logo/></div>
                 {this.state.step == 2 ?
                     <>
                         <div className='bs-email-container-forgot-password'>
                             <div className='bs-email-text'><span className='text15-white'>Email</span></div>
-                            <input className='bs-email-box' type='email'></input>
+                            <input className='bs-email-box' type='email'/>
                             <div className='bs-text-under-password'><span className='text11-white'>Don't worry, it happens :) </span>
                             </div>
                         </div>

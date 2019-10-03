@@ -3,6 +3,7 @@ import MatchShort from '../components/objectcontrols/Match_Short';
 import {Link} from "react-router-dom";
 import '../../style/betbook/week-games.scss';
 import Loader from "../components/other/Loader";
+import FullContainer from "../components/containers/FullContainer";
 
 class Week_Games_Listing extends React.Component {
 
@@ -14,7 +15,6 @@ class Week_Games_Listing extends React.Component {
             loaded: false,
             game:null,
         };
-        this.sharedObj = props.sharedObj;
         this.leagudId = props.match.params.leagueid;
     }
 
@@ -23,13 +23,11 @@ class Week_Games_Listing extends React.Component {
     }
 
     getAllFixtures(){
-        this.sharedObj.apiHelper.leagues.getByID(this.leagudId,localStorage.getItem('user_id'),(res) =>{
-            this.sharedObj.footerInstance.setActive('ball');
+        window.apiHelper.leagues.getByID(this.leagudId,window.apiHelper.userInfo.id,(res) =>{
             this.setState({realData:res,loaded:true})});
     }
 
     renderGames = () => {
-            this.sharedObj.headerInstance.setTitle(this.state.realData.league.name);
             return <>
                 {this.state.realData.fixtures.map((fixture) => <Link to={`/fixture/${fixture.id}`} key={fixture.id}>
                     <MatchShort match={fixture}/></Link>)}
@@ -39,13 +37,12 @@ class Week_Games_Listing extends React.Component {
     render() {
 
         if(this.state.loaded) return (
-            <div className='betbook_screen'>
+            <FullContainer footerProps={{activeItem: 'ball'}} headerProps={{title: this.state.realData.league.name}}>
                 <div className='main-content'>
                     {this.renderGames()}
                 </div>
-            </div>
+            </FullContainer>
         );
-
         else {
             return <Loader/>
         }

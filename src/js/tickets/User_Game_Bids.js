@@ -3,6 +3,7 @@ import MatchShort from '../components/objectcontrols/Match_Short';
 import {Link} from "react-router-dom";
 import '../../style/betbook/week-games.scss';
 import Loader from "../components/other/Loader";
+import FullContainer from "../components/containers/FullContainer";
 
 class User_Game_Bids extends React.Component {
 
@@ -12,12 +13,10 @@ class User_Game_Bids extends React.Component {
         this.state = {
             realData: [],
             loaded: false,
+            title:null,
             game:props.match.params.gameid,
             user:props.match.params.userid
-
-
         };
-        this.sharedObj = props.sharedObj;
         this.leagudId = props.match.params.leagueid;
     }
 
@@ -25,10 +24,18 @@ class User_Game_Bids extends React.Component {
         this.getGameWonStatistics();
     }
 
-    getGameWonStatistics(){
+    getTitle = () => {
+        switch (this.state.game) {
+            case '1': return 'Match Outcome Bids';
+            case '2': return 'Total Goals';
+            case '3': return 'Both Teams To Score Bids';
+            case '4': return 'Half Time/Full Time Bids';
 
-        this.sharedObj.apiHelper.statistics.gameStatistics(this.state.game,this.state.user,(res)=> {
-            this.sharedObj.footerInstance.setActive('profile');
+        }
+    };
+
+    getGameWonStatistics(){
+            window.apiHelper.statistics.gameStatistics(this.state.game,this.state.user,(res)=> {
             this.setState({realData: this.destructObject(res), loaded:true});
         })
     }
@@ -45,24 +52,18 @@ class User_Game_Bids extends React.Component {
     };
 
     renderGames = () => {
-
-            if(this.state.game == 1) this.sharedObj.headerInstance.setTitle('Match Outcome Bids');
-            else if(this.state.game == 2) this.sharedObj.headerInstance.setTitle('Total Goals Bids');
-            else if(this.state.game == 3) this.sharedObj.headerInstance.setTitle('Both Teams To Score Bids');
-            else if(this.state.game == 4) this.sharedObj.headerInstance.setTitle('Half Time/Full Time Bids');
-
-            return <>{this.state.realData.map((fixture) => <Link to={`/fixture/${fixture.id}`} key={fixture.id}>
+                    return <>{this.state.realData.map((fixture) => <Link to={`/fixture/${fixture.id}`} key={fixture.id}>
                 <MatchShort match={fixture}/></Link>)}</>
     };
 
     render() {
 
         if(this.state.loaded) return (
-            <div className='betbook_screen'>
+           <FullContainer footerProps={{activeItem: 'profile'}} headerProps={{title: this.getTitle()}}>
                 <div className='main-content'>
                     {this.renderGames()}
                 </div>
-            </div>
+           </FullContainer>
         );
 
         else {
