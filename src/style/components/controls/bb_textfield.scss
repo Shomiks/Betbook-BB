@@ -1,13 +1,13 @@
-.bs-input-container {
+.bb_tf_container {
   height: 80px;
   width: 305px;
   position: relative;
 
-  .bs-email-text {
+  .bb_tf-text {
     margin-bottom: 11px;
   }
 
-  .bs-input-text {
+  .bb_tf-input-text {
     height: 40px;
     width: 305px;
     background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
@@ -31,23 +31,3 @@
   }
 }
 
-.outlined {
-  margin: 0 auto;
-  border: 1px solid #FFF;
-  height: 40px;
-  width: 225px;
-  border-radius: 25px;
-  line-height: 2.5;
-}
-
-.small {
-  color: #FFF;
-  font-size: 11px;
-  font-family: "SF Display", serif;
-}
-
-.medium {
-  color: #FFF;
-  font-size: 15px;
-  font-family: "SF Display", serif;
-}
