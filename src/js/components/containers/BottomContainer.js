@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../../src/style/components/containers/bottom-container.scss'
+import '../../../style/components/containers/bottom_container.scss'
 
 function BottomContainer(props) {
 

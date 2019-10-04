@@ -103,7 +103,7 @@ class UserData extends React.Component {
                                   error={this.state.validPassword == false || this.state.password == ''}/>
                     <BB_ButtonLink location='forgot-password' size='bb_bl_size_small' type='normal'
                                    text='By proceeding further I agree with general terms & conditions.'/>
-                    <div className='c-button' onClick={this.handleRegisterStepOne}>
+                    <div className='bb_button' onClick={this.handleRegisterStepOne}>
                         <span className='text18-white'>Continue</span></div>
                     <BB_ButtonLink location='login' size='bb_bl_size_medium' type='outlined' text='I already have an account.'/>
                 </>

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../../src/style/components/containers/main-container.scss'
+import '../../../style/components/containers/main_container.scss'
 
 function MainContainer(props) {
    return  <div className='bs-login'><div className='main-container'>
