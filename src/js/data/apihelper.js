@@ -5,7 +5,7 @@ class APIHelper {
     constructor(){}
 
     login = (username, password,login, callBack) => {
-        fetch(this.apiUrl + `/index.php/api/user/?login=` + login + `&username=` + username + '&password=' + password)
+        fetch(this.apiUrl + `/index.php/api/user/checkuser/?username=` + username + '&password=' + password)
             .then(res => res.json())
             .then(res => {
                 callBack(res);
@@ -64,7 +64,7 @@ class APIHelper {
                 });
         },
         validateRegister: (username, email, callBack) => {
-            fetch(this.apiUrl + `/index.php/api/user/?username=` + username + `&email=` + email)
+            fetch(this.apiUrl + `/index.php/api/user/checkemail/?username=` + username + `&email=` + email)
                 .then(res => res.json())
                 .then(res => {
                       callBack(res);

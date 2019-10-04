@@ -6,20 +6,20 @@ import BB_ButtonLink from "../components/controls/BB_ButtonLink";
 import BB_TextField from "../components/controls/BB_TextField";
 import BB_Select from "../components/controls/BB_Select";
 
-class FavouriteTeam extends React.Component {
+class Favourite_Team extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
-            loaded:true,
-            country_id: null,
+            loaded:false,
+            country_id: 370,
             team_id: null,
             registered: false,
-            user_fullname:'',
+            user_fullname: '',
+            validationFullname: null,
             countries: [],
             country_clubs: [],
-            step2:false
         };
     }
 
@@ -32,19 +32,21 @@ class FavouriteTeam extends React.Component {
     };
 
     handleRegisterStepTwo = () => {
-        window.apiHelper.user.register(this.state.username,this.state.password,this.state.email,this.state.user_fullname,this.state.country_id,this.state.team_id,(res)=>{
+        window.apiHelper.user.register(this.props.username,this.props.password,this.props.email,this.state.user_fullname,this.state.country_id,this.state.team_id,(res)=>{
             localStorage.setItem('user_id', res[0]);
             res[1].forEach(league_id => {
                 if(league_id != []){
                     window.apiHelper.user.favourite_team_leagues(res[0],league_id);}
             })
         });
-        this.setState({step2:true});
+        this.props.onComplete();
     };
 
     getAllCountries = () => {
-        window.apiHelper.countries.getAll((res) => {
-            this.setState({countries: res,loaded:true})
+        window.apiHelper.countries.getAll((countries) => {
+            window.apiHelper.teams.getByCountryId(this.state.country_id,country_clubs => {
+                this.setState({countries,country_clubs,loaded:true,team_id: 7339})
+            })
         })
     };
 
@@ -55,18 +57,17 @@ class FavouriteTeam extends React.Component {
     };
 
     handleCountryChange = (e) => {
-        console.log(e.target.value)
         this.setState({country_id:e.target.value});
         this.getAllCLubsByCountryId(e.target.value);
     };
 
     handleClubChange = (event) => {
         let club_selected_id = event.target.value;
-        this.setState({team_id:club_selected_id,registered:true})
+        this.setState({team_id:club_selected_id})
     };
 
-    handleError = () => {
-        alert("Country and club not selected!");
+    setValidation = () => {
+       this.setState({validationFullname:'Please enter your name.'})
     };
 
     render() {
@@ -75,16 +76,17 @@ class FavouriteTeam extends React.Component {
 
             return (
                         <>
-                            <BB_TextField label = 'Your name' value={this.state.user_fullname} onChange={this.handleChangeFullName} error={this.state.user_fullname == ''}/>
+                            <BB_TextField label = 'Your name' value={this.state.user_fullname} onChange={this.handleChangeFullName}
+                                          error={this.state.validationFullname != null} helperText={this.state.validationFullname}/>
                             <BB_Select options={this.state.countries.map(country => {return {value: country.id, label: country.name, key: country.id}})}
-                                       text='Select your favourite national team' onChange={this.handleCountryChange}/>
+                                       text='Select your favourite national team' onChange={this.handleCountryChange} defaultValue={this.state.country_id}/>
                             <BB_Select options={this.state.country_clubs.map(club => {return {value: club.id, label: club.name, key: club.id}})}
-                                       text='Select your favourite club' onChange={this.handleClubChange} error={this.state.country_clubs.length == 0} club='hidden'/>
+                                       text='Select your favourite club' onChange={this.handleClubChange} defaultValue='7339'/>
 
                             <BB_ButtonLink size='small' type='normal' text='By proceeding further I agree with general terms & conditions.'/>
 
                             <div className='bs-create-account-box'
-                                 onClick={this.state.registered ? () => this.handleRegisterStepTwo() : ()=>this.handleError()}>
+                                 onClick={this.state.user_fullname != '' ? this.handleRegisterStepTwo : this.setValidation}>
                                 <span className='text18-white'>Continue</span></div>
 
                             <BB_ButtonLink location='login' size='medium' type='outlined' text='I already have an account.'/>
@@ -93,4 +95,4 @@ class FavouriteTeam extends React.Component {
         } else return <Loader/>
     }
 }
-export default FavouriteTeam;
+export default Favourite_Team;
