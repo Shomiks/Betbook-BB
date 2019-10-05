@@ -1,7 +1,9 @@
 import React from 'react';
 import '../../../src/style/betbook/user/register.scss'
 import '../../../src/style/app.scss'
-import Loader from "../components/loader";
+import Loader from "../components/other/Loader";
+import Footer from "../components/menus/Footer";
+import FullContainer from "../components/containers/FullContainer";
 
 class Register extends React.Component {
 
@@ -13,18 +15,12 @@ class Register extends React.Component {
             user: '',
             country_id: null,
             team_id: null,
-            clubs_fetched: false,
             countries: [],
             country_clubs: []
         };
-        this.sharedObj = props.sharedObj;
     }
 
     componentDidMount() {
-        setTimeout(() => {
-            this.sharedObj.footerInstance.setActive('profile');
-            this.sharedObj.headerInstance.setTitle('Edit profile')
-        },1);
         this.getAllCountries();
     }
 
@@ -33,19 +29,18 @@ class Register extends React.Component {
     };
 
     getAllCountries = () => {
-        this.sharedObj.apiHelper.countries.getAll((res) => {
+        window.apiHelper.countries.getAll((res) => {
             res.forEach((country,i) => {
                 if(country.name == 'World') res.splice(i,1);
             });
             this.getAllCLubsByCountryId(window.apiHelper.userInfo.country.id);
-            this.setState({countries: res,user: window.apiHelper.userInfo.name, country_id: window.apiHelper.userInfo.country.id, team_id: window.apiHelper.userInfo.club.id,loaded:true})
+            this.setState({countries: res,user: window.apiHelper.userInfo.full_name, country_id: window.apiHelper.userInfo.country.id, team_id: window.apiHelper.userInfo.team.id,loaded:true})
         })
     };
 
     getAllCLubsByCountryId = (country_id) => {
-
-        this.sharedObj.apiHelper.teams.getByCountryId(country_id,(res) => {
-            this.setState({country_clubs: res,clubs_fetched:true});
+        window.apiHelper.teams.getByCountryId(country_id,(res) => {
+            this.setState({country_clubs: res});
         })
     };
 
@@ -60,21 +55,18 @@ class Register extends React.Component {
     };
 
     handleSave = () => {
-      this.sharedObj.apiHelper.settings.updateInfo(localStorage.getItem('user_id'),this.state.country_id, this.state.team_id, this.state.user, () => {
-          this.sharedObj.apiHelper.user.getUser(localStorage.getItem('user_id'), (res) => {
+        window.apiHelper.settings.updateInfo(window.apiHelper.userInfo.id,this.state.country_id, this.state.team_id, this.state.user, () => {
+            window.apiHelper.user.getUser(window.apiHelper.userInfo.id, () => {
               alert('successful');
           });
       });
-
     };
 
     render() {
 
-        console.log(this.state)
-
         if (this.state.loaded) {
-
-             return (<div className='betbook-screen-login'>
+             return (<FullContainer  footerProps={{activeItem: 'profile'}} headerProps={{title: 'Edit profile'}}>
+                 <div className='betbook-screen-login'>
                     <div className='main-container'>
                         <div className='register-container'>
                             <div className='bs-user-container'>
@@ -107,7 +99,9 @@ class Register extends React.Component {
                                 <span className='text18-white'>Save changes</span></div>
                         </div>
                     </div>
-                </div>
+                 </div>
+                     <Footer/>
+                 </FullContainer>
             )
         } else return <Loader/>
     }

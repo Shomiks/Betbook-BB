@@ -1,7 +1,8 @@
 import React from 'react';
 import '../../../src/style/betbook/matchdetails.scss';
 import '../../../src/style/app.scss';
-import Loader from "../components/loader";
+import Loader from "../components/other/Loader";
+import FullContainer from "../components/containers/FullContainer";
 class Match_Details extends React.Component {
 
     constructor(props) {
@@ -11,21 +12,16 @@ class Match_Details extends React.Component {
             loaded:false,
             realData:[]
         };
-        this.sharedObj = props.sharedObj;
         this.fixtureId = props.match.params.fixtureid;
     }
 
     componentDidMount() {
-        setTimeout(()=>{
-            this.sharedObj.footerInstance.setActive('ball');
-
-        },4);
         this.getFixtureById();
     };
 
     getFixtureById(){
-        this.sharedObj.apiHelper.fixture.getByID(this.fixtureId,localStorage.getItem('user_id'),(res) => {
-
+        window.apiHelper.fixture.getByID(this.fixtureId,window.apiHelper.userInfo.id,(res) => {
+            console.log(res)
             if(res.ticket) res.ticket = res.ticket['0'];
             this.setState({realData:res,loaded:true})
         });
@@ -52,7 +48,7 @@ class Match_Details extends React.Component {
                 data['bid_score'] = (parseFloat(data['bid_score']) - parseFloat(data[game + '_odd'])).toFixed(2);
                 data[game + '_odd'] = 0;
                 if(this.checkIfUnbided()) {
-                    this.sharedObj.apiHelper.bids.deleteFixtureBid(this.state.realData.ticket.id);
+                    window.apiHelper.bids.deleteFixtureBid(this.state.realData.ticket.id);
                     updated['ticket'] = null;
                     this.setState({realData: updated});
                     return;
@@ -60,8 +56,7 @@ class Match_Details extends React.Component {
             }
             updated['ticket'] = data;
             this.setState({realData: updated});
-                // this.sharedObj.apiHelper.favourites.update(localStorage.getItem('user_id'),this.state.realData.league.id);
-            this.sharedObj.apiHelper.bids.updateFixtureBids(id, {updated});
+            window.apiHelper.bids.updateFixtureBids(id, {updated});
         }
 
         else {
@@ -77,7 +72,7 @@ class Match_Details extends React.Component {
 
     handleReturnTicket = () => {
         let ticket = {
-            user_id: localStorage.getItem('user_id'),
+            user_id: window.apiHelper.userInfo.id,
             league_id: null,
             fixture_id: null,
             game1_tip: null,
@@ -96,8 +91,8 @@ class Match_Details extends React.Component {
 
     handleCreateTicket = (ticket) => {
 
-        this.sharedObj.apiHelper.favourites.update(localStorage.getItem('user_id'), this.state.realData.league.id,);
-        this.sharedObj.apiHelper.bids.createFixtureBids({ticket},(id) => {
+        window.apiHelper.favourites.update(window.apiHelper.userInfo.id, this.state.realData.league.id,);
+        window.apiHelper.bids.createFixtureBids({ticket},(id) => {
             ticket['id'] = id;
 
             this.setState(prevState => ({
@@ -136,7 +131,6 @@ class Match_Details extends React.Component {
             if(className.includes(game)){
                 if(this.state.realData.ticket){
                     if(this.state.realData.ticket[game + '_tip']){
-                        console.log('a')
                         return className + ' ' + 'opacity';
                     }
                 }
@@ -177,17 +171,15 @@ class Match_Details extends React.Component {
 
     handleImgError = (team) => {
         team.logo = 'alternative-logo.png';
-        this.forceUpdate();
     };
 
     renderDate = () => {
         let Datefields = this.state.realData.date.split(' ')[0].split('-');
-        let Timefields = this.state.realData.date.split(' ')[1].split(':')
+        let Timefields = this.state.realData.date.split(' ')[1].split(':');
         let year = Datefields[0].substring(2,Datefields[0].length);
 
         return( Datefields[2] + '/' + Datefields[1] + '/' + year + ' ' + Timefields[0] + ':' +  Timefields[1]);
     };
-
 
     renderMatchDetails = () => {
         return <div className='match-details-field'>
@@ -285,33 +277,16 @@ class Match_Details extends React.Component {
 
     renderStateCompopnent = () => {
 
-        this.sharedObj.headerInstance.setTitle(this.state.realData.league.name);
-
-        let classState ='betbook_screen';
-
-        if(this.state.realData.result){
-            if(this.state.realData.result.is_finished == false){
-                classState += ' live'
-            }
-            else classState += ' finished'
-        }
-        else classState += ' upcoming';
-
         return(
-        <div className='betbook-context'>
-            <div className={classState}>
-
+            <FullContainer  footerProps={{activeItem: 'ball'}} headerProps={{title: this.state.realData.league.name }}>
             {this.renderMatchDetails()}
             {this.renderBidFieldDetails()}
+            </FullContainer>
 
-            </div>
-        </div>
         )
     };
 
     render() {
-
-        console.log(this.state.realData)
 
         return <>{this.state.loaded == true ? this.renderStateCompopnent() : <Loader/>}</>
     }

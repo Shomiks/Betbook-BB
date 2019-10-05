@@ -1,12 +1,14 @@
+div {
+  -webkit-tap-highlight-color: transparent
+}
+
 @font-face {
   font-family: "SF Display";
   font-weight: 900;
   src: url("https://sf.abarba.me/SF-UI-Display-Black.otf");
 }
 
-@font-face
-
-u {
+@font-face {
   font-family: "SF Display";
   font-weight: 700;
   src: url("https://sf.abarba.me/SF-UI-Display-Bold.otf");
@@ -26,7 +28,6 @@ u {
 
 @font-face {
   font-family: "SF Display";
-  font-weight: 500;
   src: url("https://sf.abarba.me/SF-UI-Display-Medium.otf");
 }
 
@@ -131,7 +132,6 @@ html, body {
   font-family: "SF Display";
   font-size: 12px;
   font-weight: 500;
-
 }
 
 .text12-white {
@@ -162,6 +162,21 @@ html, body {
   font-weight: 500;
 }
 
+.text13-grey {
+  color: #999999;
+  font-family: "SF Display";
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.text14-white {
+  color: #FFF;
+  font-family: "SF Display";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 2.8;
+}
+
 .text14 {
   color: #0A0A0A;
   font-family: "SF Display";
@@ -183,14 +198,6 @@ html, body {
   font-weight: 500;
   margin: 15px;
 }
-
-.text16-yellow {
-  color: #FFAC3A;
-  font-family: "SF Display";
-  font-size: 16px;
-  font-weight: 500;
-}
-
 .text15-grey {
   color: #999999;
   font-family: "SF Display";
@@ -199,12 +206,27 @@ html, body {
 }
 
 
-.text14-white {
-  color: #FFF;
+.text16-yellow {
+  color: #FFAC3A;
   font-family: "SF Display";
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
-  line-height: 2.8;
+}
+
+.text16-yellow {
+  color: #FFAC3A;
+  font-family: "SF Display";
+  font-size: 16px;
+  font-weight: 500;
+
+  &.result {
+    line-height: inherit;
+    white-space: nowrap;
+
+    .separator-ht {
+      margin: 15px;
+    }
+  }
 }
 
 .text17 {
@@ -251,6 +273,13 @@ html, body {
 
 }
 
+.text20-white {
+  color: #FFF;
+  font-family: "SF Display";
+  font-size: 20px;
+  font-weight: 500;
+}
+
 .text21-yellow {
   color: #FFAC3A;
   font-family: "SF Display";
@@ -263,22 +292,6 @@ html, body {
 
     .separator-ft {
       margin: 20px;
-    }
-  }
-}
-
-.text16-yellow {
-  color: #FFAC3A;
-  font-family: "SF Display";
-  font-size: 16px;
-  font-weight: 500;
-
-  &.result {
-    line-height: inherit;
-    white-space: nowrap;
-
-    .separator-ht {
-      margin: 15px;
     }
   }
 }
@@ -297,28 +310,6 @@ html, body {
   font-weight: 500;
 }
 
-.text20-white {
-  color: #FFF;
-  font-family: "SF Display";
-  font-size: 20px;
-  font-weight: 500;
-}
-
-.text13-grey {
-  color: #999999;
-  font-family: "SF Display";
-  font-size: 13px;
-  font-weight: 500;
-}
-
 .hide {
   display: none;
-}
-
-.text14-white {
-  color: #FFF;
-}
-
-div {
-  -webkit-tap-highlight-color: transparent
 }

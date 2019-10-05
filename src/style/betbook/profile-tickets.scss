@@ -7,7 +7,7 @@
   overflow: scroll;
 
   .pt_header-field {
-    height: 60px;
+    height: 65px;
     width: 100%;
     position: fixed;
     text-align: center;
@@ -19,6 +19,17 @@
     background: linear-gradient(to bottom, #7db9e8 0%, #1e5799 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7db9e8', endColorstr='#1e5799', GradientType=0); /* IE6-9 */
 
+    .chevron_header {
+      background-size: cover;
+      background-image: url("./assets/images/arrow_left_dark.PNG");
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+
+      &:active {
+        filter: brightness(120%);
+      }
+    }
 
     .pt_header-central-field {
       position: relative;
@@ -28,7 +39,8 @@
         align-items: center;
 
         .settings {
-          margin-left: 20px;
+          margin-left: 21px;
+          margin-top: 21px;
           height: 23px;
           width: 23px;
           background-image: url("assets/images/settings---final.svg");
@@ -36,17 +48,16 @@
           &:active {
             filter: brightness(120%);
           }
-
           &:focus {
             outline: none;
             filter: brightness(120%);
             border-color: #f68c25;
           }
-
         }
 
         .search {
-          margin-right: 20px;
+          margin-right: 21px;
+          margin-top: 21px;
           height: 23px;
           width: 23px;
           background-image: url("assets/images/search---final.svg");
@@ -65,19 +76,10 @@
         }
       }
 
-
       .pt_member-name {
         padding-top: 10px;
         width: 100%;
         text-align: center;
-
-
-        .text18-white {
-          color: #FFF;
-          font-family: "SF Display";
-          font-size: 18px;
-          font-weight: 500;
-        }
       }
 
       .pt_country {
@@ -88,34 +90,24 @@
         }
       }
 
-
       .pt_tickets {
         margin-top: 25px;
-
-        .text14-tickets {
-          color: #0A0A0A;
-          font-family: "SF Display";
-          font-size: 14px;
-          font-weight: 500;
-          text-transform: uppercase;
-        }
       }
     }
-
   }
 
   .scrolable-bids-field {
+    padding-top: 20px;
     width: 100%;
     height: auto;
     overflow: scroll;
   }
 
-  .main-titlle-field {
+  .main-title-field {
     height: 25px;
     width: 100%;
     position: relative;
     background-color: #151516;
-
 
     .ft_text_position {
       z-index: 1;
@@ -140,13 +132,6 @@
   .pt_statistics-text {
     margin-top: 80px;
     margin-bottom: 20px;
-
-    .text18-white {
-      color: #FFF;
-      font-family: "SF Display";
-      font-size: 18px;
-      font-weight: 500;
-    }
   }
 
   .full-time-statistics-field {
@@ -174,15 +159,20 @@
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     background: linear-gradient(180deg, #FFAC3A 0%, #EB670C 100%), #ED8035;
-    z-index: 2;
+    line-height: 26px;
+    a{
+      display: flex;
+      .text11-white{
+        margin:auto
+      }
+    }
   }
-
 
   .pt_box {
     position: relative;
     display: flex;
     justify-content: space-around;
-    margin-top: 17px;
+    padding-top: 17px;
 
     .pt_up-text {
       position: relative;
@@ -205,7 +195,6 @@
     }
   }
 }
-
 
 .hidden {
   display: none;

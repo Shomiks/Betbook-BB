@@ -1,29 +1,25 @@
 import React from 'react';
 import '../../../src/style/betbook/detailed-competitionlisting.scss';
 import {Link} from "react-router-dom";
-import Loader from "../components/loader";
+import Loader from "../components/other/Loader";
+import FullContainer from "../components/containers/FullContainer";
 
 class User_Favourite_Leagues extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            realData: [],
             loaded: false,
+            realData: [],
             remove:[],
             checked:true
         };
-        this.sharedObj = props.sharedObj;
         this.countryId = props.match.params.countryid;
     }
 
 
     componentDidMount = () => {
         this.getAllLeagues();
-        setTimeout(()=>{
-            this.sharedObj.footerInstance.setActive('star');
-            },1
-        )
     };
 
     addCheckboxState = (res) => {
@@ -34,10 +30,8 @@ class User_Favourite_Leagues extends React.Component {
     };
 
     getAllLeagues = () => {
-        this.sharedObj.apiHelper.home.get_favourites(localStorage.getItem('user_id'),(res) => {
+        window.apiHelper.home.get_favourites(window.apiHelper.userInfo.id,(res) => {
             this.addCheckboxState(res);
-            this.sharedObj.headerInstance.setTitle('Favourite Leagues');
-
             this.setState({loaded:true});
         });
     };
@@ -45,20 +39,16 @@ class User_Favourite_Leagues extends React.Component {
     handleRemoveClick = (data,index) => {
         let update = [...this.state.remove];
         update.push(index);
-        this.setState({remove:update},() => {
-            console.log(this.state.remove)
-        });
-        this.sharedObj.apiHelper.favourites.delete(data.id);
+        this.setState({remove:update});
+        window.apiHelper.favourites.delete(data.id);
     };
 
     handleAddClick = (data,index) => {
         let update = [...this.state.remove];
         let element_index = update.indexOf(index);
         update.splice(element_index,1);
-        this.setState({remove:update},() => {
-            console.log(this.state.remove)
-        });
-        this.sharedObj.apiHelper.favourites.update(localStorage.getItem('user_id'),data.league.id);
+        this.setState({remove:update});
+        window.apiHelper.favourites.update(window.apiHelper.userInfo.id,data.league.id);
     };
 
     handleFirstTimeLogin = () => {
@@ -76,9 +66,7 @@ class User_Favourite_Leagues extends React.Component {
                     {data.league && data.league.logo ? <img className='logo' src={'./assets/images/Logos/'+data.league.logo+''}  alt=''/> : <img className='logo' src={'./assets/images/alternative-logo.png'}  alt=''/>}
                 </div>
                 <div className='leagues-info'>
-                    <div className='league-name'><span className='text18-white'> {data.league.name}</span>
-
-                    </div>
+                    <div className='league-name'><span className='text18-white'> {data.league.name}</span></div>
                 </div>
                 <div className={'league_favorite_action'}>
                     <div className={this.state.remove.includes(index) ? 'star' : 'star_checked'}
@@ -95,14 +83,14 @@ class User_Favourite_Leagues extends React.Component {
     render() {
 
         if (this.state.loaded) return (
-            <div className='betbook_screen'>
+            <FullContainer  footerProps={{activeItem: 'star'}} headerProps={{title: 'Favourite Leagues' }}>
                 <div className='main-content'>
                     {this.state.realData.length == 0 ?
                     this.handleFirstTimeLogin()
                     :
                     this.renderFavouriteLeagues()}
                 </div>
-            </div>
+            </FullContainer>
         );
         else {
             return <Loader/>
