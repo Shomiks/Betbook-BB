@@ -16,8 +16,8 @@ class Login extends React.Component {
         this.state = {
             username: '',
             password: '',
-            validationUsername: true,
-            validationPassword: true,
+            validationUsername: null,
+            validationPassword: null,
             loggedIn: false
         };
     }

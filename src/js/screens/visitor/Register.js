@@ -14,7 +14,7 @@ class Register extends React.Component {
         super(props);
 
         this.state = {
-            step: 1,
+            step: 2,
             validated: false,
             email: null,
             username: null,
