@@ -1,5 +1,5 @@
 .bb_tf_container {
-  height: 80px;
+  height: 90px;
   width: 305px;
   position: relative;
 
@@ -19,6 +19,14 @@
     font-size: 15px;
     color: #2A2A2B;
 
+    &-error {
+      background: linear-gradient(0deg, rgba(186, 67, 67, 0.5), rgba(186, 67, 67, 0.5));
+      border: 1px solid #BA4343;
+      color: #FFFFFF;
+    }
+
+
+
     &:active {
       filter: brightness(120%);
     }
@@ -28,6 +36,10 @@
       filter: brightness(110%);
       border-color: #f68c25;
     }
+  }
+  .bb_tf_helper_text_red {
+    color: #FFF;
+    font-size: 13px;
   }
 }
 
