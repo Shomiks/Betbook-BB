@@ -87,17 +87,15 @@ class RegisterStep1 extends React.Component {
                 <BB_TextField label='Username' value={this.state.username} onChange={this.handleChangeUsername}
                               error={this.state.validationUsername != null} type='username'
                               helperText={this.state.validationUsername}/>
-
                 <BB_TextField label='Email' value={this.state.email} onChange={this.handleChangeEmail}
                               error={this.state.validationEmail != null} type='email' helperText={this.state.validationEmail}/>
-
                 <BB_TextField label='Password' value={this.state.password} onChange={this.handleChangePassword}
                               error={this.state.validationPassword != null} type='password'
                               helperText={this.state.validationPassword}/>
-                <BB_ButtonLink size='bb_bl_size_small' type='normal'
+                <BB_ButtonLink size='small' type='normal'
                                text='By proceeding further I agree with general terms & conditions.'/>
                 <BB_Button label='Continue' onClick={this.handleRegisterStepOne}/>
-                <BB_ButtonLink location='login' size='bb_bl_size_medium' type='bb_bl_outlined' text='I already have an account.'/>
+                <BB_ButtonLink location='login' size='medium' type='outlined' text='I already have an account.'/>
             </>
         )
     }

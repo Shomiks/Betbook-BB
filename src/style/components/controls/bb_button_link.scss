@@ -29,7 +29,18 @@
       border-color: #f68c25;
     }
   }
+
+
 }
+
+.bb_bl_normal {
+  margin: 0 auto;
+  height: 40px;
+  width: 100%;
+  color: #FFF;
+  margin-top: 25px;
+}
+
 
 .bb_bl_outlined {
   margin: 0 auto;
@@ -38,6 +49,7 @@
   width: 225px;
   border-radius: 25px;
   line-height: 2.5;
+  color: #FFF;
 }
 
 .bb_bl_size_small {

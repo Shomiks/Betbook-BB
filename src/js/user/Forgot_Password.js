@@ -44,7 +44,7 @@ class Forgot_Password extends React.Component {
                     <BottomContainer>
                         <BB_TextField label='Email' value={this.state.username} onChange={this.handleChangeEmail}
                                       type='username'/>
-                        <BB_ButtonLink location='forgot-password' size='bb_bl_size_small' type='normal' text='Dont worry, it happens :)'/>
+                        <BB_ButtonLink location='forgot-password' size='small' type='normal' text='Dont worry, it happens :)'/>
                         <BB_Button label='Send me new password'/>
                     </BottomContainer>
                 </>
@@ -53,7 +53,7 @@ class Forgot_Password extends React.Component {
                     <BottomContainer>
                             <div className='sent_email_box'><span className='text17-white'>We sent you an email, please check and try to sign in again.</span>
                             </div>
-                        <BB_ButtonLink location='login' size='bb_bl_size_medium' type='bb_bl_outlined' text='Sign In'/>
+                        <BB_ButtonLink location='login' size='medium' type='outlined' text='Sign In'/>
                     </BottomContainer>
                 </>
             }
