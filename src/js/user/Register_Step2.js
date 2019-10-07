@@ -83,11 +83,8 @@ class Register_Step2 extends React.Component {
                                        text='Select your favourite national team' onChange={this.handleCountryChange} defaultValue={this.state.country_id}/>
                             <BB_Select options={this.state.country_clubs.map(club => {return {value: club.id, label: club.name, key: club.id}})}
                                        text='Select your favourite club' onChange={this.handleClubChange} defaultValue='7339'/>
-
                             <BB_ButtonLink size='bb_bl_size_small' type='normal' text='By proceeding further I agree with general terms & conditions.'/>
-
                             <BB_Button label='Register' onClick={this.state.user_fullname == '' ? this.setValidation : this.handleRegisterStepTwo}/>
-
                             <BB_ButtonLink location='login' size='bb_bl_size_medium' type='bb_bl_outlined' text='I already have an account.'/>
                        </>
             )
