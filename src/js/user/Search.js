@@ -19,7 +19,6 @@ class Search extends React.Component {
     }
 
     getAllUsers = () => {
-        if(window.apiHelper){
             window.apiHelper.user.getAllUsers((res) => {
                 res.forEach((profile,i) => {
                     if(profile.id == window.apiHelper.userInfo.id){
@@ -28,7 +27,6 @@ class Search extends React.Component {
                 });
                 this.setState({loaded:true, users:res})
             })
-        }
     };
 
     render() {

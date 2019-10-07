@@ -5,8 +5,9 @@ import Loader from "../components/other/Loader";
 import BB_ButtonLink from "../components/controls/BB_ButtonLink";
 import BB_TextField from "../components/controls/BB_TextField";
 import BB_Select from "../components/controls/BB_Select";
+import BB_Button from "../components/controls/BB_Button";
 
-class Favourite_Team extends React.Component {
+class Register_Step2 extends React.Component {
 
     constructor(props) {
         super(props);
@@ -85,9 +86,7 @@ class Favourite_Team extends React.Component {
 
                             <BB_ButtonLink size='small' type='normal' text='By proceeding further I agree with general terms & conditions.'/>
 
-                            <div className='bs-create-account-box'
-                                 onClick={this.state.user_fullname != '' ? this.handleRegisterStepTwo : this.setValidation}>
-                                <span className='text18-white'>Continue</span></div>
+                            <BB_Button label='Register' onClick={this.state.user_fullname == '' ? this.setValidation : this.handleRegisterStepTwo}/>
 
                             <BB_ButtonLink location='login' size='medium' type='outlined' text='I already have an account.'/>
                        </>
@@ -95,4 +94,4 @@ class Favourite_Team extends React.Component {
         } else return <Loader/>
     }
 }
-export default Favourite_Team;
+export default Register_Step2;

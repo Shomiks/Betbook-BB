@@ -52,7 +52,10 @@ class App extends React.Component {
                     localStorage.clear();
                     window.location.reload();
                 }
-                else this.setState({authenticated, loaded:true});
+                else{
+                    this.setState({authenticated, loaded:true});
+                    window.location.hash = 'home';
+                }
             });
         }
         else{

@@ -53,7 +53,6 @@ class Login extends React.Component {
     render() {
 
         if (this.state.loggedIn) {
-            window.location.hash = '/home';
             window.location.reload();
         }
 
