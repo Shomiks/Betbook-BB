@@ -1,13 +1,13 @@
-.bb_tf_container {
+.bb_sl_container {
   height: 90px;
   width: 305px;
   position: relative;
 
-  .bb_tf-text {
+  .bb_sl-text {
     margin-bottom: 11px;
   }
 
-  .bb_tf-input-text {
+  .bb_sl-input-text {
     height: 40px;
     width: 305px;
     background: linear-gradient(0deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7));
@@ -29,6 +29,5 @@
       border-color: #f68c25;
     }
   }
-
 }
 
