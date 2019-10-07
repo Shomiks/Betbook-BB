@@ -1,7 +1,6 @@
 import React from 'react';
 import '../../../src/style/app.scss'
 import '../../../src/style/betbook/user/register.scss'
-import {Link, Redirect} from "react-router-dom";
 import BB_TextField from "../components/controls/BB_TextField";
 import MainContainer from "../components/containers/MainContainer";
 import BB_Logo from "../components/other/BB_Logo";
@@ -17,27 +16,29 @@ class Login extends React.Component {
         this.state = {
             username: '',
             password: '',
-            validName: true,
-            validPassword: true,
+            validationUsername: true,
+            validationPassword: true,
             loggedIn: false
         };
-        this.sharedObj = props.sharedObj;
     }
 
     handleLogin = () => {
+        let validationUsername = null;
+        let validationPassword = null;
         if (this.state.username != '' && this.state.password != '') {
-            this.sharedObj.apiHelper.login(this.state.username, this.state.password, 1, (res) => {
-                localStorage.setItem('user_id', res.id);
+            window.apiHelper.login(this.state.username, this.state.password, 1, (res) => {
                 if (res) {
+                    localStorage.setItem('user_id', res.id);
                     this.setState({loggedIn: true});
                 } else {
-                    alert('wrong username/password!');
-                    this.setState({validName: false, validPassword: false});
+                   validationPassword = 'Invalid password.';
                 }
             })
-        } else {
-            alert('username and password cannot be empty!');
-            this.setState({validName: false, validPassword: false});
+        }
+        else {
+            if (this.state.username == '') validationUsername = 'Please enter username.';
+            if (this.state.password == '') validationPassword = 'Please enter password.';
+            this.setState({validationUsername, validationPassword});
         }
     };
 
@@ -52,19 +53,21 @@ class Login extends React.Component {
     render() {
 
         if (this.state.loggedIn) {
-            return <Redirect to='/home'/>
+            window.location.hash = '/home';
+            window.location.reload();
         }
 
         return (<MainContainer>
                 <BB_Logo/>
                 <BottomContainer>
-                    <BB_TextField value={this.state.username} onChange={this.handleChangeUsername}
-                                  label='Username' error={this.state.validPassword == false || this.state.username == ''} />
-                    <BB_TextField value={this.state.password} onChange={this.handleChangePassword}
-                                  label='Password' error={this.state.validPassword == false || this.state.password == ''} type='password' />
-                    <BB_ButtonLink location='forgot-password' size='bb_bl_size_small' type='normal' text='I forgot my password.' />
-                    <BB_Button label='Sign in'/>
-                    <BB_ButtonLink location='register' size='bb_bl_size_medium' type='outlined' text='I dont have an account.' />
+                    <BB_TextField type='username' value={this.state.username} onChange={this.handleChangeUsername}
+                                  label='Username' error={this.state.validationUsername == 'Please enter username.'} helperText={this.state.validationUsername}/>
+                    <BB_TextField type='password' value={this.state.password} onChange={this.handleChangePassword}
+                                  label='Password' error={this.state.validationPassword == 'Please enter password.' || this.state.validationPassword == 'Invalid password.'} helperText={this.state.validationPassword}/>
+                    <BB_ButtonLink location='forgot-password' size='small' type='normal' text='I forgot my password.'/>
+                    <BB_Button label='Sign in' onClick={this.handleLogin}/>
+                    <BB_ButtonLink location='register' size='medium' type='outlined' text='I dont have an account.'/>
+
                 </BottomContainer>
                 </MainContainer>
         )

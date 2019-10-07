@@ -8,7 +8,6 @@ import {Route, HashRouter, Redirect} from "react-router-dom";
 import Match_Details from "./js/tickets/Match_Details";
 import Leader_Boards from "./js/tickets/Leader_Boards";
 import Detailed_Competition_Listing from "./js/tickets/Detailed_Competition_Listing";
-import Register from "./js/user/Register";
 import Search from "./js/user/Search";
 import Settings from "./js/user/Settings";
 import User_Favourite_Leagues from "./js/user/User_Favourite_Leagues";
@@ -17,7 +16,7 @@ import Loader from "./js/components/other/Loader";
 import League_Fixtures_Bidded from "./js/tickets/League_Fixtures_Bidded";
 import User_Game_Bids from "./js/tickets/User_Game_Bids";
 import Profile from "./js/tickets/Profile";
-import Register2 from "./js/user/Register2";
+import Register from "./js/user/Register";
 import Forgot_Password from "./js/user/Forgot_Password";
 
 
@@ -94,7 +93,7 @@ class App extends React.Component {
             else{
                 return (
                     <HashRouter>
-                        <Route path="/register" render={(props) => (<Register2 sharedObj={this.sharedObject} {...props}/>)}/>
+                        <Route path="/register" render={(props) => (<Register sharedObj={this.sharedObject} {...props}/>)}/>
                         <Route path="/login" render={(props) => (<Login sharedObj={this.sharedObject} {...props}/>)}/>
                         <Route path="/forgot-password" render={(props) => (<Forgot_Password {...props} sharedObj={this.sharedObject}/>)}/>
                     </HashRouter>

@@ -1,9 +1,7 @@
 import React from 'react';
 import '../../../src/style/betbook/user/register.scss'
 import '../../../src/style/app.scss'
-import Loader from "../components/other/Loader";
 import BB_ButtonLink from "../components/controls/BB_ButtonLink";
-import {Link} from "react-router-dom";
 import BB_TextField from "../components/controls/BB_TextField";
 
 class UserData extends React.Component {
@@ -12,14 +10,12 @@ class UserData extends React.Component {
         super(props);
 
         this.state = {
-            loaded: true,
             username: '',
             password: '',
             email: '',
-            validUsername: true,
-            validPassword: true,
-            validEmail: true,
-            step1: false
+            validationUsername: null,
+            validationPassword: null,
+            validationEmail: null,
         };
     }
 
@@ -32,7 +28,11 @@ class UserData extends React.Component {
     };
 
     handleChangeEmail = (e) => {
-        this.setState({email: e.target.value});
+        this.setState({email: e.target.value}, () => {
+            if (this.validateEmail(this.state.email)) {
+                this.setState({validEmail: true});
+            }
+        });
     };
 
     validateEmail = (email) => {
@@ -41,74 +41,66 @@ class UserData extends React.Component {
     };
 
     handleRegisterStepOne = () => {
-        if (this.state.username != '' && this.state.password != '') {
-            this.setState({validUsername: true, validPassword: true});
-            if (!this.validateEmail(this.state.email)) {
-                alert('invalid email!');
-                this.setState({validEmail: false})
-            } else {
-                window.apiHelper.user.validateRegister(this.state.username, this.state.email, (result) => {
-                    this.setState({validEmail: false});
-                    if (result == 'empty_user') {
-                        alert('empty username!');
-                    } else if (result == 'empty_email') {
-                        alert('empty email!');
-                    } else if (result == 'empty_user_email') {
-                        alert('empty username and email!');
-                    } else if (result[0] == false && result[1] != false) {
-                        alert('email already taken!');
-                    } else if (result[0] != false && result[1] == false) {
-                        this.setState({validEmail: true, validUsername: false});
-                        alert('username already taken!');
-                    } else if (result[0] && result[1]) {
-                        this.setState({validEmail: false, validUsername: false});
-                        alert('email and username already taken!');
-                    } else if (!result[0] && !result[1]) {
-                        this.setState({favourites: true, validEmail: true});
-                    } else alert('bad');
-                })
+        let validationUsername = null;
+        let validationPassword = null;
+        let validationEmail = null;
 
-            }
-        } else {
-            if (this.state.email == '') {
-                this.setState({validEmail: false});
-                alert('empty email!');
-            }
-            else if (this.state.username == '' && this.state.password != '') {
-                alert('Empty username!');
-                this.setState({validUsername: false});
-            }
-            else if (this.state.username != '' && this.state.password == '') {
-                alert('Empty password!');
-                this.setState({validPassword: false, validEmail: false});
-            }
-            else if (this.state.username == '' && this.state.password == '') {
-                alert('Empty username and password!');
-                this.setState({validUsername: false, validPassword: false});
-            }
-           else this.props.onComplete();
+        if (this.state.username.length == 0) {
+            validationUsername = "Please enter username.";
         }
+        else if (this.state.username.length < 4 ) {
+            validationUsername = "Username must be longer then 4 characters.";
+        }
+
+        if (this.state.email.length == 0) {
+            validationEmail = "Please enter email.";
+        }
+        else if (this.validateEmail(this.state.email) == false) {
+            validationEmail = "Invalid email format.";
+        }
+
+        if (this.state.password.length == 0) {
+            validationPassword = "Please enter password.";
+        }
+
+        if(validationUsername == null && validationPassword == null && validationEmail == null){
+            window.apiHelper.user.validateRegister(this.state.username, this.state.email, (result) => {
+
+                if(result.email == "exists"){
+                    validationEmail = "Email already exists."
+                }
+                if(result.username == "exists"){
+                    validationUsername = "Username already exists."
+                }
+
+                this.setState({validationEmail, validationUsername});
+                if(validationEmail == null && validationUsername == null){
+                    this.props.onComplete(this.state.username, this.state.email, this.state.password);
+                }
+            })
+        }
+        this.setState({validationEmail, validationPassword, validationUsername});
     };
 
     render() {
+        return (<>
+                <BB_TextField label='Username' value={this.state.username} onChange={this.handleChangeUsername}
+                              error={this.state.validationUsername != null} type='username'
+                              helperText={this.state.validationUsername}/>
 
-        if (this.state.loaded) {
-            console.log(this.state.validUsername)
-            return (<>
-                    <BB_TextField label='Username' value={this.state.username} onChange={this.handleChangeUsername}
-                                  error={this.state.validUsername == false || this.state.username == ''}/>
-                    <BB_TextField label='Email' value={this.state.email} onChange={this.handleChangeEmail}
-                                  error={this.state.validEmail == false || this.state.email == ''}/>
-                    <BB_TextField type='password' label='Password' value={this.state.password} onChange={this.handleChangePassword}
-                                  error={this.state.validPassword == false || this.state.password == ''}/>
-                    <BB_ButtonLink location='forgot-password' size='bb_bl_size_small' type='normal'
-                                   text='By proceeding further I agree with general terms & conditions.'/>
-                    <div className='bb_button' onClick={this.handleRegisterStepOne}>
-                        <span className='text18-white'>Continue</span></div>
-                    <BB_ButtonLink location='login' size='bb_bl_size_medium' type='outlined' text='I already have an account.'/>
-                </>
-            )
-        } else return <Loader/>
+                <BB_TextField label='Email' value={this.state.email} onChange={this.handleChangeEmail}
+                              error={this.state.validationEmail != null} type='email' helperText={this.state.validationEmail}/>
+
+                <BB_TextField label='Password' value={this.state.password} onChange={this.handleChangePassword}
+                              error={this.state.validationPassword != null} type='password'
+                              helperText={this.state.validationPassword}/>
+                <BB_ButtonLink location='forgot-password' size='small' type='normal'
+                               text='By proceeding further I agree with general terms & conditions.'/>
+                <div className='bs-create-account-box' onClick={this.handleRegisterStepOne}>
+                    <span className='text18-white'>Continue</span></div>
+                <BB_ButtonLink location='login' size='medium' type='outlined' text='I already have an account.'/>
+            </>
+        )
     }
 }
 
