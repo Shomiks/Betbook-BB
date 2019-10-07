@@ -63,10 +63,9 @@ class Login extends React.Component {
                                   label='Username' error={this.state.validationUsername == 'Please enter username.'} helperText={this.state.validationUsername}/>
                     <BB_TextField type='password' value={this.state.password} onChange={this.handleChangePassword}
                                   label='Password' error={this.state.validationPassword == 'Please enter password.' || this.state.validationPassword == 'Invalid password.'} helperText={this.state.validationPassword}/>
-                    <BB_ButtonLink location='forgot-password' size='small' type='normal' text='I forgot my password.'/>
+                    <BB_ButtonLink location='forgot-password' size='bb_bl_size_small' type='normal' text='I forgot my password.'/>
                     <BB_Button label='Sign in' onClick={this.handleLogin}/>
-                    <BB_ButtonLink location='register' size='medium' type='outlined' text='I dont have an account.'/>
-
+                    <BB_ButtonLink location='register' size='bb_bl_size_medium' type='bb_bl_outlined' text='I dont have an account.'/>
                 </BottomContainer>
                 </MainContainer>
         )

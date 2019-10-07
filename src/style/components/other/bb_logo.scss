@@ -11,3 +11,9 @@
     height: 100%;
   }
 }
+
+@media only screen and (max-height: 650px) {
+  .betbook-logo-box {
+    padding-top: 50px !important;
+  }
+}

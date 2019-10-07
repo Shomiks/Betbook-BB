@@ -5,6 +5,7 @@ import Register_Step1 from "./Register_Step1";
 import Register_Step2 from "./Register_Step2";
 import BB_Logo from "../components/other/BB_Logo";
 import MainContainer from "../components/containers/MainContainer";
+import BottomContainer from "../components/containers/BottomContainer";
 
 class Register extends React.Component {
 
@@ -41,11 +42,11 @@ class Register extends React.Component {
             }
         } else return (<MainContainer>
                 <BB_Logo/>
-                <div className='register-container'>
+                <BottomContainer>
                     {this.state.step == 1 ?
                         <Register_Step1 onComplete={this.handleStep1OnComplete}/> :
                         <Register_Step2 onComplete={this.handleStep2OnComplete} username={this.state.username} password={this.state.password} email={this.state.email}/>}
-                </div>
+                </BottomContainer>
             </MainContainer>
         )
     }

@@ -31,7 +31,7 @@
   }
 }
 
-.outlined {
+.bb_bl_outlined {
   margin: 0 auto;
   border: 1px solid #FFF;
   height: 40px;
@@ -50,4 +50,12 @@
   color: #FFF;
   font-size: 15px;
   font-family: "SF Display", serif;
+}
+
+.sent_email_box {
+  position: relative;
+  height: 124px;
+  width: 180px;
+  margin: 0 auto;
+  line-height: 31px;
 }

@@ -11,7 +11,7 @@ function BB_ButtonLink(props) {
 
 BB_ButtonLink.propTypes = {
     location: PropTypes.string,
-    type: PropTypes.oneOf(['outlined','normal']),
+    type: PropTypes.oneOf(['bb_bl_outlined','bb_bl_normal']),
     size: PropTypes.oneOf(['bb_bl_size_small','bb_bl_size_medium']),
     text: PropTypes.string
 };
