@@ -61,7 +61,7 @@ class Register extends React.Component {
     handleSave = () => {
         window.apiHelper.settings.updateInfo(window.apiHelper.userInfo.id,this.state.country_id, this.state.team_id, this.state.user, () => {
             window.apiHelper.user.getUser(window.apiHelper.userInfo.id, () => {
-              alert('successful');
+              console.log(window.apiHelper.userInfo.id);
           });
       });
     };
@@ -83,7 +83,7 @@ class Register extends React.Component {
                                    text='Edit your favourite national team' onChange={this.handleCountryChange} defaultValue={window.apiHelper.userInfo.country.id}/>
                         <BB_Select options={this.state.country_clubs.map(club => {return {value: club.id, label: club.name, key: club.id}})}
                                    text='Edit your favourite club' onChange={this.handleClubChange} defaultValue={window.apiHelper.userInfo.team.id}/>
-                            <BB_Button label='Save Changes' onClick={this.state.user_fullname == '' ? this.setValidation : this.handleRegisterStepTwo}/>
+                            <BB_Button label='Save Changes' onClick={this.state.user_fullname == '' ? this.setValidation : this.handleSave}/>
                         </div>
                     </MainContainer>
                  </FullContainer>

@@ -23,22 +23,7 @@ class League_Fixtures_Bidded extends React.Component {
 
     getAllFixturesBided(){
         window.apiHelper.leagues.getByIDBided(this.leagudId,window.apiHelper.userInfo.id,1,(res) =>{
-            let data = {
-                fixtures: [],
-                userBids: [],
-                league: res.league
-            };
-            if(res.fixtures)
-                res.fixtures.forEach(fixture => {
-                    if(res.userBids)
-                        res.userBids.forEach(userbid => {
-                            if(fixture.id == userbid.fixture_id){
-                                data.fixtures.push(fixture);
-                                data.userBids.push(userbid)
-                            }
-                        })
-                });
-            this.setState({realData:data,loaded:true})});
+            this.setState({realData:res,loaded:true})});
     }
 
     renderGames = () => {
@@ -49,6 +34,8 @@ class League_Fixtures_Bidded extends React.Component {
     };
 
     render() {
+
+        console.log(this.state.realData)
 
         if(this.state.loaded) return (
            <FullContainer  footerProps={{activeItem: 'ball'}} headerProps={{title: this.state.realData.league.name}}>

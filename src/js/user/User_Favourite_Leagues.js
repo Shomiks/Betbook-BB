@@ -48,7 +48,7 @@ class User_Favourite_Leagues extends React.Component {
         let element_index = update.indexOf(index);
         update.splice(element_index,1);
         this.setState({remove:update});
-        window.apiHelper.favourites.update(window.apiHelper.userInfo.id,data.league.id);
+        window.apiHelper.user.favourite_team_leagues(window.apiHelper.userInfo.id,data.league.id);
     };
 
     handleFirstTimeLogin = () => {

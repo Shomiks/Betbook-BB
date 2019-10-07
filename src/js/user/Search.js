@@ -15,7 +15,7 @@ class Search extends React.Component {
     }
 
     componentDidMount() {
-              this.getAllUsers();
+        this.getAllUsers();
     }
 
     getAllUsers = () => {

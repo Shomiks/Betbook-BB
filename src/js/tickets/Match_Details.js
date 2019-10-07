@@ -21,7 +21,6 @@ class Match_Details extends React.Component {
 
     getFixtureById(){
         window.apiHelper.fixture.getByID(this.fixtureId,window.apiHelper.userInfo.id,(res) => {
-            if(res.ticket) res.ticket = res.ticket['0'];
             this.setState({realData:res,loaded:true})
         });
     };
@@ -90,10 +89,9 @@ class Match_Details extends React.Component {
 
     handleCreateTicket = (ticket) => {
 
-        window.apiHelper.favourites.update(window.apiHelper.userInfo.id, this.state.realData.league.id,);
+        window.apiHelper.user.favourite_team_leagues(window.apiHelper.userInfo.id, this.state.realData.league.id,);
         window.apiHelper.bids.createFixtureBids({ticket},(id) => {
             ticket['id'] = id;
-
             this.setState(prevState => ({
                 realData:{
                     ...prevState.realData,

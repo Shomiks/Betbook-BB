@@ -30,12 +30,12 @@ class User_Game_Bids extends React.Component {
             case '2': return 'Total Goals';
             case '3': return 'Both Teams To Score Bids';
             case '4': return 'Half Time/Full Time Bids';
-
         }
     };
 
     getGameWonStatistics(){
             window.apiHelper.statistics.gameStatistics(this.state.game,this.state.user,(res)=> {
+                console.log(res)
             this.setState({realData: this.destructObject(res), loaded:true});
         })
     }
