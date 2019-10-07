@@ -9,7 +9,6 @@ class UserSettings extends React.Component {
         super(props);
 
         this.state = {
-            logout:false,
             loaded:false
         };
     }
@@ -22,12 +21,6 @@ class UserSettings extends React.Component {
         window.apiHelper.user.getUser(window.apiHelper.userInfo.id, () => {
             this.setState({loaded: true})
         });
-    };
-
-    handleLogout = () => {
-        localStorage.clear();
-        window.apiHelper.userInfo = null;
-        this.setState({logout: true})
     };
 
     renderSettingsBox = (placeholder, value, property) => {
@@ -53,7 +46,7 @@ class UserSettings extends React.Component {
                      {this.renderSettingsBox('Favourite national selection', 'country', 'name')}
                      {this.renderSettingsBox('Favourite team', 'team', 'name')}
 
-                    <Link to={`/login`}> <div className='settings-box' onClick={()=> this.handleLogout()}>
+                    <Link to={`/login`}> <div className='settings-box' onClick={window.apiHelper.user.logout}>
                         <div className='settings-text'><span className='text17-red'>Logout</span></div>
                         </div></Link>
                     </div>

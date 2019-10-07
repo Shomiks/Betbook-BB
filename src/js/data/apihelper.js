@@ -5,13 +5,14 @@ class APIHelper {
 
     constructor(){}
 
-    login = (username, password,login, callBack) => {
+    login = (username, password, callBack) => {
         fetch(this.apiUrl + `/index.php/api/user/checkUser/?username=` + username + '&password=' + password)
             .then(res => res.json())
             .then(res => {
                 if (res) {
                     localStorage.setItem('user_id', res.id);
-
+                    window.location.hash = '/home';
+                    window.location.reload();
                     callBack(true);
                 } else {
                     callBack(false);
@@ -21,10 +22,14 @@ class APIHelper {
 
     user = {
         getCurrentUserID: () => {
-            return this.userInfo != null ? this.userInfo.id : window.localStorage.getItem('userID');
+            return this.userInfo != null ? this.userInfo.id : window.localStorage.getItem('user_id');
+        },
+        logout: () => {
+          window.localStorage.clear();
+          window.location.reload();
         },
         isAuthenticated: () => {
-            return this.userInfo != null || window.localStorage.getItem('userID') != null;
+            return this.userInfo != null || window.localStorage.getItem('user_id') != null;
         },
         getCurrentUser: (callBack) => {
             if(this.userInfo){
@@ -93,7 +98,10 @@ class APIHelper {
                 }
             })
                 .then(res => res.json())
-                .then(res => callBack(res))
+                .then(res => {
+                    localStorage.setItem('user_id',res[0]);
+                    callBack(res);
+                })
         },
         validateRegister: (username, email, callBack) => {
             fetch(this.apiUrl + `/index.php/api/user/checkEmail/?username=` + username + `&email=` + email)

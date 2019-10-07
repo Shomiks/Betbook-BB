@@ -59,7 +59,6 @@ class App extends React.Component {
     };
 
     render() {
-        this.state.authenticated = localStorage.getItem('user_id') != null;
 
         if (this.state.loaded) {
             if(window.apiHelper.user.isAuthenticated()) {

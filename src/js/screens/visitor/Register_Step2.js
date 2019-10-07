@@ -34,7 +34,6 @@ class Register_Step2 extends React.Component {
 
     handleRegisterStepTwo = () => {
         window.apiHelper.user.register(this.props.username,this.props.password,this.props.email,this.state.user_fullname,this.state.country_id,this.state.team_id,(res)=>{
-            localStorage.setItem('user_id', res[0]);
             res[1].forEach(league_id => {
                 if(league_id != []){
                     window.apiHelper.user.favourite_team_leagues(res[0],league_id);}
@@ -83,11 +82,8 @@ class Register_Step2 extends React.Component {
                                        text='Select your favourite national team' onChange={this.handleCountryChange} defaultValue={this.state.country_id}/>
                             <BB_Select options={this.state.country_clubs.map(club => {return {value: club.id, label: club.name, key: club.id}})}
                                        text='Select your favourite club' onChange={this.handleClubChange} defaultValue='7339'/>
-
                             <BB_ButtonLink size='small' type='normal' text='By proceeding further I agree with general terms & conditions.'/>
-
                             <BB_Button label='Register' onClick={this.state.user_fullname == '' ? this.setValidation : this.handleRegisterStepTwo}/>
-
                             <BB_ButtonLink location='login' size='medium' type='outlined' text='I already have an account.'/>
                        </>
             )

@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../../style/app.scss'
-import '../../../../src/style/betbook/user/register.scss'
-import BB_Logo from "../../components/other/BB_Logo";
+import '../../../style/betbook/user/register.scss'
+import BB_Logo from "../../../js/components/other/BB_Logo";
 
 class ForgotPassword extends React.Component {
 

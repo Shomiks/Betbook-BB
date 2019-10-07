@@ -1,0 +1,18 @@
+.bs-login {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: block;
+  text-align: center;
+  min-height: 550px;
+  background-image: url("../../betbook/assets/images/action-athletes-audience.png");
+  background-size: cover;
+
+  .main-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-image: url("../../betbook/assets/images/background-reg-login.png");
+    background-size: cover;
+  }
+}

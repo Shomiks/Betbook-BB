@@ -198,6 +198,7 @@ html, body {
   font-weight: 500;
   margin: 15px;
 }
+
 .text15-grey {
   color: #999999;
   font-family: "SF Display";
@@ -313,3 +314,16 @@ html, body {
 .hide {
   display: none;
 }
+
+.hidden {
+  display: none;
+}
+
+div, span, p {
+  user-select: none;
+}
+
+a {
+  text-decoration: none;
+}
+

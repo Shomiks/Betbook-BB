@@ -26,10 +26,9 @@ class Login extends React.Component {
         let validationUsername = null;
         let validationPassword = null;
         if (this.state.username != '' && this.state.password != '') {
-            window.apiHelper.login(this.state.username, this.state.password, 1, (res) => {
+            window.apiHelper.login(this.state.username, this.state.password, (res) => {
                 if (res) {
-                    localStorage.setItem('user_id', res.id);
-                    this.setState({loggedIn: true});
+
                 } else {
                    validationPassword = 'Invalid password.';
                 }
@@ -66,7 +65,6 @@ class Login extends React.Component {
                     <BB_ButtonLink location='forgot-password' size='small' type='normal' text='I forgot my password.'/>
                     <BB_Button label='Sign in' onClick={this.handleLogin}/>
                     <BB_ButtonLink location='register' size='medium' type='outlined' text='I dont have an account.'/>
-
                 </BottomContainer>
                 </MainContainer>
         )
