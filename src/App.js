@@ -33,34 +33,25 @@ class App extends React.Component {
             authenticated: false
         };
         this.sharedObject = {};
+
         window.addEventListener("hashchange", this.onHashChange);
     }
 
     componentDidMount() {
-        this.sharedObject = {
-            apiHelper: window.apiHelper,
-            headerInstance: null,
-            footerInstance: null
-        };
-
-        const userid = localStorage.getItem('user_id');
-        const authenticated = userid != null;
-
-        if(userid){
-           window.apiHelper.user.getUser(userid, (res) => {
+        if(window.apiHelper.user.isAuthenticated()){
+           window.apiHelper.user.getCurrentUser((res) => {
                 if(res == false){
-                    localStorage.clear();
-                    window.location.reload();
+                    window.location.hash = '/login';
                 }
                 else{
-                    this.setState({authenticated, loaded:true});
-                    window.location.hash = 'home';
+                    window.location.hash = '/home';
+                    this.setState({loaded:true});
                 }
             });
         }
         else{
-            this.setState({loaded:true, authenticated});
             window.location.hash = '/login';
+            this.setState({loaded:true});
         }
     }
 
@@ -72,7 +63,7 @@ class App extends React.Component {
         this.state.authenticated = localStorage.getItem('user_id') != null;
 
         if (this.state.loaded) {
-            if(this.state.authenticated) {
+            if(window.apiHelper.user.isAuthenticated()) {
                 return (<div className='App'>
                     <HashRouter>
                         <Route path="/home" render={(props) => (<Home_Screen sharedObj={this.sharedObject} {...props}/>)}/>

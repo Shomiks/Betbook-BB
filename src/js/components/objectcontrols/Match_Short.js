@@ -8,6 +8,7 @@ class MatchShort extends React.Component {
         this.state = {
             ...props.match
         };
+
         if(!props.match.result) props.match.result = null;
         if(!props.match.ticket) props.match.ticket = null;
     }

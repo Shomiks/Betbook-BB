@@ -1,16 +1,55 @@
 class APIHelper {
-    userInfo = null;
     apiUrl = 'http://192.168.8.113';
+
+    userInfo = null;
 
     constructor(){}
 
     login = (username, password,login, callBack) => {
         fetch(this.apiUrl + `/index.php/api/user/checkUser/?username=` + username + '&password=' + password)
             .then(res => res.json())
-            .then(res => callBack(res))
+            .then(res => {
+                if (res) {
+                    localStorage.setItem('user_id', res.id);
+
+                    callBack(true);
+                } else {
+                    callBack(false);
+                }
+            })
     };
 
     user = {
+        getCurrentUserID: () => {
+            return this.userInfo != null ? this.userInfo.id : window.localStorage.getItem('userID');
+        },
+        isAuthenticated: () => {
+            return this.userInfo != null || window.localStorage.getItem('userID') != null;
+        },
+        getCurrentUser: (callBack) => {
+            if(this.userInfo){
+                setTimeout(()=>{
+                    callBack(this.userInfo)
+                }, 100)
+            }
+            else if(this.user.isAuthenticated()){
+                this.user.getUser(this.user.getCurrentUserID(),(res)=>{
+                    if(res){
+                        this.userInfo = res;
+                        callBack(this.userInfo);
+                    }
+                    else{
+                        localStorage.clear();
+                        callBack(false);
+                    }
+                });
+            }
+            else{
+                setTimeout(()=>{
+                    callBack(false)
+                }, 100)
+            }
+        },
         getUser: (user_id, callBack) => {
             fetch(this.apiUrl + `/index.php/api/user/returnUser/?id=` + user_id, {
                 method: 'GET',
@@ -20,9 +59,6 @@ class APIHelper {
             })
                 .then(res => res.json())
                 .then(res => {
-                    if(res){
-                        this.userInfo = res;
-                    }
                     callBack(res)
                 })
         },

@@ -103,6 +103,14 @@
     overflow: scroll;
   }
 
+  .country{
+    height:100px;
+    width:100%;
+    background-image: url("assets/images/flag_of_england.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
   .main-title-field {
     height: 25px;
     width: 100%;

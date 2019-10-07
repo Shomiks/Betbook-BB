@@ -23,7 +23,7 @@ class Settings extends React.Component {
         window.apiHelper.user.getUser(window.apiHelper.userInfo.id, () => {
             this.setState({loaded: true})
         });
-    }
+    };
 
     handleLogout = () => {
         localStorage.clear();
