@@ -2,8 +2,11 @@ import React from 'react';
 import '../../../src/style/betbook/user/register.scss'
 import '../../../src/style/app.scss'
 import Loader from "../components/other/Loader";
-import Footer from "../components/menus/Footer";
 import FullContainer from "../components/containers/FullContainer";
+import MainContainer from "../components/containers/MainContainer";
+import BB_TextField from "../components/controls/BB_TextField";
+import BB_Select from "../components/controls/BB_Select";
+import BB_Button from "../components/controls/BB_Button";
 
 class Register extends React.Component {
 
@@ -13,6 +16,7 @@ class Register extends React.Component {
         this.state = {
             loaded:false,
             user: '',
+            validationFullname: null,
             country_id: null,
             team_id: null,
             countries: [],
@@ -62,45 +66,26 @@ class Register extends React.Component {
       });
     };
 
+    setValidation = () => {
+        this.setState({validationFullname:'Please enter your name.'})
+    };
+
     render() {
 
         if (this.state.loaded) {
              return (<FullContainer  footerProps={{activeItem: 'profile'}} headerProps={{title: 'Edit profile'}}>
-                 <div className='betbook-screen-login'>
-                    <div className='main-container'>
+                    <MainContainer>
                         <div className='register-container'>
-                            <div className='bs-user-container'>
-                                <div className='bs-username-text'><span className='text15-white'>Your name</span></div>
-                                <input
-                                    className='bs-username-box'
-                                    type='text' value={this.state.user} onChange={this.handleChangeFullName}/>
-                            </div>
 
-                            <div className='bs-email-container'>
-                                <div className='bs-email-text'>
-                                    <span className='text15-white'>Select your favourite national team</span>
-                                </div>
-                                <select className='bs-email-box' value={this.state.country_id} onChange={this.handleCountryChange}>
-                                        {this.state.countries.map(country => <option value ={country.id} key ={'c_option_'+ country.id}>{country.name}</option>)}
-                                </select>
-                            </div>
-
-                            <div className='bs-password-container'>
-                                <div className='bs-password-text'>
-                                    <span className='text15-white'>Select your favourite club</span>
-                                </div>
-                                <select className='bs-password-box' value={this.state.team_id} onChange={this.handleClubChange}>
-                                    {this.state.country_clubs.map(club => <option value ={club.id} key ={'option_' + club.id}>{club.name}</option>)}
-                                </select>
-                            </div>
-
-                            <div className='bs-create-account-box'
-                                 onClick={() => this.handleSave()}>
-                                <span className='text18-white'>Save changes</span></div>
+                        <BB_TextField label = 'Edit your name' value={this.state.user} onChange={this.handleChangeFullName}
+                                      error={this.state.validationFullname != null} helperText={this.state.validationFullname}/>
+                        <BB_Select options={this.state.countries.map(country => {return {value: country.id, label: country.name, key: country.id}})}
+                                   text='Edit your favourite national team' onChange={this.handleCountryChange} defaultValue={window.apiHelper.userInfo.country.id}/>
+                        <BB_Select options={this.state.country_clubs.map(club => {return {value: club.id, label: club.name, key: club.id}})}
+                                   text='Edit your favourite club' onChange={this.handleClubChange} defaultValue={window.apiHelper.userInfo.team.id}/>
+                            <BB_Button label='Save Changes' onClick={this.state.user_fullname == '' ? this.setValidation : this.handleRegisterStepTwo}/>
                         </div>
-                    </div>
-                 </div>
-                     <Footer/>
+                    </MainContainer>
                  </FullContainer>
             )
         } else return <Loader/>

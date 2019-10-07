@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import '../../../src/style/betbook/user/settings.scss'
 import FullContainer from "../components/containers/FullContainer";
+import Loader from "../components/other/Loader";
 
 class Settings extends React.Component {
 
@@ -9,8 +10,15 @@ class Settings extends React.Component {
         super(props);
 
         this.state = {
-            logout:false
+            logout:false,
+            loaded:false
         };
+    }
+
+    componentDidMount() {
+        window.apiHelper.user.getUser(window.apiHelper.userInfo.id,() => {
+            this.setState({loaded:true})
+        })
     }
 
     handleLogout = () => {
@@ -21,7 +29,7 @@ class Settings extends React.Component {
 
     render() {
 
-        return (<FullContainer footerProps={{activeItem: 'profile'}} headerProps={{title: 'Settings'}}>
+        if(this.state.loaded) return (<FullContainer footerProps={{activeItem: 'profile'}} headerProps={{title: 'Settings'}}>
                 <div className='betbook-context'>
                 <div className='main-container'>
                     <Link to={`/edit`}> <div className='personal-info'><span className='text11-grey'>Personal info</span>
@@ -62,7 +70,8 @@ class Settings extends React.Component {
                 </div>
                 </div>
             </FullContainer>
-        )
+        );
+        else return <Loader/>
     }
 }
 

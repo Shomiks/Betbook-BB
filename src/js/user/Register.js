@@ -1,8 +1,8 @@
 import React from 'react';
-import '../../../src/style/betbook/user/register.scss'
-import '../../../src/style/app.scss'
-import UserData from "./UserData";
-import Favourite_Team from "./Favourite_Team";
+import '../../../src/style/betbook/user/register.scss';
+import '../../../src/style/app.scss';
+import Register_Step1 from "./Register_Step1";
+import Register_Step2 from "./Register_Step2";
 import BB_Logo from "../components/other/BB_Logo";
 import MainContainer from "../components/containers/MainContainer";
 
@@ -43,8 +43,8 @@ class Register extends React.Component {
                 <BB_Logo/>
                 <div className='register-container'>
                     {this.state.step == 1 ?
-                        <UserData onComplete={this.handleStep1OnComplete}/> :
-                        <Favourite_Team onComplete={this.handleStep2OnComplete} username={this.state.username} password={this.state.password} email={this.state.email}/>}
+                        <Register_Step1 onComplete={this.handleStep1OnComplete}/> :
+                        <Register_Step2 onComplete={this.handleStep2OnComplete} username={this.state.username} password={this.state.password} email={this.state.email}/>}
                 </div>
             </MainContainer>
         )

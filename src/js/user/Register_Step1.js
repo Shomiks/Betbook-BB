@@ -3,8 +3,9 @@ import '../../../src/style/betbook/user/register.scss'
 import '../../../src/style/app.scss'
 import BB_ButtonLink from "../components/controls/BB_ButtonLink";
 import BB_TextField from "../components/controls/BB_TextField";
+import BB_Button from "../components/controls/BB_Button";
 
-class UserData extends React.Component {
+class RegisterStep1 extends React.Component {
 
     constructor(props) {
         super(props);
@@ -96,12 +97,11 @@ class UserData extends React.Component {
                               helperText={this.state.validationPassword}/>
                 <BB_ButtonLink location='forgot-password' size='small' type='normal'
                                text='By proceeding further I agree with general terms & conditions.'/>
-                <div className='bs-create-account-box' onClick={this.handleRegisterStepOne}>
-                    <span className='text18-white'>Continue</span></div>
+                <BB_Button label='Continue' onClick={this.handleRegisterStepOne}/>
                 <BB_ButtonLink location='login' size='medium' type='outlined' text='I already have an account.'/>
             </>
         )
     }
 }
 
-export default UserData;
+export default RegisterStep1;

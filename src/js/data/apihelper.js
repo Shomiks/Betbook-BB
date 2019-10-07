@@ -5,7 +5,7 @@ class APIHelper {
     constructor(){}
 
     login = (username, password,login, callBack) => {
-        fetch(this.apiUrl + `/index.php/api/user/checkuser/?username=` + username + '&password=' + password)
+        fetch(this.apiUrl + `/index.php/api/user/checkUser/?username=` + username + '&password=' + password)
             .then(res => res.json())
             .then(res => {
                 callBack(res);
@@ -14,7 +14,7 @@ class APIHelper {
 
     user = {
         getUser: (user_id, callBack) => {
-            fetch(this.apiUrl + `/index.php/api/user/?id=` + user_id, {
+            fetch(this.apiUrl + `/index.php/api/user/returnUser/?id=` + user_id, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -64,14 +64,14 @@ class APIHelper {
                 });
         },
         validateRegister: (username, email, callBack) => {
-            fetch(this.apiUrl + `/index.php/api/user/checkemail/?username=` + username + `&email=` + email)
+            fetch(this.apiUrl + `/index.php/api/user/checkEmail/?username=` + username + `&email=` + email)
                 .then(res => res.json())
                 .then(res => {
                       callBack(res);
                 })
         },
         getAllUsers : (callBack) => {
-            fetch(this.apiUrl + `/index.php/api/user/?get_all=1`)
+            fetch(this.apiUrl + `/index.php/api/user/getAllUsers`)
                 .then(res => res.json())
                 .then(res => {
                     callBack(res);

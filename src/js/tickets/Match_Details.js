@@ -21,7 +21,6 @@ class Match_Details extends React.Component {
 
     getFixtureById(){
         window.apiHelper.fixture.getByID(this.fixtureId,window.apiHelper.userInfo.id,(res) => {
-            console.log(res)
             if(res.ticket) res.ticket = res.ticket['0'];
             this.setState({realData:res,loaded:true})
         });
@@ -143,7 +142,7 @@ class Match_Details extends React.Component {
 
         let className = this.handleBidState(game,tip,bidfield);
 
-        return <div className={className} onClick = {!this.state.realData.result || this.state.realData.result.is_finished == 0 ? () => this.handleBidClick(game,tip,className) : () =>{}}>
+        return <div className={className} onClick = {!this.state.realData.result || this.state.realData.result.is_finished == 0 ? () => this.handleBidClick(game,tip,className) : null}>
             <div className='game-bid-align'>
             <div className='game-text'><span className='text11-grey'>{label}</span></div>
             <div className='bid-text'><span className='text15-white'>{this.state.realData[game + '_' + tip]}</span></div>
