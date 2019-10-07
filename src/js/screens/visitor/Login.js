@@ -1,12 +1,12 @@
 import React from 'react';
-import '../../../src/style/app.scss'
-import '../../../src/style/betbook/user/register.scss'
-import BB_TextField from "../components/controls/BB_TextField";
-import MainContainer from "../components/containers/MainContainer";
-import BB_Logo from "../components/other/BB_Logo";
-import BottomContainer from "../components/containers/BottomContainer";
-import BB_ButtonLink from "../components/controls/BB_ButtonLink";
-import BB_Button from "../components/controls/BB_Button";
+import '../../../style/app.scss'
+import '../../../style/betbook/user/register.scss'
+import BB_TextField from "../../components/controls/BB_TextField";
+import MainContainer from "../../components/containers/MainContainer";
+import BB_Logo from "../../components/other/BB_Logo";
+import BottomContainer from "../../components/containers/BottomContainer";
+import BB_ButtonLink from "../../components/controls/BB_ButtonLink";
+import BB_Button from "../../components/controls/BB_Button";
 
 class Login extends React.Component {
 

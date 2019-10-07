@@ -1,28 +1,29 @@
 import React from 'react';
-import MatchShort from '../components/objectcontrols/Match_Short';
+import MatchShort from '../../components/objectcontrols/FixtureShort';
 import {Link} from "react-router-dom";
-import '../../style/betbook/week-games.scss';
-import Loader from "../components/other/Loader";
-import FullContainer from "../components/containers/FullContainer";
+import '../../../style/betbook/week-games.scss';
+import Loader from "../../components/other/Loader";
+import FullContainer from "../../components/containers/FullContainer";
 
-class League_Fixtures_Bidded extends React.Component {
+class LeagueFixtures extends React.Component {
 
     constructor(props) {
         super(props);
 
         this.state = {
             realData: [],
-            loaded: false
+            loaded: false,
+            game:null,
         };
         this.leagudId = props.match.params.leagueid;
     }
 
     componentDidMount() {
-                this.getAllFixturesBided();
-            }
+                this.getAllFixtures();
+    }
 
-    getAllFixturesBided(){
-        window.apiHelper.leagues.getByIDBided(this.leagudId,window.apiHelper.userInfo.id,1,(res) =>{
+    getAllFixtures(){
+        window.apiHelper.leagues.getByID(this.leagudId,window.apiHelper.userInfo.id,(res) =>{
             this.setState({realData:res,loaded:true})});
     }
 
@@ -35,20 +36,17 @@ class League_Fixtures_Bidded extends React.Component {
 
     render() {
 
-        console.log(this.state.realData)
-
         if(this.state.loaded) return (
-           <FullContainer  footerProps={{activeItem: 'ball'}} headerProps={{title: this.state.realData.league.name}}>
+            <FullContainer footerProps={{activeItem: 'ball'}} headerProps={{title: this.state.realData.league.name}}>
                 <div className='main-content'>
                     {this.renderGames()}
                 </div>
-           </FullContainer>
+            </FullContainer>
         );
-
         else {
             return <Loader/>
         }
     }
 }
 
-export default League_Fixtures_Bidded;
+export default LeagueFixtures;

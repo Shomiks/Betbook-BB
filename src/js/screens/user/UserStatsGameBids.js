@@ -1,11 +1,11 @@
 import React from 'react';
-import MatchShort from '../components/objectcontrols/Match_Short';
+import MatchShort from '../../components/objectcontrols/FixtureShort';
 import {Link} from "react-router-dom";
-import '../../style/betbook/week-games.scss';
-import Loader from "../components/other/Loader";
-import FullContainer from "../components/containers/FullContainer";
+import '../../../style/betbook/week-games.scss';
+import Loader from "../../components/other/Loader";
+import FullContainer from "../../components/containers/FullContainer";
 
-class User_Game_Bids extends React.Component {
+class UserStatsGameBids extends React.Component {
 
     constructor(props) {
         super(props);
@@ -72,4 +72,4 @@ class User_Game_Bids extends React.Component {
     }
 }
 
-export default User_Game_Bids;
+export default UserStatsGameBids;

@@ -1,10 +1,10 @@
 import React from 'react';
-import '../../../src/style/betbook/user/register.scss';
-import '../../../src/style/app.scss';
+import '../../../style/betbook/user/register.scss';
+import '../../../style/app.scss';
 import Register_Step1 from "./Register_Step1";
 import Register_Step2 from "./Register_Step2";
-import BB_Logo from "../components/other/BB_Logo";
-import MainContainer from "../components/containers/MainContainer";
+import BB_Logo from "../../components/other/BB_Logo";
+import MainContainer from "../../components/containers/MainContainer";
 
 class Register extends React.Component {
 

@@ -1,9 +1,9 @@
 import React from 'react';
-import '../../../src/style/betbook/user/register.scss'
-import '../../../src/style/app.scss'
-import BB_ButtonLink from "../components/controls/BB_ButtonLink";
-import BB_TextField from "../components/controls/BB_TextField";
-import BB_Button from "../components/controls/BB_Button";
+import '../../../style/betbook/user/register.scss'
+import '../../../../src/style/app.scss'
+import BB_ButtonLink from "../../components/controls/BB_ButtonLink";
+import BB_TextField from "../../components/controls/BB_TextField";
+import BB_Button from "../../components/controls/BB_Button";
 
 class RegisterStep1 extends React.Component {
 

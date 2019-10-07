@@ -1,19 +1,13 @@
 import React from 'react';
 import '../../../style/components/objectcontrols/match_short.scss';
 
-class MatchShort extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            ...props.match
-        };
+function MatchShort(props){
 
         if(!props.match.result) props.match.result = null;
         if(!props.match.ticket) props.match.ticket = null;
-    }
 
-    handleStateField = (tip) => {
+
+    this.handleStateField = (tip) => {
         let game = "game" + tip;
 
         if(!this.props.match.ticket[game + '_tip']) return ' unbided';
@@ -29,7 +23,7 @@ class MatchShort extends React.Component {
         }
     };
 
-    renderDate = () => {
+    this.renderDate = () => {
         let Datefields = this.props.match.date.split(' ')[0].split('-');
         let Timefields = this.props.match.date.split(' ')[1].split(':');
         let year = Datefields[0].substring(2,Datefields[0].length);
@@ -37,24 +31,24 @@ class MatchShort extends React.Component {
         return( Datefields[2] + '/' + Datefields[1] + '/' + year + ' ' + Timefields[0] + ':' +  Timefields[1]);
     };
 
-    parseTipGame2Row1 = () => {
+    this.parseTipGame2Row1 = () => {
         if(this.props.match.ticket.game2_tip == '2' || this.props.match.ticket.game2_tip == '1' || this.props.match.ticket.game2_tip == '3') return '0-';
     };
 
-    parseTipGame2Row2 = () => {
+    this.parseTipGame2Row2 = () => {
         if(this.props.match.ticket.game2_tip == '2ht') return '2+HT';
         if(this.props.match.ticket.game2_tip == '2ft') return '2+FT';
         if(this.props.match.ticket.game2_tip == '3ft') return '3+FT';
         if(this.props.match.ticket.game2_tip == '4ft') return '4+FT';
     };
 
-    parseTipGame4 = () => {
+   this.parseTipGame4 = () => {
         let tip = this.props.match.ticket.game4_tip.toUpperCase();
         tip.split('');
         return tip[0] + '-' + tip[1];
     };
 
-    handleBidField = () => {
+    this.handleBidField = () => {
 
         return <div className={this.props.match.ticket ? 'ms-central-field' : 'ms-central-field yellow'}>
             <div className='ms-teams-field'>
@@ -98,14 +92,13 @@ class MatchShort extends React.Component {
             </div>
         };
 
-    handleImgError = (league) => {
+    this.handleImgError = (league) => {
         league.logo = 'alternative-logo.png';
         this.forceUpdate();
     };
 
-    render() {
         return <>{this.handleBidField()}</>
-          }
+
 }
 
 export default MatchShort;

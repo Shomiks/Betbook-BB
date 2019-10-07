@@ -1,9 +1,8 @@
 import React from 'react';
-import '../../../src/style/betbook/profile-tickets.scss';
+import '../../../style/betbook/profile-tickets.scss';
 import {Link} from "react-router-dom";
-import Loader from "../components/other/Loader";
-import FooterContainer from "../components/containers/FooterContainer";
-import FullContainer from "../components/containers/FullContainer";
+import Loader from "../../components/other/Loader";
+import FooterContainer from "../../components/containers/FooterContainer";
 
 
 class Profile extends React.Component {

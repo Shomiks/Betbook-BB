@@ -1,10 +1,10 @@
 import React from 'react';
-import '../../../src/style/betbook/detailed-competitionlisting.scss';
+import '../../../style/betbook/detailed-competitionlisting.scss';
 import {Link} from "react-router-dom";
-import Loader from "../components/other/Loader";
-import FullContainer from "../components/containers/FullContainer";
+import Loader from "../../components/other/Loader";
+import FullContainer from "../../components/containers/FullContainer";
 
-class Detailed_Competition_Listing extends React.Component {
+class CountryLeagues extends React.Component {
 
     constructor(props) {
         super(props);
@@ -55,4 +55,4 @@ class Detailed_Competition_Listing extends React.Component {
     }
 }
 
-export default Detailed_Competition_Listing;
+export default CountryLeagues;

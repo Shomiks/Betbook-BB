@@ -1,10 +1,10 @@
 import React from 'react'
-import '../../style/betbook/home_screen.scss'
-import {Link, Redirect} from "react-router-dom";
-import Loader from "../components/other/Loader";
-import FooterContainer from "../components/containers/FooterContainer";
+import '../../../style/betbook/home_screen.scss'
+import {Link} from "react-router-dom";
+import Loader from "../../components/other/Loader";
+import FooterContainer from "../../components/containers/FooterContainer";
 
-class Home_Screen extends React.Component {
+class HomeScreen extends React.Component {
 
     constructor(props) {
         super(props);
@@ -14,7 +14,6 @@ class Home_Screen extends React.Component {
             loaded: false,
             username: null
         };
-        this.sharedObj = props.sharedObj;
     }
 
     componentDidMount = () => {
@@ -100,4 +99,4 @@ class Home_Screen extends React.Component {
     }
 }
 
-export default Home_Screen;
+export default HomeScreen;

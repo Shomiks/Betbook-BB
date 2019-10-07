@@ -1,10 +1,10 @@
 import React from 'react';
-import Profile_Short from "../components/objectcontrols/Profile_Short";
-import Loader from "../components/other/Loader";
+import ProfileShort from "../../components/objectcontrols/ProfileShort";
+import Loader from "../../components/other/Loader";
 import {Link} from "react-router-dom";
-import FullContainer from "../components/containers/FullContainer";
+import FullContainer from "../../components/containers/FullContainer";
 
-class Search extends React.Component {
+class UserSearch extends React.Component {
 
     constructor(props) {
         super(props);
@@ -35,7 +35,7 @@ class Search extends React.Component {
             return <FullContainer footerProps={{activeItem: 'profile'}} headerProps={{title: 'Search for users'}}>
                 <div className='main-container'/>
                 {this.state.users.map(user => {
-                    return <><Link to = {`/user/${user.id}`}><Profile_Short key={user.id} user={user}/></Link></>
+                    return <><Link to = {`/user/${user.id}`}><ProfileShort key={user.id} user={user}/></Link></>
                 })}
             </FullContainer>
         }
@@ -43,4 +43,4 @@ class Search extends React.Component {
     }
 }
 
-export default Search;
+export default UserSearch;

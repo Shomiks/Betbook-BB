@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../../style/components/objectcontrols/profileshort.scss';
 
-class Profile_Short extends React.Component {
+class ProfileShort extends React.Component {
 
     constructor(props) {
         super(props);
@@ -23,4 +23,4 @@ class Profile_Short extends React.Component {
     }
 }
 
-export default Profile_Short;
+export default ProfileShort;

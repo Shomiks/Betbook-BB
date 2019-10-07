@@ -1,12 +1,11 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import '../../../src/style/betbook/user/settings.scss'
-import FullContainer from "../components/containers/FullContainer";
-import Loader from "../components/other/Loader";
+import '../../../style/betbook/user/settings.scss'
+import FullContainer from "../../components/containers/FullContainer";
+import Loader from "../../components/other/Loader";
 
-class Settings extends React.Component {
-
-    constructor(props) {
+class UserSettings extends React.Component {
+        constructor(props) {
         super(props);
 
         this.state = {
@@ -42,7 +41,7 @@ class Settings extends React.Component {
 
     render() {
 
-        if(this.state.loaded) return (<FullContainer footerProps={{activeItem: 'profile'}} headerProps={{title: 'Settings'}}>
+        if(this.state.loaded) return (<FullContainer footerProps={{activeItem: 'profile'}} headerProps={{title: 'UserSettings'}}>
                 <div className='betbook-context'>
                  <div className='main-container'>
                     <Link to={`/edit`}> <div className='personal-info'><span className='text11-grey'>Personal info</span>
@@ -65,4 +64,4 @@ class Settings extends React.Component {
     }
 }
 
-export default Settings;
+export default UserSettings;

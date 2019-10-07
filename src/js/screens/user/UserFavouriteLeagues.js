@@ -1,10 +1,10 @@
 import React from 'react';
-import '../../../src/style/betbook/detailed-competitionlisting.scss';
+import '../../../style/betbook/detailed-competitionlisting.scss';
 import {Link} from "react-router-dom";
-import Loader from "../components/other/Loader";
-import FullContainer from "../components/containers/FullContainer";
+import Loader from "../../components/other/Loader";
+import FullContainer from "../../components/containers/FullContainer";
 
-class User_Favourite_Leagues extends React.Component {
+class UserFavouriteLeagues extends React.Component {
 
     constructor(props) {
         super(props);
@@ -16,7 +16,6 @@ class User_Favourite_Leagues extends React.Component {
         };
         this.countryId = props.match.params.countryid;
     }
-
 
     componentDidMount = () => {
         this.getAllLeagues();
@@ -99,4 +98,4 @@ class User_Favourite_Leagues extends React.Component {
     }
 }
 
-export default User_Favourite_Leagues;
+export default UserFavouriteLeagues;

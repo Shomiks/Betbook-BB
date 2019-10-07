@@ -1,11 +1,11 @@
 import React from 'react';
-import '../../../src/style/betbook/user/register.scss'
-import '../../../src/style/app.scss'
-import Loader from "../components/other/Loader";
-import BB_ButtonLink from "../components/controls/BB_ButtonLink";
-import BB_TextField from "../components/controls/BB_TextField";
-import BB_Select from "../components/controls/BB_Select";
-import BB_Button from "../components/controls/BB_Button";
+import '../../../style/betbook/user/register.scss'
+import '../../../../src/style/app.scss'
+import Loader from "../../components/other/Loader";
+import BB_ButtonLink from "../../components/controls/BB_ButtonLink";
+import BB_TextField from "../../components/controls/BB_TextField";
+import BB_Select from "../../components/controls/BB_Select";
+import BB_Button from "../../components/controls/BB_Button";
 
 class Register_Step2 extends React.Component {
 

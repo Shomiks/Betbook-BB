@@ -1,9 +1,9 @@
 import React from 'react';
-import '../../../src/style/betbook/matchdetails.scss';
-import '../../../src/style/app.scss';
-import Loader from "../components/other/Loader";
-import FullContainer from "../components/containers/FullContainer";
-class Match_Details extends React.Component {
+import '../../../style/betbook/matchdetails.scss';
+import '../../../style/app.scss'
+import Loader from "../../components/other/Loader";
+import FullContainer from "../../components/containers/FullContainer";
+class FixtureDetails extends React.Component {
 
     constructor(props) {
         super(props);
@@ -289,4 +289,4 @@ class Match_Details extends React.Component {
     }
 }
 
-export default Match_Details;
+export default FixtureDetails;

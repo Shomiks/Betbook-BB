@@ -1,9 +1,9 @@
 import React from 'react';
-import '../../../src/style/app.scss'
-import '../../../src/style/betbook/user/register.scss'
-import BB_Logo from "../components/other/BB_Logo";
+import '../../../style/app.scss'
+import '../../../../src/style/betbook/user/register.scss'
+import BB_Logo from "../../components/other/BB_Logo";
 
-class Forgot_Password extends React.Component {
+class ForgotPassword extends React.Component {
 
     constructor(props) {
         super(props);
@@ -47,4 +47,4 @@ class Forgot_Password extends React.Component {
 }
 
 
-export default Forgot_Password;
+export default ForgotPassword;
