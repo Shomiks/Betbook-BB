@@ -161,9 +161,9 @@ class UserProfile extends React.Component {
     render() {
 
         if (this.state.loaded) return (
-            <FullContainer  footerProps={{activeItem: 'profile'}}>
+            <FullContainer  footerProps={{activeItem: 'profile'}} HeaderType='double' >
                 <div className='betbook_context'>
-                {this.renderHeader()}
+                {/*{this.renderHeader()}*/}
                 <div className='scrolable-bids-field'>
                     {this.renderFields('full-time-statistics-field', 1)}
                     {this.renderFields('match-goals-statistics-field', 2)}

@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../../style/components/menus/profileHeader.scss'
 
-class profileheader extends React.Component{
+class profileHeader extends React.Component{
     constructor(props){
         super(props);
         this.state = {
@@ -38,4 +38,4 @@ class profileheader extends React.Component{
     }
 }
 
-export default profileheader;
+export default profileHeader;
