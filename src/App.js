@@ -14,7 +14,7 @@ import Edit from "./js/screens/user/UserEdit";
 import Loader from "./js/components/other/Loader";
 import UserLeaguesBids from "./js/screens/home/UserLeaguesBids";
 import UserStatsGameBids from "./js/screens/user/UserStatsGameBids";
-import Profile from "./js/screens/user/Profile";
+import UserProfile from "./js/screens/user/UserProfile";
 import Register from "./js/screens/visitor/Register";
 import ForgotPassword from "./js/screens/visitor/ForgotPassword";
 
@@ -72,11 +72,11 @@ class App extends React.Component {
                         <Route path="/finished/league/:leagueid" render={(props) => (<UserLeaguesBids sharedObj={this.sharedObject} {...props}/>)}/>
 
                         <Route path="/fixture/:fixtureid" render={(props) => (<FixtureDetails sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/profile" render={(props) => (<Profile sharedObj={this.sharedObject} {...props}/>)}/>
+                        <Route path="/profile" render={(props) => (<UserProfile sharedObj={this.sharedObject} {...props}/>)}/>
                         <Route path="/game/:gameid/:userid" render={(props) => (<UserStatsGameBids sharedObj={this.sharedObject} {...props}/>)}/>
                         <Route path="/settings" render={(props) => (<UserSettings sharedObj={this.sharedObject} {...props}/>)}/>
                         <Route path="/search" render={(props) => (<UserSearch sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/user/:userid" render={(props) => (<Profile sharedObj={this.sharedObject} {...props}/>)}/>
+                        <Route path="/user/:userid" render={(props) => (<UserProfile sharedObj={this.sharedObject} {...props}/>)}/>
                         <Route path="/edit" render={(props) => (<Edit sharedObj={this.sharedObject} {...props}/>)}/>
                     </HashRouter>
                 </div>);

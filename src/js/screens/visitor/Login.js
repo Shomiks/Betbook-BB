@@ -28,9 +28,10 @@ class Login extends React.Component {
         if (this.state.username != '' && this.state.password != '') {
             window.apiHelper.login(this.state.username, this.state.password, (res) => {
                 if (res) {
-
+                    this.setState({loggedIn:true})
                 } else {
                    validationPassword = 'Invalid password.';
+                    this.setState({validationUsername, validationPassword});
                 }
             })
         }
@@ -39,6 +40,7 @@ class Login extends React.Component {
             if (this.state.password == '') validationPassword = 'Please enter password.';
             this.setState({validationUsername, validationPassword});
         }
+
     };
 
     handleChangeUsername = (e) => {
@@ -52,9 +54,9 @@ class Login extends React.Component {
     render() {
 
         if (this.state.loggedIn) {
+            window.location.hash = '/home';
             window.location.reload();
         }
-
         return (<MainContainer>
                 <BB_Logo/>
                 <BottomContainer>

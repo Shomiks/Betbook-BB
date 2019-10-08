@@ -16,7 +16,7 @@ class ForgotPassword extends React.Component {
         super(props);
 
         this.state = {
-            step: 2
+            step: 1
         }
     }
 
@@ -30,7 +30,7 @@ class ForgotPassword extends React.Component {
                         <BB_TextField label='Email' value={this.state.email} onChange={this.handleChangeEmail}
                                       error={this.state.validationEmail != null} type='email' helperText={this.state.validationEmail}/>
                         <div className='bb_fp_dont_worry_text'> <span className='text11-white'>Dont worry, it happens :)</span></div>
-                        <BB_Button label='Send me new password' />
+                        <BB_Button label='Send me new paasword' />
                     </>
                     :
                     <>

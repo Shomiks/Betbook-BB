@@ -18,7 +18,7 @@ class UserSettings extends React.Component {
     }
 
     getUser = () => {
-        window.apiHelper.user.getUser(window.apiHelper.userInfo.id, () => {
+        window.apiHelper.user.getUser(window.apiHelper.userInfo.id, (res) => {
             this.setState({loaded: true})
         });
     };
@@ -46,9 +46,9 @@ class UserSettings extends React.Component {
                      {this.renderSettingsBox('Favourite national selection', 'country', 'name')}
                      {this.renderSettingsBox('Favourite team', 'team', 'name')}
 
-                    <Link to={`/login`}> <div className='settings-box' onClick={window.apiHelper.user.logout}>
+                     <div className='settings-box' onClick={window.apiHelper.user.logout}>
                         <div className='settings-text'><span className='text17-red'>Logout</span></div>
-                        </div></Link>
+                        </div>
                     </div>
                 </div>
             </FullContainer>
