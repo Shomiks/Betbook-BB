@@ -8,30 +8,30 @@ class Header extends React.Component{
       title: props.title,
       competition: props.competition,
       currentItemRight: props.itemRight ? props.itemRight : null
-    }
-  }
+        }
+        }
 
-  renderHeaderItems = () => {
-    return <>
-      <div className='chevron_header' onClick={() =>window.history.back()}/>
-      <div className='sport'>
+        renderHeaderItems = () => {
+        return <>
+        <div className='chevron_header' onClick={() =>window.history.back()}/>
+        <div className='sport'>
         <div className='text_align'><span className='text20-white'>{this.state.title}</span></div>
-      </div>
-      <div className={this.state.currentItemRight}/>
-      </>
-  };
+        </div>
+        <div className={this.state.currentItemRight}/>
+        </>
+      };
 
-  setTitle = (title) => {
-    this.setState({title:title})
-  };
+        setTitle = (title) => {
+        this.setState({title:title})
+      };
 
-  setItemRight = (item) => {
-    this.setState({currentItemRight: item})
-  };
+        setItemRight = (item) => {
+        this.setState({currentItemRight: item})
+      };
 
-  render() {
-    return <div className='rectangle_header'>
-      <div className='header-container'>
+        render() {
+        return <div className='rectangle_header'>
+        <div className='header-container'>
         {this.renderHeaderItems()}
       </div>
     </div>

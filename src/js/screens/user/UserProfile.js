@@ -15,7 +15,9 @@ class UserProfile extends React.Component {
             statisticsCalculated: null,
             calculated: false,
             loaded: false,
-            userid: props.match.params.userid ? props.match.params.userid : window.apiHelper.userInfo.id
+            userid: props.match.params.userid ? props.match.params.userid : window.apiHelper.userInfo.id,
+            userFullName: null,
+            country: null
         };
     }
 
@@ -54,7 +56,7 @@ class UserProfile extends React.Component {
         }
 
         statisticsCalculated = this.checkBets(res, statisticsCalculated);
-        this.setState({statistics, statisticsCalculated, loaded: true})
+        this.setState({statistics, statisticsCalculated, loaded: true, userFullName:statistics['full_name'], userCountry:statistics['country']})
     };
 
     calculateAvgAndSuccess = (res, statisticsCalculated) => {
@@ -157,10 +159,9 @@ class UserProfile extends React.Component {
     };
 
     render() {
-        console.log(this.state.statistics);
 
         if (this.state.loaded) return (
-            <FullContainer  footerProps={{activeItem: 'profile'}} headerType='double' headerProps={{userFullName: this.state.user_fullName}}>
+            <FullContainer  footerProps={{activeItem: 'profile'}}>
                 <div className='betbook_context'>
                 {this.renderHeader()}
                 <div className='scrolable-bids-field'>

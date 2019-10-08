@@ -4,7 +4,7 @@ import './style/app.scss'
 import LeagueFixtures from "./js/screens/fixtures/LeagueFixtures";
 import HomeScreen from "./js/screens/home/HomeScreen";
 import CountryListing from "./js/screens/fixtures/CountryListing";
-import {Route, HashRouter, Redirect} from "react-router-dom";
+import {Route, HashRouter} from "react-router-dom";
 import FixtureDetails from "./js/screens/fixtures/FixtureDetails";
 import CountryLeagues from "./js/screens/fixtures/CountryLeagues";
 import UserSearch from "./js/screens/user/UserSearch";
@@ -17,7 +17,6 @@ import UserStatsGameBids from "./js/screens/user/UserStatsGameBids";
 import UserProfile from "./js/screens/user/UserProfile";
 import Register from "./js/screens/visitor/Register";
 import ForgotPassword from "./js/screens/visitor/ForgotPassword";
-
 
 require("./js/data/apihelper");
 
@@ -64,35 +63,32 @@ class App extends React.Component {
             if(window.apiHelper.user.isAuthenticated()) {
                 return (<div className='App'>
                     <HashRouter>
-                        <Route path="/home" render={(props) => (<HomeScreen sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/user_favourites" render={(props) => (<UserFavouriteLeagues sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/countries" render={(props) => (<CountryListing key={'competition_current'}{...props} sharedObj={this.sharedObject}/>)}/>
-                        <Route path="/country/:countryid" render={(props) => (<CountryLeagues key={'competition_current'} sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/league/:leagueid" render={(props) => (<LeagueFixtures sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/finished/league/:leagueid" render={(props) => (<UserLeaguesBids sharedObj={this.sharedObject} {...props}/>)}/>
-
-                        <Route path="/fixture/:fixtureid" render={(props) => (<FixtureDetails sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/profile" render={(props) => (<UserProfile sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/game/:gameid/:userid" render={(props) => (<UserStatsGameBids sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/settings" render={(props) => (<UserSettings sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/search" render={(props) => (<UserSearch sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/user/:userid" render={(props) => (<UserProfile sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/edit" render={(props) => (<Edit sharedObj={this.sharedObject} {...props}/>)}/>
+                        <Route path="/home" render={() => <HomeScreen/>}/>
+                        <Route path="/user_favourites" render={(props) => <UserFavouriteLeagues {...props}/>}/>
+                        <Route path="/countries" render={() => <CountryListing/>}/>
+                        <Route path="/country/:countryid" render={(props) => <CountryLeagues {...props}/>}/>
+                        <Route path="/league/:leagueid" render={(props) => <LeagueFixtures {...props}/>}/>
+                        <Route path="/finished/league/:leagueid" render={(props) => <UserLeaguesBids {...props}/>}/>
+                        <Route path="/fixture/:fixtureid" render={(props) => <FixtureDetails {...props}/>}/>
+                        <Route path="/profile" render={(props) => (<UserProfile {...props}/>)}/>
+                        <Route path="/game/:gameid/:userid" render={() => <UserStatsGameBids/>}/>
+                        <Route path="/settings" render={() => <UserSettings/>}/>
+                        <Route path="/search" render={() => (<UserSearch/>)}/>
+                        <Route path="/user/:userid" render={(props) => (<UserProfile {...props}/>)}/>
+                        <Route path="/edit" render={() => (<Edit/>)}/>
                     </HashRouter>
                 </div>);
             }
             else{
                 return (
                     <HashRouter>
-                        <Route path="/register" render={(props) => (<Register sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/login" render={(props) => (<Login sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/forgot-password" render={(props) => (<ForgotPassword {...props} sharedObj={this.sharedObject}/>)}/>
+                        <Route path="/register" render={() => (<Register/>)}/>
+                        <Route path="/login" render={() => (<Login/>)}/>
+                        <Route path="/forgot-password" render={() => (<ForgotPassword/>)}/>
                     </HashRouter>
                 );
             }
-        } else {
-            return <Loader/>
-        }
+        } else return <Loader/>
     }
 }
 
