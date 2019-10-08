@@ -73,14 +73,11 @@ class Register extends React.Component {
     };
 
     render() {
-
         if (this.state.loaded) {
              return (<>
                  <Header title='Edit your Information'/>
                  <MainContainer>
                     <BottomContainer>
-                        znam jednog lika koji je promenio fakultet i sve mu je krenulo na bolje
-
                         <BB_TextField label = 'Edit your name' value={this.state.user} onChange={this.handleChangeFullName}
                                       error={this.state.validationFullName != null} helperText={this.state.validationFullName}/>
                         <BB_Select options={this.state.countries.map(country => {return {value: country.id, label: country.name, key: country.id}})}

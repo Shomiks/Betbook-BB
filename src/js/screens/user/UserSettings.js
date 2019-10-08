@@ -19,7 +19,6 @@ class UserSettings extends React.Component {
 
     getUser = () => {
         window.apiHelper.user.getUser(window.apiHelper.userInfo.id, (res) => {
-            console.log(res)
             this.setState({loaded: true})
         });
     };

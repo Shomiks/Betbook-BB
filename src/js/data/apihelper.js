@@ -1,5 +1,5 @@
 class APIHelper {
-    apiUrl = 'http://192.168.8.113';
+    apiUrl = '';
 
     userInfo = null;
 
@@ -87,6 +87,7 @@ class APIHelper {
                 country_id: country_id,
                 team_id: team_id
             };
+            this.userInfo = data;
             fetch(this.apiUrl + `/index.php/api/user/`, {
                 method: 'POST',
                 body: JSON.stringify(data),
@@ -124,8 +125,6 @@ class APIHelper {
                 team_id: team_id,
                 full_name:name
             };
-            console.log(window.apiHelper.userInfo)
-
             fetch(this.apiUrl + `/index.php/api/user/` + user_id,{
                 method: 'PUT',
                 body: JSON.stringify(data),

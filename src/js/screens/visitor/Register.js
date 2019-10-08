@@ -27,7 +27,7 @@ class Register extends React.Component {
     };
 
     handleStep2OnComplete = () => {
-        console.log(window.apiHelper.user.isAuthenticated())
+        window.location.hash = '/home';
         window.location.reload();
     };
 
