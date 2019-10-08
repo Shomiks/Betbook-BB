@@ -1,5 +1,7 @@
 import React from 'react';
 import '../../../style/components/controls/bb_select.scss'
+import PropTypes from "prop-types";
+import BB_TextField from "./BB_TextField";
 
 function BB_Select(props) {
 
@@ -12,6 +14,19 @@ function BB_Select(props) {
         {props.options.map(option=> <option value={option.value} key={option.key} defaultValue={props.defaultValue}>{option.label}</option>)}
     </select>
         </div>
+}
+
+BB_Select.propTypes = {
+    text: PropTypes.string,
+    onChange: PropTypes.func,
+    value: PropTypes.string,
+    defaultValue: PropTypes.string,
+    label: PropTypes.string,
+    key: PropTypes.string,
+};
+
+BB_Select.defaultProps = {
+    type: 'text'
 }
 
 export default BB_Select;
