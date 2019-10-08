@@ -41,12 +41,6 @@
         .favourite-league-container {
           display: flex;
           height: 120px;
-
-          .hs_league-name {
-            height: 32px;
-            width: 70px;
-            margin: 0 auto;
-          }
         }
 
         .last-week {
@@ -58,23 +52,7 @@
           }
         }
 
-        .logo {
-          position: absolute;
-          display: block;
-          left: 50%;
-          margin-left: -50px;
-          background-image: url("../betbook/assets/images/logo_bg.svg");
-          width: 100px;
-          height: 120px;
 
-
-          .league-logo {
-            max-width: 70px;
-            max-height: 50px;
-            margin-top: 10px;
-            object-fit: contain;
-          }
-        }
       }
 
       .hs_left-box {

@@ -3,6 +3,7 @@ import '../../../style/betbook/home_screen.scss'
 import {Link} from "react-router-dom";
 import Loader from "../../components/other/Loader";
 import FooterContainer from "../../components/containers/FooterContainer";
+import BB_HS_League_Logo from "../../components/other/BB_HS_League_Logo";
 
 class HomeScreen extends React.Component {
 
@@ -58,10 +59,7 @@ class HomeScreen extends React.Component {
                 <div className='favourite-league-container'>
                     {this.handleFinished(data)}
                     {this.handleUpcoming(data)}
-                    <div className='logo'><img className='league-logo'
-                                               src={'./assets/images/Logos/' + data.league.logo + ''} alt=''/>
-                        <div className='hs_league-name'><span className='text11'>{data.league.name}</span></div>
-                    </div>
+                    <BB_HS_League_Logo logo={data.league.logo} name={data.league.name} />
                 </div>
             </div>
 
