@@ -9,6 +9,8 @@ import BB_Button from "../../components/controls/BB_Button";
 import BottomContainer from "../../components/containers/BottomContainer";
 import Header from "../../components/menus/Header";
 import Footer from "../../components/menus/Footer";
+import FullContainer from "../../components/containers/FullContainer";
+import BB_Logo from "../../components/other/BB_Logo";
 
 class Register extends React.Component {
 
@@ -75,8 +77,9 @@ class Register extends React.Component {
     render() {
         if (this.state.loaded) {
              return (<>
-                 <Header title='Edit your Information'/>
-                 <MainContainer>
+                 <FullContainer footerProps={{activeItem: 'profile'}} headerProps={{title: 'Edit your information'}}>
+                     <MainContainer>
+                         <BB_Logo/>
                     <BottomContainer>
                         <BB_TextField label = 'Edit your name' value={this.state.user} onChange={this.handleChangeFullName}
                                       error={this.state.validationFullName != null} helperText={this.state.validationFullName}/>
@@ -86,8 +89,8 @@ class Register extends React.Component {
                                    text='Edit your favourite team' onChange={this.handleClubChange} defaultValue={window.apiHelper.userInfo.team.id}/>
                             <BB_Button label='Save Changes' onClick={this.state.user == '' ? this.setValidation : this.handleSave}/>
                     </BottomContainer>
-                 </MainContainer>
-                     <Footer/>
+                     </MainContainer>
+                 </FullContainer>
                  </>
             )
         } else return <Loader/>

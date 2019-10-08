@@ -19,7 +19,6 @@ class Footer extends React.Component {
     render() {
 
         return (
-
             <div className='rectangle_footer'>
                 <div
                     className={this.state.currentActive == 'timeline' ? 'ft_home-field active-timeline' : 'ft_home-field'}>
@@ -62,11 +61,3 @@ class Footer extends React.Component {
 }
 
 export default Footer;
-
-//<div className="tile" onClick="myFunction()"></div>
-//
-// <script>
-// function myFunction() {
-//     this.style.background="#000000";
-// }
-// </script>

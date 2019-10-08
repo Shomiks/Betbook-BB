@@ -2,7 +2,7 @@ import React from 'react';
 import '../../../style/betbook/profile-tickets.scss';
 import {Link} from "react-router-dom";
 import Loader from "../../components/other/Loader";
-import FooterContainer from "../../components/containers/FooterContainer";
+import FullContainer from "../../components/containers/FullContainer";
 
 
 class UserProfile extends React.Component {
@@ -157,9 +157,10 @@ class UserProfile extends React.Component {
     };
 
     render() {
+        console.log(this.state.statistics);
 
         if (this.state.loaded) return (
-            <FooterContainer  footerProps={{activeItem: 'profile'}}>
+            <FullContainer  footerProps={{activeItem: 'profile'}} headerType='double' headerProps={{userFullName: this.state.user_fullName}}>
                 <div className='betbook_context'>
                 {this.renderHeader()}
                 <div className='scrolable-bids-field'>
@@ -169,7 +170,7 @@ class UserProfile extends React.Component {
                     {this.renderFields('ht-ft-statistics-field', 4)}
                 </div>
                 </div>
-            </FooterContainer>
+            </FullContainer>
         );
         else {
             return <Loader/>

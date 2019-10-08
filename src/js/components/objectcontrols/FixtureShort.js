@@ -53,7 +53,7 @@ function FixtureShort(props){
         return <div className={props.match.ticket ? 'ms-central-field' : 'ms-central-field yellow'}>
             <div className='ms-teams-field'>
                <div className='ms_homeField'>
-                   <img className='logo' src={'./assets/images/Teams/'+props.match.team_home.logo} onError={() => handleImgError(props.match.team_home)} alt=''/>
+                   <img className='logo' src={props.match.team_home.logo ? './assets/images/Teams/'+props.match.team_home.logo : './assets/images/alternative-logo.png'} />
                    <div className='ms_hometeam-text'><span className='text11-white'>{props.match.team_home.name}</span></div>
                </div>
 
@@ -64,7 +64,7 @@ function FixtureShort(props){
             </div>
                 <div className='ms_awayField'>
                     <div className='ms_awayteam-text'><span className='text11-white'>{props.match.team_away.name}</span></div>
-                    <img className='logo' src={'./assets/images/Teams/'+props.match.team_away.logo} onError={() => handleImgError(props.match.team_away)} alt=''/>
+                    <img className='logo' src={props.match.team_away.logo ? './assets/images/Teams/'+props.match.team_away.logo : './assets/images/alternative-logo.png'}/>
                 </div>
             </div>
                 <div className='ms-under-teams-field'>
@@ -93,7 +93,7 @@ function FixtureShort(props){
         }
 
     function handleImgError (league) {
-        league.logo = 'alternative-logo.png';
+        league.logo = '/alternative-logo.png';
     }
 
         return <>{handleBidField()}</>

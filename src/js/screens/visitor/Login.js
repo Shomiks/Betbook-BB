@@ -31,6 +31,7 @@ class Login extends React.Component {
                     this.setState({loggedIn:true})
                 } else {
                    validationPassword = 'Invalid password.';
+                    this.setState({validationUsername, validationPassword});
                 }
             })
         }
@@ -39,6 +40,7 @@ class Login extends React.Component {
             if (this.state.password == '') validationPassword = 'Please enter password.';
             this.setState({validationUsername, validationPassword});
         }
+
     };
 
     handleChangeUsername = (e) => {
