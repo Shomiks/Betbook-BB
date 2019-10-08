@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../style/components/menus/header.scss'
+import '../../../style/components/menus/profileHeader.scss'
 
 class profileHeader extends React.Component{
     constructor(props){
