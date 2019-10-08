@@ -1,5 +1,5 @@
 import React from 'react';
-import MatchShort from '../../components/objectcontrols/FixtureShort';
+import FixtureShort from '../../components/objectcontrols/FixtureShort';
 import {Link} from "react-router-dom";
 import '../../../style/betbook/week-games.scss';
 import Loader from "../../components/other/Loader";
@@ -35,7 +35,6 @@ class UserStatsGameBids extends React.Component {
 
     getGameWonStatistics(){
             window.apiHelper.statistics.gameStatistics(this.state.game,this.state.user,(res)=> {
-                console.log(res)
             this.setState({realData: this.destructObject(res), loaded:true});
         })
     }
@@ -53,7 +52,7 @@ class UserStatsGameBids extends React.Component {
 
     renderGames = () => {
                     return <>{this.state.realData.map((fixture) => <Link to={`/fixture/${fixture.id}`} key={fixture.id}>
-                <MatchShort match={fixture}/></Link>)}</>
+                <FixtureShort match={fixture}/></Link>)}</>
     };
 
     render() {

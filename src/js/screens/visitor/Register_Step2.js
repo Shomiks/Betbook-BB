@@ -33,7 +33,7 @@ class Register_Step2 extends React.Component {
     };
 
     handleRegisterStepTwo = () => {
-        window.apiHelper.user.register(this.props.username,this.props.password,this.props.email,this.state.user_fullname,this.state.country_id,this.state.team_id,(res)=>{
+        window.apiHelper.user.register(this.props.username,this.props.password,this.props.email,this.state.user_fullname,this.state.country_id,this.state.team_id,(res) => {
             res[1].forEach(league_id => {
                 if(league_id != []){
                     window.apiHelper.user.favourite_team_leagues(res[0],league_id);}

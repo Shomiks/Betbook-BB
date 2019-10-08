@@ -22,26 +22,18 @@ class Register extends React.Component {
         };
     }
 
-    register = () => {
-        window.location.hash = '/home';
-        window.location.reload();
-    };
-
     handleStep1OnComplete = ( username, email, password ) => {
         this.setState({step: 2, email, username, password});
     };
 
     handleStep2OnComplete = () => {
-        this.setState({validated:true});
+        console.log(window.apiHelper.user.isAuthenticated())
+        window.location.reload();
     };
 
     render() {
 
-        if (this.state.validated) {
-            {
-                this.register()
-            }
-        } else return (<MainContainer>
+        return (<MainContainer>
                 <BB_Logo/>
                 <BottomContainer>
                     {this.state.step == 1 ?

@@ -6,13 +6,11 @@ class APIHelper {
     constructor(){}
 
     login = (username, password, callBack) => {
-        fetch(this.apiUrl + `/index.php/api/user/checkUser/?username=` + username + '&password=' + password)
+        fetch(this.apiUrl + `/index.php/api/user/login/?username=` + username + '&password=' + password)
             .then(res => res.json())
             .then(res => {
                 if (res) {
                     localStorage.setItem('user_id', res.id);
-                    window.location.hash = '/home';
-                    window.location.reload();
                     callBack(true);
                 } else {
                     callBack(false);
@@ -22,14 +20,14 @@ class APIHelper {
 
     user = {
         getCurrentUserID: () => {
-            return this.userInfo != null ? this.userInfo.id : window.localStorage.getItem('user_id');
+            return (this.userInfo != null ? this.userInfo.id : window.localStorage.getItem('user_id'));
         },
         logout: () => {
           window.localStorage.clear();
           window.location.reload();
         },
         isAuthenticated: () => {
-            return this.userInfo != null || window.localStorage.getItem('user_id') != null;
+            return (this.userInfo != null || window.localStorage.getItem('user_id') != null);
         },
         getCurrentUser: (callBack) => {
             if(this.userInfo){
@@ -38,7 +36,7 @@ class APIHelper {
                 }, 100)
             }
             else if(this.user.isAuthenticated()){
-                this.user.getUser(this.user.getCurrentUserID(),(res)=>{
+                    this.user.getUser(this.user.getCurrentUserID(),(res)=>{
                     if(res){
                         this.userInfo = res;
                         callBack(this.userInfo);
@@ -63,11 +61,9 @@ class APIHelper {
                 }
             })
                 .then(res => res.json())
-                .then(res => {
-                    callBack(res)
-                })
+                .then(res => callBack(res))
         },
-        favourite_team_leagues: (user_id,league_id) => {
+        favourite_team_leagues: (user_id,league_id, callBack) => {
             let data = {
                 user_id: user_id,
                 league_id: league_id
@@ -80,6 +76,7 @@ class APIHelper {
                 }
             })
                 .then(res => res.json())
+                .then(() => callBack)
         },
         register : (username, password, email, user_fullname, country_id, team_id, callBack) => {
             let data = {
@@ -109,19 +106,26 @@ class APIHelper {
                 .then(res => callBack(res))
         },
         getAllUsers : (callBack) => {
-            fetch(this.apiUrl + `/index.php/api/user/getAllUsers`)
+            fetch(this.apiUrl + `/index.php/api/user/`)
+                .then(res => res.json())
+                .then(res => callBack(res))
+        },
+        forgotPassword: (email, callBack) => {
+            fetch(this.apiUrl + `/index.php/api/user/forgotPassword/?email =` + email)
                 .then(res => res.json())
                 .then(res => callBack(res))
         }
     };
 
     settings = {
-        updateInfo: (user_id, country_id, team_id, name,callBack) =>{
+        updateInfo: (user_id, country_id, team_id, name, callBack) =>{
            let data = {
                 country_id: country_id,
                 team_id: team_id,
                 full_name:name
             };
+            console.log(window.apiHelper.userInfo)
+
             fetch(this.apiUrl + `/index.php/api/user/` + user_id,{
                 method: 'PUT',
                 body: JSON.stringify(data),
@@ -130,6 +134,7 @@ class APIHelper {
                 }
             })
                 .then(res => res.json())
+                .then(() => callBack())
         }
     };
 

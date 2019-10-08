@@ -5,7 +5,7 @@ import Loader from "../../components/other/Loader";
 import FooterContainer from "../../components/containers/FooterContainer";
 
 
-class Profile extends React.Component {
+class UserProfile extends React.Component {
 
     constructor(props) {
         super(props);
@@ -177,4 +177,4 @@ class Profile extends React.Component {
     }
 }
 
-export default Profile;
+export default UserProfile;
