@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../../style/components/menus/header.scss'
+import Link from "@material-ui/core/Link";
 
 class Header extends React.Component{
   constructor(props){
@@ -7,23 +8,29 @@ class Header extends React.Component{
     this.state = {
       title: props.title,
       competition: props.competition,
-      itemRight: props.itemRight ? props.itemRight : 'chevron_header',
+      itemRight: props.itemRight ? props.itemRight : null,
       itemLeft: props.itemLeft ? props.itemLeft : null
       }
     }
 
-    itemClick = () => {
-      if(this.state.itemLeft == 'chevron_header') return window.history.back()
-    };
-
         renderHeaderItems = () => {
-        return <>
-        <div className={} onClick={() => this.itemClick}/>
+
+        if(!this.state.itemLeft) return (<>
+        <div className='chevron_header' onClick={() => window.history.back()}/>
         <div className='sport'>
         <div className='text_align'><span className='text20-white'>{this.state.title}</span></div>
         </div>
         <div className={this.state.itemRight}/>
-        </>
+        </>);
+
+          else{
+            return( <>
+              <Link to={'/settings'}><div className='settings'/></Link>
+              title<br/>
+              subtitle
+              <Link to={'/search'}><div className='search'/></Link>
+              </>)
+        }
       };
 
         setTitle = (title) => {
@@ -35,7 +42,6 @@ class Header extends React.Component{
       };
 
         render() {
-          console.log(this.props)
         return <div className='rectangle_header'>
         <div className='header-container'>
         {this.renderHeaderItems()}
