@@ -1,11 +1,11 @@
 import React from 'react';
 import '../../../style/components/objectcontrols/match_short.scss';
+import DateResultFixtureShort from "./DateResultFixtureShort";
 
 function FixtureShort(props){
 
         if(!props.match.result) props.match.result = null;
         if(!props.match.ticket) props.match.ticket = null;
-
 
     function handleStateField (tip) {
         let game = "game" + tip;
@@ -51,22 +51,7 @@ function FixtureShort(props){
    function handleBidField () {
 
         return <div className={props.match.ticket ? 'ms-central-field' : 'ms-central-field yellow'}>
-            <div className='ms-teams-field'>
-               <div className='ms_homeField'>
-                   <img className='logo' src={props.match.team_home.logo ? './assets/images/Teams/'+props.match.team_home.logo : './assets/images/alternative-logo.png'} />
-                   <div className='ms_hometeam-text'><span className='text11-white'>{props.match.team_home.name}</span></div>
-               </div>
-
-                <div className='ms_resultField'>
-                    <span className={props.match.result && props.match.result.is_finished == 0 ? 'text15-yellow' : 'text15-white'}>{props.match.result ? props.match.result.ft_home_goals : ''}</span>
-                    <div className='ms_date'><span className='text11-white'> {!props.match.result ? renderDate() : ':'} </span></div>
-                    <span className={props.match.result && props.match.result.is_finished == 0 ? 'text15-yellow' : 'text15-white'}>{props.match.result ? props.match.result.ft_away_goals : ''}</span>
-            </div>
-                <div className='ms_awayField'>
-                    <div className='ms_awayteam-text'><span className='text11-white'>{props.match.team_away.name}</span></div>
-                    <img className='logo' src={props.match.team_away.logo ? './assets/images/Teams/'+props.match.team_away.logo : './assets/images/alternative-logo.png'}/>
-                </div>
-            </div>
+            <DateResultFixtureShort {...props} renderDate={() => this.renderDate}/>
                 <div className='ms-under-teams-field'>
                     {!props.match.ticket ? (!props.match.result ? <div className='ms_not-bided-yellow'><span className='text11-white'>Make a bid</span></div> : <div/>)
                         : (
@@ -91,10 +76,6 @@ function FixtureShort(props){
                 </div>
             </div>
         }
-
-    function handleImgError (league) {
-        league.logo = '/alternative-logo.png';
-    }
 
         return <>{handleBidField()}</>
 

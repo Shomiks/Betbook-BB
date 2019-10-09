@@ -2,7 +2,7 @@ import React from 'react';
 import '../../../style/components/menus/header.scss'
 import Link from "@material-ui/core/Link";
 
-class Header extends React.Component{
+class Header extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -26,8 +26,8 @@ class Header extends React.Component{
           else{
             return( <>
               <Link to={'/settings'}><div className='settings'/></Link>
-              title<br/>
-              subtitle
+              <div>{this.props.title}</div>
+                <div>{this.props.subtitle}</div>
               <Link to={'/search'}><div className='search'/></Link>
               </>)
         }
