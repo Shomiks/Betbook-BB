@@ -1,6 +1,5 @@
 import React from 'react';
 import '../../../style/components/menus/header.scss'
-import Link from "@material-ui/core/Link";
 
 class Header extends React.Component{
   constructor(props){
@@ -38,7 +37,7 @@ class Header extends React.Component{
       };
 
         setItemRight = (item) => {
-        this.setState({itemRight: item})
+        this.setState({currentItemRight: item})
       };
 
         render() {

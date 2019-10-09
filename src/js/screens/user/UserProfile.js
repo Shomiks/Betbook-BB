@@ -3,6 +3,7 @@ import '../../../style/betbook/profile-tickets.scss';
 import {Link} from "react-router-dom";
 import Loader from "../../components/other/Loader";
 import FullContainer from "../../components/containers/FullContainer";
+import ProfileGames from "../../components/objectcontrols/ProfileGames";
 
 
 class UserProfile extends React.Component {
@@ -111,28 +112,7 @@ class UserProfile extends React.Component {
                     <div className='game-underline'/>
                 </div>
             </div>
-            <Link to={this.state.statistics && this.state.statistics.game1_total != 0 ? `/game/` + game + '/' + this.state.userid : null}>
-                <div className='pt_box'>
-                    <div className='pt_left-box'>
-                        <div className='pt_up-text'><span className='text12-grey'>No. of bets</span></div>
-                        <div className='pt_down-number'><span
-                            className='text26-white'>{this.state.statistics && this.state.statistics['game' + game + '_total'] != 0 ? this.state.statistics['game' + game + '_total'] : '-'}</span>
-                        </div>
-                    </div>
-                    <div className='pt_central-box'>
-                        <div className='pt_up-text'><span className='text12-grey'>Avg. odd</span></div>
-                        <div className='pt_down-number'><span
-                            className='text26-white'>{this.state.statisticsCalculated['game' + game + '_avg']}</span>
-                        </div>
-                    </div>
-                    <div className='pt_right-box'>
-                        <div className='pt_up-text'><span className='text12-grey'>Success rate</span></div>
-                        <div className='pt_down-number'><span
-                            className='text26-white'>{this.state.statisticsCalculated['game' + game + '_success']}</span>
-                        </div>
-                    </div>
-                </div>
-            </Link>
+            <ProfileGames Game={game} {...this.state}/>
         </div>
     };
     renderHeader = () => {
@@ -161,7 +141,7 @@ class UserProfile extends React.Component {
     render() {
 
         if (this.state.loaded) return (
-            <FullContainer  footerProps={{activeItem: 'profile'}} headerProps={{headerType:'profile', itemLeft:'settings', itemRight:'search'}}>
+            <FullContainer  footerProps={{activeItem: 'profile'}} headerProps={{itemLeft:'settings', itemRight: 'search'}}>
                 <div className='betbook_context'>
                 {/*{this.renderHeader()}*/}
                 <div className='scrolable-bids-field'>
