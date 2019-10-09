@@ -71,7 +71,7 @@ class App extends React.Component {
                         <Route path="/finished/league/:leagueid" render={(props) => <UserLeaguesBids {...props}/>}/>
                         <Route path="/fixture/:fixtureid" render={(props) => <FixtureDetails {...props}/>}/>
                         <Route path="/profile" render={(props) => (<UserProfile {...props}/>)}/>
-                        <Route path="/game/:gameid/:userid" render={() => <UserStatsGameBids/>}/>
+                        <Route path="/game/:gameid/:userid" render={(props) => <UserStatsGameBids {...props}/>}/>
                         <Route path="/settings" render={() => <UserSettings/>}/>
                         <Route path="/search" render={() => (<UserSearch/>)}/>
                         <Route path="/user/:userid" render={(props) => (<UserProfile {...props}/>)}/>

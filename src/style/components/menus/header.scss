@@ -68,49 +68,7 @@
         filter: brightness(120%);
       }
     }
-
-    .calendar {
-      background-size: cover;
-      background-image: url("../../betbook/assets/images/calendar.PNG");
-      width: 10px;
-      height: 18px;
-      cursor: pointer;
-
-      &:active {
-        filter: brightness(120%);
-      }
-    }
-
-    .options {
-      background-size: cover;
-      background-image: url("../../betbook/assets/images/podium.PNG");
-      width: 10px;
-      height: 18px;
-      cursor: pointer;
-
-      &:active {
-        filter: brightness(120%);
-      }
-    }
   }
-}
-
-.bb_h_tittle_box {
-  position: absolute;
-  width: 100%;
-  left: 50%;
-  margin-left: -50%;
-  top: 10px;
-  display: block;
-}
-
-.bb_h_subtittle_box {
-  position: absolute;
-  width: 100%;
-  left: 50%;
-  margin-left: -50%;
-  top: 32px;
-  display: block;
 }
 
 
