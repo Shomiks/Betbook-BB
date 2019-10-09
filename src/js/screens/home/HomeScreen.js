@@ -58,7 +58,7 @@ class HomeScreen extends React.Component {
                 <div className='favourite-league-container'>
                     {this.handleFinished(data)}
                     {this.handleUpcoming(data)}
-                    <BB_HS_League_Logo data={data} />
+                    <BB_HS_League_Logo data={data}/>
                 </div>
             </div>
 

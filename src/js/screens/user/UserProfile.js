@@ -40,7 +40,7 @@ class UserProfile extends React.Component {
             game4_success: 0
         };
 
-        if (!res.numOfBets) {
+        if (!res || !res.numOfBets) {
             statistics = {
                 game1_total: 0,
                 game2_total: 0,

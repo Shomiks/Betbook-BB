@@ -22,14 +22,14 @@ class UserLeaguesBids extends React.Component {
     }
 
     getAllFixturesBided(){
-        window.apiHelper.leagues.getByIDBided(this.leagudId,window.apiHelper.userInfo.id,1,(res) =>{
+        window.apiHelper.leagues.getByIDBidded(this.leagudId,window.apiHelper.userInfo.id,(res) =>{
             this.setState({realData:res,loaded:true})});
     }
 
     renderGames = () => {
             return <>
-                {this.state.realData.fixtures.map((fixture) => <Link to={`/fixture/${fixture.id}`} key={fixture.id}>
-                    <FixtureShort match={fixture}/></Link>)}
+                {this.state.realData.bids.map((fixture) => <Link to={`/fixture/${fixture.id}`} key={fixture.id}>
+                    <FixtureShort {...fixture}/></Link>)}
             </>
     };
 
