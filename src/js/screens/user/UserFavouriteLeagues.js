@@ -51,10 +51,10 @@ class UserFavouriteLeagues extends React.Component {
     };
 
     handleFirstTimeLogin = () => {
-        return <><Link to={`/countries`}>
+        return <Link to={`/countries`}>
             <div className='hs_select-box'><span className='text26-white'>Select your favourite leagues and start your journey</span>
             </div>
-        </Link></>
+        </Link>
     };
 
     renderFavouriteLeagues = () => {
@@ -82,7 +82,7 @@ class UserFavouriteLeagues extends React.Component {
     render() {
 
         if (this.state.loaded) return (
-            <FullContainer  footerProps={{activeItem: 'star'}} headerProps={{title: 'Favourite Leagues' }}>
+            <FullContainer  footerProps={{activeItem: 'star'}} headerProps={{title: 'Favourite Leagues'}}>
                 <div className='main-content'>
                     {this.state.realData.length == 0 ?
                     this.handleFirstTimeLogin()
@@ -94,7 +94,6 @@ class UserFavouriteLeagues extends React.Component {
         else {
             return <Loader/>
         }
-
     }
 }
 
