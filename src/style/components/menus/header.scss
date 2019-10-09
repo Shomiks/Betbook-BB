@@ -21,6 +21,7 @@
       width: 30px;
       height: 30px;
       cursor: pointer;
+
       &:active {
         filter: brightness(120%);
       }
@@ -38,27 +39,31 @@
     .sport {
       text-align: center;
       padding-right: 25px;
-      &:active {
-        filter: brightness(120%);
-      }
-    }
-    .settings{
-      background-size: cover;
-      background-image: url("../../betbook/assets/images/settings---final.svg");
-      width: 30px;
-      height: 30px;
-      cursor: pointer;
+
       &:active {
         filter: brightness(120%);
       }
     }
 
-    .search{
+    .settings {
+      background-size: cover;
+      background-image: url("../../betbook/assets/images/settings---final.svg");
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+
+      &:active {
+        filter: brightness(120%);
+      }
+    }
+
+    .search {
       background-size: cover;
       background-image: url("../../betbook/assets/images/search---final.svg");
       width: 30px;
       height: 30px;
       cursor: pointer;
+
       &:active {
         filter: brightness(120%);
       }
@@ -70,17 +75,19 @@
       width: 10px;
       height: 18px;
       cursor: pointer;
+
       &:active {
         filter: brightness(120%);
       }
     }
 
-    .options{
+    .options {
       background-size: cover;
       background-image: url("../../betbook/assets/images/podium.PNG");
       width: 10px;
       height: 18px;
       cursor: pointer;
+
       &:active {
         filter: brightness(120%);
       }
@@ -88,6 +95,25 @@
   }
 }
 
-.hide{
+.bb_h_tittle_box {
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  margin-left: -50%;
+  top: 10px;
+  display: block;
+}
+
+.bb_h_subtittle_box {
+  position: absolute;
+  width: 100%;
+  left: 50%;
+  margin-left: -50%;
+  top: 32px;
+  display: block;
+}
+
+
+.hide {
   display: none;
 }
