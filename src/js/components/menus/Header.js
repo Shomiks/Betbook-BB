@@ -7,17 +7,22 @@ class Header extends React.Component{
     this.state = {
       title: props.title,
       competition: props.competition,
-      currentItemRight: props.itemRight ? props.itemRight : null
+      itemRight: props.itemRight ? props.itemRight : null,
+      itemLeft: props.itemLeft ? props.itemLeft : 'chevron_header'
         }
         }
 
+  clickLeft = () => {
+    if(this.state.item == 'chevron_header') return () => window.history.back;
+  }
+
         renderHeaderItems = () => {
         return <>
-        <div className='chevron_header' onClick={() =>window.history.back()}/>
+        <div className={this.state.itemLeft} onClick={() => this.clickLeft}/>
         <div className='sport'>
         <div className='text_align'><span className='text20-white'>{this.state.title}</span></div>
         </div>
-        <div className={this.state.currentItemRight}/>
+        <div className={this.state.itemRight}/>
         </>
       };
 

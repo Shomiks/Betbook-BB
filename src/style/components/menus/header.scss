@@ -44,9 +44,20 @@
     }
     .settings{
       background-size: cover;
-      background-image: url("../../betbook/assets/images/ball.png");
-      width: 10px;
-      height: 18px;
+      background-image: url("../../betbook/assets/images/settings---final.svg");
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      &:active {
+        filter: brightness(120%);
+      }
+    }
+
+    .search{
+      background-size: cover;
+      background-image: url("../../betbook/assets/images/search---final.svg");
+      width: 30px;
+      height: 30px;
       cursor: pointer;
       &:active {
         filter: brightness(120%);
