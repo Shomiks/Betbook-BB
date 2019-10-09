@@ -26,8 +26,8 @@ class Header extends React.Component{
           else{
             return( <>
               <Link to={'/settings'}><div className='settings'/></Link>
-              title<br/>
-              subtitle
+                <div className='bb_h_tittle_box'><span className='text18-white'>{this.props.tittle}</span></div>
+                <div className='bb_h_subtittle_box'><span className='text12-white'>{this.props.subtittle}</span></div>
               <Link to={'/search'}><div className='search'/></Link>
               </>)
         }

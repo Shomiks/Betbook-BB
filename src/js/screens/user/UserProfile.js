@@ -141,7 +141,7 @@ class UserProfile extends React.Component {
     render() {
 
         if (this.state.loaded) return (
-            <FullContainer  footerProps={{activeItem: 'profile'}} headerProps={{itemLeft:'settings', itemRight: 'search'}}>
+            <FullContainer  footerProps={{activeItem: 'profile'}} headerProps={{itemLeft:'settings', itemRight: 'search',tittle:this.state.statistics.full_name,subtittle:this.state.statistics.country}}>
                 <div className='betbook_context'>
                 {/*{this.renderHeader()}*/}
                 <div className='scrolable-bids-field'>
