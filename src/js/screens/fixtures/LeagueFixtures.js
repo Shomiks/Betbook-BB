@@ -1,9 +1,10 @@
 import React from 'react';
-import FixtureShort from '../../components/objectcontrols/FixtureShort';
+import FixtureShortBids from '../../components/objectcontrols/FixtureShortBids';
 import {Link} from "react-router-dom";
 import '../../../style/betbook/week-games.scss';
 import Loader from "../../components/other/Loader";
 import FullContainer from "../../components/containers/FullContainer";
+import FixtureShortFixtures from "../../components/objectcontrols/FixtureShortFixtures";
 
 class LeagueFixtures extends React.Component {
 
@@ -30,13 +31,11 @@ class LeagueFixtures extends React.Component {
     renderGames = () => {
             return <>
                 {this.state.realData.fixtures.map((fixture) => <Link to={`/fixture/${fixture.id}`} key={fixture.id}>
-                    <FixtureShort match={fixture}/></Link>)}
+                    <FixtureShortFixtures {...fixture}/></Link>)}
             </>
     };
 
     render() {
-
-        console.log(this.state.realData)
 
         if(this.state.loaded) return (
             <FullContainer footerProps={{activeItem: 'ball'}} headerProps={{title: this.state.realData.league.name}}>

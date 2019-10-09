@@ -168,7 +168,7 @@ class APIHelper {
             fetch(this.apiUrl + `/index.php/api/league/leagueFixtures/?league_id=` + league_id + '&user_id=' + user_id)
                 .then(res => res.json())
                 .then(res => {
-                    res.bids.forEach((bid) => res.fixtures.forEach((fixture) => {if(bid.fixture_id == fixture.id) {
+                    res.fixtures.forEach((fixture) => res.bids.forEach((bid) => {if(bid.fixture_id == fixture.id) {
                         fixture['ticket'] = bid;
                     }
                     }));
@@ -179,7 +179,7 @@ class APIHelper {
             fetch(this.apiUrl + `/index.php/api/league/finishedBiddedLeagueFixtures/?league_id=` + league_id + '&user_id=' + user_id)
                 .then(res => res.json())
                 .then(res => {
-                    console.log(res)
+                    if(!res.bids) res.bids = [];
                     callBack(res)
                 })
         }

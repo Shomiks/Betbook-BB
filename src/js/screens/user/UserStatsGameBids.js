@@ -1,5 +1,5 @@
 import React from 'react';
-import FixtureShort from '../../components/objectcontrols/FixtureShort';
+import FixtureShortBids from '../../components/objectcontrols/FixtureShortBids';
 import {Link} from "react-router-dom";
 import '../../../style/betbook/week-games.scss';
 import Loader from "../../components/other/Loader";
@@ -35,24 +35,13 @@ class UserStatsGameBids extends React.Component {
 
     getGameWonStatistics(){
             window.apiHelper.statistics.gameStatistics(this.state.game,this.state.user,(res)=> {
-            this.setState({realData: this.destructObject(res), loaded:true});
+            this.setState({realData: res, loaded:true});
         })
     }
 
-    destructObject = (res) => {
-        let data = [];
-        res.forEach(old => {
-            if(old.fixture){
-            let {fixture, ...ticket} = old;
-            old['fixture']['ticket'] = ticket;
-            data.push(old['fixture']);}
-        });
-        return data;
-    };
-
     renderGames = () => {
-                    return <>{this.state.realData.map((fixture) => <Link to={`/fixture/${fixture.id}`} key={fixture.id}>
-                <FixtureShort match={fixture}/></Link>)}</>
+                    return <>{this.state.realData.map((fixture) => <Link to={`/fixture/${fixture.fixture.id}`} key={fixture.fixture.id}>
+                <FixtureShortBids {...fixture}/></Link>)}</>
     };
 
     render() {
