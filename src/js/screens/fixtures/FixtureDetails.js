@@ -3,6 +3,7 @@ import '../../../style/betbook/matchdetails.scss';
 import '../../../style/app.scss'
 import Loader from "../../components/other/Loader";
 import FullContainer from "../../components/containers/FullContainer";
+import BidFieldsShort from "../../components/objectcontrols/BidFieldsShort";
 class FixtureDetails extends React.Component {
 
     constructor(props) {
@@ -199,92 +200,19 @@ class FixtureDetails extends React.Component {
     };
 
     renderBidFieldDetails = () => {
-        return <div className='scrolable-bids-field'>
-            <div className={this.state.realData.result ? 'md_match-details-container' : 'hidden'}>
-                <div className='md_line'/>
-                <div className='md_match-details-box'>
-                    <span className='text12-yellow'>Match Details</span>
-                </div>
-                <div className='md_line'/>
-            </div>
-            <div className={this.state.realData.game1_1 ?'full-time-result-field' : 'hidden'}>
-                <div className='main-titlle-field'>
-                    <div className='ft_text_position'><span className='text12-grey'>Match Outcome</span></div>
-                    <div className='game-underline'/>
-                </div>
-                <div className='md_bid-box'>
-                    {this.handleBidType('1', 'game1', '1', 'bid-field')}
-                    {this.handleBidType('X', 'game1', 'x', 'bid-field')}
-                    {this.handleBidType('2', 'game1', '2', 'bid-field')}
-                </div>
-            </div>
-            <div className={this.state.realData.game2_1 ? 'match-goals-field' : 'hidden'}>
-                <div className='main-titlle-field'>
-                    <div className='ft_text_position'><span className='text12-grey'>Match Goals</span></div>
-                    <div className='game-underline'/>
-                </div>
-                <div className='md_bid-box'>
-                    {this.handleBidType('0-1', 'game2', '1', 'bid-field')}
-                    {this.handleBidType('0-2', 'game2', '2', 'bid-field')}
-                    {this.handleBidType('0-3', 'game2', '3', 'bid-field')}
-                </div>
-                <div className='md_bid-box'>
-                    {this.handleBidType('2+HT', 'game2', '2ht', 'bid-field')}
-                    {this.handleBidType('2+FT', 'game2', '2ft', 'bid-field')}
-                    {this.handleBidType('3+FT', 'game2', '3ft', 'bid-field')}
-                    {this.handleBidType('4+FT', 'game2', '4ft', 'bid-field')}
-                </div>
-            </div>
-            <div className={this.state.realData.game3_gg ? 'both-teams-goals-field' : 'hidden'}>
-                <div className='main-titlle-field'>
-                    <div className='ft_text_position'><span className='text12-grey'>Both Team Goals</span>
-                        <div className='game-underline'/>
-                    </div>
-                </div>
-                <div className='md_bid-box'>
-                    {this.handleBidType('GG', 'game3', 'gg', 'bid-field')}
-                    {this.handleBidType('GG3+', 'game3', 'gg3p', 'bid-field')}
-                </div>
-            </div>
-            <div className={this.state.realData.game4_11 ? 'ht-ft-result-field' : 'hidden'}>
-                <div className='main-titlle-field'>
-                    <div className='ft_text_position'><span className='text12-grey'>Half / Full Time Result</span>
-                        <div className='game-underline'/>
-                    </div>
-                </div>
-                <div className='md_bid-box'>
-                    {this.handleBidType('1-1', 'game4', '11', 'bid-field')}
-                    {this.handleBidType('1-X', 'game4', '1x', 'bid-field')}
-                    {this.handleBidType('1-2', 'game4', '12', 'bid-field')}
-                </div>
-                <div className='md_bid-box'>
-                    {this.handleBidType('X-1', 'game4', 'x1', 'bid-field')}
-                    {this.handleBidType('X-X', 'game4', 'xx', 'bid-field')}
-                    {this.handleBidType('X-2', 'game4', 'x2', 'bid-field')}
-                </div>
-                <div className='md_bid-box'>
-                    {this.handleBidType('2-1', 'game4', '21', 'bid-field')}
-                    {this.handleBidType('2-X', 'game4', '2x', 'bid-field')}
-                    {this.handleBidType('2-2', 'game4', '22', 'bid-field')}
-                </div>
-            </div>
-        </div>
+        return <BidFieldsShort handleBidType={this.handleBidType} {...this.state}/>
     };
 
-
     renderStateCompopnent = () => {
-
         return(
-            <FullContainer  footerProps={{activeItem: 'ball'}} headerProps={{title: this.state.realData.league.name }}>
+            <FullContainer  footerProps={{activeItem: 'ball'}} headerProps={{title: this.state.realData.league.name}}>
             {this.renderMatchDetails()}
             {this.renderBidFieldDetails()}
             </FullContainer>
-
         )
     };
 
     render() {
-
         return <>{this.state.loaded == true ? this.renderStateCompopnent() : <Loader/>}</>
     }
 }

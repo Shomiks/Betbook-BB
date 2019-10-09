@@ -30,7 +30,7 @@ class HomeScreen extends React.Component {
     };
 
     handleFinished = (data) => {
-        if (1) return <Link to={`finished/league/${data.league.id}`} className='last-week'>
+         return <Link to={`finished/league/${data.league.id}`} className='last-week'>
             <div className='hs_left-box'>
                 <div className='hs_left-middle-text'><span className='text11-white'>Success Rate xx%</span></div>
                 <div className='hs_left-bottom-text'>
@@ -38,7 +38,6 @@ class HomeScreen extends React.Component {
                 </div>
             </div>
         </Link>;
-        else return <div className='last-week'/>
     };
 
     handleUpcoming = (data) => {
@@ -59,13 +58,12 @@ class HomeScreen extends React.Component {
                 <div className='favourite-league-container'>
                     {this.handleFinished(data)}
                     {this.handleUpcoming(data)}
-                    <BB_HS_League_Logo data={data} />
+                    <BB_HS_League_Logo data={data}/>
                 </div>
             </div>
 
         })}</>
     };
-
 
     handleFirstTimeLogin = () => {
         return <><Link to={`/countries`}>

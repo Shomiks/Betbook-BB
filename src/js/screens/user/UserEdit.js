@@ -7,8 +7,6 @@ import BB_TextField from "../../components/controls/BB_TextField";
 import BB_Select from "../../components/controls/BB_Select";
 import BB_Button from "../../components/controls/BB_Button";
 import BottomContainer from "../../components/containers/BottomContainer";
-import Header from "../../components/menus/Header";
-import Footer from "../../components/menus/Footer";
 import FullContainer from "../../components/containers/FullContainer";
 import BB_Logo from "../../components/other/BB_Logo";
 

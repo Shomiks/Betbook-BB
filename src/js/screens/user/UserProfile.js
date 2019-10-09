@@ -1,10 +1,8 @@
 import React from 'react';
 import '../../../style/betbook/profile-tickets.scss';
-import {Link} from "react-router-dom";
 import Loader from "../../components/other/Loader";
 import FullContainer from "../../components/containers/FullContainer";
 import ProfileGames from "../../components/objectcontrols/ProfileGames";
-
 
 class UserProfile extends React.Component {
 
@@ -42,7 +40,7 @@ class UserProfile extends React.Component {
             game4_success: 0
         };
 
-        if (!res.numOfBets) {
+        if (!res || !res.numOfBets) {
             statistics = {
                 game1_total: 0,
                 game2_total: 0,
@@ -115,35 +113,12 @@ class UserProfile extends React.Component {
             <ProfileGames Game={game} {...this.state}/>
         </div>
     };
-    renderHeader = () => {
-        return <div className='pt_header-field'>
-            <div className='pt_header-central-field'>
-                <div className='first-row'>
-                    {this.props.match.params.userid ?
-                        <div className='chevron_header' onClick={() =>window.history.back()}/>
-                        :
-                        <Link to={`/settings`}>
-                            <div className='settings'/>
-                        </Link>
-                    }
-                    <div className='pt_member-name'><span
-                        className='text18-white'>{this.state.statistics.full_name}</span></div>
-                    <Link to={`/search`}>
-                        <div className='search'/>
-                    </Link>
-                </div>
-                <div className='pt_country'><span
-                    className='text11-white'>{this.state.statistics.country}</span></div>
-            </div>
-        </div>
-    };
 
     render() {
 
         if (this.state.loaded) return (
-            <FullContainer  footerProps={{activeItem: 'profile'}} headerProps={{itemLeft:'settings', itemRight: 'search',tittle:this.state.statistics.full_name,subtittle:this.state.statistics.country}}>
+            <FullContainer  footerProps={{activeItem: 'profile'}} headerProps={{itemLeft:'settings', itemRight: 'search', title: this.state.statistics.full_name, subtitle: this.state.statistics.country}}>
                 <div className='betbook_context'>
-                {/*{this.renderHeader()}*/}
                 <div className='scrolable-bids-field'>
                     {this.renderFields('full-time-statistics-field', 1)}
                     {this.renderFields('match-goals-statistics-field', 2)}

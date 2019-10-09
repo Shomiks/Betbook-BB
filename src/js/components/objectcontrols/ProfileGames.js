@@ -2,11 +2,7 @@ import {Link} from "react-router-dom";
 import React from "react";
 import '../../../style/betbook/profile-tickets.scss'
 
-
-
 function ProfileGames(props) {
-
-    console.log(props)
 
     return  <><Link to={props.statistics && props.statistics.game1_total != 0 ? `/game/` + props.Game + '/' + props.userid : null}>
         <div className='pt_box'>
@@ -31,7 +27,6 @@ function ProfileGames(props) {
         </div>
     </Link>
         </>
-
 }
 
 export default ProfileGames;

@@ -1,5 +1,5 @@
 class APIHelper {
-    apiUrl = 'http://192.168.8.113';
+        apiUrl = 'http://192.168.8.113';
 
     userInfo = null;
 
@@ -165,15 +165,21 @@ class APIHelper {
                 .then(res => callBack(res))
         },
         getByID: (league_id,user_id, callBack) => {
-            fetch(this.apiUrl + `/index.php/api/league/?league_id=` + league_id + '&user_id=' + user_id)
-                .then(res => res.json())
-                .then(res => callBack(res))
-        },
-        getByIDBided: (league_id,user_id,finished, callBack) => {
-            fetch(this.apiUrl + `/index.php/api/league/?league_id=` + league_id + '&user_id=' + user_id + '&finished=' + finished)
+            fetch(this.apiUrl + `/index.php/api/league/leagueFixtures/?league_id=` + league_id + '&user_id=' + user_id)
                 .then(res => res.json())
                 .then(res => {
-                    res['fixtures'] = Object.values(res['fixtures']);
+                    res.bids.forEach((bid) => res.fixtures.forEach((fixture) => {if(bid.fixture_id == fixture.id) {
+                        fixture['ticket'] = bid;
+                    }
+                    }));
+                    callBack(res);
+                })
+        },
+        getByIDBidded: (league_id,user_id, callBack) => {
+            fetch(this.apiUrl + `/index.php/api/league/finishedBiddedLeagueFixtures/?league_id=` + league_id + '&user_id=' + user_id)
+                .then(res => res.json())
+                .then(res => {
+                    console.log(res)
                     callBack(res)
                 })
         }

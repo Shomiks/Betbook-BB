@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../../style/components/other/bb_logo.scss'
 
-function BB_Logo(props) {
+function BB_Logo() {
   return <div className='betbook-logo-box'><img src='./assets/images/betbook---logo.png' alt=''/></div>;
 }
 

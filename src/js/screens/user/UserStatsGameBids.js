@@ -64,10 +64,8 @@ class UserStatsGameBids extends React.Component {
                 </div>
            </FullContainer>
         );
+        else return <Loader/>
 
-        else {
-            return <Loader/>
-        }
     }
 }
 
