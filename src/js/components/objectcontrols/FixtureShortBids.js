@@ -2,9 +2,7 @@ import React from 'react';
 import '../../../style/components/objectcontrols/match_short.scss';
 import DateResultFixtureShort from "./DateResultFixtureShort";
 
-function FixtureShort(props){
-
-    console.log(props);
+function FixtureShortBids(props){
 
     function handleStateField (tip) {
         let game = "game" + tip;
@@ -80,4 +78,4 @@ function FixtureShort(props){
 
 }
 
-export default FixtureShort;
+export default FixtureShortBids;

@@ -22,6 +22,7 @@ class FixtureDetails extends React.Component {
 
     getFixtureById(){
         window.apiHelper.fixture.getByID(this.fixtureId,window.apiHelper.userInfo.id,(res) => {
+            console.log(res)
             this.setState({realData:res,loaded:true})
         });
     };
@@ -213,6 +214,7 @@ class FixtureDetails extends React.Component {
     };
 
     render() {
+        console.log(this.state.realData)
         return <>{this.state.loaded == true ? this.renderStateCompopnent() : <Loader/>}</>
     }
 }
