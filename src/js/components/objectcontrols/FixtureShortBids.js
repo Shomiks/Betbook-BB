@@ -4,6 +4,8 @@ import DateResultFixtureShort from "./DateResultFixtureShort";
 
 function FixtureShortBids(props){
 
+    console.log(props)
+
     function handleStateField (tip) {
         let game = "game" + tip;
 
