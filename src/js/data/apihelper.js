@@ -258,7 +258,7 @@ class APIHelper {
         gameStatistics : (game, user_id, callBack) => {
             fetch(this.apiUrl + `/index.php/api/user_statistic/statisticsByGame/?user_id=` + user_id + '&game=' + game)
                 .then(res => res.json())
-                .then(res => callBack(Object.values(res)))
+                .then(res => callBack(res))
         }
     }
 }

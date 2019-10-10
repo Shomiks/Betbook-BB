@@ -35,7 +35,7 @@ class UserStatsGameBids extends React.Component {
 
     getGameWonStatistics(){
             window.apiHelper.statistics.gameStatistics(this.state.game,this.state.user,(res)=> {
-            this.setState({realData: this.destructObject(res), loaded:true});
+            this.setState({realData: res, loaded:true});
         })
     }
 

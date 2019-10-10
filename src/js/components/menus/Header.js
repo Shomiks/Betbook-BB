@@ -25,13 +25,13 @@ class Header extends React.Component{
 
           else{
             return( <>
-              <Link to={`/search`}><div className='search'/></Link>
               <Link to={'/settings'}><div className='settings'/></Link>
                 <div className='bb_h_text_box'>
-                <div className='bb_h_title'><span className='text18-white'>{this.props.tittle}</span></div>
-                <div className='bb_h_subtitle'><span className='text12-white'>{this.props.subtittle}</span></div>
+                    <div className='bb_h_title'><span className='text18-white'>{this.props.title}</span></div>
+                    <div className='bb_h_subtitle'><span className='text12-white'>{this.props.subtitle}</span></div>
                 </div>
-              <Link to={'/search'}><div className='search'/></Link>
+                <Link to={`/search`}><div className='search'/></Link>
+
               </>)
         }
       };
