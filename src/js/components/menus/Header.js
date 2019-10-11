@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../../style/components/menus/header.scss'
+import {Link} from "react-router-dom";
 
 class Header extends React.Component{
   constructor(props){
@@ -7,31 +8,45 @@ class Header extends React.Component{
     this.state = {
       title: props.title,
       competition: props.competition,
-      currentItemRight: props.itemRight ? props.itemRight : null
+      itemRight: props.itemRight ? props.itemRight : null,
+      itemLeft: props.itemLeft ? props.itemLeft : null
+      }
     }
-  }
 
-  renderHeaderItems = () => {
-    return <>
-      <div className='chevron_header' onClick={() =>window.history.back()}/>
-      <div className='sport'>
+        renderHeaderItems = () => {
+
+        if(!this.state.itemLeft) return (<>
+        <div className='chevron_header' onClick={() => window.history.back()}/>
+        <div className='sport'>
         <div className='text_align'><span className='text20-white'>{this.state.title}</span></div>
-      </div>
-      <div className={this.state.currentItemRight}/>
-      </>
-  };
+        </div>
+        <div className={this.state.itemRight}/>
+        </>);
 
-  setTitle = (title) => {
-    this.setState({title:title})
-  };
+          else{
+            return( <>
+              <Link to={'/settings'}><div className='settings'/></Link>
+                <div className='bb_h_text_box'>
+                    <div className='bb_h_title'><span className='text18-white'>{this.props.title}</span></div>
+                    <div className='bb_h_subtitle'><span className='text12-white'>{this.props.subtitle}</span></div>
+                </div>
+                <Link to={`/search`}><div className='search'/></Link>
 
-  setItemRight = (item) => {
-    this.setState({currentItemRight: item})
-  };
+              </>)
+        }
+      };
 
-  render() {
-    return <div className='rectangle_header'>
-      <div className='header-container'>
+        setTitle = (title) => {
+        this.setState({title:title})
+      };
+
+        setItemRight = (item) => {
+        this.setState({currentItemRight: item})
+      };
+
+        render() {
+        return <div className='rectangle_header'>
+        <div className='header-container'>
         {this.renderHeaderItems()}
       </div>
     </div>

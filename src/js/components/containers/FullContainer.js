@@ -4,8 +4,8 @@ import Header from "../menus/Header";
 
 function FullContainer(props) {
 
-    return (<div className='betbook_screen' >
-        <Header {...props.headerProps} />
+    return (<div className='betbook_screen'>
+       <Header {...props.headerProps}/>
         {props.children}
         <Footer key='footerContainer' {...props.footerProps} />
     </div>);

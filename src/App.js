@@ -1,24 +1,22 @@
 import React from 'react';
-import Login from './js/user/Login'
+import Login from './js/screens/visitor/Login'
 import './style/app.scss'
-import Week_Games_Listing from "./js/tickets/Week_Games_Listing";
-import Home_Screen from "./js/tickets/Home_Screen";
-import Competition_Listing from "./js/tickets/Competition_Listing";
-import {Route, HashRouter, Redirect} from "react-router-dom";
-import Match_Details from "./js/tickets/Match_Details";
-import Leader_Boards from "./js/tickets/Leader_Boards";
-import Detailed_Competition_Listing from "./js/tickets/Detailed_Competition_Listing";
-import Search from "./js/user/Search";
-import Settings from "./js/user/Settings";
-import User_Favourite_Leagues from "./js/user/User_Favourite_Leagues";
-import Edit from "./js/user/Edit";
+import LeagueFixtures from "./js/screens/fixtures/LeagueFixtures";
+import HomeScreen from "./js/screens/home/HomeScreen";
+import CountryListing from "./js/screens/fixtures/CountryListing";
+import {Route, HashRouter} from "react-router-dom";
+import FixtureDetails from "./js/screens/fixtures/FixtureDetails";
+import CountryLeagues from "./js/screens/fixtures/CountryLeagues";
+import UserSearch from "./js/screens/user/UserSearch";
+import UserSettings from "./js/screens/user/UserSettings";
+import UserFavouriteLeagues from "./js/screens/user/UserFavouriteLeagues";
+import Edit from "./js/screens/user/UserEdit";
 import Loader from "./js/components/other/Loader";
-import League_Fixtures_Bidded from "./js/tickets/League_Fixtures_Bidded";
-import User_Game_Bids from "./js/tickets/User_Game_Bids";
-import Profile from "./js/tickets/Profile";
-import Register from "./js/user/Register";
-import Forgot_Password from "./js/user/Forgot_Password";
-
+import UserLeaguesBids from "./js/screens/home/UserLeaguesBids";
+import UserStatsGameBids from "./js/screens/user/UserStatsGameBids";
+import UserProfile from "./js/screens/user/UserProfile";
+import Register from "./js/screens/visitor/Register";
+import ForgotPassword from "./js/screens/visitor/ForgotPassword";
 
 require("./js/data/apihelper");
 
@@ -33,31 +31,25 @@ class App extends React.Component {
             authenticated: false
         };
         this.sharedObject = {};
+
         window.addEventListener("hashchange", this.onHashChange);
     }
 
     componentDidMount() {
-        this.sharedObject = {
-            apiHelper: window.apiHelper,
-            headerInstance: null,
-            footerInstance: null
-        };
-
-        const userid = localStorage.getItem('user_id');
-        const authenticated = userid != null;
-
-        if(userid){
-           window.apiHelper.user.getUser(userid, (res) => {
+        if(window.apiHelper.user.isAuthenticated()){
+           window.apiHelper.user.getCurrentUser((res) => {
                 if(res == false){
-                    localStorage.clear();
-                    window.location.reload();
+                    window.location.hash = '/login';
                 }
-                else this.setState({authenticated, loaded:true});
+                else{
+                    window.location.hash = '/home';
+                    this.setState({loaded:true});
+                }
             });
         }
         else{
-            this.setState({loaded:true, authenticated});
             window.location.hash = '/login';
+            this.setState({loaded:true});
         }
     }
 
@@ -66,42 +58,37 @@ class App extends React.Component {
     };
 
     render() {
-        this.state.authenticated = localStorage.getItem('user_id') != null;
 
         if (this.state.loaded) {
-            if(this.state.authenticated) {
+            if(window.apiHelper.user.isAuthenticated()) {
                 return (<div className='App'>
                     <HashRouter>
-                        <Route path="/home" render={(props) => (<Home_Screen sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/user_favourites" render={(props) => (<User_Favourite_Leagues sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/countries" render={(props) => (<Competition_Listing key={'competition_current'}{...props} sharedObj={this.sharedObject}/>)}/>
-                        <Route path="/country/:countryid" render={(props) => (<Detailed_Competition_Listing key={'competition_current'} sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/league/:leagueid" render={(props) => (<Week_Games_Listing sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/finished/league/:leagueid" render={(props) => (<League_Fixtures_Bidded sharedObj={this.sharedObject} {...props}/>)}/>
-
-                        <Route path="/fixture/:fixtureid" render={(props) => (<Match_Details sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/leaderboards" render={(props) => (<Leader_Boards sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/profile" render={(props) => (<Profile sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/game/:gameid/:userid" render={(props) => (<User_Game_Bids sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/settings" render={(props) => (<Settings sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/search" render={(props) => (<Search sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/user/:userid" render={(props) => (<Profile sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/edit" render={(props) => (<Edit sharedObj={this.sharedObject} {...props}/>)}/>
+                        <Route path="/home" render={() => <HomeScreen/>}/>
+                        <Route path="/user_favourites" render={(props) => <UserFavouriteLeagues {...props}/>}/>
+                        <Route path="/countries" render={() => <CountryListing/>}/>
+                        <Route path="/country/:countryid" render={(props) => <CountryLeagues {...props}/>}/>
+                        <Route path="/league/:leagueid" render={(props) => <LeagueFixtures {...props}/>}/>
+                        <Route path="/finished/league/:leagueid" render={(props) => <UserLeaguesBids {...props}/>}/>
+                        <Route path="/fixture/:fixtureid" render={(props) => <FixtureDetails {...props}/>}/>
+                        <Route path="/profile" render={(props) => (<UserProfile {...props}/>)}/>
+                        <Route path="/game/:gameid/:userid" render={(props) => <UserStatsGameBids {...props}/>}/>
+                        <Route path="/settings" render={() => <UserSettings/>}/>
+                        <Route path="/search" render={() => (<UserSearch/>)}/>
+                        <Route path="/user/:userid" render={(props) => (<UserProfile {...props}/>)}/>
+                        <Route path="/edit" render={() => (<Edit/>)}/>
                     </HashRouter>
                 </div>);
             }
             else{
                 return (
                     <HashRouter>
-                        <Route path="/register" render={(props) => (<Register sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/login" render={(props) => (<Login sharedObj={this.sharedObject} {...props}/>)}/>
-                        <Route path="/forgot-password" render={(props) => (<Forgot_Password {...props} sharedObj={this.sharedObject}/>)}/>
+                        <Route path="/register" render={() => (<Register/>)}/>
+                        <Route path="/login" render={() => (<Login/>)}/>
+                        <Route path="/forgot-password" render={() => (<ForgotPassword/>)}/>
                     </HashRouter>
                 );
             }
-        } else {
-            return <Loader/>
-        }
+        } else return <Loader/>
     }
 }
 

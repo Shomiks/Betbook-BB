@@ -62,7 +62,7 @@ html, body {
   width: 100%;
   overflow: hidden;
   background-color: #151516;
-
+  font-family: "SF Display";
 }
 
 #root {
@@ -87,56 +87,48 @@ html, body {
 
 .text6-white {
   color: #FFF;
-  font-family: "SF Display";
   font-size: 6px;
   font-weight: 500;
 }
 
 .text10 {
   color: #0A0A0A;
-  font-family: "SF Display";
   font-size: 10px;
   font-weight: 500;
 }
 
 .text10-white {
   color: #FFF;
-  font-family: "SF Display";
   font-size: 10px;
   font-weight: 500;
 }
 
 .text11-grey {
   color: #999;
-  font-family: "SF Display";
   font-size: 11px;
   font-weight: 500;
 }
 
 .text11 {
   color: #151516;
-  font-family: "SF Display";
   font-size: 11px;
   font-weight: 500;
 }
 
 .text11-white {
   color: #FFF;
-  font-family: "SF Display";
   font-size: 11px;
   font-weight: 500;
 }
 
 .text12 {
   color: #0A0A0A;
-  font-family: "SF Display";
   font-size: 12px;
   font-weight: 500;
 }
 
 .text12-white {
   color: #FAFAFA;
-  font-family: "SF Display";
   font-size: 12px;
   font-weight: 500;
 
@@ -150,28 +142,24 @@ html, body {
 
 .text12-grey {
   color: #999999;
-  font-family: "SF Display";
   font-size: 12px;
   font-weight: 500;
 }
 
 .text12-yellow {
   color: #FFAC3A;
-  font-family: "SF Display";
   font-size: 12px;
   font-weight: 500;
 }
 
 .text13-grey {
   color: #999999;
-  font-family: "SF Display";
   font-size: 13px;
   font-weight: 500;
 }
 
 .text14-white {
   color: #FFF;
-  font-family: "SF Display";
   font-size: 14px;
   font-weight: 500;
   line-height: 2.8;
@@ -179,43 +167,37 @@ html, body {
 
 .text14 {
   color: #0A0A0A;
-  font-family: "SF Display";
   font-size: 14px;
   font-weight: 500;
 }
 
 .text15-white {
   color: #FFF;
-  font-family: "SF Display";
   font-size: 15px;
   font-weight: 500;
 }
 
 .text15-yellow {
   color: #FFAC3A;
-  font-family: "SF Display";
   font-size: 15px;
   font-weight: 500;
   margin: 15px;
 }
+
 .text15-grey {
   color: #999999;
-  font-family: "SF Display";
   font-size: 15px;
   font-weight: 500;
 }
 
-
 .text16-yellow {
   color: #FFAC3A;
-  font-family: "SF Display";
   font-size: 16px;
   font-weight: 500;
 }
 
 .text16-yellow {
   color: #FFAC3A;
-  font-family: "SF Display";
   font-size: 16px;
   font-weight: 500;
 
@@ -231,35 +213,30 @@ html, body {
 
 .text17 {
   color: #0A0A0A;
-  font-family: "SF Display";
   font-size: 17px;
   font-weight: 500;
 }
 
 .text17-white {
   color: #FFF;
-  font-family: "SF Display";
   font-size: 17px;
   font-weight: 500;
 }
 
 .text17-red {
   color: #BA4343;
-  font-family: "SF Display";
   font-size: 17px;
   font-weight: 500;
 }
 
 .text18 {
   color: #0A0A0A;
-  font-family: "SF Display";
   font-size: 18px;
   font-weight: 500;
 }
 
 .text18-white {
   color: #FFF;
-  font-family: "SF Display";
   font-size: 18px;
   font-weight: 500;
   overflow: hidden;
@@ -270,19 +247,16 @@ html, body {
     line-height: inherit;
     white-space: nowrap;
   }
-
 }
 
 .text20-white {
   color: #FFF;
-  font-family: "SF Display";
   font-size: 20px;
   font-weight: 500;
 }
 
 .text21-yellow {
   color: #FFAC3A;
-  font-family: "SF Display";
   font-size: 21px;
   font-weight: 500;
 
@@ -298,14 +272,12 @@ html, body {
 
 .text25 {
   color: #0A0A0A;
-  font-family: "SF Display";
   font-size: 25px;
   font-weight: 500;
 }
 
 .text26-white {
   color: #FFF;
-  font-family: "SF Display";
   font-size: 26px;
   font-weight: 500;
 }
@@ -313,3 +285,16 @@ html, body {
 .hide {
   display: none;
 }
+
+.hidden {
+  display: none;
+}
+
+div, span, p {
+  user-select: none;
+}
+
+a {
+  text-decoration: none;
+}
+

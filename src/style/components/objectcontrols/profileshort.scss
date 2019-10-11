@@ -1,12 +1,17 @@
 .ps_screen {
   height: 80px;
   width: 100%;
-  background-color: #FFFFFF;
+  background-color: #151516;
   box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
   position: relative;
   display: flex;
   justify-content: start;
   align-items: center;
+  padding: 16px 16px 16px 20px;
+
+  &:active {
+    filter: brightness(130%);
+  }
 
   .ps_number {
     height: 22px;
@@ -22,8 +27,6 @@
     width: 50px;
     position: relative;
     display: inline-block;
-    margin-top: 5px;
-    margin-left: 5px;
   }
 
   .ps_member-name {
@@ -31,15 +34,19 @@
     width: 200px;
     position: relative;
     display: inline-block;
+    margin-left: 20px;
+
 
     .ps_name {
       height: 24px;
-      width: 170px;
+      width: auto;
+      text-align: left;
     }
 
     .ps_points {
       height: 24px;
-      width: 190px;
+      width: auto;
+      text-align: left;
     }
   }
 
@@ -50,6 +57,29 @@
     right: 0;
     margin-right: 5%;
     display: inline-block;
+  }
+
+}
+
+.bb_us_search_box {
+  height: 80px;
+  width: 100%;
+  position: relative;
+
+  .bb_us_search_field {
+    position: relative;
+    height: 35px;
+    width: 80%;
+    background: rgba(142, 142, 147, 0.12);
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-top: 22.5px;
+
+    .MuiInputBase-root {
+      padding-left: 20px;
+      color: #999999;
+      font-size: 15px;
+    }
   }
 
 }
