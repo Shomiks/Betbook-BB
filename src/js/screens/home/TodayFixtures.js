@@ -21,6 +21,7 @@ class TodayFixtures extends React.Component {
 
     getAllFixtures = () => {
         window.apiHelper.leagues.getAll((res) => {
+            console.log(res)
             this.sortFavourites(res);
         })
     };
@@ -33,6 +34,14 @@ class TodayFixtures extends React.Component {
         });
     };
 
+    sortLeagues = (leagues) => {
+        leagues.sort(function (a,b) {
+            if(a.name > b.name) return 1;
+            if(a.name < b.name) return -1;
+            return 0;
+        });
+    }
+
     sortFavourites = (res) => {
         let fav_leagues = [];
         let leagues = [];
@@ -42,11 +51,9 @@ class TodayFixtures extends React.Component {
             else leagues.push(league);
         });
         this.sortFavs(fav_leagues);
-
-        leagues.sort();
+        this.sortLeagues(leagues);
         let realData = fav_leagues.concat(leagues);
         this.setState({loaded: true, realData})
-
     };
 
     onChange = (league, i, user_favourite_league) => {
