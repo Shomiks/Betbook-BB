@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../../style/betbook/home_screen.scss'
+import '../../../style/betbook/today_fixtures.scss'
 import Loader from "../../components/other/Loader";
 import FooterContainer from "../../components/containers/FooterContainer";
 import LeagueShort from "../../components/objectcontrols/LeagueShort";
