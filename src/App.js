@@ -65,6 +65,7 @@ class App extends React.Component {
                 return (<div className='App'>
                     <HashRouter>
                         <Route path="/home" render={() => <TodayFixtures/>}/>
+                        <Route path="/favourite_leagues" render={() => <HomeScreen/>}/>
                         <Route path="/user_favourites" render={(props) => <UserFavouriteLeagues {...props}/>}/>
                         <Route path="/countries" render={() => <CountryListing/>}/>
                         <Route path="/country/:countryid" render={(props) => <CountryLeagues {...props}/>}/>

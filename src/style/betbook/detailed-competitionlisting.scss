@@ -39,6 +39,9 @@
 
       .star {
         &_checked {
+          position: absolute;
+          right: 0;
+          padding-right: 20px;
           svg {
             path {
               fill: #f68c25;

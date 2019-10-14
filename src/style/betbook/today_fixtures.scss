@@ -1,36 +1,55 @@
-.league{
-  height:40px;
-  background-color: #1E8FE1;
+.league {
+  height: 40px;
+  background-color: #151516;
   border-bottom: #CFD1D4 1px solid;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.fixture_box{
-  height:auto;
+
+.fixture_box {
+  height: auto;
   border-bottom: #CFD1D4 1px solid;
-  background-color: #1a281d;
+  background-color: #151516;
   text-decoration: none;
-  display:flex;
+  display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.league_name{
+.league_name {
   text-decoration: none;
+  color: #FFF;
+  letter-spacing: 0.5px;
 }
-.star_checked{
+
+.star_checked {
   fill: #f68c25 !important;
   stroke: #f68c25 !important;
+  position: absolute;
+  right: 0;
+  padding-right: 20px;
+  padding-bottom: 20px;
 }
-.team_home{
+
+.team_home {
   text-align: left;
-  padding-left:20px;
+  color: #FFF;
+  padding-left: 20px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+
 }
-.team_away{
+
+.team_away {
   text-align: left;
-  padding-left:20px;
+  color: #FFF;
+  padding-left: 20px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
 }
-.time{
-  padding-right:20px;
+
+.time {
+  padding-right: 20px;
+  color: #FFF;
 }

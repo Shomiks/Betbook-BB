@@ -74,7 +74,7 @@ class HomeScreen extends React.Component {
 
     render() {
         if (this.state.loaded) return (
-            <FooterContainer footerProps={{activeItem: 'timeline'}}>
+            <FooterContainer footerProps={{activeItem: 'star'}}>
                 <div className='betbook-logo'/>
                 <div className='main-content'>
                     {this.state.realData.length ?

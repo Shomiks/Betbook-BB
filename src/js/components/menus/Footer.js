@@ -39,7 +39,7 @@ class Footer extends React.Component {
                     </Link>
                 </div>
                 <div className={this.state.currentActive == 'star' ? 'ft_star-field active' : 'ft_star-field'}>
-                    <Link to={`/user_favourites`}>
+                    <Link to={`/favourite_leagues`}>
                         <div className='star'>
                             <span>{this.state.currentActive == 'star' ?
                                 <div className='center-text'><span className='text10-white'>Favorites</span>
