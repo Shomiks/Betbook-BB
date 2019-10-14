@@ -1,5 +1,5 @@
 class APIHelper {
-        apiUrl = 'http://192.168.1.2';
+        apiUrl = 'http://192.168.8.113';
 
     userInfo = null;
 
@@ -158,7 +158,7 @@ class APIHelper {
 
     leagues = {
         getAll: (callBack) => {
-            fetch(this.apiUrl + `/index.php/api/league/todayFixtures/`)
+            fetch(this.apiUrl + `/index.php/api/league/todayFixtures/?user_id=` + this.userInfo.id)
                 .then(res => res.json())
                 .then(res => callBack(res))
         },
@@ -233,7 +233,7 @@ class APIHelper {
     };
 
     favourites = {
-            delete: (id, callBack) => {
+            delete: (id) => {
             fetch(this.apiUrl + `/index.php/api/user_favourite_league/` + id, {
                 method: 'DELETE',
                 headers: {
@@ -241,7 +241,6 @@ class APIHelper {
                 }
             })
                 .then(res => res.json())
-                .then(res => callBack(res))
          },
         getFavourites : (user_id,callBack) => {
             fetch(this.apiUrl + `/index.php/api/user_favourite_league/?user_id=` + user_id)

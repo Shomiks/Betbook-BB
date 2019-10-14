@@ -1,5 +1,4 @@
 import React from 'react';
-import FixtureShortBids from '../../components/objectcontrols/FixtureShortBids';
 import {Link} from "react-router-dom";
 import '../../../style/betbook/week-games.scss';
 import Loader from "../../components/other/Loader";

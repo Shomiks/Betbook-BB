@@ -50,9 +50,7 @@ class UserProfile extends React.Component {
             statistics['country'] = res['country'];
             statistics['full_name'] = res['full_name'];
             statistics['username'] = res['username'];
-        } else {
-            this.calculateAvgAndSuccess(res, statisticsCalculated);
-        }
+        } else this.calculateAvgAndSuccess(res, statisticsCalculated);
 
         statisticsCalculated = this.checkBets(res, statisticsCalculated);
         this.setState({statistics, statisticsCalculated, loaded: true, userFullName:statistics['full_name'], userCountry:statistics['country']})
@@ -71,27 +69,28 @@ class UserProfile extends React.Component {
     };
 
     checkBets = (res, statisticsCalculated) => {
-        if (!res.numOfBets || res.game1_total == 0 || res.game1_total_win == 0) {
+        if (!res.game1_total_win || res.game1_total_win == 0) {
             statisticsCalculated.game1_avg = '-';
             statisticsCalculated.game1_success = '-';
         }
-        if (!res.numOfBets || res.game2_total == 0 || res.game2_total_win == 0) {
+        if (!res.game2_total_win || res.game2_total_win == 0) {
             statisticsCalculated.game2_avg = '-';
             statisticsCalculated.game2_success = '-';
         }
-        if (!res.numOfBets || res.game3_total == 0 || res.game3_total_win == 0) {
+        if (!res.game3_total_win || res.game3_total_win == 0) {
             statisticsCalculated.game3_avg = '-';
             statisticsCalculated.game3_success = '-';
         }
-        if (!res.numOfBets || res.game4_total == 0 || res.game4_total_win == 0) {
+        if (!res.game4_total_win || res.game4_total_win == 0) {
             statisticsCalculated.game4_avg = '-';
             statisticsCalculated.game4_success = '-';
         }
         return statisticsCalculated;
     };
 
-    seeBets = () => {
-        if (this.state.statistics && this.state.statistics.game1_total > 0) return <div className='pt_yellow-bet-box'>
+    seeBets = (gameNumber) => {
+        let game = 'game' + gameNumber + '_total';
+        if (this.state.statistics && this.state.statistics[game] > 0) return <div className='pt_yellow-bet-box'>
             <span className='text11-white'>See bets>></span>
         </div>;
         else return null
@@ -105,7 +104,7 @@ class UserProfile extends React.Component {
         else gameName = 'Halftime/Fulltime';
         return <div className={fieldName}>
             <div className='main-title-field'>
-                {this.seeBets()}
+                {this.seeBets(game)}
                 <div className='ft_text_position'><span className='text12-grey'>{gameName}</span>
                     <div className='game-underline'/>
                 </div>

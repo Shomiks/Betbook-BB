@@ -34,7 +34,7 @@ class UserSettings extends React.Component {
 
     render() {
 
-        if(this.state.loaded) return (<FullContainer footerProps={{activeItem: 'profile'}} headerProps={{title: 'UserSettings'}}>
+        if(this.state.loaded) return (<FullContainer footerProps={{activeItem: 'profile'}} headerProps={{title: 'Settings'}}>
                 <div className='betbook-context'>
                  <div className='main-container'>
                     <Link to={`/edit`}> <div className='personal-info'><span className='text11-grey'>Personal info</span>

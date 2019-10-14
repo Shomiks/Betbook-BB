@@ -1,9 +1,10 @@
 import React from 'react';
-import '../../../style/components/objectcontrols/match_short.scss';
-import '../../../style/betbook/home_screen.scss';
+import '../../../style/betbook/today_fixtures.scss'
 import {Link} from "react-router-dom";
 
 function LeagueShort(props) {
+
+    console.log(props)
 
     props.fixture.sort();//sort fixtures by time
 
@@ -27,8 +28,7 @@ function LeagueShort(props) {
 
     function removeFavouriteLeague() {
         window.apiHelper.favourites.getFavouriteByLeagueId(props.id, (res) => {
-            window.apiHelper.favourites.delete(res['id'], () => {
-            });
+            window.apiHelper.favourites.delete(res['id']);
         });
         props.onChange();
     }
@@ -40,7 +40,7 @@ function LeagueShort(props) {
     }
 
     function renderResult(fixture) {
-        if (fixture.is_finished) return fixture.result.status;
+        if (fixture.finished) return fixture.result.status;
         else return fixture.result.elapsed;
     }
 

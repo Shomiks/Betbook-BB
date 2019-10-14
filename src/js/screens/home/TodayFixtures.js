@@ -25,14 +25,24 @@ class TodayFixtures extends React.Component {
         })
     };
 
+    sortFavs = (favs) => {
+        favs.sort(function (a,b) {
+            if(a.name < b.name) return 1;
+            if(a.name > b.name) return -1;
+            return 0;
+        });
+    };
+
     sortFavourites = (res) => {
         let fav_leagues = [];
         let leagues = [];
         res.forEach(league => {
+            if(league.user_favourite_league && league.user_favourite_league.user_id != window.apiHelper.userInfo.id) league.user_favourite_league = null;
             if(league.user_favourite_league) fav_leagues.push(league);
             else leagues.push(league);
         });
-        fav_leagues.sort();
+        this.sortFavs(fav_leagues);
+
         leagues.sort();
         let realData = fav_leagues.concat(leagues);
         this.setState({loaded: true, realData})
@@ -62,6 +72,7 @@ class TodayFixtures extends React.Component {
                     <>
                         <div className='welcome-text'>My Leagues</div>
                         {this.state.realData.map((league, i) => {
+                            console.log(league)
                             return (<LeagueShort isChecked={league.user_favourite_league ? 'star_checked' : 'star'}
                                                  onChange={(user_favourite_league) => this.onChange(league, i, user_favourite_league)} {...league}
                                                  key={league.id}/>)
