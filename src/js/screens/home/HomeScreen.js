@@ -23,7 +23,7 @@ class HomeScreen extends React.Component {
 
     getUserFavorites = () => {
         if (window.apiHelper.userInfo) {
-            window.apiHelper.home.get_favourites(window.apiHelper.userInfo.id, (res) => {
+            window.apiHelper.favourites.getFavourites(window.apiHelper.userInfo.id, (res) => {
                 this.setState({username: window.apiHelper.userInfo['username'], realData: res, loaded: true})
             });
         }

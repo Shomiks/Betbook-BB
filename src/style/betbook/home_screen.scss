@@ -37,7 +37,6 @@
       }
       .favourite-league {
         width: 100%;
-
         .favourite-league-container {
           display: flex;
           height: 120px;
@@ -112,3 +111,38 @@
   }
 }
 
+.league{
+  height:40px;
+  background-color: #1E8FE1;
+  border-bottom: #CFD1D4 1px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fixture_box{
+  height:auto;
+  border-bottom: #CFD1D4 1px solid;
+  text-decoration: none;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.league_name{
+  text-decoration: none;
+}
+.star_checked{
+  fill: #f68c25 !important;
+  stroke: #f68c25 !important;
+}
+.team_home{
+  text-align: left;
+  padding-left:20px;
+}
+.team_away{
+  text-align: left;
+  padding-left:20px;
+}
+.time{
+  padding-right:20px;
+}

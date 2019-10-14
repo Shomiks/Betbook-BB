@@ -1,5 +1,5 @@
 class APIHelper {
-        apiUrl = 'http://192.168.8.113';
+        apiUrl = 'http://192.168.0.21';
 
     userInfo = null;
 
@@ -12,9 +12,7 @@ class APIHelper {
                 if (res) {
                     localStorage.setItem('user_id', res.id);
                     callBack(true);
-                } else {
-                    callBack(false);
-                }
+                } else callBack(false)
             })
     };
 
@@ -30,14 +28,14 @@ class APIHelper {
             return (this.userInfo != null || window.localStorage.getItem('user_id') != null);
         },
         getCurrentUser: (callBack) => {
-            if(this.userInfo){
-                setTimeout(()=>{
+            if(this.userInfo) {
+                setTimeout(() => {
                     callBack(this.userInfo)
                 }, 100)
             }
-            else if(this.user.isAuthenticated()){
-                    this.user.getUser(this.user.getCurrentUserID(),(res)=>{
-                    if(res){
+            else if(this.user.isAuthenticated()) {
+                    this.user.getUser(this.user.getCurrentUserID(),(res) => {
+                    if(res) {
                         this.userInfo = res;
                         callBack(this.userInfo);
                     }
@@ -48,8 +46,8 @@ class APIHelper {
                 });
             }
             else{
-                setTimeout(()=>{
-                    callBack(false)
+                setTimeout(() => {
+                    callBack(false);
                 }, 100)
             }
         },
@@ -63,7 +61,7 @@ class APIHelper {
                 .then(res => res.json())
                 .then(res => callBack(res))
         },
-        favourite_team_leagues: (user_id,league_id, callBack) => {
+        favourite_team_leagues: (user_id, league_id, callBack) => {
             let data = {
                 user_id: user_id,
                 league_id: league_id
@@ -76,7 +74,7 @@ class APIHelper {
                 }
             })
                 .then(res => res.json())
-                .then(() => callBack)
+                .then(res => callBack(res))
         },
         register : (username, password, email, user_fullname, country_id, team_id, callBack) => {
             let data = {
@@ -159,7 +157,12 @@ class APIHelper {
     };
 
     leagues = {
-        getAll: (country_id, callBack) => {
+        getAll: (callBack) => {
+            fetch(this.apiUrl + `/index.php/api/league/todayFixtures/`)
+                .then(res => res.json())
+                .then(res => callBack(res))
+        },
+        getByCountryId: (country_id, callBack) => {
             fetch(this.apiUrl + `/index.php/api/country/getById/?country_id=` + country_id)
                 .then(res => res.json())
                 .then(res => callBack(res))
@@ -168,11 +171,14 @@ class APIHelper {
             fetch(this.apiUrl + `/index.php/api/league/leagueFixtures/?league_id=` + league_id + '&user_id=' + user_id)
                 .then(res => res.json())
                 .then(res => {
-                    res.fixtures.forEach((fixture) => res.bids.forEach((bid) => {if(bid.fixture_id == fixture.id) {
-                        fixture['ticket'] = bid;
+                    if(res.bids) {
+                        res.fixtures.forEach((fixture) => res.bids.forEach((bid) => {
+                            if (bid.fixture_id == fixture.id) {
+                                fixture['ticket'] = bid;
+                            }
+                        }));
                     }
-                    }));
-                    callBack(res);
+                        callBack(res);
                 })
         },
         getByIDBidded: (league_id,user_id, callBack) => {
@@ -190,17 +196,6 @@ class APIHelper {
             fetch(this.apiUrl + `/index.php/api/fixture/?id=` + id + '&user_id=' + user_id)
                 .then(res => res.json())
                 .then(res => callBack(res))
-        }
-    };
-
-    home = {
-    get_favourites : (user_id,callBack) => {
-        fetch(this.apiUrl + `/index.php/api/user_favourite_league/?user_id=` + user_id)
-            .then(res => res.json())
-            .then(res => {
-                let leagues = Object.values(res);
-                callBack(leagues)
-            })
         }
     };
 
@@ -238,7 +233,7 @@ class APIHelper {
     };
 
     favourites = {
-            delete: (id) => {
+            delete: (id, callBack) => {
             fetch(this.apiUrl + `/index.php/api/user_favourite_league/` + id, {
                 method: 'DELETE',
                 headers: {
@@ -246,7 +241,21 @@ class APIHelper {
                 }
             })
                 .then(res => res.json())
-         }
+                .then(res => callBack(res))
+         },
+        getFavourites : (user_id,callBack) => {
+            fetch(this.apiUrl + `/index.php/api/user_favourite_league/?user_id=` + user_id)
+                .then(res => res.json())
+                .then(res => {
+                    let leagues = Object.values(res);
+                    callBack(leagues)
+                })
+        },
+        getFavouriteByLeagueId: (league_id, callBack) => {
+            fetch(this.apiUrl + `/index.php/api/user_favourite_league/favouriteLeague/?user_id=` + this.userInfo.id + `&league_id=` + league_id)
+                .then(res => res.json())
+                .then(res => callBack(res))
+        }
     };
 
     statistics = {

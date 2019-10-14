@@ -35,6 +35,8 @@ class UserLeaguesBids extends React.Component {
 
     render() {
 
+         console.log(this.state)
+
         if(this.state.loaded) return (
            <FullContainer  footerProps={{activeItem: 'ball'}} headerProps={{title: this.state.realData.league.name}}>
                 <div className='main-content'>

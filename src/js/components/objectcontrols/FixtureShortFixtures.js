@@ -3,6 +3,8 @@ import '../../../style/components/objectcontrols/match_short.scss';
 
 function FixtureShortFixtures(props){
 
+    console.log(props)
+
     function handleStateField (tip) {
         let game = "game" + tip;
 

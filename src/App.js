@@ -17,6 +17,7 @@ import UserStatsGameBids from "./js/screens/user/UserStatsGameBids";
 import UserProfile from "./js/screens/user/UserProfile";
 import Register from "./js/screens/visitor/Register";
 import ForgotPassword from "./js/screens/visitor/ForgotPassword";
+import TodayFixtures from "./js/screens/home/TodayFixtures";
 
 require("./js/data/apihelper");
 
@@ -63,7 +64,7 @@ class App extends React.Component {
             if(window.apiHelper.user.isAuthenticated()) {
                 return (<div className='App'>
                     <HashRouter>
-                        <Route path="/home" render={() => <HomeScreen/>}/>
+                        <Route path="/home" render={() => <TodayFixtures/>}/>
                         <Route path="/user_favourites" render={(props) => <UserFavouriteLeagues {...props}/>}/>
                         <Route path="/countries" render={() => <CountryListing/>}/>
                         <Route path="/country/:countryid" render={(props) => <CountryLeagues {...props}/>}/>

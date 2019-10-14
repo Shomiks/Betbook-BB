@@ -20,7 +20,7 @@ class CountryLeagues extends React.Component {
     }
 
     getAllLeagues(){
-        window.apiHelper.leagues.getAll(this.countryId,(res) => {
+        window.apiHelper.leagues.getByCountryId(this.countryId,(res) => {
             this.setState({realData: res, loaded: true});
         });
     }

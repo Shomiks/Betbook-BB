@@ -29,7 +29,7 @@ class UserFavouriteLeagues extends React.Component {
     };
 
     getAllLeagues = () => {
-        window.apiHelper.home.get_favourites(window.apiHelper.userInfo.id,(res) => {
+        window.apiHelper.favourites.getFavourites(window.apiHelper.userInfo.id,(res) => {
             this.addCheckboxState(res);
             this.setState({loaded:true});
         });
@@ -67,7 +67,7 @@ class UserFavouriteLeagues extends React.Component {
                 <div className='leagues-info'>
                     <div className='league-name'><span className='text18-white'> {data.league.name}</span></div>
                 </div>
-                <div className={'league_favorite_action'}>
+                <div className='league_favorite_action'>
                     <div className={this.state.remove.includes(index) ? 'star' : 'star_checked'}
                          onClick={this.state.remove.includes(index) ? () => this.handleAddClick(data,index) : () => this.handleRemoveClick(data,index)} defaultChecked={this.state.checked}>
                                             <svg width="27" height="26" viewBox="0 0 27 26" fill="none" xmlns="http://www.w3.org/2000/svg">
