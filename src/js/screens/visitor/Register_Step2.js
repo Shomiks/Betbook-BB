@@ -50,7 +50,7 @@ class Register_Step2 extends React.Component {
         })
     };
 
-    getAllCLubsByCountryId = (country_id) => {
+    getAllClubsByCountryId = (country_id) => {
         window.apiHelper.teams.getByCountryId(country_id,res => {
             this.setState({country_clubs: res});
         })
@@ -58,7 +58,7 @@ class Register_Step2 extends React.Component {
 
     handleCountryChange = (e) => {
         this.setState({country_id:e.target.value});
-        this.getAllCLubsByCountryId(e.target.value);
+        this.getAllClubsByCountryId(e.target.value);
     };
 
     handleClubChange = (event) => {

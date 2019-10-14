@@ -12,8 +12,6 @@ class TodayFixtures extends React.Component {
         this.state = {
             realData: null,
             loaded: false,
-            username: null,
-            checked: false
         };
     }
 
@@ -23,12 +21,37 @@ class TodayFixtures extends React.Component {
 
     getAllFixtures = () => {
         window.apiHelper.leagues.getAll((res) => {
-            this.setState({loaded:true, realData:res})
+            this.sortFavourites(res);
         })
     };
 
-    onChange = (user_favourite_league) => {
+    sortFavourites = (res) => {
+        let fav_leagues = [];
+        let leagues = [];
+        res.forEach(league => {
+            if(league.user_favourite_league) fav_leagues.push(league);
+            else leagues.push(league);
+        });
+        fav_leagues.sort();
+        leagues.sort();
+        let realData = fav_leagues.concat(leagues);
+        this.setState({loaded: true, realData})
 
+    };
+
+    onChange = (league, i, user_favourite_league) => {
+        const realData = [...this.state.realData];
+        if (league.user_favourite_league) {
+            realData[i].user_favourite_league = null;
+        } else {
+            const fav_league = {
+                id: user_favourite_league,
+                league_id: league.id,
+                user_id: window.apiHelper.userInfo.id
+            };
+            realData[i].user_favourite_league = fav_league;
+        }
+        this.setState({realData})
     };
 
     render() {
@@ -36,18 +59,17 @@ class TodayFixtures extends React.Component {
             <FooterContainer footerProps={{activeItem: 'timeline'}}>
                 <div className='betbook-logo'/>
                 <div className='main-content'>
-                        <>
-                            <div className='welcome-text'>My Leagues</div>
-                            {this.state.realData.map(league => {
-                                return (<LeagueShort isChecked={league.user_favourite_league ? 'star_checked' : 'star'}
-                                                     onChange={this.onChange(league.user_favourite_league)}{...league} key={league.id}/>)
-                                })}</>
+                    <>
+                        <div className='welcome-text'>My Leagues</div>
+                        {this.state.realData.map((league, i) => {
+                            return (<LeagueShort isChecked={league.user_favourite_league ? 'star_checked' : 'star'}
+                                                 onChange={(user_favourite_league) => this.onChange(league, i, user_favourite_league)} {...league}
+                                                 key={league.id}/>)
+                        })}</>
                 </div>
             </FooterContainer>
         );
-        else {
-            return <Loader/>
-        }
+        else return <Loader/>
     }
 }
 

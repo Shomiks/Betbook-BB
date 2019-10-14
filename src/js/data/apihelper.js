@@ -1,5 +1,5 @@
 class APIHelper {
-        apiUrl = 'http://192.168.0.21';
+        apiUrl = 'http://192.168.1.2';
 
     userInfo = null;
 
