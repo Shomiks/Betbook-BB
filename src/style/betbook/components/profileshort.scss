@@ -1,0 +1,52 @@
+.ps_screen {
+  height: 60px;
+  width: 100%;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+  position: relative;
+  display: block;
+
+
+  .ps_number {
+    height: 22px;
+    width: 11px;
+    position: relative;
+    display: inline-block;
+    margin-top: 15px;
+    margin-left: 23px;
+  }
+
+  .ps_member-image {
+    height: 50px;
+    width: 50px;
+    position: relative;
+    display: inline-block;
+    margin-top: 5px;
+    margin-left: 5px;
+  }
+
+  .ps_member-name {
+    height: 40px;
+    width: 200px;
+    position: relative;
+    display: inline-block;
+
+    .ps_name {
+      height: 24px;
+      width: 170px;
+    }
+
+    .ps_points {
+      height: 24px;
+      width: 205px;
+    }
+  }
+
+  .ps_member-success {
+    height: 24px;
+    width: 48px;
+    position: relative;
+    display: inline-block;
+  }
+
+}

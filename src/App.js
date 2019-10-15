@@ -1,25 +1,19 @@
 import React from 'react';
-import Login from './js/screens/visitor/Login'
-import './style/app.scss'
-import LeagueFixtures from "./js/screens/fixtures/LeagueFixtures";
-import HomeScreen from "./js/screens/home/HomeScreen";
-import CountryListing from "./js/screens/fixtures/CountryListing";
-import {Route, HashRouter} from "react-router-dom";
-import FixtureDetails from "./js/screens/fixtures/FixtureDetails";
-import CountryLeagues from "./js/screens/fixtures/CountryLeagues";
-import UserSearch from "./js/screens/user/UserSearch";
-import UserSettings from "./js/screens/user/UserSettings";
-import UserFavouriteLeagues from "./js/screens/user/UserFavouriteLeagues";
-import Edit from "./js/screens/user/UserEdit";
-import Loader from "./js/components/other/Loader";
-import UserLeaguesBids from "./js/screens/home/UserLeaguesBids";
-import UserStatsGameBids from "./js/screens/user/UserStatsGameBids";
-import UserProfile from "./js/screens/user/UserProfile";
-import Register from "./js/screens/visitor/Register";
-import ForgotPassword from "./js/screens/visitor/ForgotPassword";
-import TodayFixtures from "./js/screens/home/TodayFixtures";
+import Login from './js/user/Login'
+import Match_Details from './js/tickets/Match_Details'
+import Competition_Listing from './js/tickets/Competition_Listing'
+import Ticket_Listing from './js/tickets/Ticket_Listing'
+import Home_Listing from './js/tickets/Home_Listing'
 
-require("./js/data/apihelper");
+import './style/app.scss'
+import Header from './js/components/header';
+import Footer from './js/components/footer';
+import MatchShort from "./js/components/match_short";
+import Week_games_Listing from "./js/tickets/Week_games_Listing";
+import Home_screen from "./js/tickets/home_screen";
+import Profile_Tickets from "./js/tickets/Profile_Tickets";
+import LeaderBoards from "./js/tickets/LeaderBoards";
+
 
 class App extends React.Component {
 
@@ -27,70 +21,65 @@ class App extends React.Component {
         super(props);
 
         this.state = {
-            hash: window.location.hash,
-            loaded: false,
-            authenticated: false
-        };
-        this.sharedObject = {};
+            hash: window.location.hash
+        }
 
         window.addEventListener("hashchange", this.onHashChange);
     }
 
-    componentDidMount() {
-        if(window.apiHelper.user.isAuthenticated()){
-           window.apiHelper.user.getCurrentUser((res) => {
-                if(res == false){
-                    window.location.hash = '/login';
-                }
-                else{
-                    window.location.hash = '/home';
-                    this.setState({loaded:true});
-                }
-            });
-        }
-        else{
-            window.location.hash = '/login';
-            this.setState({loaded:true});
-        }
-    }
 
     onHashChange = () => {
         this.setState({hash: window.location.hash})
-    };
+    }
 
     render() {
 
-        if (this.state.loaded) {
-            if(window.apiHelper.user.isAuthenticated()) {
-                return (<div className='App'>
-                    <HashRouter>
-                        <Route path="/home" render={() => <TodayFixtures/>}/>
-                        <Route path="/favourite_leagues" render={() => <HomeScreen/>}/>
-                        <Route path="/user_favourites" render={(props) => <UserFavouriteLeagues {...props}/>}/>
-                        <Route path="/countries" render={() => <CountryListing/>}/>
-                        <Route path="/country/:countryid" render={(props) => <CountryLeagues {...props}/>}/>
-                        <Route path="/league/:leagueid" render={(props) => <LeagueFixtures {...props}/>}/>
-                        <Route path="/finished/league/:leagueid" render={(props) => <UserLeaguesBids {...props}/>}/>
-                        <Route path="/fixture/:fixtureid" render={(props) => <FixtureDetails {...props}/>}/>
-                        <Route path="/profile" render={(props) => (<UserProfile {...props}/>)}/>
-                        <Route path="/game/:gameid/:userid" render={(props) => <UserStatsGameBids {...props}/>}/>
-                        <Route path="/settings" render={() => <UserSettings/>}/>
-                        <Route path="/search" render={() => (<UserSearch/>)}/>
-                        <Route path="/user/:userid" render={(props) => (<UserProfile {...props}/>)}/>
-                        <Route path="/edit" render={() => (<Edit/>)}/>
-                    </HashRouter>
-                </div>);
-            }
-            else{
-                return (
-                    <HashRouter>
-                        <Route path="/register" render={() => (<Register/>)}/>
-                        <Route path="/login" render={() => (<Login/>)}/>
-                        <Route path="/forgot-password" render={() => (<ForgotPassword/>)}/>
-                    </HashRouter>
-                );
-            }
-        } else return <Loader/>
+        let stepComponent = null;
+        console.log(window.location.hash)
+
+        const headerProps = {
+            title: '',
+            competition: false
+        }
+
+        if (this.state.hash == '#1') {
+            return <div className='App'>
+                <Login/>
+            </div>;
+        } else if (this.state.hash == '#2') {
+            headerProps.title = 'Home';
+            stepComponent = <Home_Listing/>;
+        } else if (this.state.hash == '#3') {
+            headerProps.title = 'Listing';
+            stepComponent = <Home_screen/>;
+        } else if (this.state.hash == '#4') {
+            headerProps.title = 'Home vs. Away';
+            stepComponent = <Match_Details/>;
+        } else if (this.state.hash == '#5') {
+            headerProps.title = 'Competition';
+            headerProps.competition = true;
+            stepComponent = <Week_games_Listing/>;
+        } else if (this.state.hash == '#6') {
+            return <div className='App'>
+                <Profile_Tickets/>
+                <Footer/>
+            </div>;
+        } else if (this.state.hash == '#7') {
+            return <div className='App'>
+                <LeaderBoards/>
+                <Footer/>
+            </div>;
+        }
+
+        return (
+            <div className='App'>
+                <Header title={headerProps.title} competition={headerProps.competition}/>
+                <div className='main_content'>
+                    {stepComponent}
+                </div>
+                <Footer/>
+            </div>
+        );
     }
 }
 
