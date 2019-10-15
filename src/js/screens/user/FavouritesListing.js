@@ -5,7 +5,7 @@ import Loader from "../../components/other/Loader";
 import FooterContainer from "../../components/containers/FooterContainer";
 import BB_HS_League_Logo from "../../components/other/BB_HS_League_Logo";
 
-class HomeScreen extends React.Component {
+class FavouritesListing extends React.Component {
 
     constructor(props) {
         super(props);
@@ -95,4 +95,4 @@ class HomeScreen extends React.Component {
     }
 }
 
-export default HomeScreen;
+export default FavouritesListing;

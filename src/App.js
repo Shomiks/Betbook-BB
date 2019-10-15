@@ -2,7 +2,7 @@ import React from 'react';
 import Login from './js/screens/visitor/Login'
 import './style/app.scss'
 import LeagueFixtures from "./js/screens/fixtures/LeagueFixtures";
-import HomeScreen from "./js/screens/home/HomeScreen";
+import HomeScreen from "./js/screens/user/FavouritesListing";
 import CountryListing from "./js/screens/fixtures/CountryListing";
 import {Route, HashRouter} from "react-router-dom";
 import FixtureDetails from "./js/screens/fixtures/FixtureDetails";
@@ -12,7 +12,7 @@ import UserSettings from "./js/screens/user/UserSettings";
 import UserFavouriteLeagues from "./js/screens/user/UserFavouriteLeagues";
 import Edit from "./js/screens/user/UserEdit";
 import Loader from "./js/components/other/Loader";
-import UserLeaguesBids from "./js/screens/home/UserLeaguesBids";
+import UserLeaguesBids from "./js/screens/fixtures/UserLeaguesBids";
 import UserStatsGameBids from "./js/screens/user/UserStatsGameBids";
 import UserProfile from "./js/screens/user/UserProfile";
 import Register from "./js/screens/visitor/Register";
