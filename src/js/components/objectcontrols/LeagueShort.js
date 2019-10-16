@@ -49,7 +49,7 @@ function LeagueShort(props) {
             <div className='league_name'>{props.name}</div>
         </Link>{favouriteLeague()}</div>
         {props.fixture.map(fixture => {
-            return (<Link to={`/fixture/${fixture.id}`} key={fixture.id}>
+           if(!fixture.result || fixture.result.processed == 0) return (<Link to={`/fixture/${fixture.id}`} key={fixture.id}>
                 <div className='fixture_box'>
                     <div className='fixture'>
                         <div
