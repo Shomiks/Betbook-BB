@@ -22,6 +22,7 @@ class UserProfile extends React.Component {
 
     componentDidMount = () => {
            window.apiHelper.statistics.profileStats(this.state.userid, (res) => {
+               console.log(res)
             this.calculateStatistics(res[0]);
         });
     };
@@ -47,6 +48,7 @@ class UserProfile extends React.Component {
                 game3_total: 0,
                 game4_total: 0
             };
+            console.log(res)
             statistics['country'] = res['country'];
             statistics['full_name'] = res['full_name'];
             statistics['username'] = res['username'];
