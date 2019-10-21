@@ -23,14 +23,19 @@
   letter-spacing: 0.5px;
 }
 
-.star_checked {
-  fill: #f68c25 !important;
-  stroke: #f68c25 !important;
+.star {
   position: absolute;
   right: 0;
   padding-right: 20px;
   padding-bottom: 20px;
+
+
+  &_checked {
+    fill: #f68c25 !important;
+    stroke: #f68c25 !important;
+  }
 }
+
 
 .team_home {
   text-align: left;
