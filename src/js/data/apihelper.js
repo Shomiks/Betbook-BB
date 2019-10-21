@@ -1,6 +1,6 @@
 class APIHelper {
 
-    apiUrl = 'http://192.168.1.2';
+    apiUrl = 'http://192.168.8.113';
     userInfo = null;
 
     constructor(){}

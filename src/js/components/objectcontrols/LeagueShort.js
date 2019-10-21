@@ -4,9 +4,7 @@ import {Link} from "react-router-dom";
 
 function LeagueShort(props) {
 
-    console.log(props)
-
-    props.fixture.sort();//sort fixtures by time
+    props.fixture.sort();
 
     function favouriteLeague() {
         return <div className={props.isChecked}
