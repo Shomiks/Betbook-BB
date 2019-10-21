@@ -1,6 +1,6 @@
 class APIHelper {
-        apiUrl = '192.168.1.2';
 
+    apiUrl = 'http://192.168.1.2';
     userInfo = null;
 
     constructor(){}
@@ -21,8 +21,8 @@ class APIHelper {
             return (this.userInfo != null ? this.userInfo.id : window.localStorage.getItem('user_id'));
         },
         logout: () => {
-          window.localStorage.clear();
-          window.location.reload();
+            window.localStorage.clear();
+            window.location.reload();
         },
         isAuthenticated: () => {
             return (this.userInfo != null || window.localStorage.getItem('user_id') != null);
@@ -34,7 +34,7 @@ class APIHelper {
                 }, 100)
             }
             else if(this.user.isAuthenticated()) {
-                    this.user.getUser(this.user.getCurrentUserID(),(res) => {
+                this.user.getUser(this.user.getCurrentUserID(),(res) => {
                     if(res) {
                         this.userInfo = res;
                         callBack(this.userInfo);
@@ -52,6 +52,7 @@ class APIHelper {
             }
         },
         getUser: (user_id, callBack) => {
+            console.log(this.apiUrl)
             fetch(this.apiUrl + `/index.php/api/user/returnUser/?id=` + user_id, {
                 method: 'GET',
                 headers: {
@@ -118,7 +119,7 @@ class APIHelper {
 
     settings = {
         updateInfo: (user_id, country_id, team_id, name, callBack) =>{
-           let data = {
+            let data = {
                 country_id: country_id,
                 team_id: team_id,
                 full_name:name
@@ -150,7 +151,7 @@ class APIHelper {
                 .then(res => callBack(res))
         },
         getAllCurrent: (callBack) => {
-                fetch(this.apiUrl + `/index.php/api/country/getAllWhereFixturesExist`)
+            fetch(this.apiUrl + `/index.php/api/country/getAllWhereFixturesExist`)
                 .then(res => res.json())
                 .then(res => callBack(res))
         }
@@ -178,7 +179,7 @@ class APIHelper {
                             }
                         }));
                     }
-                        callBack(res);
+                    callBack(res);
                 })
         },
         getByIDBidded: (league_id,user_id, callBack) => {
@@ -229,11 +230,11 @@ class APIHelper {
                 }
             })
                 .then(res => res.json())
-         }
+        }
     };
 
     favourites = {
-            delete: (id) => {
+        delete: (id) => {
             fetch(this.apiUrl + `/index.php/api/user_favourite_league/` + id, {
                 method: 'DELETE',
                 headers: {
@@ -241,7 +242,7 @@ class APIHelper {
                 }
             })
                 .then(res => res.json())
-         },
+        },
         getFavourites : (user_id,callBack) => {
             fetch(this.apiUrl + `/index.php/api/user_favourite_league/?user_id=` + user_id)
                 .then(res => res.json())
