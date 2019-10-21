@@ -70,7 +70,7 @@ class FixtureDetails extends React.Component {
     };
 
     handleReturnTicket = () => {
-        let ticket = {
+        return {
             user_id: window.apiHelper.userInfo.id,
             league_id: null,
             fixture_id: null,
@@ -85,18 +85,17 @@ class FixtureDetails extends React.Component {
             bid_score: 0,
             final_score: 0
         };
-        return ticket;
     };
 
     handleCreateTicket = (ticket) => {
 
-        window.apiHelper.user.favourite_team_leagues(window.apiHelper.userInfo.id, this.state.realData.league.id,);
+        window.apiHelper.user.favourite_team_leagues(window.apiHelper.userInfo.id, this.state.realData.league.id, () => {});
         window.apiHelper.bids.createFixtureBids({ticket}, (id) => {
             ticket['id'] = id;
             this.setState(prevState => ({
                 realData: {
                     ...prevState.realData,
-                    ticket: ticket,
+                    ticket: ticket
                 }
             }));
         });
@@ -225,7 +224,6 @@ class FixtureDetails extends React.Component {
     };
 
     render() {
-        console.log(this.state.realData)
         return <>{this.state.loaded == true ? this.renderStateCompopnent() : <Loader/>}</>
     }
 }
