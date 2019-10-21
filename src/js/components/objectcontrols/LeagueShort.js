@@ -21,14 +21,14 @@ function LeagueShort(props) {
     function addFavouriteLeague() {
         window.apiHelper.user.favourite_team_leagues(window.apiHelper.userInfo.id, props.id, () => {
         });
-        props.onChange();
+        props.onStarClick();
     }
 
     function removeFavouriteLeague() {
         window.apiHelper.favourites.getFavouriteByLeagueId(props.id, (res) => {
             window.apiHelper.favourites.delete(res['id']);
         });
-        props.onChange();
+        props.onStarClick();
     }
 
     function renderTime(fixture) {

@@ -52,7 +52,6 @@ class APIHelper {
             }
         },
         getUser: (user_id, callBack) => {
-            console.log(this.apiUrl)
             fetch(this.apiUrl + `/index.php/api/user/returnUser/?id=` + user_id, {
                 method: 'GET',
                 headers: {
