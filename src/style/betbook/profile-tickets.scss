@@ -1,75 +1,128 @@
-.betbook_screen {
+.betbook_context {
   height: 100%;
   width: 100%;
-  background-color: #FFFFFF;
   position: relative;
   text-align: center;
   display: block;
+  overflow: scroll;
 
-  .pt_header-field {
-    height: 260px;
+  .scrolable-bids-field {
+    padding-top: 20px;
+    width: 100%;
+    height: auto;
+    overflow: scroll;
+  }
+
+  .main-title-field {
+    height: 25px;
     width: 100%;
     position: relative;
-    background-color: #FFF;
+    background-color: #151516;
 
-    .pt_header-left-arrow-field {
-      position: absolute;
-      left: 0;
-      margin-left: 5%;
-      top: 0;
-      margin-top: 3%;
-    }
-
-    .pt_header-central-field {
+    .ft_text_position {
+      z-index: 1;
       position: relative;
-      margin-top: 15px;
-
-      .pt_member-name {
-        margin-top: 15px;
-      }
-
-      .pt_member-since {
-        margin-top: 7px;
-
-        .text12 {
-          color: #9B9B9B;
-        }
-      }
-
-      .pt_tickets {
-        margin-top: 25px;
-
-        .text14-tickets {
-          color: #0A0A0A;
-          font-family: "SF Display";
-          font-size: 14px;
-          font-weight: 500;
-          text-transform: uppercase;
-        }
-      }
+      text-align: center;
     }
 
-    .pt_header-right-settings-field {
-      position: absolute;
-      right: 0;
-      top: 0;
-      margin-right: 5%;
-      margin-top: 3%;
+    .bided {
+      background-color: #1E8FE1;
+    }
+
+    .game-underline {
+      height: 0.5px;
+      background-color: #FFF;
+      opacity: 0.15;
+      width: 120px;
+      margin: 5px auto;
+      border-radius: 4px;
     }
   }
 
+  .pt_statistics-text {
+    margin-top: 80px;
+    margin-bottom: 20px;
+  }
 
-  .pt_homescreen {
+  .full-time-statistics-field {
+    height: 114px;
+  }
+
+  .match-goals-statistics-field {
+    height: 114px;
+  }
+
+  .both-team-goal-statistics-field {
+    height: 114px;
+  }
+
+  .ht-ft-statistics-field {
+    height: 114px;
+  }
+
+
+  .pt_yellow-bet-box {
+    height: 26px;
+    width: 27.5%;
+    position: absolute;
+    right: 0;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    background: linear-gradient(180deg, #FFAC3A 0%, #EB670C 100%), #ED8035;
+    line-height: 26px;
+    a{
+      display: flex;
+      .text11-white{
+        margin:auto
+      }
+    }
+  }
+
+  .pt_box {
     position: relative;
-    height: 300px;
-    width: 100%;
-    box-shadow: 0 0 4px 0 rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: space-around;
+    padding-top: 17px;
+
+    .pt_up-text {
+      position: relative;
+      display: block;
+    }
+
+    .pt_left-box {
+      position: relative;
+      display: inline-block;
+    }
+
+    .pt_central-box {
+      position: relative;
+      display: inline-block;
+    }
+
+    .pt_right-box {
+      position: relative;
+      display: inline-block;
+    }
   }
-
 }
-
 
 .hidden {
   display: none;
 }
+
+@media only screen and (max-width: 260px) {
+  #root {
+    .App {
+      .ft_text_position {
+        position: absolute;
+        left: 10px;
+      }
+
+      .pt_yellow-bet-box {
+        width: 40%;
+      }
+    }
+  }
+}
+
 

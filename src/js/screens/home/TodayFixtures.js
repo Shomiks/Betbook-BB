@@ -36,8 +36,8 @@ class TodayFixtures extends React.Component {
 
     sortNonFavs = (leagues) => {
         leagues.sort(function (a, b) {
-            if (a.name.toLowerCase() > b.name.toLowerCase()) return 1;
-            if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
+            if (a.name && a.name.toLowerCase() > b.name.toLowerCase()) return 1;
+            if (a.name && a.name.toLowerCase() < b.name.toLowerCase()) return -1;
             return 0;
         });
     };
@@ -100,7 +100,7 @@ class TodayFixtures extends React.Component {
                     <>
                         <div className='welcome-text'>All fixtures</div>
                         {this.state.realData.map((league, i) => {
-                            return (<LeagueShort isChecked={league.user_favourite_league ? 'star_checked' : 'star'}
+                            return (<LeagueShort isChecked={league.user_favourite_league ? 'star star_checked' : 'star'}
                                                  onStarClick={(user_favourite_league) => this.onStarClick(league, i, user_favourite_league)} {...league}
                                                  key={league.id}/>)
                         })}</>

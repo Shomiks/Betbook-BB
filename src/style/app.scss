@@ -1,3 +1,7 @@
+div {
+  -webkit-tap-highlight-color: transparent
+}
+
 @font-face {
   font-family: "SF Display";
   font-weight: 900;
@@ -24,7 +28,6 @@
 
 @font-face {
   font-family: "SF Display";
-  font-weight: 500;
   src: url("https://sf.abarba.me/SF-UI-Display-Medium.otf");
 }
 
@@ -58,8 +61,9 @@ html, body {
   height: 100%;
   width: 100%;
   overflow: hidden;
+  background-color: #151516;
+  font-family: "SF Display";
 }
-
 
 #root {
   padding: 0;
@@ -69,407 +73,228 @@ html, body {
   height: 100%;
   width: 100%;
   overflow: hidden;
-
 }
 
-
 .App {
-  padding: 0;
   margin: 0;
   display: block;
   position: relative;
   height: 100%;
   width: 100%;
-  overflow: scroll;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.text6-white {
+  color: #FFF;
+  font-size: 6px;
+  font-weight: 500;
 }
 
 .text10 {
   color: #0A0A0A;
-  font-family: "SF Display";
   font-size: 10px;
+  font-weight: 500;
+}
+
+.text10-white {
+  color: #FFF;
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.text11-grey {
+  color: #999;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.text11 {
+  color: #151516;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.text11-white {
+  color: #FFF;
+  font-size: 11px;
   font-weight: 500;
 }
 
 .text12 {
   color: #0A0A0A;
-  font-family: "SF Display";
   font-size: 12px;
   font-weight: 500;
 }
 
 .text12-white {
   color: #FAFAFA;
-  font-family: "SF Display";
+  font-size: 12px;
+  font-weight: 500;
+
+  &.ht-result {
+    font-size: 15px;
+    letter-spacing: 10px;
+    opacity: 0.6;
+    white-space: nowrap;
+  }
+}
+
+.text12-grey {
+  color: #999999;
   font-size: 12px;
   font-weight: 500;
 }
 
-.text12-gray {
-  color: #9B9B9B;
-  font-family: "SF Display";
+.text12-yellow {
+  color: #FFAC3A;
   font-size: 12px;
   font-weight: 500;
+}
+
+.text13-grey {
+  color: #999999;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.text14-white {
+  color: #FFF;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 2.8;
 }
 
 .text14 {
   color: #0A0A0A;
-  font-family: "SF Display";
   font-size: 14px;
   font-weight: 500;
 }
 
-.text17 {
-  color: #0A0A0A;
-  font-family: "SF Display";
-  font-size: 17px;
+.text15-white {
+  color: #FFF;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.text15-yellow {
+  color: #FFAC3A;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 15px;
+}
+
+.text15-grey {
+  color: #999999;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.text16-yellow {
+  color: #FFAC3A;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.text16-yellow {
+  color: #FFAC3A;
+  font-size: 16px;
   font-weight: 500;
 
+  &.result {
+    line-height: inherit;
+    white-space: nowrap;
+
+    .separator-ht {
+      margin: 15px;
+    }
+  }
+}
+
+.text17 {
+  color: #0A0A0A;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.text17-white {
+  color: #FFF;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.text17-red {
+  color: #BA4343;
+  font-size: 17px;
+  font-weight: 500;
 }
 
 .text18 {
   color: #0A0A0A;
-  font-family: "SF Display";
   font-size: 18px;
   font-weight: 500;
-
 }
 
-.text25 {
-  color: #0A0A0A;
-  font-family: "SF Display";
-  font-size: 25px;
+.text18-white {
+  color: #FFF;
+  font-size: 18px;
   font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
+  &.result {
+    letter-spacing: 10px;
+    line-height: inherit;
+    white-space: nowrap;
+  }
 }
 
-.text20 {
-  color: #0A0A0A;
-  font-family: "SF Display";
+.text20-white {
+  color: #FFF;
   font-size: 20px;
   font-weight: 500;
 }
 
-.main-titlle-field {
-  height: 20px;
-  width: 100%;
+.text21-yellow {
+  color: #FFAC3A;
+  font-size: 21px;
+  font-weight: 500;
 
-  box-shadow: 0 0 0.5px 0 rgba(0, 0, 0, 0.2);
-  position: relative;
-  border-bottom: 0.5px solid #cfcfcf;
-  border-top: 0.5px solid #cfcfcf;
-  background-color: #fff9de;
+  &.result {
+    line-height: inherit;
+    white-space: nowrap;
 
-  .ft_text_position {
-    position: absolute;
-    left: 0;
-    margin-left: 4%;
-  }
-}
-
-.bid-1-field-finished {
-  height: 52px;
-  width: 33.3%;
-  background-color: darkgrey;
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-}
-
-.col-3-bid-field {
-  position: relative;
-  display: flex;
-  justify-content: center;
-
-
-  .text12-grey {
-    color: #FFF;
-  }
-
-  .bid-1-field {
-    height: 52px;
-    width: 33.3%;
-    background-color: #FAFAFA;
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-  }
-
-
-  .bid-2-field {
-    height: 52px;
-    width: 33.3%;
-    background-color: #FAFAFA;
-    position: relative;
-    display: inline-block;
-    border-left: 0.5px solid #cfcfcf;
-    border-right: 0.5px solid #cfcfcf;
-    cursor: pointer;
-  }
-
-  .bided {
-    background-color: #2F8FBD;
-  }
-
-  .col-3_game-field {
-    position: absolute;
-    left: 0;
-    margin-left: 11%;
-    display: inline-block;
-    margin-top: 15px;
-
-    .text12 {
-      color: #9B9B9B;
-    }
-
-    .text12-grey {
-      color: #CFD1D4;
-    }
-
-    .text12-white {
-      color: #FAFAFA;
-      font-weight: 400;
-    }
-
-  }
-
-  .col-3_bid-field {
-    position: relative;
-    display: inline-block;
-    margin-top: 15px;
-
-
-    .text12 {
-      color: #47B1E4;
-    }
-
-    .text12-white {
-      color: #FAFAFA;
-      font-weight: 400;
-    }
-
-
-  }
-}
-
-.col-4-bid-field {
-  position: relative;
-  display: flex;
-  justify-content: center;
-
-  .bid-1-field {
-    height: 52px;
-    width: 25%;
-    background-color: #FAFAFA;
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-
-  }
-
-  .bid-2-field {
-    height: 52px;
-    width: 25%;
-    background-color: #FAFAFA;
-    position: relative;
-    display: inline-block;
-    border-left: 0.5px solid #cfcfcf;
-    border-right: 0.5px solid #cfcfcf;
-    cursor: pointer;
-  }
-
-  .bid-3-field {
-    height: 52px;
-    width: 25%;
-    background-color: #FAFAFA;
-    position: relative;
-    display: inline-block;
-    border-right: 0.5px solid #cfcfcf;
-    cursor: pointer;
-
-  }
-
-  .col-4_game-field {
-    position: absolute;
-    left: 0;
-    margin-left: 11%;
-    display: inline-block;
-    margin-top: 15px;
-
-    .text12 {
-      color: #9B9B9B;
-    }
-
-    .text12-white {
-      color: #FAFAFA;
-      font-weight: 400;
-    }
-
-  }
-
-  .col-4_bid-field {
-    position: relative;
-    display: inline-block;
-    margin-top: 15px;
-    margin-left: 30px;
-
-    .text12 {
-      color: #47B1E4;
-    }
-
-    .text12-white {
-      color: #FAFAFA;
-      font-weight: 400;
+    .separator-ft {
+      margin: 20px;
     }
   }
 }
 
-.col-2-bid-field {
-  position: relative;
-  display: flex;
-  justify-content: center;
-
-  .bid-1-field {
-    height: 52px;
-    width: 50%;
-    background-color: #FAFAFA;
-    position: relative;
-    display: inline-block;
-    margin-top: 1px;
-    cursor: pointer;
-  }
-
-
-  .bid-2-field {
-    height: 52px;
-    width: 50%;
-    background-color: #FAFAFA;
-    position: relative;
-    display: inline-block;
-    border-left: 0.5px solid #cfcfcf;
-    cursor: pointer;
-  }
-
-  .bided {
-    background-color: #2F8FBD;
-  }
-
-  .col-2_game-field {
-    position: absolute;
-    left: 0;
-    margin-left: 11%;
-    display: inline-block;
-    margin-top: 15px;
-
-    .text12 {
-      color: #9B9B9B;
-    }
-
-    .text12-grey {
-      color: #CFD1D4;
-    }
-
-    .text12-white {
-      color: #FAFAFA;
-      font-weight: 400;
-    }
-  }
-
-  .col-2_bid-field {
-    position: relative;
-    display: inline-block;
-    margin-top: 15px;
-    margin-left: 30px;
-
-    .text12 {
-      color: #47B1E4;
-    }
-
-    .text12-white {
-      color: #FAFAFA;
-    }
-  }
+.text25 {
+  color: #0A0A0A;
+  font-size: 25px;
+  font-weight: 500;
 }
 
-.col-2-bid-field {
-  position: relative;
-  display: flex;
-  justify-content: center;
-
-  .bid-1-field {
-    height: 52px;
-    width: 50%;
-    background-color: #FAFAFA;
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-  }
-
-
-  .bid-2-field {
-    height: 52px;
-    width: 50%;
-    background-color: #FAFAFA;
-    position: relative;
-    display: inline-block;
-    border-left: 0.5px solid #cfcfcf;
-    cursor: pointer;
-  }
-
-  .bided {
-    background-color: #2F8FBD;
-  }
-
-  .col-2_game-field {
-    position: absolute;
-    left: 0;
-    margin-left: 11%;
-    display: inline-block;
-    margin-top: 15px;
-
-    .text12 {
-      color: #9B9B9B;
-    }
-
-    .text12-grey {
-      color: #CFD1D4;
-    }
-
-    .text12-white {
-      color: #FAFAFA;
-      font-weight: 400;
-    }
-  }
-
-  .col-2_bid-field {
-    position: relative;
-    display: inline-block;
-    margin-top: 15px;
-    margin-left: 30px;
-
-    .text12 {
-      color: #47B1E4;
-    }
-
-    .text12-white {
-      color: #FAFAFA;
-    }
-  }
+.text26-white {
+  color: #FFF;
+  font-size: 26px;
+  font-weight: 500;
 }
 
-@media only screen and (max-width: 950px) {
-  #root {
-    .App {
-      .containerImage {
-        display: none;
-      }
-
-      .containerContent {
-        width: 100%;
-      }
-    }
-  }
+.hide {
+  display: none;
 }
 
 .hidden {
-  background-color: #9B9B9B;
+  display: none;
 }
+
+div, span, p {
+  user-select: none;
+}
+
+a {
+  text-decoration: none;
+}
+
