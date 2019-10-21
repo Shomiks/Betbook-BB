@@ -21,7 +21,8 @@ class TodayFixtures extends React.Component {
 
     getAllFixtures = () => {
         window.apiHelper.leagues.getAll((res) => {
-            this.sortLeagues(Object.values(res));
+            this.matchBids(res);
+            this.sortLeagues(Object.values(res.leagues));
         })
     };
 
@@ -39,6 +40,14 @@ class TodayFixtures extends React.Component {
             if (a.name.toLowerCase() < b.name.toLowerCase()) return -1;
             return 0;
         });
+    };
+
+    matchBids = (res) => {
+        res.bids.forEach(bid => {
+            if(bid.fixture){
+
+            }
+        })
     };
 
     sortLeagues = (res) => {
@@ -84,7 +93,6 @@ class TodayFixtures extends React.Component {
 
     render() {
 
-        console.log(this.state.realData)
         if (this.state.loaded) return (
             <FooterContainer footerProps={{activeItem: 'timeline'}}>
                 <div className='betbook-logo'/>
