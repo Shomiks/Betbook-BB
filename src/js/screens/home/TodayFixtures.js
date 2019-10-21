@@ -21,7 +21,7 @@ class TodayFixtures extends React.Component {
 
     getAllFixtures = () => {
         window.apiHelper.leagues.getAll((res) => {
-            this.sortFavourites(res);
+            this.sortFavourites(Object.values(res));
         })
     };
 
@@ -46,9 +46,17 @@ class TodayFixtures extends React.Component {
         let leagues = [];
         res.forEach(league => {
             if(league.user_favourite_league) {
+                let exists=false;
                 league.user_favourite_league.forEach(fav => {
-                    if (fav.user_id == window.apiHelper.userInfo.id) fav_leagues.push(league);
+                    if (fav.user_id == window.apiHelper.userInfo.id) {
+                        fav_leagues.push(league);
+                        exists = true;
+                    }
                 });
+                if(exists == false) {
+                    league.user_favourite_league = null;
+                    leagues.push(league);
+                }
             }
             else leagues.push(league);
         });
