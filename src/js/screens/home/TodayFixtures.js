@@ -43,9 +43,17 @@ class TodayFixtures extends React.Component {
     };
 
     matchBids = (res) => {
-        res.bids.forEach(bid => {
+        let bids = Object.values(res.bids);
+        let leagues = Object.values(res.leagues);
+        bids.forEach(bid => {
             if(bid.fixture){
+                leagues.forEach(league => {
+                    league.fixture.forEach(fixture => {
+                        if(bid.fixture.id == fixture.id){
 
+                        }
+                    })
+                })
             }
         })
     };
@@ -92,6 +100,8 @@ class TodayFixtures extends React.Component {
 
 
     render() {
+
+        console.log(this.state.realData)
 
         if (this.state.loaded) return (
             <FooterContainer footerProps={{activeItem: 'timeline'}}>
