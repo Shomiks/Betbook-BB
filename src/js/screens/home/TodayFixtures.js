@@ -110,7 +110,7 @@ class TodayFixtures extends React.Component {
                     <>
                         <div className='welcome-text'>All fixtures</div>
                         {this.state.realData.map((league, i) => {
-                            return (<LeagueShort isChecked={league.user_favourite_league ? 'star star_checked' : 'star'}
+                            return (<LeagueShort isChecked={league.user_favourite_league ? 'tf_star tf_star_checked' : 'tf_star'}
                                                  onStarClick={(user_favourite_league) => this.onStarClick(league, i, user_favourite_league)} {...league}
                                                  key={league.id}/>)
                         })}</>
