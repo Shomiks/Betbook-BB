@@ -60,3 +60,31 @@
     color: #FFF;
   }
 }
+.tf_parent_calendar {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 100;
+
+  .tf_calendar_box {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: black;
+    opacity: 0.5;
+
+
+  }
+
+  .tf_popup_box {
+    position: absolute;
+    height: 300px;
+    width: 300px;
+    top: 25%;
+    left: 50%;
+    margin-left: -150px;
+    background-color: #FFF;
+    z-index: 200;
+
+  }
+}

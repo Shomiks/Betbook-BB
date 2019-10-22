@@ -3,6 +3,9 @@ import '../../../style/betbook/today_fixtures.scss';
 import Loader from "../../components/other/Loader";
 import FooterContainer from "../../components/containers/FooterContainer";
 import LeagueShort from "../../components/objectcontrols/LeagueShort";
+import FullContainer from "../../components/containers/FullContainer";
+import searchSVG from '../../../style/betbook/assets/images/search---final.svg';
+import calendarSVG from '../../../style/betbook/assets/images/ball.svg';
 
 class TodayFixtures extends React.Component {
 
@@ -12,6 +15,7 @@ class TodayFixtures extends React.Component {
         this.state = {
             realData: null,
             loaded: false,
+            calendarVisible: false
         };
     }
 
@@ -46,10 +50,10 @@ class TodayFixtures extends React.Component {
         let bids = Object.values(res.bids);
         let leagues = Object.values(res.leagues);
         bids.forEach(bid => {
-            if(bid.fixture){
+            if (bid.fixture) {
                 leagues.forEach(league => {
                     league.fixture.forEach(fixture => {
-                        if(bid.fixture.id == fixture.id){
+                        if (bid.fixture.id == fixture.id) {
 
                         }
                     })
@@ -98,24 +102,35 @@ class TodayFixtures extends React.Component {
     };
 
 
-
     render() {
 
         console.log(this.state.realData)
+        let parentBox = null;
+        let popupBox = null;
+        let calendarEl = null;
+        if (this.state.calendarVisible) {
+            calendarEl = <div className='tf_calendar_box'></div>
+            popupBox = <div className='tf_popup_box'>Yesterday <br/> Today <br/> Tomorrow</div>
+            parentBox = <div className='tf_parent_calendar'>{calendarEl}{popupBox}</div>
+        }
 
         if (this.state.loaded) return (
-            <FooterContainer footerProps={{activeItem: 'timeline'}}>
-                <div className='betbook-logo'/>
+            <FullContainer footerProps={{activeItem: 'timeline'}} headerProps={{
+                title: 'All Fixtures', rightIcon: calendarSVG, rightIconOnClick: () => {
+                    this.setState({calendarVisible: true})
+                }
+            }}>
+                {parentBox}
                 <div className='main-content today_fixtures'>
                     <>
-                        <div className='welcome-text'>All fixtures</div>
                         {this.state.realData.map((league, i) => {
                             return (<LeagueShort isChecked={league.user_favourite_league ? 'star star_checked' : 'star'}
                                                  onStarClick={(user_favourite_league) => this.onStarClick(league, i, user_favourite_league)} {...league}
                                                  key={league.id}/>)
                         })}</>
                 </div>
-            </FooterContainer>
+
+            </FullContainer>
         );
         else return <Loader/>
     }
