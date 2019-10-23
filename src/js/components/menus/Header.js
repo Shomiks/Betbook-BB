@@ -9,18 +9,10 @@ function Header(props) {
     let leftIcon = null;
 
     if(props.showBack == true || props.showBack == undefined) {
-
-        // TODO: how to set default values for properties
-        //leftIcon = <div className='left_right_icon' onClick={props.leftIconOnClick}><img src={this.leftIcon}/></div>
         leftIcon = <div>Test</div>
     } else if (props.leftIcon != undefined) {
-
         leftIcon = <div className='header_left_icon' onClick={props.leftIconOnClick}><img src={props.leftIcon}/></div>
     }
-
-    let title = null;
-    if (props.title != undefined)
-        title = <div className='header_title'><span className='text20-white'>{props.title}</span></div>
 
     let subtitle = null;
     if (props.subtitle != undefined)
@@ -28,17 +20,13 @@ function Header(props) {
 
     let rightIcon = null;
     if (props.rightIcon != undefined)
-        rightIcon =
-            <div className='header_right_icon' onClick={props.rightIconOnClick}><img src={props.rightIcon}/></div>
-
-
-
+        rightIcon = <div className='header_right_icon' onClick={props.rightIconOnClick}><img src={props.rightIcon}/></div>
 
     return (
         <div className='header'>
             {leftIcon}
             <div>
-                {title}
+                <div className='header_title'><span className='text20-white'>{props.title}</span></div>
                 {subtitle}
             </div>
             {rightIcon}
@@ -105,7 +93,9 @@ Header.propTypes = {
     showBack: PropTypes.bool,
 };
 
-Header.defaultProps = {};
+Header.defaultProps = {
+
+};
 
 
 export default Header;
