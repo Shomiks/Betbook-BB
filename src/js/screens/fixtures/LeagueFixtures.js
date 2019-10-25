@@ -19,7 +19,7 @@ class LeagueFixtures extends React.Component {
     }
 
     componentDidMount() {
-                this.getAllFixtures();
+        this.getAllFixtures();
     }
 
     getAllFixtures(){

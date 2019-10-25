@@ -2,15 +2,8 @@ import React from 'react';
 import {storiesOf} from '@storybook/react';
 import {withSmartKnobs} from 'storybook-addon-smart-knobs'
 import {withKnobs, text, boolean, number} from '@storybook/addon-knobs';
-import BB_Button from './../../src/js/components/controls/BB_Button';
-import BB_TextField from "../js/components/controls/BB_TextField";
 import BottomContainer from "../js/components/containers/BottomContainer";
 import MainContainer from "../js/components/containers/MainContainer";
-import Header from "../js/components/menus/Header";
-import BB_Logo from "../js/components/other/BB_Logo";
-import Loader from "../js/components/other/Loader";
-import ProfileShort from "../js/components/profileshort";
-import Footer from "../js/components/menus/Footer";
 import {MemoryRouter} from 'react-router';
 import FooterContainer from "../js/components/containers/FooterContainer";
 import FullContainer from "../js/components/containers/FullContainer";

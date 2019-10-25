@@ -1,9 +1,8 @@
 import React from 'react';
 import '../../../style/components/objectcontrols/match_short.scss';
+import PropTypes from "prop-types";
 
 function FixtureShortFixtures(props){
-
-    console.log(props)
 
     function handleStateField (tip) {
         let game = "game" + tip;
@@ -93,5 +92,13 @@ function FixtureShortFixtures(props){
     return <>{handleBidField()}</>
 
 }
+
+FixtureShortFixtures.propTypes = {
+    ticket: PropTypes.object,
+    team_home: PropTypes.object,
+    team_away: PropTypes.object,
+    result: PropTypes.object,
+    date: PropTypes.string
+};
 
 export default FixtureShortFixtures;

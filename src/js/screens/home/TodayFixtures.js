@@ -101,6 +101,10 @@ class TodayFixtures extends React.Component {
         this.setState({realData})
     };
 
+    onTodayClick = () => {
+        let today = new Date().toISOString().slice(0, 10);
+        console.log(today);
+    };
 
     render() {
 
@@ -110,7 +114,7 @@ class TodayFixtures extends React.Component {
         let calendarEl = null;
         if (this.state.calendarVisible) {
             calendarEl = <div className='tf_calendar_box'></div>
-            popupBox = <div className='tf_popup_box'>Yesterday <br/> Today <br/> Tomorrow</div>
+            popupBox = <div className='tf_popup_box' onClick={this.onTodayClick}>Yesterday <br/> Today <br/> Tomorrow</div>;
             parentBox = <div className='tf_parent_calendar'>{calendarEl}{popupBox}</div>
         }
 
