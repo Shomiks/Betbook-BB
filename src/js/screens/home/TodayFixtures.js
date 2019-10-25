@@ -101,11 +101,6 @@ class TodayFixtures extends React.Component {
         this.setState({realData})
     };
 
-    onTodayClick = () => {
-        let today = new Date().toISOString().slice(0, 10);
-        console.log(today);
-    };
-
     render() {
 
         console.log(this.state.realData)

@@ -6,6 +6,7 @@ import BB_Button from './../../src/js/components/controls/BB_Button';
 import BB_TextField from "../js/components/controls/BB_TextField";
 import {MemoryRouter} from 'react-router';
 import BB_ButtonLink from "../js/components/controls/BB_ButtonLink";
+import BB_SmallCalendar from "../js/components/controls/BB_SmallCalendar";
 
 const stories = storiesOf('controls', module);
 
@@ -21,6 +22,8 @@ stories.add('Button', () => <BB_Button/>);
 stories.add('Button Link', () => <BB_ButtonLink/>);
 
 stories.add('Text Field', () => <BB_TextField />);
+
+stories.add('Small Calendar', () => <BB_SmallCalendar />);
 
 
 
