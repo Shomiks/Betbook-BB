@@ -2,7 +2,10 @@ import React from 'react';
 import '../../../style/betbook/today_fixtures.scss';
 import Loader from "../../components/other/Loader";
 import FooterContainer from "../../components/containers/FooterContainer";
-import LeagueHome from "../../components/objectcontrols/LeagueHome";
+import LeagueShort from "../../components/objectcontrols/LeagueShort";
+import FullContainer from "../../components/containers/FullContainer";
+import searchSVG from '../../../style/betbook/assets/images/search---final.svg';
+import calendarSVG from '../../../style/betbook/assets/images/ball.svg';
 
 class TodayFixtures extends React.Component {
 
@@ -12,6 +15,7 @@ class TodayFixtures extends React.Component {
         this.state = {
             realData: null,
             loaded: false,
+            calendarVisible: false
         };
     }
 
@@ -21,10 +25,8 @@ class TodayFixtures extends React.Component {
 
     getAllFixtures = () => {
         window.apiHelper.leagues.getAll((res) => {
-            let bids = Object.values(res.bids);
-            let leagues = Object.values(res.leagues);
-            this.matchBids(bids,leagues);
-            this.sortLeagues(leagues);
+            this.matchBids(res);
+            this.sortLeagues(Object.values(res.leagues));
         })
     };
 
@@ -44,15 +46,16 @@ class TodayFixtures extends React.Component {
         });
     };
 
-    matchBids = (bids,leagues) => {
+    matchBids = (res) => {
+        let bids = Object.values(res.bids);
+        let leagues = Object.values(res.leagues);
         bids.forEach(bid => {
-            if(bid.fixture){
+            if (bid.fixture) {
                 leagues.forEach(league => {
                     league.fixture.forEach(fixture => {
-                        if(bid.fixture.id == fixture.id){
-                            fixture['ticket'] = bid;
+                        if (bid.fixture.id == fixture.id) {
+
                         }
-                        else fixture['ticket'] = null;
                     })
                 })
             }
@@ -73,7 +76,6 @@ class TodayFixtures extends React.Component {
                     }
                 });
                 if (exists == false) {
-                    console.log('a')
                     league.user_favourite_league = null;
                     nonfav_leagues.push(league);
                 }
@@ -100,24 +102,35 @@ class TodayFixtures extends React.Component {
     };
 
 
-
     render() {
 
         console.log(this.state.realData)
+        let parentBox = null;
+        let popupBox = null;
+        let calendarEl = null;
+        if (this.state.calendarVisible) {
+            calendarEl = <div className='tf_calendar_box'></div>
+            popupBox = <div className='tf_popup_box'>Yesterday <br/> Today <br/> Tomorrow</div>
+            parentBox = <div className='tf_parent_calendar'>{calendarEl}{popupBox}</div>
+        }
 
         if (this.state.loaded) return (
-            <FooterContainer footerProps={{activeItem: 'timeline'}}>
-                <div className='betbook-logo'/>
-                <div className='main-content'>
+            <FullContainer footerProps={{activeItem: 'timeline'}} headerProps={{
+                title: 'All Fixtures', rightIcon: calendarSVG, rightIconOnClick: () => {
+                    this.setState({calendarVisible: true})
+                }
+            }}>
+                {parentBox}
+                <div className='main-content today_fixtures'>
                     <>
-                        <div className='welcome-text'>All fixtures</div>
                         {this.state.realData.map((league, i) => {
-                            return (<LeagueHome isChecked={league.user_favourite_league ? 'tf_star tf_star_checked' : 'tf_star'}
-                                                onStarClick={(user_favourite_league) => this.onStarClick(league, i, user_favourite_league)} {...league}
-                                                key={league.id}/>)
+                            return (<LeagueShort isChecked={league.user_favourite_league ? 'star star_checked' : 'star'}
+                                                 onStarClick={(user_favourite_league) => this.onStarClick(league, i, user_favourite_league)} {...league}
+                                                 key={league.id}/>)
                         })}</>
                 </div>
-            </FooterContainer>
+
+            </FullContainer>
         );
         else return <Loader/>
     }

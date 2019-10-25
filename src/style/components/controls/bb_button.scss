@@ -9,6 +9,14 @@
   margin-top: 5px;
   margin-bottom: 25px;
   line-height: 2.8;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &:hover {
+    overflow: visible;
+  }
 
   &:active {
     filter: brightness(120%);

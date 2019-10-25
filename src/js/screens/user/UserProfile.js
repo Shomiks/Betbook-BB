@@ -3,6 +3,9 @@ import '../../../style/betbook/profile-tickets.scss';
 import Loader from "../../components/other/Loader";
 import FullContainer from "../../components/containers/FullContainer";
 import ProfileGames from "../../components/objectcontrols/ProfileGames";
+import searchSVG from '../../../style/betbook/assets/images/search---final.svg';
+import settingsSVG from '../../../style/betbook/assets/images/settings---final.svg';
+
 
 class UserProfile extends React.Component {
 
@@ -21,8 +24,8 @@ class UserProfile extends React.Component {
     }
 
     componentDidMount = () => {
-           window.apiHelper.statistics.profileStats(this.state.userid, (res) => {
-               console.log(res)
+        window.apiHelper.statistics.profileStats(this.state.userid, (res) => {
+            console.log(res)
             this.calculateStatistics(res[0]);
         });
     };
@@ -55,7 +58,13 @@ class UserProfile extends React.Component {
         } else this.calculateAvgAndSuccess(res, statisticsCalculated);
 
         statisticsCalculated = this.checkBets(res, statisticsCalculated);
-        this.setState({statistics, statisticsCalculated, loaded: true, userFullName:statistics['full_name'], userCountry:statistics['country']})
+        this.setState({
+            statistics,
+            statisticsCalculated,
+            loaded: true,
+            userFullName: statistics['full_name'],
+            userCountry: statistics['country']
+        })
     };
 
     calculateAvgAndSuccess = (res, statisticsCalculated) => {
@@ -100,7 +109,7 @@ class UserProfile extends React.Component {
 
     renderFields = (fieldName, game) => {
         let gameName = null;
-        if(game == 1) gameName = 'Match Outcome';
+        if (game == 1) gameName = 'Match Outcome';
         else if (game == 2) gameName = 'Total Goals';
         else if (game == 3) gameName = 'Both Teams Goals';
         else gameName = 'Halftime/Fulltime';
@@ -118,14 +127,25 @@ class UserProfile extends React.Component {
     render() {
 
         if (this.state.loaded) return (
-            <FullContainer  footerProps={{activeItem: 'profile'}} headerProps={{itemLeft:'settings', itemRight: 'search', title: this.state.statistics.full_name, subtitle: this.state.statistics.country}}>
+            <FullContainer footerProps={{activeItem: 'profile'}} headerProps={{
+                showBack: false,
+                itemLeft: 'settings',
+                itemRight: 'search',
+                leftIcon: settingsSVG,
+                rightIcon: searchSVG,
+                rightIconOnClick: () => { window.location = '#/search' },
+                leftIconOnClick: () => { window.location = '#/settings' },
+                title: this.state.statistics.full_name,
+                subtitle: this.state.statistics.country
+
+            }}>
                 <div className='betbook_context'>
-                <div className='scrolable-bids-field'>
-                    {this.renderFields('full-time-statistics-field', 1)}
-                    {this.renderFields('match-goals-statistics-field', 2)}
-                    {this.renderFields('both-team-goal-statistics-field', 3)}
-                    {this.renderFields('ht-ft-statistics-field', 4)}
-                </div>
+                    <div className='scrolable-bids-field'>
+                        {this.renderFields('full-time-statistics-field', 1)}
+                        {this.renderFields('match-goals-statistics-field', 2)}
+                        {this.renderFields('both-team-goal-statistics-field', 3)}
+                        {this.renderFields('ht-ft-statistics-field', 4)}
+                    </div>
                 </div>
             </FullContainer>
         );
