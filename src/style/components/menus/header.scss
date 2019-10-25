@@ -1,97 +1,38 @@
 .header {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
   height: 60px;
+  background-color: #1F2022;
+
 
   .header_title {
     position: relative;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    line-height: 50px;
+  }
+
+  .header_with_subtitle {
+    line-height: 30px;
+  }
+
+  .header_subtitle {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    text-align: center;
   }
 
   .header_left_icon {
-    position: relative;
+    position: absolute;
+    left: 5%;
+    top: 30%;
+    transform: rotate(180deg);
   }
 
   .header_right_icon {
-    position: relative;
+    position: absolute;
+    right: 5%;
+    top: 30%;
   }
 }
-
-
-//.rectangle_header {
-//  height: 60px;
-//  width: 100%;
-//  background-color: #1F2022;
-//  box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
-//  position: fixed;
-//  text-align: center;
-//  top: 0;
-//  z-index: 1;
-//
-//  .header-container {
-//    padding: 15px 20px;
-//    display: flex;
-//    justify-content: space-between;
-//    align-items: center;
-//
-//    .chevron_header {
-//      background-size: cover;
-//      background-image: url("../../betbook/assets/images/arrow_left_dark.PNG");
-//      width: 30px;
-//      height: 30px;
-//      cursor: pointer;
-//
-//      &:active {
-//        filter: brightness(120%);
-//      }
-//
-//      .chevron_text {
-//        height: 21px;
-//        width: 12px;
-//        color: #0A0A0A;
-//        font-family: "SF Display";
-//        font-size: 21px;
-//        font-weight: 500;
-//      }
-//    }
-//
-//    .sport {
-//      text-align: center;
-//      padding-right: 25px;
-//
-//      &:active {
-//        filter: brightness(120%);
-//      }
-//    }
-//
-//    .settings {
-//      background-size: cover;
-//      background-image: url("../../betbook/assets/images/settings---final.svg");
-//      width: 30px;
-//      height: 30px;
-//      cursor: pointer;
-//
-//      &:active {
-//        filter: brightness(120%);
-//      }
-//    }
-//
-//    .search {
-//      background-size: cover;
-//      background-image: url("../../betbook/assets/images/search---final.svg");
-//      width: 30px;
-//      height: 30px;
-//      cursor: pointer;
-//
-//      &:active {
-//        filter: brightness(120%);
-//      }
-//    }
-//  }
-//}
-//
-//
-//.hide {
-//  display: none;
-//}

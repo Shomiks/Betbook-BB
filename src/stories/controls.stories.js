@@ -20,13 +20,6 @@ stories.add('Button', () => <BB_Button/>);
 
 stories.add('Button Link', () => <BB_ButtonLink/>);
 
-// stories
-//     .addDecorator(withSmartKnobs)
-//     .addDecorator(withKnobs)
-//     .addDecorator(story => (
-//         <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>))
-//     .add('Select', () => <BB_Select />);
-
 stories.add('Text Field', () => <BB_TextField />);
 
 

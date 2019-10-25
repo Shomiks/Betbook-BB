@@ -3,30 +3,42 @@ import '../../../style/components/menus/header.scss'
 import PropTypes from "prop-types";
 import BB_ButtonLink from "../controls/BB_ButtonLink";
 import leftArrowSVG from '../../../style/betbook/assets/images/Arrow.svg';
+import searchSVG from '../../../style/betbook/assets/images/search---final.svg';
 
 function Header(props) {
 
     let leftIcon = null;
 
-    if(props.showBack == true || props.showBack == undefined) {
-        leftIcon = <div>Test</div>
+    if (props.showBack == true) {
+        leftIcon = <div className='header_left_icon'><img src={leftArrowSVG}></img></div>
     } else if (props.leftIcon != undefined) {
         leftIcon = <div className='header_left_icon' onClick={props.leftIconOnClick}><img src={props.leftIcon}/></div>
+    } else {
+        leftIcon = null;
     }
 
+    let titleClassName = null;
     let subtitle = null;
-    if (props.subtitle != undefined)
-        subtitle = <div><span className='text11-white'>{props.subtitle}</span></div>
+    if (props.subtitle != undefined) {
+        subtitle = <div className='header_subtitle'><span className='text11-white'>{props.subtitle}</span></div>
+        titleClassName = 'header_title header_with_subtitle';
+    } else {
+        subtitle = null;
+        titleClassName = 'header_title';
+    }
 
     let rightIcon = null;
     if (props.rightIcon != undefined)
-        rightIcon = <div className='header_right_icon' onClick={props.rightIconOnClick}><img src={props.rightIcon}/></div>
+        rightIcon =
+            <div className='header_right_icon' onClick={props.rightIconOnClick}><img src={props.rightIcon}/></div>
+    else
+        rightIcon = null;
 
     return (
         <div className='header'>
             {leftIcon}
             <div>
-                <div className='header_title'><span className='text20-white'>{props.title}</span></div>
+                <div className={titleClassName}><span className='text20-white'>{props.title}</span></div>
                 {subtitle}
             </div>
             {rightIcon}
@@ -34,53 +46,6 @@ function Header(props) {
 
 
 }
-
-
-// class Header extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//             title: props.title,
-//             competition: props.competition,
-//             itemRight: props.itemRight ? props.itemRight : null,
-//             itemLeft: props.itemLeft ? props.itemLeft : null
-//         }
-//     }
-//
-//     renderHeaderItems = () => {
-//
-//         if (!this.state.itemLeft) return (<>
-//             <div className='chevron_header' onClick={() => window.history.back()}/>
-//             <div className='sport'>
-//                 <div className='text_align'><span className='text20-white'>{this.state.title}</span></div>
-//             </div>
-//             <div>{this.props.rightIcon}</div>
-//         </>);
-//
-//         else {
-//             return (<>
-//                 <Link to={'/settings'}>
-//                     <div className='settings'/>
-//                 </Link>
-//                 <div className='bb_h_text_box'>
-//                     <div className='bb_h_title'><span className='text18-white'>{this.props.title}</span></div>
-//                     <div className='bb_h_subtitle'><span className='text12-white'>{this.props.subtitle}</span></div>
-//                 </div>
-//                 <div onClick={this.props.rightIconOnClick}>
-//                     <img src={this.props.rightIcon}/>
-//                 </div>
-//             </>)
-//         }
-//     };
-//
-//     render() {
-//         return <div className='rectangle_header'>
-//             <div className='header-container'>
-//                 {this.renderHeaderItems()}
-//             </div>
-//         </div>
-//     }
-// }
 
 
 Header.propTypes = {
@@ -94,7 +59,7 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-
+    title: 'Header title',
 };
 
 

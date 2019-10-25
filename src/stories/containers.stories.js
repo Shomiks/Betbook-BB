@@ -2,18 +2,12 @@ import React from 'react';
 import {storiesOf} from '@storybook/react';
 import {withSmartKnobs} from 'storybook-addon-smart-knobs'
 import {withKnobs, text, boolean, number} from '@storybook/addon-knobs';
-import BB_Button from './../../src/js/components/controls/BB_Button';
-import BB_TextField from "../js/components/controls/BB_TextField";
 import BottomContainer from "../js/components/containers/BottomContainer";
 import MainContainer from "../js/components/containers/MainContainer";
-import Header from "../js/components/menus/Header";
-import BB_Logo from "../js/components/other/BB_Logo";
-import Loader from "../js/components/other/Loader";
-import ProfileShort from "../js/components/profileshort";
-import Footer from "../js/components/menus/Footer";
 import {MemoryRouter} from 'react-router';
 import FooterContainer from "../js/components/containers/FooterContainer";
 import FullContainer from "../js/components/containers/FullContainer";
+import SmartContainer from "../js/components/containers/SmartContainer";
 
 const stories = storiesOf('containers', module);
 
@@ -49,62 +43,8 @@ stories
     .add('Full Container', () => <FullContainer>{someContent}</FullContainer>);
 
 stories
-    .add('Main Container', () => <MainContainer>{someContent}</MainContainer>)
+    .add('Main Container', () => <MainContainer>{someContent}</MainContainer>);
 
-// stories
-//     .addDecorator(withSmartKnobs)
-//     .addDecorator(withKnobs)
-//     .add('button', () => <BB_Button></BB_Button>);
-//
-// stories
-//     .addDecorator(withSmartKnobs)
-//     .addDecorator(withKnobs)
-//     .add('controls', () => (
-//         <div>
-//             <BB_Button label={text('Label', 'Hello Storybook')}>
-//             </BB_Button>
-//             <BB_TextField label={text('Label', 'Select value')}>
-//             </BB_TextField>
-//
-//         </div>
-//     ));
-//
-// stories.add('containers', () => (
-//     <div>
-//         <BottomContainer label={text('Label', 'Hello Storybook')}>
-//         </BottomContainer>
-//         {/*<FooterContainer label={text('Label', 'Select value')}>*/}
-//         {/*</FooterContainer>*/}
-//         {/*<FullContainer label={text('Label', 'Select value')}>*/}
-//         {/*</FullContainer>*/}
-//         <MainContainer label={text('Label', 'Select value')}>
-//         </MainContainer>
-//     </div>
-// ));
-//
-//
-// stories.addDecorator(story => (
-//     <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>));
-// )).add('menus', () => (
-//     <div>
-//         <Header title={text('Title', 'Hello Header')}>
-//         </Header>
-//         <Footer activeItem='star' >
-//         </Footer>
-//     </div>
-// ));
-//
-// stories.add('objectcontrols', () => (
-//     <div>
-//         <ProfileShort title={text('Title', 'Hello Header')}>
-//         </ProfileShort>
-//     </div>
-// ));
-//
-// stories.add('other', () => (
-//
-//     <div>
-//         <BB_Logo />
-//         <Loader />
-//     </div>
-// ));
+stories
+    .add('Smart Container', () => <SmartContainer>{someContent}</SmartContainer>)
+
