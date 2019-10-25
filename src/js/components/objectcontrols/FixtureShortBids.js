@@ -1,10 +1,9 @@
 import React from 'react';
 import '../../../style/components/objectcontrols/match_short.scss';
 import DateResultFixtureShort from "./DateResultFixtureShort";
+import {Link} from "react-router-dom";
 
 function FixtureShortBids(props){
-
-    console.log(props)
 
     function handleStateField (tip) {
         let game = "game" + tip;
@@ -22,13 +21,13 @@ function FixtureShortBids(props){
         }
     }
 
-    function renderDate () {
-        let Datefields = props.date.split(' ')[0].split('-');
-        let Timefields = props.date.split(' ')[1].split(':');
-        let year = Datefields[0].substring(2,Datefields[0].length);
-
-        return( Datefields[2] + '/' + Datefields[1] + '/' + year + ' ' + Timefields[0] + ':' +  Timefields[1]);
-    }
+    // function renderDate () {
+    //     let Datefields = props.date.split(' ')[0].split('-');
+    //     let Timefields = props.date.split(' ')[1].split(':');
+    //     let year = Datefields[0].substring(2,Datefields[0].length);
+    //
+    //     return( Datefields[2] + '/' + Datefields[1] + '/' + year + ' ' + Timefields[0] + ':' +  Timefields[1]);
+    // }
 
     function parseTipGame2Row1 () {
         if(props.game2_tip == '2' || props.game2_tip == '1' || props.game2_tip == '3') return '0-';
@@ -76,8 +75,7 @@ function FixtureShortBids(props){
             </div>
         }
 
-        return <>{handleBidField()}</>
-
+        return <><Link to={`/fixture/${props.fixture.id}`} key={props.fixture.id}>{handleBidField()}</Link></>
 }
 
 export default FixtureShortBids;

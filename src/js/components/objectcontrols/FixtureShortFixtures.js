@@ -1,9 +1,8 @@
 import React from 'react';
 import '../../../style/components/objectcontrols/match_short.scss';
+import {Link} from "react-router-dom";
 
 function FixtureShortFixtures(props){
-
-    console.log(props)
 
     function handleStateField (tip) {
         let game = "game" + tip;
@@ -90,7 +89,7 @@ function FixtureShortFixtures(props){
         </div>
     }
 
-    return <>{handleBidField()}</>
+    return <><Link to={`/fixture/${props.id}`} key={props.id}>{handleBidField()}</Link></>
 
 }
 

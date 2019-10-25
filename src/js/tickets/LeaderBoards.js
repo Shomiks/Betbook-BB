@@ -2,7 +2,6 @@ import React from 'react';
 import '../../../src/style/app.scss'
 import Header from '../components/header';
 import '../../../src/style/betbook/leaderboards.scss'
-import ProfileShort from "../components/profileshort";
 
 class LeaderBoards extends React.Component {
 

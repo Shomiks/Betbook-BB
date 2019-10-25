@@ -2,7 +2,7 @@ import React from 'react';
 import '../../../style/betbook/today_fixtures.scss';
 import Loader from "../../components/other/Loader";
 import FooterContainer from "../../components/containers/FooterContainer";
-import LeagueShort from "../../components/objectcontrols/LeagueShort";
+import LeagueHome from "../../components/objectcontrols/LeagueHome";
 
 class TodayFixtures extends React.Component {
 
@@ -21,8 +21,10 @@ class TodayFixtures extends React.Component {
 
     getAllFixtures = () => {
         window.apiHelper.leagues.getAll((res) => {
-            this.matchBids(res);
-            this.sortLeagues(Object.values(res.leagues));
+            let bids = Object.values(res.bids);
+            let leagues = Object.values(res.leagues);
+            this.matchBids(bids,leagues);
+            this.sortLeagues(leagues);
         })
     };
 
@@ -42,16 +44,15 @@ class TodayFixtures extends React.Component {
         });
     };
 
-    matchBids = (res) => {
-        let bids = Object.values(res.bids);
-        let leagues = Object.values(res.leagues);
+    matchBids = (bids,leagues) => {
         bids.forEach(bid => {
             if(bid.fixture){
                 leagues.forEach(league => {
                     league.fixture.forEach(fixture => {
                         if(bid.fixture.id == fixture.id){
-
+                            fixture['ticket'] = bid;
                         }
+                        else fixture['ticket'] = null;
                     })
                 })
             }
@@ -72,6 +73,7 @@ class TodayFixtures extends React.Component {
                     }
                 });
                 if (exists == false) {
+                    console.log('a')
                     league.user_favourite_league = null;
                     nonfav_leagues.push(league);
                 }
@@ -110,9 +112,9 @@ class TodayFixtures extends React.Component {
                     <>
                         <div className='welcome-text'>All fixtures</div>
                         {this.state.realData.map((league, i) => {
-                            return (<LeagueShort isChecked={league.user_favourite_league ? 'tf_star tf_star_checked' : 'tf_star'}
-                                                 onStarClick={(user_favourite_league) => this.onStarClick(league, i, user_favourite_league)} {...league}
-                                                 key={league.id}/>)
+                            return (<LeagueHome isChecked={league.user_favourite_league ? 'tf_star tf_star_checked' : 'tf_star'}
+                                                onStarClick={(user_favourite_league) => this.onStarClick(league, i, user_favourite_league)} {...league}
+                                                key={league.id}/>)
                         })}</>
                 </div>
             </FooterContainer>

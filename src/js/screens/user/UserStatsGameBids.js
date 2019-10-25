@@ -1,6 +1,5 @@
 import React from 'react';
 import FixtureShortBids from '../../components/objectcontrols/FixtureShortBids';
-import {Link} from "react-router-dom";
 import '../../../style/betbook/week-games.scss';
 import Loader from "../../components/other/Loader";
 import FullContainer from "../../components/containers/FullContainer";
@@ -40,8 +39,8 @@ class UserStatsGameBids extends React.Component {
     }
 
     renderGames = () => {
-                    return <>{this.state.realData.map((fixture) => <Link to={`/fixture/${fixture.fixture.id}`} key={fixture.fixture.id}>
-                <FixtureShortBids {...fixture}/></Link>)}</>
+                    return <>{this.state.realData.map((fixture) =>
+                <FixtureShortBids {...fixture}/>)}</>
     };
 
     render() {
