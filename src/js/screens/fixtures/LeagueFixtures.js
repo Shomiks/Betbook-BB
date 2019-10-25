@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from "react-router-dom";
 import '../../../style/betbook/week-games.scss';
 import Loader from "../../components/other/Loader";
 import FullContainer from "../../components/containers/FullContainer";
@@ -29,8 +28,8 @@ class LeagueFixtures extends React.Component {
 
     renderGames = () => {
             return <>
-                {this.state.realData.fixtures.map((fixture) => <Link to={`/fixture/${fixture.id}`} key={fixture.id}>
-                    <FixtureShortFixtures {...fixture}/></Link>)}
+                {this.state.realData.fixtures.map((fixture) =>
+                    <FixtureShortFixtures {...fixture}/>)}
             </>
     };
 
