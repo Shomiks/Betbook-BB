@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
 import React from "react";
-import '../../../style/betbook/profile-tickets.scss'
+import '../../../style/betbook/profile-tickets.scss';
+import PropTypes from 'prop-types';
 
 function ProfileGames(props) {
 
@@ -28,5 +29,11 @@ function ProfileGames(props) {
     </Link>
         </>
 }
+
+ProfileGames.propTypes = {
+    Game: PropTypes.number,
+    statistics: PropTypes.object,
+    statisticsCalculated: PropTypes.object
+};
 
 export default ProfileGames;

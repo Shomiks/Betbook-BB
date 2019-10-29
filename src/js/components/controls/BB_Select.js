@@ -27,6 +27,6 @@ BB_Select.propTypes = {
 
 BB_Select.defaultProps = {
     type: 'text'
-}
+};
 
 export default BB_Select;

@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../../style/betbook/today_fixtures.scss'
 import {Link} from "react-router-dom";
+import PropTypes from 'prop-types';
 
 function LeagueShort(props) {
 
@@ -62,5 +63,10 @@ function LeagueShort(props) {
         })}
     </div>
 }
+
+LeagueShort.propTypes = {
+    fixture: PropTypes.object,
+    isChecked: PropTypes.oneOf(['star_checked', 'star'])
+};
 
 export default LeagueShort;

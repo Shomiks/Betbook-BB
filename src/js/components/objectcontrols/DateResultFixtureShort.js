@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 function DateResultFixtureShort(props) {
 
@@ -19,5 +20,9 @@ function DateResultFixtureShort(props) {
         </div>
     </div>)
 }
+
+DateResultFixtureShort.propTypes = {
+  fixture: PropTypes.object
+};
 
 export default DateResultFixtureShort;

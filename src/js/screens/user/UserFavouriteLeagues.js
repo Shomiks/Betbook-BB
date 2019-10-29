@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../style/betbook/detailed-competitionlisting.scss';
+import '../../../style/betbook/league_short.scss';
 import {Link} from "react-router-dom";
 import Loader from "../../components/other/Loader";
 import FullContainer from "../../components/containers/FullContainer";
@@ -14,7 +14,6 @@ class UserFavouriteLeagues extends React.Component {
             remove:[],
             checked:true
         };
-        this.countryId = props.match.params.countryid;
     }
 
     componentDidMount = () => {

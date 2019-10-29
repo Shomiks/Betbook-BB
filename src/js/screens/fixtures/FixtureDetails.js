@@ -23,7 +23,6 @@ class FixtureDetails extends React.Component {
 
     getFixtureById() {
         window.apiHelper.fixture.getByID(this.fixtureId, window.apiHelper.userInfo.id, (res) => {
-            console.log(res)
             this.setState({realData: res, loaded: true})
         });
     };
@@ -101,55 +100,6 @@ class FixtureDetails extends React.Component {
         });
     };
 
-    handleBidState = (game, tip, bidfield) => {
-        let className = bidfield + ' ' + game;
-        if (!this.state.realData[game + '_' + tip]) className += ' hidden';
-
-        if (this.state.realData.result && this.state.realData.result[game + '_' + tip] == 1) {
-            className += ' won';
-        }
-        if (this.state.realData.ticket) {
-            if (this.state.realData.ticket[game + '_tip'] == tip) {
-                className += ' bided' + ' ' + 'no-opacity';
-            }
-
-            if (this.state.realData.ticket[game + '_tip'] == tip && this.state.realData.result) {
-                if (this.state.realData.result.is_finished == 1) {
-                    if (className.includes('won')) {
-                        className += ' green'
-                    } else className += ' red'
-                }
-            }
-        }
-        if (!className.includes('bided')) {
-            if (this.state.realData.result && this.state.realData.result.is_finished == 1) {
-                return className += ' opacity'
-            }
-            if (className.includes(game)) {
-                if (this.state.realData.ticket) {
-                    if (this.state.realData.ticket[game + '_tip']) {
-                        return className + ' ' + 'opacity';
-                    }
-                }
-            }
-        }
-        return className
-    };
-
-    handleBidType = (label, game, tip, bidfield) => {
-
-        let className = this.handleBidState(game, tip, bidfield);
-
-        return <div className={className}
-                    onClick={!this.state.realData.result || this.state.realData.result.is_finished == 0 ? () => this.handleBidClick(game, tip, className) : null}>
-            <div className='game-bid-align'>
-                <div className='game-text'><span className='text11-grey'>{label}</span></div>
-                <div className='bid-text'><span className='text15-white'>{this.state.realData[game + '_' + tip]}</span>
-                </div>
-            </div>
-        </div>
-    };
-
     renderLive = () => {
         return <div className='minuteLive'>
             <div className='live-field'>live</div>
@@ -211,7 +161,7 @@ class FixtureDetails extends React.Component {
     };
 
     renderBidFieldDetails = () => {
-        return <BidFieldsShort handleBidType={this.handleBidType} {...this.state}/>
+        return <BidFieldsShort realData={this.state.realData} handleBidClick={this.handleBidClick} />
     };
 
     renderStateCompopnent = () => {
