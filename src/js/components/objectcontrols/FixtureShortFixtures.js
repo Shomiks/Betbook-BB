@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 
 function FixtureShortFixtures(props){
 
+    console.log(JSON.stringify(props));
+
     function handleStateField (tip) {
         let game = "game" + tip;
 

@@ -9,7 +9,6 @@ function BB_SmallCalendar(props) {
     }
 
     const handleOnWrapperClick = () => {
-        console.log("Test");
         props.onClose();
     };
 

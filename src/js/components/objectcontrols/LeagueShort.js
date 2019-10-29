@@ -5,7 +5,8 @@ import PropTypes from 'prop-types';
 
 function LeagueShort(props) {
 
-    props.fixture.sort();
+    const fixtures = props.fixture ? props.fixture : [];
+    fixtures.sort();
 
     function favouriteLeague() {
         return <div className={props.isChecked}
@@ -43,11 +44,13 @@ function LeagueShort(props) {
         else return fixture.result.elapsed;
     }
 
+    // const fixtures = props.fixture ? props.fixture : [];
+
     return <div className='favourite-league'>
         <div className='league'><Link to={`/league/${props.id}`}>
             <div className='league_name'>{props.name}</div>
         </Link>{favouriteLeague()}</div>
-        {props.fixture.map(fixture => {
+        {fixtures.map(fixture => {
            if(!fixture.result || fixture.result.processed == 0) return (<Link to={`/fixture/${fixture.id}`} key={fixture.id}>
                 <div className='fixture_box'>
                     <div className='fixture'>

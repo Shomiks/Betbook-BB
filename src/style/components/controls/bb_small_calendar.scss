@@ -1,14 +1,14 @@
 .small_calendar_wrapper {
-  position: absolute;
+  position: fixed;
   top: 0;
-  bottom: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   background-color: #000000;
   opacity: 0.5;
 }
   .small_calendar {
-    position: absolute;
+    position: fixed;
     z-index: 10;
     background-color: gray;
     width: 50vw;

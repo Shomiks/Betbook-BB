@@ -7,6 +7,7 @@ import FullContainer from "../../components/containers/FullContainer";
 import searchSVG from '../../../style/betbook/assets/images/search---final.svg';
 import calendarSVG from '../../../style/betbook/assets/images/ball.svg';
 import BB_SmallCalendar from "../../components/controls/BB_SmallCalendar";
+import FixtureShortFixtures from "../../components/objectcontrols/FixtureShortFixtures";
 
 class TodayFixtures extends React.Component {
 
@@ -90,11 +91,10 @@ class TodayFixtures extends React.Component {
     };
 
     onCalendarDateClick = (date) => {
-        console.log('on calendar date click', date);
         this.setState({calendarVisible: false, loaded: false});
         this.state.currentDate = date;
         this.getAllFixtures();
-    }
+    };
 
     onStarClick = (league, i, user_favourite_league) => {
         const realData = [...this.state.realData];
@@ -111,8 +111,7 @@ class TodayFixtures extends React.Component {
     };
 
     onWrapperClick = () => {
-        // this.setState( {calendarVisible: false} );
-        console.log("Test");
+        this.setState( {calendarVisible: false} );
     };
 
     render() {
@@ -122,7 +121,8 @@ class TodayFixtures extends React.Component {
                     this.setState({calendarVisible: true})
                 }
             }}>
-                <BB_SmallCalendar show={this.state.calendarVisible} onDateClick={this.onCalendarDateClick} onClose={this.onWrapperClick}/>
+                <BB_SmallCalendar show={this.state.calendarVisible} onDateClick={this.onCalendarDateClick}
+                                  onClose={this.onWrapperClick}/>
                 <div className='main-content today_fixtures'>
                     <>
                         {this.state.realData.map((league, i) => {
@@ -130,6 +130,8 @@ class TodayFixtures extends React.Component {
                                                  onStarClick={(user_favourite_league) => this.onStarClick(league, i, user_favourite_league)} {...league}
                                                  key={league.id}/>)
                         })}</>
+
+
                 </div>
 
             </FullContainer>
