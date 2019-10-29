@@ -6,6 +6,7 @@ import LeagueShort from "../../components/objectcontrols/LeagueShort";
 import FullContainer from "../../components/containers/FullContainer";
 import searchSVG from '../../../style/betbook/assets/images/search---final.svg';
 import calendarSVG from '../../../style/betbook/assets/images/ball.svg';
+import BB_SmallCalendar from "../../components/controls/BB_SmallCalendar";
 
 class TodayFixtures extends React.Component {
 
@@ -15,7 +16,8 @@ class TodayFixtures extends React.Component {
         this.state = {
             realData: null,
             loaded: false,
-            calendarVisible: false
+            calendarVisible: false,
+            currentDate: new Date()
         };
     }
 
@@ -24,7 +26,7 @@ class TodayFixtures extends React.Component {
     };
 
     getAllFixtures = () => {
-        window.apiHelper.leagues.getAll((res) => {
+        window.apiHelper.leagues.getAll(this.state.currentDate.toISOString().slice(0, 10), (res) => {
             this.matchBids(res);
             this.sortLeagues(Object.values(res.leagues));
         })
@@ -87,6 +89,13 @@ class TodayFixtures extends React.Component {
         this.setState({loaded: true, realData})
     };
 
+    onCalendarDateClick = (date) => {
+        console.log('on calendar date click', date);
+        this.setState({calendarVisible: false, loaded: false});
+        this.state.currentDate = date;
+        this.getAllFixtures();
+    }
+
     onStarClick = (league, i, user_favourite_league) => {
         const realData = [...this.state.realData];
         if (league.user_favourite_league) {
@@ -101,25 +110,19 @@ class TodayFixtures extends React.Component {
         this.setState({realData})
     };
 
+    onWrapperClick = () => {
+        // this.setState( {calendarVisible: false} );
+        console.log("Test");
+    };
+
     render() {
-
-        console.log(this.state.realData)
-        let parentBox = null;
-        let popupBox = null;
-        let calendarEl = null;
-        if (this.state.calendarVisible) {
-            calendarEl = <div className='tf_calendar_box'></div>
-            popupBox = <div className='tf_popup_box' onClick={this.onTodayClick}>Yesterday <br/> Today <br/> Tomorrow</div>;
-            parentBox = <div className='tf_parent_calendar'>{calendarEl}{popupBox}</div>
-        }
-
         if (this.state.loaded) return (
             <FullContainer footerProps={{activeItem: 'timeline'}} headerProps={{
                 title: 'All Fixtures', rightIcon: calendarSVG, rightIconOnClick: () => {
                     this.setState({calendarVisible: true})
                 }
             }}>
-                {parentBox}
+                <BB_SmallCalendar show={this.state.calendarVisible} onDateClick={this.onCalendarDateClick} onClose={this.onWrapperClick}/>
                 <div className='main-content today_fixtures'>
                     <>
                         {this.state.realData.map((league, i) => {

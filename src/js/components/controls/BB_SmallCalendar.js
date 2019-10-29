@@ -4,6 +4,15 @@ import '../../../style/components/controls/bb_small_calendar.scss';
 
 function BB_SmallCalendar(props) {
 
+    if (props.show != true) {
+        return null;
+    }
+
+    const handleOnWrapperClick = () => {
+        console.log("Test");
+        props.onClose();
+    };
+
     const handleOnDateClick = (date) => {
         let offSet = new Date();
         offSet.setDate(offSet.getDate() + date);
@@ -18,19 +27,26 @@ function BB_SmallCalendar(props) {
 
     const elArr = [];
 
-    for(let i = -3; i < 4; i++) {
-        elArr.push(<div className='small_calendar_date' onClick={()=>{ handleOnDateClick(i) }}><span>{printDate(i)}</span></div>)
+    for (let i = -3; i < 4; i++) {
+        elArr.push(<div className='small_calendar_date' onClick={() => {
+            handleOnDateClick(i)
+        }}><span>{printDate(i)}</span></div>)
     }
 
     return (
-        <div className='small_calendar'>
-            {elArr}
+        <div>
+            <div className='small_calendar_wrapper' onClick={() => {handleOnWrapperClick()}} />
+            <div className='small_calendar'>
+                {elArr}
+            </div>
         </div>
     );
 }
 
 BB_SmallCalendar.propTypes = {
-    onDateClick: PropTypes.func
+    show: PropTypes.bool,
+    onDateClick: PropTypes.func,
+    onClose: PropTypes.func
 };
 
 export default BB_SmallCalendar;

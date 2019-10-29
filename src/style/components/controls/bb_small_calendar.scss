@@ -1,31 +1,41 @@
-.small_calendar {
+.small_calendar_wrapper {
   position: absolute;
-  background-color: gray;
-  width: 50vw;
-  height: 50vh;
-  top: 50%;
-  left: 50%;
-  margin-top: -25vh;
-  margin-left: -25vw;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  padding: 20px;
-
-  &_date {
-    width: 100%;
-    background-color: white;
-    color: white;
-    border: 1px solid black;
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-  }
-
-  .small_calendar_date > span {
-    color: black;
-    align-self: center;
-  }
-
+  top: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  opacity: 0.5;
 }
+  .small_calendar {
+    position: absolute;
+    z-index: 10;
+    background-color: gray;
+    width: 50vw;
+    height: 50vh;
+    top: 50%;
+    left: 50%;
+    margin-top: -25vh;
+    margin-left: -25vw;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 20px;
+
+    &_date {
+      width: 100%;
+      background-color: white;
+      color: white;
+      border: 1px solid black;
+      flex-grow: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .small_calendar_date > span {
+      color: black;
+      align-self: center;
+    }
+  }
+
 

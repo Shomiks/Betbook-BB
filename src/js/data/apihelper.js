@@ -1,7 +1,8 @@
 class APIHelper {
 
     // apiUrl = 'http://192.168.8.113';
-    apiUrl = 'http://bb.nix.mk';
+    // apiUrl = 'http://bb.nix.mk';
+    apiUrl = 'http://localhost/project1';
     userInfo = null;
 
     constructor(){}
@@ -158,8 +159,8 @@ class APIHelper {
     };
 
     leagues = {
-        getAll: (callBack) => {
-            fetch(this.apiUrl + `/index.php/api/league/todayFixtures/?user_id=` + this.userInfo.id)
+        getAll: (date, callBack) => {
+            fetch(this.apiUrl + `/index.php/api/league/todayFixtures/?user_id=${this.userInfo.id}&date=${date}`)
                 .then(res => res.json())
                 .then(res => callBack(res))
         },
