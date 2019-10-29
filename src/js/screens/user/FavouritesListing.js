@@ -2,8 +2,8 @@ import React from 'react'
 import '../../../style/betbook/home_screen.scss'
 import {Link} from "react-router-dom";
 import Loader from "../../components/other/Loader";
-import FooterContainer from "../../components/containers/FooterContainer";
 import BB_HS_League_Logo from "../../components/other/BB_HS_League_Logo";
+import SmartContainer from "../../components/containers/SmartContainer";
 
 class FavouritesListing extends React.Component {
 
@@ -74,7 +74,7 @@ class FavouritesListing extends React.Component {
 
     render() {
         if (this.state.loaded) return (
-            <FooterContainer footerProps={{activeItem: 'star'}}>
+            <SmartContainer showFooter={true} showHeader={false} footerProps={{activeItem: 'star'}}>
                 <div className='betbook-logo'/>
                 <div className='main-content'>
                     {this.state.realData.length ?
@@ -87,7 +87,7 @@ class FavouritesListing extends React.Component {
                             {this.handleFirstTimeLogin()}</>
                     }
                 </div>
-            </FooterContainer>
+            </SmartContainer>
         );
         else {
             return <Loader/>

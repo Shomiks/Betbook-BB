@@ -1,13 +1,12 @@
 import React from 'react';
 import '../../../style/betbook/today_fixtures.scss';
 import Loader from "../../components/other/Loader";
-import FooterContainer from "../../components/containers/FooterContainer";
 import LeagueShort from "../../components/objectcontrols/LeagueShort";
-import FullContainer from "../../components/containers/FullContainer";
 import searchSVG from '../../../style/betbook/assets/images/search---final.svg';
 import calendarSVG from '../../../style/betbook/assets/images/ball.svg';
 import BB_SmallCalendar from "../../components/controls/BB_SmallCalendar";
 import SmartContainer from "../../components/containers/SmartContainer";
+import FixtureShortFixtures from "../../components/objectcontrols/FixtureShortFixtures";
 
 class TodayFixtures extends React.Component {
 
