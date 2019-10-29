@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../../style/components/objectcontrols/match_short.scss';
+import '../../../style/components/objectcontrols/fixtureshortfixture.scss';
 import PropTypes from "prop-types";
 
 function FixtureShortFixtures(props){

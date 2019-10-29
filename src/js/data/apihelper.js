@@ -1,8 +1,8 @@
 class APIHelper {
 
-    // apiUrl = 'http://192.168.8.113';
-    // apiUrl = 'http://bb.nix.mk';
-    apiUrl = 'http://localhost/project1';
+    //apiUrl = 'http://192.168.8.113';
+    apiUrl = 'http://bb.nix.mk';
+    //apiUrl = 'http://localhost/project1';
     userInfo = null;
 
     constructor(){}

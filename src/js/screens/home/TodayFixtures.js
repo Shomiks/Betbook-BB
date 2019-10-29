@@ -7,6 +7,7 @@ import FullContainer from "../../components/containers/FullContainer";
 import searchSVG from '../../../style/betbook/assets/images/search---final.svg';
 import calendarSVG from '../../../style/betbook/assets/images/ball.svg';
 import BB_SmallCalendar from "../../components/controls/BB_SmallCalendar";
+import SmartContainer from "../../components/containers/SmartContainer";
 
 class TodayFixtures extends React.Component {
 
@@ -117,7 +118,7 @@ class TodayFixtures extends React.Component {
 
     render() {
         if (this.state.loaded) return (
-            <FullContainer footerProps={{activeItem: 'timeline'}} headerProps={{
+            <SmartContainer showHeader={true} showFooter={true} footerProps={{activeItem: 'timeline'}} headerProps={{
                 title: 'All Fixtures', rightIcon: calendarSVG, rightIconOnClick: () => {
                     this.setState({calendarVisible: true})
                 }
@@ -132,7 +133,7 @@ class TodayFixtures extends React.Component {
                         })}</>
                 </div>
 
-            </FullContainer>
+            </SmartContainer>
         );
         else return <Loader/>
     }

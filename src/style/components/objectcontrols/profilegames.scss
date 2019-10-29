@@ -1,0 +1,26 @@
+.pt_box {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  padding-top: 17px;
+
+  .pt_up-text {
+    position: relative;
+    display: block;
+  }
+
+  .pt_left-box {
+    position: relative;
+    display: inline-block;
+  }
+
+  .pt_central-box {
+    position: relative;
+    display: inline-block;
+  }
+
+  .pt_right-box {
+    position: relative;
+    display: inline-block;
+  }
+}

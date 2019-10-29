@@ -2,7 +2,8 @@ import React from 'react';
 import '../../../style/betbook/competitionlisting.scss';
 import {Link} from "react-router-dom";
 import Loader from "../../components/other/Loader";
-import FullContainer from "../../components/containers/FullContainer";
+import SmartContainer from "../../components/containers/SmartContainer";
+
 
 class CountryListing extends React.Component {
 
@@ -33,8 +34,7 @@ class CountryListing extends React.Component {
     render() {
 
         if (this.state.loaded) return (
-            <FullContainer  footerProps={{activeItem: 'ball'}} headerProps={{title: 'Countries' }}>
-                <div className='main-content'>
+            <SmartContainer showFooter={true} showHeader={true} footerProps={{activeItem: 'ball'}} headerProps={{title: 'Countries' }}>
                     <div className='countries-container'>
                         {this.state.realData.map((data) => <Link to={`country/${data.id}`}
                                                                  key={data.id + data.name}>
@@ -56,8 +56,7 @@ class CountryListing extends React.Component {
                             </div>
                         </Link>)}
                     </div>
-                </div>
-            </FullContainer>
+            </SmartContainer>
         );
         else {
             return <Loader/>

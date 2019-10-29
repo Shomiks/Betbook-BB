@@ -1,7 +1,8 @@
 import React from 'react';
-import '../../../style/components/objectcontrols/match_short.scss';
 import DateResultFixtureShort from "./DateResultFixtureShort";
 import PropTypes from "prop-types";
+
+
 
 function FixtureShortBids(props) {
 

@@ -1,0 +1,190 @@
+.match-details-field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #151516;
+  margin-bottom: 20px;
+
+  .md_league-week-details {
+    display: block;
+    position: relative;
+    width: 100%;
+    text-align: center;
+  }
+
+  .md_league_match_fixture {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+
+    .md_home-team-field {
+      position: relative;
+      display: inline-block;
+      width: 35%;
+      text-align: center;
+
+      .logo {
+        position: relative;
+        height: 60px;
+        width: 60px;
+      }
+    }
+
+    .md_vs-field {
+      margin-top: 15px;
+      display: block;
+      width: 30%;
+      position: relative;
+      line-height: 30px;
+
+      .minuteLive {
+        position: relative;
+        margin: 0 auto;
+        width: 32px;
+
+        .live-field {
+          position: relative;
+          display: block;
+          height: 8px;
+          width: 32px;
+          background: linear-gradient(180deg, #FFAC3A 0%, #EB670C 100%), #ED8035;
+          border-radius: 20px;
+          font-family: SF Display;
+          font-size: 6px;
+          line-height: 8px;
+          text-align: center;
+          letter-spacing: 2.83px;
+          color: #FFFFFF;
+          text-transform: uppercase;
+
+
+          .text6-white {
+            text-transform: uppercase;
+          }
+        }
+
+        .live-minut-field {
+          position: relative;
+          display: block;
+          text-align: center;
+        }
+      }
+    }
+
+    .md_away-team-field {
+      position: relative;
+      display: inline-block;
+      width: 35%;
+      text-align: center;
+
+      .logo {
+        position: relative;
+        height: 60px;
+        width: 60px;
+      }
+    }
+  }
+}
+
+.main-titlle-field {
+  height: 25px;
+  width: 100%;
+  position: relative;
+  background-color: #151516;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  .ft_text_position {
+    position: relative;
+    text-align: center;
+  }
+
+  .bided {
+    background-color: #1E8FE1;
+  }
+
+  .game-underline {
+    height: 0.5px;
+    background-color: #FFF;
+    opacity: 0.15;
+    width: 120px;
+    margin: 5px auto;
+    border-radius: 4px;
+
+  }
+}
+
+.scrolable-bids-field {
+
+  .md_match-details-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    .md_line {
+      height: 0;
+      width: 33%;
+      border: 0.5px solid #FFAC3A;
+
+    }
+
+    .md_match-details-box {
+      position: relative;
+      height: 26px;
+      width: 100px;
+      border: 1px solid #FFAC3A;
+      box-sizing: border-box;
+      border-radius: 20px;
+
+      .text12-yellow {
+        line-height: 2;
+      }
+    }
+  }
+
+  .md_bid-box {
+    position: relative;
+    background-color: #151516;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 12px;
+
+    .bid-field {
+      height: 36px;
+      width: 105px;
+      border-radius: 20px;
+      background-color: #212122;
+      margin: 5px;
+      flex: 1;
+      border: 1px solid transparent;
+    }
+
+    .game-bid-align {
+      position: relative;
+      display: flex;
+      height: 100%;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .bided {
+      background-color: #122F3F;
+      border: 1px solid #47B0E3;
+    }
+
+    .green {
+      background-color: #1A281D;
+      border: 1px solid #43BA58;
+    }
+
+    .red {
+      background-color: #31190F;
+      border: 1px solid #BA4343;
+    }
+  }
+}

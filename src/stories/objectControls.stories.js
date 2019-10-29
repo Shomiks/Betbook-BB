@@ -10,6 +10,7 @@ import FixtureShortBids from "../js/components/objectcontrols/FixtureShortBids";
 import FixtureShortFixtures from "../js/components/objectcontrols/FixtureShortFixtures";
 import ProfileGames from "../js/components/objectcontrols/ProfileGames";
 import ProfileShort from "../js/components/objectcontrols/ProfileShort";
+import LeagueHome from "../js/components/objectcontrols/LeagueHome";
 
 const stories = storiesOf('object controls', module);
 
@@ -160,6 +161,9 @@ stories
 
 stories
     .add('Date Result Fixture Short', () => <DateResultFixtureShort fixture={fixture[0]}/>);
+
+stories
+    .add('League Home', () => <LeagueHome fixture={fixture} />);
 
 stories
     .add('Fixture Short Bids', () => <FixtureShortBids fixture={fixture[0]}/>);
@@ -315,3 +319,4 @@ const profileShort = {
 
 stories
     .add('Profile Short', () => <ProfileShort user={profileShort}/>);
+

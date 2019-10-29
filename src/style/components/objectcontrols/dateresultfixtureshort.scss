@@ -1,0 +1,76 @@
+.ms-teams-field {
+  position: relative;
+  height: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  .ms_homeField {
+    position: absolute;
+    display: inline-block;
+    margin-right: 5px;
+    left: 18px;
+
+    .ms_hometeam-text {
+      position: relative;
+      display: inline-block;
+      vertical-align: super;
+      width: 80px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .logo {
+      margin-right: 5px;
+      margin-top: 10px;
+      width: 21px;
+      height: 21px;
+    }
+
+  }
+
+  .ms_awayField {
+    position: absolute;
+    display: inline-block;
+    margin-left: 5px;
+    right: 18px;
+
+    .ms_awayteam-text {
+      position: relative;
+      display: inline-block;
+      vertical-align: super;
+      width: 80px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    .logo {
+      width: 21px;
+      margin-left: 5px;
+      height: 21px;
+      margin-top: 10px;
+    }
+  }
+
+  .ms_resultField {
+    position: relative;
+
+
+    .text15-white {
+      color: #FFF;
+      font-family: "SF Display";
+      font-size: 15px;
+      font-weight: 500;
+      margin: 15px;
+    }
+
+    .ms_date {
+      position: relative;
+      display: inline-block;
+      font-size: 15px;
+    }
+
+  }
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import '../../../style/betbook/today_fixtures.scss'
 import {Link} from "react-router-dom";
 import PropTypes from 'prop-types';
+import './../../../style/components/objectcontrols/leagueshort.scss';
 
 function LeagueShort(props) {
 
