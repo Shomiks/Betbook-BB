@@ -20,12 +20,21 @@ function SmartContainer(props) {
         footer = null;
     }
 
+    let cssClassPadding = null;
+    if (props.showHeader == true && props.showFooter != true) {
+        cssClassPadding = 'container container_pad_top';
+    } else if (props.showHeader != true && props.showFooter == true) {
+        cssClassPadding = 'container container_pad_bottom';
+    } else if (props.showHeader != true && props.showFooter != true) {
+        cssClassPadding = 'container';
+    } else cssClassPadding = 'container container_pad_top container_pad_bottom';
 
-    return (<div className='full_container'>
+
+    return (<div className={cssClassPadding}>
         {header}
-        <div className='full_container_child'>
-            {props.children}
-        </div>
+            <div className='child'>
+                {props.children}
+            </div>
         {footer}
     </div>);
 }
