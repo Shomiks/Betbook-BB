@@ -9,7 +9,7 @@
   .header_title {
     position: relative;
     height: 100%;
-    width: 100%;
+    width: auto;
     text-align: center;
     line-height: 50px;
   }
@@ -21,15 +21,17 @@
   .header_subtitle {
     position: relative;
     height: 100%;
-    width: 100%;
+    width: auto;
     text-align: center;
   }
 
   .header_left_icon {
     position: absolute;
     left: 5%;
-    top: 30%;
+    top: 5%;
     transform: rotate(180deg);
+    height: 50px;
+    width: 50px;
   }
 
   .header_right_icon {

@@ -1,10 +1,10 @@
-  .betbook_screen {
-    height: 100%;
-    width: 100%;
-    position: relative;
-    text-align: center;
-    display: block;
-    overflow: scroll;
+  //.betbook_screen {
+  //  height: 100%;
+  //  width: 100%;
+  //  position: relative;
+  //  text-align: center;
+  //  display: block;
+  //  overflow: scroll;
 
     .betbook-logo {
       background-image: url("assets/images/logo.png");
@@ -22,6 +22,7 @@
       color: #FFFFFF;
       margin: 25px 0;
       font-family: 'SF Display';
+      text-align: center;
     }
 
     .main-content {
@@ -104,4 +105,4 @@
       top: 50%;
       margin-top: -60px;
     }
-  }
+  //}

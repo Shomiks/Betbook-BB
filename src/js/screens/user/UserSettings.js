@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import '../../../style/betbook/user/settings.scss'
-import FullContainer from "../../components/containers/FullContainer";
 import Loader from "../../components/other/Loader";
+import SmartContainer from "../../components/containers/SmartContainer";
 
 class UserSettings extends React.Component {
         constructor(props) {
@@ -34,8 +34,8 @@ class UserSettings extends React.Component {
 
     render() {
 
-        if(this.state.loaded) return (<FullContainer footerProps={{activeItem: 'profile'}} headerProps={{title: 'Settings'}}>
-                <div className='betbook-context'>
+        if(this.state.loaded) return (<SmartContainer showHeader={true} showFooter={true} footerProps={{activeItem: 'profile'}} headerProps={{title: 'Settings'}}>
+
                  <div className='main-container'>
                     <Link to={`/edit`}> <div className='personal-info'><span className='text11-grey'>Personal info</span>
                         <span className='edit'> Edit</span></div>
@@ -50,8 +50,8 @@ class UserSettings extends React.Component {
                         <div className='settings-text'><span className='text17-red'>Logout</span></div>
                         </div>
                     </div>
-                </div>
-            </FullContainer>
+
+            </SmartContainer>
         );
         else return <Loader/>
     }

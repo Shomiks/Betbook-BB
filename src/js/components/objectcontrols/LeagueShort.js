@@ -3,6 +3,7 @@ import '../../../style/betbook/today_fixtures.scss'
 import {Link} from "react-router-dom";
 import PropTypes from 'prop-types';
 import './../../../style/components/objectcontrols/leagueshort.scss';
+import FixtureShortFixtures from "./FixtureShortFixtures";
 
 function LeagueShort(props) {
 
@@ -48,20 +49,21 @@ function LeagueShort(props) {
         <div className='league'><Link to={`/league/${props.id}`}>
             <div className='league_name'>{props.name}</div>
         </Link>{favouriteLeague()}</div>
-        {props.fixture.map(fixture => {
-           if(!fixture.result || fixture.result.processed == 0) return (<Link to={`/fixture/${fixture.id}`} key={fixture.id}>
-                <div className='fixture_box'>
-                    <div className='fixture'>
-                        <div
-                            className='team_home'>{fixture.team_home.name + ' ' + (fixture.result ? fixture.result.ft_home_goals : '')}</div>
-                        <div
-                            className='team_away'>{fixture.team_away.name + ' ' + (fixture.result ? fixture.result.ft_away_goals : '')}</div>
-                    </div>
-                    <div className='time'
-                         key={fixture.id}>{fixture.result ? renderResult(fixture) : renderTime(fixture)}</div>
-                </div>
-            </Link>)
-        })}
+        {props.fixture.map(fixture => <Link to={`/fixture/${fixture.id}`} key={fixture.id}><FixtureShortFixtures {...fixture}/></Link> )}
+        {/*{props.fixture.map(fixture => {*/}
+        {/*   if(!fixture.result || fixture.result.processed == 0) return (<Link to={`/fixture/${fixture.id}`} key={fixture.id}>*/}
+        {/*        <div className='fixture_box'>*/}
+        {/*            <div className='fixture'>*/}
+        {/*                <div*/}
+        {/*                    className='team_home'>{fixture.team_home.name + ' ' + (fixture.result ? fixture.result.ft_home_goals : '')}</div>*/}
+        {/*                <div*/}
+        {/*                    className='team_away'>{fixture.team_away.name + ' ' + (fixture.result ? fixture.result.ft_away_goals : '')}</div>*/}
+        {/*            </div>*/}
+        {/*            <div className='time'*/}
+        {/*                 key={fixture.id}>{fixture.result ? renderResult(fixture) : renderTime(fixture)}</div>*/}
+        {/*        </div>*/}
+        {/*    </Link>)*/}
+        {/*})}*/}
     </div>
 }
 

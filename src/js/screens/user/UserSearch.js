@@ -2,7 +2,7 @@ import React from 'react';
 import ProfileShort from "../../components/objectcontrols/ProfileShort";
 import Loader from "../../components/other/Loader";
 import {Link} from "react-router-dom";
-import FullContainer from "../../components/containers/FullContainer";
+import SmartContainer from "../../components/containers/SmartContainer";
 
 class UserSearch extends React.Component {
 
@@ -34,7 +34,7 @@ class UserSearch extends React.Component {
     render() {
 
         if (this.state.loaded) {
-            return <FullContainer footerProps={{activeItem: 'profile'}} headerProps={{title: 'Search for users'}}>
+            return <SmartContainer showFooter={true} showHeader={true} footerProps={{activeItem: 'profile'}} headerProps={{title: 'Search for users'}}>
                 <div className='main-container'/>
                 <div className='bb_us_search_box'>
                     {/*<TextField className='bb_us_search_field'><span*/}
@@ -45,7 +45,7 @@ class UserSearch extends React.Component {
                 {this.state.users.map(user => {
                     return <><Link to={`/user/${user.id}`}><ProfileShort key={user.id} user={user}/></Link></>
                 })}
-            </FullContainer>
+            </SmartContainer>
         } else return <Loader/>
     }
 }
