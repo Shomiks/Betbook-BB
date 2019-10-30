@@ -1,10 +1,10 @@
 import React from 'react';
 import '../../../style/betbook/profile-tickets.scss';
 import Loader from "../../components/other/Loader";
-import FullContainer from "../../components/containers/FullContainer";
 import ProfileGames from "../../components/objectcontrols/ProfileGames";
 import searchSVG from '../../../style/betbook/assets/images/search---final.svg';
 import settingsSVG from '../../../style/betbook/assets/images/settings---final.svg';
+import SmartContainer from "../../components/containers/SmartContainer";
 
 
 class UserProfile extends React.Component {
@@ -127,7 +127,7 @@ class UserProfile extends React.Component {
     render() {
 
         if (this.state.loaded) return (
-            <FullContainer footerProps={{activeItem: 'profile'}} headerProps={{
+            <SmartContainer showHeader={true} showFooter={true} footerProps={{activeItem: 'profile'}} headerProps={{
                 showBack: false,
                 itemLeft: 'settings',
                 itemRight: 'search',
@@ -147,7 +147,7 @@ class UserProfile extends React.Component {
                         {this.renderFields('ht-ft-statistics-field', 4)}
                     </div>
                 </div>
-            </FullContainer>
+            </SmartContainer>
         );
         else {
             return <Loader/>

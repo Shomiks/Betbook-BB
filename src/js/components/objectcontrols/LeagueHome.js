@@ -5,7 +5,9 @@ import FixtureShortFixtures from "./FixtureShortFixtures";
 
 function LeagueHome(props) {
 
-    props.fixture.sort();
+    console.log(JSON.stringify(props));
+
+    //props.fixture.sort();
 
     // function favouriteLeague() {
     //     return <div className={props.isChecked}

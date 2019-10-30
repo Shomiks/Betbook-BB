@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 import React from "react";
-import '../../../style/betbook/profile-tickets.scss';
+import '../../../style/components/objectcontrols/profilegames.scss';
 import PropTypes from 'prop-types';
 
 function ProfileGames(props) {
