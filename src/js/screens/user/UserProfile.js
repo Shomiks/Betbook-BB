@@ -5,6 +5,8 @@ import ProfileGames from "../../components/objectcontrols/ProfileGames";
 import searchSVG from '../../../style/betbook/assets/images/search---final.svg';
 import settingsSVG from '../../../style/betbook/assets/images/settings---final.svg';
 import SmartContainer from "../../components/containers/SmartContainer";
+import PropTypes from "prop-types";
+import FixtureShortFixtures from "../../components/objectcontrols/FixtureShortFixtures";
 
 
 class UserProfile extends React.Component {
@@ -154,5 +156,6 @@ class UserProfile extends React.Component {
         }
     }
 }
+
 
 export default UserProfile;

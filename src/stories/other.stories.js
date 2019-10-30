@@ -15,7 +15,7 @@ stories
         <MemoryRouter initialEntries={['/']}>{story()}</MemoryRouter>));
 
 stories
-    .add('Logo', () => <BB_Logo />);
+    .add('BB_Logo', () => <BB_Logo />);
 
 stories
     .add('Loader', () => <Loader />);
