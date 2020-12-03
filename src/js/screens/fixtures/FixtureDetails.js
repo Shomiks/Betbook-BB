@@ -165,6 +165,7 @@ class FixtureDetails extends React.Component {
     };
 
     renderStateCompopnent = () => {
+        console.log(this.state)
         return (
             <FullContainer footerProps={{activeItem: 'ball'}} headerProps={{title: this.state.realData.league.name}}>
                 {this.renderMatchDetails()}

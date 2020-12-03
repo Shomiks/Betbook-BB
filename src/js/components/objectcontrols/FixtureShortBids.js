@@ -1,8 +1,7 @@
 import React from 'react';
 import DateResultFixtureShort from "./DateResultFixtureShort";
 import PropTypes from "prop-types";
-
-
+import {Link} from "react-router-dom";
 
 function FixtureShortBids(props) {
 
@@ -11,10 +10,10 @@ function FixtureShortBids(props) {
 
         if (!props[game + '_tip']) return ' unbided';
         else {
-            if (props.fixture.result) {
-                if (props.fixture.result.is_finished == 0) return ' bided';
+            if (props.result) {
+                if (props.result.is_finished == 0) return ' bided';
                 else {
-                    if (props.fixture.result[game + '_' + props[game + '_tip']] == 1) return ' green';
+                    if (props.result[game + '_' + props[game + '_tip']] == 1) return ' green';
                     else return ' red';
                 }
             } else return ' bided';
@@ -48,42 +47,49 @@ function FixtureShortBids(props) {
 
     function handleBidField() {
 
-        return <div className={props ? 'ms-central-field' : 'ms-central-field yellow'}>
-            <DateResultFixtureShort {...props} renderDate={() => this.renderDate}/>
-            <div className='ms-under-teams-field'>
-                {!props ? (!props.fixture.result ?
-                    <div className='ms_not-bided-yellow'><span className='text11-white'>Make a bid</span></div> :
-                    <div/>)
-                    : (
-                        <div className='ms_bid-field'>
-                            <div className={'ms_bid-box' + handleStateField(1)}>
-                                <div className='ms_game-field'><span
-                                    className='text11-grey'>{props.game1_tip ? props.game1_tip.toUpperCase() : ''}</span>
+        return <div className="test"><Link to={`/fixture/${props.fixture_id}`}>
+            <div className={props ? 'ms-central-field' : 'ms-central-field yellow'}>
+                <DateResultFixtureShort {...props} renderDate={() => this.renderDate}/>
+                <div className='ms-under-teams-field'>
+                    {!props ? (!props.result ?
+                        <div className='ms_not-bided-yellow'><span className='text11-white'>Make a bid</span></div> :
+                        <div/>)
+                        : (
+                            <div className='ms_bid-field'>
+                                <div className={'ms_bid-box' + handleStateField(1)}>
+                                    <div className='ms_game-field'><span
+                                        className='text11-grey'>{props.game1_tip ? props.game1_tip.toUpperCase() : ''}</span>
+                                    </div>
+                                    <div className='ms_odd-field'><span
+                                        className='text11-white'>{props.game1_odd}</span>
+                                    </div>
                                 </div>
-                                <div className='ms_odd-field'><span className='text11-white'>{props.game1_odd}</span>
+                                <div className={'ms_bid-box' + handleStateField(2)}>
+                                    <div className='ms_game-field'><span
+                                        className='text11-grey'>{parseTipGame2Row1() == '0-' ? (parseTipGame2Row1() + props.game2_tip) : parseTipGame2Row2()}</span>
+                                    </div>
+                                    <div className='ms_odd-field'><span
+                                        className='text11-white'>{props.game2_odd}</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className={'ms_bid-box' + handleStateField(2)}>
-                                <div className='ms_game-field'><span
-                                    className='text11-grey'>{parseTipGame2Row1() == '0-' ? (parseTipGame2Row1() + props.game2_tip) : parseTipGame2Row2()}</span>
+                                <div className={'ms_bid-box' + handleStateField(3)}>
+                                    <div className='ms_game-field'><span
+                                        className='text11-grey'>{props.game3_tip == 'gg' ? 'GG' : 'GG3+'}</span></div>
+                                    <div className='ms_odd-field'><span
+                                        className='text11-white'>{props.game3_odd}</span>
+                                    </div>
                                 </div>
-                                <div className='ms_odd-field'><span className='text11-white'>{props.game2_odd}</span>
+                                <div className={'ms_bid-box' + handleStateField(4)}>
+                                    <div className='ms_game-field'><span
+                                        className='text11-grey'>{props.game4_tip ? parseTipGame4() : ''}</span></div>
+                                    <div className='ms_odd-field'><span
+                                        className='text11-white'>{props.game4_odd}</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className={'ms_bid-box' + handleStateField(3)}>
-                                <div className='ms_game-field'><span
-                                    className='text11-grey'>{props.game3_tip == 'gg' ? 'GG' : 'GG3+'}</span></div>
-                                <div className='ms_odd-field'><span className='text11-white'>{props.game3_odd}</span>
-                                </div>
-                            </div>
-                            <div className={'ms_bid-box' + handleStateField(4)}>
-                                <div className='ms_game-field'><span
-                                    className='text11-grey'>{props.game4_tip ? parseTipGame4() : ''}</span></div>
-                                <div className='ms_odd-field'><span className='text11-white'>{props.game4_odd}</span>
-                                </div>
-                            </div>
-                        </div>)}
+                            </div>)}
+                </div>
             </div>
+        </Link>
         </div>
     }
 

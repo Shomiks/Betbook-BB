@@ -37,6 +37,7 @@ class App extends React.Component {
     }
 
     componentDidMount() {
+        console.log(this.context);
         if(window.apiHelper.user.isAuthenticated()){
            window.apiHelper.user.getCurrentUser((res) => {
                 if(res == false){

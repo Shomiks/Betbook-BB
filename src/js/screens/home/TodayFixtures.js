@@ -8,6 +8,7 @@ import searchSVG from '../../../style/betbook/assets/images/search---final.svg';
 import calendarSVG from '../../../style/betbook/assets/images/ball.svg';
 import BB_SmallCalendar from "../../components/controls/BB_SmallCalendar";
 import FixtureShortFixtures from "../../components/objectcontrols/FixtureShortFixtures";
+import {globalSate} from "../../../GlobalState";
 
 class TodayFixtures extends React.Component {
 
@@ -22,7 +23,10 @@ class TodayFixtures extends React.Component {
         };
     }
 
+    static contextType = globalSate;
+
     componentDidMount = () => {
+        console.log(this.context)
         this.getAllFixtures();
     };
 

@@ -28,7 +28,7 @@ class UserLeaguesBids extends React.Component {
 
     renderGames = () => {
             return <>
-                {this.state.realData.bids.map((fixture) => <Link to={`/fixture/${fixture.fixture.id}`} key={fixture.fixture.id}>
+                {this.state.realData.bids.map((fixture) => <Link to={`/fixture/${fixture.id}`} key={fixture.id}>
                     <FixtureShortBids {...fixture}/></Link>)}
             </>
     };

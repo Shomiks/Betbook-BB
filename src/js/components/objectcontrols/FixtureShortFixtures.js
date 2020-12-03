@@ -1,10 +1,9 @@
 import React from 'react';
 import '../../../style/components/objectcontrols/fixtureshortfixture.scss';
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 
 function FixtureShortFixtures(props){
-
-    console.log(JSON.stringify(props));
 
     function handleStateField (tip) {
         let game = "game" + tip;
@@ -49,7 +48,7 @@ function FixtureShortFixtures(props){
 
     function handleBidField () {
 
-        return <div className={props ? 'ms-central-field' : 'ms-central-field yellow'}>
+        return <><Link to={`/fixture/${props.id}`}><div className={props ? 'ms-central-field' : 'ms-central-field yellow'}>
             <div className='ms-teams-field'>
                 <div className='ms_homeField'>
                     <img className='logo' src={props.team_home.logo ? './assets/images/Teams/'+props.team_home.logo : './assets/images/alternative-logo.png'} />
@@ -89,6 +88,8 @@ function FixtureShortFixtures(props){
                         </div>)}
             </div>
         </div>
+        </Link>
+            </>
     }
 
     return <>{handleBidField()}</>

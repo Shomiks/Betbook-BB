@@ -2,9 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import './../../../../src/style/components/objectcontrols/dateresultfixtureshort.scss';
 
+/**
+ * @return {null}
+ */
 function DateResultFixtureShort(props) {
 
-    return (<div className='ms-teams-field'>
+    if(props.fixture) return (<div className='ms-teams-field'>
         <div className='ms_homeField'>
             <img className='logo' src={props.fixture.team_home.logo ? './assets/images/Teams/'+props.fixture.team_home.logo : './assets/images/alternative-logo.png'} />
             <div className='ms_hometeam-text'><span className='text11-white'>{props.fixture.team_home.name}</span></div>
@@ -20,6 +23,7 @@ function DateResultFixtureShort(props) {
             <img className='logo' src={props.fixture.team_away.logo ? './assets/images/Teams/'+props.fixture.team_away.logo : './assets/images/alternative-logo.png'}/>
         </div>
     </div>)
+    else return null;
 }
 
 DateResultFixtureShort.propTypes = {

@@ -37,10 +37,8 @@ function Header(props) {
     return (
         <div className='header'>
             {leftIcon}
-            <div>
                 <div className={titleClassName}><span className='text20-white'>{props.title}</span></div>
                 {subtitle}
-            </div>
             {rightIcon}
         </div>);
 

@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 
 function ProfileGames(props) {
 
+    console.log(props)
+
     return  <><Link to={props.statistics && props.statistics.game1_total != 0 ? `/game/` + props.Game + '/' + props.userid : null}>
         <div className='pt_box'>
             <div className='pt_left-box'>

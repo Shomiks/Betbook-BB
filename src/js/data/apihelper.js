@@ -160,9 +160,13 @@ class APIHelper {
 
     leagues = {
         getAll: (date, callBack) => {
-            fetch(this.apiUrl + `/index.php/api/league/todayFixtures/?user_id=${this.userInfo.id}&date=${date}`)
+
+            const asd = new Date('2019-11-30').toISOString().slice(0, 10);
+
+            fetch(this.apiUrl + `/index.php/api/league/todayFixtures/?user_id=${this.userInfo.id}&date=${asd}`)
                 .then(res => res.json())
-                .then(res => callBack(res))
+                .then(res => {
+                    callBack(res)})
         },
         getByCountryId: (country_id, callBack) => {
             fetch(this.apiUrl + `/index.php/api/country/getById/?country_id=` + country_id)
@@ -268,7 +272,10 @@ class APIHelper {
         gameStatistics : (game, user_id, callBack) => {
             fetch(this.apiUrl + `/index.php/api/user_statistic/statisticsByGame/?user_id=` + user_id + '&game=' + game)
                 .then(res => res.json())
-                .then(res => callBack(res))
+                .then(res =>{
+                    const fixtures = res.filter(fixture => (fixture.fixture))
+                    callBack(fixtures)
+                })
         }
     }
 }
